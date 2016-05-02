@@ -32,7 +32,7 @@ function classFamilies(state = initialState, action) {
 					active: !state.items[action.id].active,
 					children: mappedClass
 				})
-				return Object.assign({}, state, {
+				return merge({}, state, {
 					isFetching: true
 				})
 			}
