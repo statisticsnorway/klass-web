@@ -1,0 +1,91 @@
+.list-heading {
+	.expand-tree {
+		float: right;
+	}
+}
+
+.class-list {
+	.expandcollapse {
+	    margin: 2em 0 4em 0;
+	    font-size: 1em;
+
+		li {
+			padding: 0;
+			border-bottom: 1px solid #bbb;
+
+			&:first-child {
+				// border-top: 1px solid #bbb;
+			}
+
+			li {
+		    border-top: 1px solid #e7e7e7 !important;
+				border-bottom: 0 !important;
+
+				&:first-child {
+					border-top: 0 !important;
+				}
+			}
+		}
+
+		li a {
+			display: block;
+			margin: 0;
+			padding: 0.9em 1.5em 0.8em 1.5em;
+			font-size: 1.4em;
+
+			.link-type {
+				float: right;
+				color: #bbb;
+			}
+
+			&:hover .link-type {
+				color: #000;
+			}
+
+			&.child-link:after {
+				content: "\00a0\00a0\00bb";
+			}
+		}
+
+		.toggle-children {
+			background-repeat: no-repeat;
+			cursor: pointer;
+			color: #333;
+			text-decoration: none;
+			background-position: 0.3em 1.15em;
+
+			&:hover {
+				background-color: #eee;
+			}
+		}
+
+		.last-item>.toggle-children:hover {
+			background-color: inherit;
+			cursor: default;
+		}
+
+		li.expand>.toggle-children {
+		  background-image: url("../../../images/plus-gray-9x8px.png");
+		}
+
+		li.collapse>.toggle-children {
+		  background-image: url("../../../images/minus-gray-9x8px.png");
+			background-color: #eee;
+		}
+
+		ol {
+			margin: 0 0 0 2em;
+		}
+
+		.collapse .delemne-children, .expand>.delemne-children {
+	    max-height: 0;
+			overflow: hidden;
+    	transition-duration: 0.5s;
+    	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+		}
+		.collapse>.delemne-children {
+    	transition-timing-function: ease-in;
+    	max-height: 1000px;
+		}
+	}
+}

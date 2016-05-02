@@ -1,0 +1,84 @@
+.klass-item {
+	.heading {
+		padding-bottom: 1em;
+		margin-bottom: 1em;
+		border-bottom: 1px solid #bbb;
+	}
+
+	/*
+		react-tab-panel
+	*/
+	.react-tab-panel__tab-strip--theme-default
+	{
+		font-size: 1.2em;
+
+		&.react-tab-panel__tab-strip--tab-position-top {
+
+			.react-tab-panel__tab-title {
+				border: 1px solid #ccc;
+				border-bottom: none;
+				border-radius: 0.3em 0.3em 0 0;
+				background: linear-gradient(#fff, #D8D8D8);
+			}
+
+			.react-tab-panel__tab-title--active {
+				border-top: 1px solid #a53d7c !important;
+				border-right: 1px solid #a53d7c !important;
+				border-left: 1px solid #a53d7c !important;
+				border-bottom: none;
+				color: #861f62;
+				font-weight: bold;
+				border-radius: 0.3em 0.3em 0 0;
+				background: #fff !important;
+			}
+
+			&.react-tab-panel__tab-strip--orientation-horizontal .react-tab-panel__tab-strip-between {
+				width: 0.4em;
+				border-bottom: 1px solid #a53d7c;
+			}
+
+			.react-tab-panel__tab-strip-after {
+				border-bottom: 1px solid #a53d7c;
+				border-top: 3px solid transparent;
+			}
+		}
+
+		.react-tab-panel__tab-title-inner {
+			padding: 0.75em 0.7em 0.66em 0.7em;
+    	text-align: center;
+		}
+
+		.react-tab-panel__tab-title:not(.react-tab-panel__tab-title--active) {
+			border-bottom: 1px solid #a53d7c;
+		}
+
+	}
+	.react-tab-panel--theme-default .react-tab-panel__body {
+		padding: 2em 1em;
+		// font-size: 1.2em;
+
+		> div {
+			width: 100%;
+		}
+	}
+
+	/*
+		Codes
+	*/
+	.codes {
+		.search-box {
+			width: 70%;
+		}
+		.button-heading {
+			text-align: right;
+			margin-bottom: 3em;
+			display: block;
+			button {
+				margin-left: 1em;
+			}
+		}
+		.results {
+			clear: both;
+		}
+	}
+}

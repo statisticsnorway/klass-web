@@ -1,0 +1,47 @@
+.search-box {
+	margin-bottom: 3em;
+
+	.flex-container {
+		align-items: flex-end;
+		label {
+			display: block;
+			font-weight: bold;
+			font-size: 1.3em;
+			margin-bottom: 0.3em;
+		}
+		input[type="text"], input[type="submit"], select {
+			width: 100%;
+			height: 2em;
+			box-sizing: border-box;
+		}
+		.search-input-text {
+			flex: 10 1 auto;
+			margin-right: 1em;
+		}
+		.search-dropdown-section {
+			flex: 0 1 auto;
+			margin-right: 1em;
+		}
+		.search-button {
+			flex: 5 1 auto;
+		}
+	}
+	input[type="checkbox"] {
+		width: 1.5em;
+		height: 1.5em;
+		margin: 0.5em;
+		margin-left: 0;
+		margin-bottom: 0;
+		vertical-align: bottom;
+
+		+ label {
+			font-size: 1.3em;
+		}
+	}
+	a {
+		font-size: 1.3em;
+		text-decoration: underline;
+		margin-left: 1em;
+		color: #3e8601;
+	}
+}

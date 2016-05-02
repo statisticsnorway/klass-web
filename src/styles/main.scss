@@ -1,0 +1,87 @@
+body {
+	// font-size: 60% !important;
+}
+
+.klass {
+	span {
+		// font-size: 1.2em;
+	}
+	.klass-item .main {
+		// font-size: 1em !important;
+		// font-size: 120%;
+	}
+	.sitewrapper {
+		margin: 0 auto;
+	}
+
+	.main {
+		width: 67em;
+		float: left;
+		margin-right: 3em;
+
+		.heading {
+			.description {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				line-height: 1.5em;     /* fallback */
+		   	max-height: 6em;      /* fallback */
+				-webkit-line-clamp: 4;
+				-webkit-box-orient: vertical;
+			}
+		}
+	}
+
+	h1 {
+		font-size: 3.6em;
+	}
+
+	input[type="submit"], button {
+		background: linear-gradient(#fff, #D8D8D8);
+		height: 2em;
+		border-width: 1px;
+		cursor: pointer;
+	}
+
+	select {
+		background: linear-gradient(#fff, #D8D8D8);
+	}
+
+
+	.sidebar {
+		width: 25em;
+		float: right;
+
+		h2 {
+			font-size: 1.7em;
+		    line-height: 1.5;
+		    border-bottom: 1px dotted #888;
+		    color: #3e8601;
+		    text-transform: uppercase;
+
+			.overskrift-tekst {
+				background: url("../images/icon-envelope.png") no-repeat scroll right 0.3em transparent;
+				padding-right: 30px;
+			}
+		}
+	}
+
+	.flex-container {
+		display: flex;
+		flex-direction: row;
+		align-content: stretch;
+		justify-content: space-around;
+		flex: 1 0 0;
+
+		.flex-item {
+		}
+
+	}
+
+	.browsehappy {
+	    margin: 0.2em 0;
+	    background: #ccc;
+	    color: #000;
+	    padding: 0.2em 0;
+	}
+}
