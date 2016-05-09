@@ -4,15 +4,24 @@ import {bindActionCreators} from 'redux';
 
 import * as ClassActions from '../actions';
 import Search from '../components/Search';
+import SearchResult from '../components/Search/SearchResult'
 import Sidebar from '../components/Sidebar';
 
 class SearchPage extends Component {
+
 	componentWillMount() {
-		// loadData(this.props);
+		const { search, actions, location } = this.props
+
+		if (!search.query){
+			location.query.includeCodelists = (location.query.includeCodelists === 'true')
+			actions.searchCode(location.query)
+		}
 	}
 
 	render() {
-		const {items, isFetching, actions, search} = this.props
+		const {isFetching, items, search, actions, ssbSections, location } = this.props
+		const searchObj = search.query ? search : location.query
+
 		return (
 			<div className="content">
 				<div className="heading">
@@ -20,13 +29,8 @@ class SearchPage extends Component {
 				</div>
 				<div className="main">
 					<p>Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.</p>
-					<Search actions={actions} search={search} />
-					<div className="list-heading">
-						<h3>Resultat</h3>
-					</div>
-					<div className="search-results class-list">
-
-					</div>
+					<Search actions={actions} sections={ssbSections} search={searchObj} />
+					<SearchResult items={items} actions={actions} isFetching={isFetching} search={location.query} />
 				</div>
 				<Sidebar></Sidebar>
 			</div>
@@ -36,9 +40,10 @@ class SearchPage extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		items: state.classFamilies.items,
-		isFetching: state.classFamilies.isFetching,
-		search: state.classFamilies.search
+		items: state.searchResult.items,
+		search: state.searchResult.search,
+		isFetching: state.searchResult.isFetching,
+		ssbSections: state.classFamilies.ssbSections
 	};
 }
 

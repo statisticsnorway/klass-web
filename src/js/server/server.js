@@ -11,6 +11,7 @@ import Promise from 'bluebird';
 
 import configureStore from '../store/configureStore';
 import crateRoutes from '../routes';
+import cors from 'cors';
 
 import { Provider } from 'react-redux';
 
@@ -32,7 +33,19 @@ styleSrc = '/main.css';
 // server.set('views', path.join(__dirname, 'views'));
 // server.set('view engine', 'ejs');
 
+server.use(cors());
+
 // mock apis
+server.get('/classifications/search', (req, res)=> {
+	let mock_data;
+	try {
+		mock_data = require('./mock_data/search/search_' + req.param('query'));
+	} catch (ex) {
+		mock_data = require('./mock_data/search');
+	}
+  res.send(mock_data);
+});
+
 server.get('/ssbsections', (req, res)=> {
   let mock_data = require('./mock_data/ssbsections');
   res.send(mock_data);

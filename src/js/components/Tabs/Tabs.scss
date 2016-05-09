@@ -5,6 +5,19 @@
 		border-bottom: 1px solid #bbb;
 	}
 
+	.icon-info {
+		background-image: url("../../../images/info-round-button.png");
+		background-repeat: no-repeat;
+		float: right;
+		height: 16px;
+		width: 16px;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+
 	/*
 		react-tab-panel
 	*/

@@ -39,7 +39,7 @@ export default store => next => action => {
 	}
 
 	let { local, endpoint } = callAPI
-	const { types, id } = callAPI
+	const { types, id, params } = callAPI
 
 	if (typeof endpoint === 'function') {
 		endpoint = endpoint(store.getState())
@@ -60,7 +60,7 @@ export default store => next => action => {
 	}
 
 	const [ requestType, successType, failureType ] = types
-	next(actionWith({ type: requestType }))
+	next(actionWith({ type: requestType, params }))
 
 	return callApi(endpoint, local).then(
 		response => next(actionWith({

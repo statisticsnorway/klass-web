@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 import * as types from '../constants/ActionTypes'
 import _ from 'lodash'
-import klassList from './klassList'
 import { loadVersion } from '../actions'
 
 const initialState = {
@@ -46,10 +45,5 @@ function selectedClass(state = initialState, action) {
 			return state
 	}
 }
-
-const combinedReducer = combineReducers({
-	klassList,
-	selectedClass
-})
 
 export default selectedClass

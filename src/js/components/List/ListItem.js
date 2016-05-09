@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
-import List from './index';
+import List from './index'
+import _ from 'lodash'
 
 class ListItem extends Component {
 	renderItemList() {
@@ -44,12 +45,14 @@ class ListItem extends Component {
 	render () {
 		const { item, displayName } = this.props
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
+		const infoIcon = _.isEmpty(item.notes) ? '' : (<span className="icon-info"></span>)
 
 		return (
 			<li className={toggleIcon}>
 				<a className="toggle-children" onClick={() => this.toggle(event)}>
 					<span className="screen-reader-only">Vis/skjul: </span>
 					{displayName}
+					{infoIcon}
 				</a>
 				{this.renderItemList()}
 			</li>

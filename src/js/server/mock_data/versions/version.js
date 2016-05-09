@@ -43,7 +43,11 @@ module.exports = {
             "level": "1",
             "name": "Enpersonfamilie",
             "shortName": "",
-            "notes": "",
+            "notes": {
+							"include": "Utvinning av mineraler som naturlig forekommer i fast form (kull og malm), i ﬂytende form (råolje) og luftform (naturgass). Utvinningen kan skje ved forskjellige metoder som f.eks. under og over jorden, gjennom borehull eller ved havminedrift mv.:",
+							"includeAlso": "Utvinning av mineraler som naturlig forekommer i fast form (kull og malm), i ﬂytende form (råolje) og luftform (naturgass). Utvinningen kan skje ved forskjellige metoder som f.eks. under og over jorden, gjennom borehull eller ved havminedrift mv.:",
+							"exclude": "Bearbeiding av materialer som er utvunnet grupperes i næringshovedområde: C Industri. Bruk av materialer som er utvunnet, uten ytterligere omdanning, til bygge- og anleggsformål grupperes under næringshovedområde: F Bygge- og anleggsvirksomhet. Tapping på ﬂasker av naturlig kildevann og mineralvann grupperes under: 11.07 Produksjon av mineralvann, leskedrikker og annet vann på ﬂaske. Knusing, ﬁnknusing eller annen behandling av visse jordarter, steinmaterialer og mineraler som ikke skjer i forbindelse med utvinningen grupperes under: 23.9 Produksjon av ikke-metallholdige mineralprodukter ikke nevnt annet sted."
+						},
             "parentCode": ""
         },
         {
@@ -75,7 +79,11 @@ module.exports = {
             "level": "2",
             "name": "Par med små barn (yngste barn 0-5 år)",
             "shortName": "",
-            "notes": "",
+            "notes": {
+							"include": "Utvinning av mineraler som naturlig forekommer i fast form (kull og malm), i ﬂytende form (råolje) og luftform (naturgass). Utvinningen kan skje ved forskjellige metoder som f.eks. under og over jorden, gjennom borehull eller ved havminedrift mv.:",
+							"includeAlso": "Utvinning av mineraler som naturlig forekommer i fast form (kull og malm), i ﬂytende form (råolje) og luftform (naturgass). Utvinningen kan skje ved forskjellige metoder som f.eks. under og over jorden, gjennom borehull eller ved havminedrift mv.:",
+							"exclude": "Bearbeiding av materialer som er utvunnet grupperes i næringshovedområde: C Industri. Bruk av materialer som er utvunnet, uten ytterligere omdanning, til bygge- og anleggsformål grupperes under næringshovedområde: F Bygge- og anleggsvirksomhet. Tapping på ﬂasker av naturlig kildevann og mineralvann grupperes under: 11.07 Produksjon av mineralvann, leskedrikker og annet vann på ﬂaske. Knusing, ﬁnknusing eller annen behandling av visse jordarter, steinmaterialer og mineraler som ikke skjer i forbindelse med utvinningen grupperes under: 23.9 Produksjon av ikke-metallholdige mineralprodukter ikke nevnt annet sted."
+						},
             "parentCode": "2"
         },
         {
@@ -115,7 +123,11 @@ module.exports = {
             "level": "3",
             "name": "Enpersonfamilie, person 45-66 år",
             "shortName": "",
-            "notes": "",
+            "notes": {
+							"include": "Utvinning av mineraler som naturlig forekommer i fast form (kull og malm), i ﬂytende form (råolje) og luftform (naturgass). Utvinningen kan skje ved forskjellige metoder som f.eks. under og over jorden, gjennom borehull eller ved havminedrift mv.:",
+							"includeAlso": "Utvinning av mineraler som naturlig forekommer i fast form (kull og malm), i ﬂytende form (råolje) og luftform (naturgass). Utvinningen kan skje ved forskjellige metoder som f.eks. under og over jorden, gjennom borehull eller ved havminedrift mv.:",
+							"exclude": "Bearbeiding av materialer som er utvunnet grupperes i næringshovedområde: C Industri. Bruk av materialer som er utvunnet, uten ytterligere omdanning, til bygge- og anleggsformål grupperes under næringshovedområde: F Bygge- og anleggsvirksomhet. Tapping på ﬂasker av naturlig kildevann og mineralvann grupperes under: 11.07 Produksjon av mineralvann, leskedrikker og annet vann på ﬂaske. Knusing, ﬁnknusing eller annen behandling av visse jordarter, steinmaterialer og mineraler som ikke skjer i forbindelse med utvinningen grupperes under: 23.9 Produksjon av ikke-metallholdige mineralprodukter ikke nevnt annet sted."
+						},
             "parentCode": "1.1"
         },
         {

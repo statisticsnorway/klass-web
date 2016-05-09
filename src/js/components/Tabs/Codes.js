@@ -4,8 +4,6 @@ import List from '../List'
 import FlatToNested from '../../lib/flat-to-nested'
 
 class Codes extends Component {
-	renderList(){
-	}
 	render () {
 		const { items, actions } = this.props
 		const flatToNested = new FlatToNested({

@@ -78,3 +78,28 @@ export function loadSSBSections(){
 		}
 	}
 }
+
+export function searchCode(query) {
+	let params
+	if (query) {
+		params = Object.keys(query).map(function(key){
+			return encodeURIComponent(key) + '=' + encodeURIComponent(query[key])
+		}).join('&')
+	}
+	let url = "/classifications/search?" + params
+	return {
+		[CALL_API]: {
+			method: 'get',
+			endpoint: url,
+			params: query,
+			types: [ types.SEARCH_REQUEST, types.SEARCH_SUCCESS, types.SEARCH_FAILURE ]
+		}
+	}
+}
+
+export function setSearchObject(search) {
+	return {
+		type: types.SET_SEARCH_QUERY,
+		search: search
+	}
+}
