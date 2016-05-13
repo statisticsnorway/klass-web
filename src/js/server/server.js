@@ -36,6 +36,12 @@ styleSrc = '/main.css';
 server.use(cors());
 
 // mock apis
+
+server.get('/classifications/changes/:id', (req, res)=> {
+  let mock_data = require('./mock_data/changes');
+  res.send(mock_data);
+});
+
 server.get('/classifications/search', (req, res)=> {
 	let mock_data;
 	try {

@@ -21,23 +21,17 @@ class ClassFamiliesPage extends Component {
 	renderContent() {
 		const {items, searchResult, searchIsFetching, isFetching, actions} = this.props
 
-		// if (searchResult.length > 0) {
-		// 	return (
-		// 		<SearchResult items={searchResult} actions={actions} isFetching={searchIsFetching} />
-		// 	)
-		// } else {
-			return (
-				<div>
-					<div className="list-heading">
-						<button className="expand-tree">Åpne hierarkiet</button>
-						<h3>Eller velg et område</h3>
-					</div>
-					<div className="results class-list" id="expandcollapse">
-						<List items={items} isFetching={isFetching} displayName="childNodes" actions={actions}/>
-					</div>
+		return (
+			<div>
+				<div className="list-heading">
+					<button className="expand-tree">Åpne hierarkiet</button>
+					<h3>Eller velg et område</h3>
 				</div>
-			)
-		// }
+				<div className="results class-list" id="expandcollapse">
+					<List items={items} isFetching={isFetching} displayName="childNodes" actions={actions}/>
+				</div>
+			</div>
+		)
 	}
 
 	render() {

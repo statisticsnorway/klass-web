@@ -5,8 +5,7 @@ import { loadVersion } from '../actions'
 
 const initialState = {
 	isFetching: false,
-	classification: {},
-	version: {}
+	classification: {}
 }
 
 function selectedClass(state = initialState, action) {
@@ -15,32 +14,29 @@ function selectedClass(state = initialState, action) {
 			return _.merge({}, state, {
 				isFetching: true
 			})
+
+
 		case types.SELECTED_CLASS_SUCCESS:
-			let newState
-			if (action.response.versions) {
-				newState = {
-					isFetching: false,
-					classification: action.response
-				}
-			} else if (action.response.classificationItems) {
-				newState = {
-					isFetching: false,
-					version: action.response
-				}
+			const mappedVersion = action.response.versions.map(function(version, key){
+				const url = version._links.self.href
+				const id = url.substring(url.lastIndexOf("/") + 1, url.length)
+				return _.merge({}, version, {"id": id})
+			})
+
+			const newState = {
+				isFetching: false,
+				classification: action.response
 			}
 
+			_.assign(newState.classification.versions, mappedVersion)
+
 			return _.assign({}, state, newState)
+
 		case types.SELECTED_CLASS_FAILURE:
 			return _.merge({}, state, {
-				isFetching: true
+				isFetching: false
 			})
-		case types.TOGGLE_CODE:
-			let items = state.version.classificationItems
-			const idx = _.findIndex(items, ['code', action.code])
-			_.merge(items[idx], {
-				active: !items[idx].active
-			})
-			return _.merge({}, state)
+
 		default:
 			return state
 	}

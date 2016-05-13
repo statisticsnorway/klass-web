@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import classFamilies from './classFamilies';
 import selectedClass from './selectedClass';
+import selectedVersion from './selectedVersion';
 import searchResult from './searchResult';
 
 const initialState = {
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
 	// modal,
 	classFamilies,
 	selectedClass,
+	selectedVersion,
 	searchResult
 })
 

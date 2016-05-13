@@ -5,13 +5,20 @@ import Sidebar from '../components/Sidebar'
 import Tabs from '../components/Tabs'
 import * as ClassActions from '../actions'
 import _ from 'lodash'
+import moment from 'moment'
 
 function loadData(props) {
 	const { params, actions } = props
-	actions.getClassification(params.id).then(function(res){
+	actions.getClassification(params.classId).then(function(res){
 		const classification = res.response
-		if (classification.versions.length > 0) {
-			actions.loadVersion(classification.versions[classification.versions.length-1]._links.self.href)
+		if (!_.isEmpty(classification.versions)) {
+			if (params.versionId) {
+				actions.loadVersion(params.versionId)
+			} else {
+				const url = classification.versions[classification.versions.length-1]._links.self.href
+				const versionId = url.substring(url.lastIndexOf("/") + 1, url.length)
+				actions.loadVersion(versionId)
+			}
 		}
 	})
 }
@@ -21,8 +28,34 @@ class ClassItemPage extends Component {
 		loadData(this.props);
 	}
 
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.params.versionId !== this.props.params.versionId) {
+			nextProps.actions.loadVersion(nextProps.params.versionId)
+    }
+	}
+
+
+	renderTabs() {
+		const { classification, version, actions, isFetching, params } = this.props
+		if (_.isEmpty(version) || (params.versionId && version.id !== params.versionId)) {
+			return (
+				<p>Laster gjeldende versjon...</p>
+			)
+		}
+
+		return (
+			<Tabs
+				classification={classification}
+				version={version}
+				actions={actions}
+				isFetching={isFetching}
+				params={params} />
+		)
+	}
+
 	render() {
-		const { classification, version, actions, isFetching } = this.props
+		const { classification, actions, isFetching } = this.props
 
 		if (_.isEmpty(classification) || isFetching) {
 			return (
@@ -39,10 +72,7 @@ class ClassItemPage extends Component {
 						<p className="description">{classification.description}</p>
 						<a href="#">+ LES MER</a>
 					</div>
-					<Tabs
-						version={version}
-						actions={actions}
-						isFetching={isFetching} />
+					{this.renderTabs()}
 				</div>
 				<Sidebar contactInfo={classification.contactPerson}></Sidebar>
 			</div>
@@ -53,7 +83,8 @@ class ClassItemPage extends Component {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		classification: state.selectedClass.classification,
-		version: state.selectedClass.version,
+		version: state.selectedVersion.version,
+		// changes: state.selectedClass.changes,
 		isFetching: state.selectedClass.isFetching
 	};
 }

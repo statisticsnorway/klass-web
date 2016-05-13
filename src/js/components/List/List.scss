@@ -1,3 +1,5 @@
+@import "../../../styles/_variables.scss";
+
 .list-heading {
 	.expand-tree {
 		float: right;
@@ -7,15 +9,10 @@
 .class-list {
 	.expandcollapse {
 	    margin: 2em 0 4em 0;
-	    font-size: 1em;
 
 		li {
 			padding: 0;
 			border-bottom: 1px solid #bbb;
-
-			&:first-child {
-				// border-top: 1px solid #bbb;
-			}
 
 			li {
 		    border-top: 1px solid #e7e7e7 !important;
@@ -31,7 +28,7 @@
 			display: block;
 			margin: 0;
 			padding: 0.9em 1.5em 0.8em 1.5em;
-			font-size: 1.4em;
+			font-size: $body-font-size;
 
 			.link-type {
 				float: right;

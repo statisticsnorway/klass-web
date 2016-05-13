@@ -24,9 +24,9 @@ function classFamilies(state = initialState, action) {
 				let mappedClass = [];
 				if (action.response.classifications) {
 					mappedClass = action.response.classifications.map(function(classification){
-						const url = classification._links.self.href;
-						const id = url.substring(url.lastIndexOf("/") + 1, url.length);
-						return merge({}, classification, {"id": id});
+						const url = classification._links.self.href
+						const id = url.substring(url.lastIndexOf("/") + 1, url.length)
+						return merge({}, classification, {"id": id})
 					})
 				}
 				merge(state.items[action.id], {
@@ -34,12 +34,12 @@ function classFamilies(state = initialState, action) {
 					children: mappedClass
 				})
 				return merge({}, state, {
-					isFetching: true
+					isFetching: false
 				})
 			}
 		case types.SUBJECTS_FAILURE:
 			return Object.assign({}, state, {
-				isFetching: true
+				isFetching: false
 			})
 		case types.TOGGLE_SUBJECT:
 			merge(state.items[action.id], {
@@ -64,7 +64,7 @@ function classFamilies(state = initialState, action) {
 			})
 		case types.SSB_SECTION_FAILURE:
 			return Object.assign({}, state, {
-				isFetching: true
+				isFetching: false
 			})
 
 

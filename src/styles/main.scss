@@ -1,6 +1,6 @@
-body {
-	// font-size: 60% !important;
-}
+@import "_variables.scss";
+
+@import "_reset.scss";
 
 .klass {
 	span {
@@ -64,6 +64,10 @@ body {
 				padding-right: 30px;
 			}
 		}
+	}
+
+	.alternate tbody tr:hover, .alternate tbody tr.odd:hover {
+		background-color: #ddd !important;
 	}
 
 	.flex-container {

@@ -59,12 +59,14 @@ export function toggleCode(code) {
 	}
 }
 
-export function loadVersion(url) {
+export function loadVersion(id) {
+	const url = '/versions/' + id
 	return {
 		[CALL_API]: {
 			method: 'get',
-			endpoint: `${url}`,
-			types: [ types.SELECTED_CLASS_REQUEST, types.SELECTED_CLASS_SUCCESS, types.SELECTED_CLASS_FAILURE ]
+			endpoint: url,
+			id: id,
+			types: [ types.SELECTED_VERSION_REQUEST, types.SELECTED_VERSION_SUCCESS, types.SELECTED_VERSION_FAILURE ]
 		}
 	}
 }
@@ -101,5 +103,21 @@ export function setSearchObject(search) {
 	return {
 		type: types.SET_SEARCH_QUERY,
 		search: search
+	}
+}
+
+export function loadChanges(classificationId, fromDate, toDate) {
+	const to = toDate ? '&to=' + toDate : ''
+	const url = '/classifications/' + classificationId + '/changes?from=' + fromDate + to
+
+	return {
+		[CALL_API]: {
+			method: 'get',
+			endpoint: url,
+			headers: {
+				'Accept': 'application/json'
+			},
+			types: [ types.CHANGES_REQUEST, types.CHANGES_SUCCESS, types.CHANGES_FAILURE ]
+		}
 	}
 }

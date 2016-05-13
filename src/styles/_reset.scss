@@ -1,0 +1,9 @@
+@import "./_variables.scss"
+
+tbody tr:hover, tbody tr.odd:hover {
+	background-color: inherit;
+}
+
+p {
+	font-size: $body-font-size;
+}

@@ -6,11 +6,13 @@ import config from '../config'
 const API_ROOT = config.API_BASE_URL;
 const API_LOCAL_ROOT = config.API_LOCAL_BASE_URL;
 
-function callApi(endpoint, local) {
+function callApi(endpoint, headers, local) {
 	const baseURL = local ? API_LOCAL_ROOT : API_ROOT
 	const fullUrl = (endpoint.indexOf(baseURL) === -1) ? baseURL + endpoint : endpoint
 
-	return fetch(fullUrl)
+	return fetch(fullUrl, {
+		headers: headers
+		})
 		.then(response =>
 			response.json().then(json => ({ json, response }))
 		).then(({ json, response }) => {
@@ -39,7 +41,7 @@ export default store => next => action => {
 	}
 
 	let { local, endpoint } = callAPI
-	const { types, id, params } = callAPI
+	const { types, id, headers, params } = callAPI
 
 	if (typeof endpoint === 'function') {
 		endpoint = endpoint(store.getState())
@@ -62,7 +64,7 @@ export default store => next => action => {
 	const [ requestType, successType, failureType ] = types
 	next(actionWith({ type: requestType, params }))
 
-	return callApi(endpoint, local).then(
+	return callApi(endpoint, headers, local).then(
 		response => next(actionWith({
 			response,
 			type: successType,

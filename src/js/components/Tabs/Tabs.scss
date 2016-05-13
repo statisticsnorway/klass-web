@@ -1,3 +1,5 @@
+@import "../../../styles/_variables.scss";
+
 .klass-item {
 	.heading {
 		padding-bottom: 1em;
@@ -18,80 +20,162 @@
 		}
 	}
 
-	/*
-		react-tab-panel
-	*/
-	.react-tab-panel__tab-strip--theme-default
-	{
-		font-size: 1.2em;
+	.tabs {
+		font-size: $body-font-size;
+		line-height: $body-line-height;
 
-		&.react-tab-panel__tab-strip--tab-position-top {
+		.version-info {
+			font-weight: bold;
+			label {
+				color: #aaa;
+			}
 
-			.react-tab-panel__tab-title {
+			.red-box {
 				border: 1px solid #ccc;
-				border-bottom: none;
-				border-radius: 0.3em 0.3em 0 0;
-				background: linear-gradient(#fff, #D8D8D8);
+				padding: 0.5em;
+				margin-bottom: 1em;
+				background-color: #FFDCED;
+			}
+		}
+
+		/*
+			react-tab-panel
+		*/
+		.react-tab-panel__tab-strip--theme-default
+		{
+			// font-size: $body-font-size;
+
+			&.react-tab-panel__tab-strip--tab-position-top {
+
+				.react-tab-panel__tab-title {
+					border: 1px solid #ccc;
+					border-bottom: none;
+					border-radius: 0.3em 0.3em 0 0;
+					background: linear-gradient(#fff, #D8D8D8);
+				}
+
+				.react-tab-panel__tab-title--active {
+					border-top: 1px solid #a53d7c !important;
+					border-right: 1px solid #a53d7c !important;
+					border-left: 1px solid #a53d7c !important;
+					border-bottom: none;
+					color: #861f62;
+					font-weight: bold;
+					border-radius: 0.3em 0.3em 0 0;
+					background: #fff !important;
+				}
+
+				&.react-tab-panel__tab-strip--orientation-horizontal .react-tab-panel__tab-strip-between {
+					width: 0.4em;
+					border-bottom: 1px solid #a53d7c;
+				}
+
+				.react-tab-panel__tab-strip-after {
+					border-bottom: 1px solid #a53d7c;
+					border-top: 3px solid transparent;
+				}
 			}
 
-			.react-tab-panel__tab-title--active {
-				border-top: 1px solid #a53d7c !important;
-				border-right: 1px solid #a53d7c !important;
-				border-left: 1px solid #a53d7c !important;
-				border-bottom: none;
-				color: #861f62;
+			.react-tab-panel__tab-title-inner {
+				padding: 0.75em 0.7em 0.66em 0.7em;
+	    	text-align: center;
+			}
+
+			.react-tab-panel__tab-title:not(.react-tab-panel__tab-title--active) {
+				border-bottom: 1px solid #a53d7c;
+			}
+
+		}
+		.react-tab-panel__body {
+			padding: 2em 1em;
+
+			> div {
+				width: 100%;
+			}
+
+			table {
+				// font-size: $body-font-size;
+				margin-top: 1rem;
+
+				td, th {
+					padding-top: 0.7em;
+					padding-bottom: 0.7em;
+
+					&.label {
+						font-weight: bold;
+						width: 10em;
+					}
+				}
+			}
+
+			thead th {
+				background-color: #e5e5e5;
 				font-weight: bold;
-				border-radius: 0.3em 0.3em 0 0;
-				background: #fff !important;
+				color: lighten(#000, 50%);
 			}
-
-			&.react-tab-panel__tab-strip--orientation-horizontal .react-tab-panel__tab-strip-between {
-				width: 0.4em;
-				border-bottom: 1px solid #a53d7c;
-			}
-
-			.react-tab-panel__tab-strip-after {
-				border-bottom: 1px solid #a53d7c;
-				border-top: 3px solid transparent;
+			.alternate tbody tr:nth-child(2n) {
+				background-color: #f5f5f5;
 			}
 		}
 
-		.react-tab-panel__tab-title-inner {
-			padding: 0.75em 0.7em 0.66em 0.7em;
-    	text-align: center;
-		}
-
-		.react-tab-panel__tab-title:not(.react-tab-panel__tab-title--active) {
-			border-bottom: 1px solid #a53d7c;
-		}
-
-	}
-	.react-tab-panel--theme-default .react-tab-panel__body {
-		padding: 2em 1em;
-		// font-size: 1.2em;
-
-		> div {
-			width: 100%;
-		}
-	}
-
-	/*
-		Codes
-	*/
-	.codes {
-		.search-box {
-			width: 70%;
-		}
-		.button-heading {
-			text-align: right;
-			margin-bottom: 3em;
-			display: block;
-			button {
-				margin-left: 1em;
+		/*
+			Codes
+		*/
+		.codes {
+			.search-box {
+				width: 70%;
+			}
+			.button-heading {
+				text-align: right;
+				margin-bottom: 3em;
+				display: block;
+				button {
+					margin-left: 1em;
+				}
+			}
+			.results {
+				clear: both;
 			}
 		}
-		.results {
-			clear: both;
+
+		/*
+			About version
+		*/
+		.about-version {
+			line-height: $body-line-height;
+
+			.align-right {
+				text-align: right;
+			}
+
+			.about-table {
+				// font-size: $body-font-size;
+
+				a {
+					text-decoration: underline;
+				}
+
+				td, th {
+					padding-left: 0;
+				}
+
+				.levels-table {
+					margin-top: 0;
+				}
+			}
 		}
+
+		/*
+			Changes
+		*/
+		.changes {
+			.change-table {
+				th:first-child,
+				td:nth-child(2) {
+					border-right: 1px solid #888;
+				}
+			}
+		}
+
 	}
 }
