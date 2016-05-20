@@ -81,7 +81,7 @@ export function loadSSBSections(){
 	}
 }
 
-export function searchCode(query) {
+export function searchClassification(query) {
 	let params
 	if (query) {
 		params = Object.keys(query).map(function(key){
@@ -103,6 +103,13 @@ export function setSearchObject(search) {
 	return {
 		type: types.SET_SEARCH_QUERY,
 		search: search
+	}
+}
+
+export function searchCode(query) {
+	return {
+		type: types.SEARCH_CODE,
+		query: query
 	}
 }
 

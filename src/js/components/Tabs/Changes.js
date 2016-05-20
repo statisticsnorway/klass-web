@@ -27,7 +27,7 @@ class Changes extends Component {
 		const { classification, version, params } = this.props
 		let previousVersionName = '-'
 
-		if (version.changes.codeChanges.length === 0) {
+		if (classification.versions.length < 2) {
 			return (
 				<div>
 					<h3>Endringer siden forrige versjon</h3>
@@ -36,8 +36,19 @@ class Changes extends Component {
 			)
 		}
 
+		if (_.isEmpty(version.changes)) {
+			return (
+				<div>
+					<h3>Endringer siden forrige versjon</h3>
+					<p>Fant ingen endringer</p>
+				</div>
+			)
+		}
+
 		for (let idx in classification.versions) {
-			if (classification.versions[idx].id == version.id) previousVersionName = classification.versions[idx-1].name
+			if (classification.versions[idx].id == version.id) {
+				previousVersionName = classification.versions[idx-1].name
+			}
 		}
 
 		return (

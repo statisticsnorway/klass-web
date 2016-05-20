@@ -19,14 +19,16 @@ class List extends Component {
 						name = <span>{item.name}</span>
 				}
 
-				return (
-					<ListItem
-						key={key}
-						idx={key}
-						item={item}
-						displayName={name}
-	          actions={actions} />
-				)
+				if (item.numberOfClassifications || item.code) {
+					return (
+						<ListItem
+							key={key}
+							idx={key}
+							item={item}
+							displayName={name}
+							actions={actions} />
+					)
+				}
 			})
 		}
 	}

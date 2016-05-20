@@ -19,7 +19,7 @@ class Search extends Component {
 			"includeCodelists": ReactDOM.findDOMNode(this.refs.includeCodelists).checked
 		}
 
-		actions.searchCode(searchObj)
+		actions.searchClassification(searchObj)
 
 		const path = "/sok?query=" + searchObj.query + "&includeCodelists=" + searchObj.includeCodelists + "&ssbSection=" + searchObj.ssbSection
 		this.context.router.push(path)

@@ -1,22 +1,41 @@
 import React, { Component, PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import List from '../List'
-import FlatToNested from '../../lib/flat-to-nested'
 
 class Codes extends Component {
-	render () {
+	handleSubmit (event) {
+		event.preventDefault()
+		const { actions } = this.props
+		const query = ReactDOM.findDOMNode(this.refs.query).value.trim()
+
+		actions.searchCode(query)
+
+	}
+
+	handleChange (event) {
+
+	}
+
+	renderList () {
 		const { items, actions } = this.props
-		const flatToNested = new FlatToNested({
-				id: 'code',
-				parent: 'parentCode'
-			})
-		const nestedItems = flatToNested.convert(_.cloneDeep(items))
+		if (items.length < 1) {
+			return (
+				<p><i>Fant ingen koder</i></p>
+			)
+		}
+		return (
+			<List items={items} displayName="code" actions={actions}/>
+		)
+	}
+
+	render () {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit} className="search-box">
+				<form onSubmit={this.handleSubmit.bind(this)} className="search-box">
 					<div className="flex-container">
 						<div className="flex-item search-input-text">
-							<input type="text" name="kodeverk" placeholder="Søk etter koder eller navn" />
+							<input type="text" ref="query" name="kodeverk" placeholder="Søk etter koder eller navn" onChange={this.handleChange.bind(this)} />
 						</div>
 						<div className="flex-item search-button">
 							<input type="submit" value="Søk" />
@@ -29,7 +48,7 @@ class Codes extends Component {
 					<button className="expand-tree">Last ned til Excel (csv)</button>
 				</div>
 					<div className="results class-list" id="expandcollapse">
-						<List items={nestedItems.children} displayName="code" actions={actions}/>
+						{this.renderList()}
 					</div>
 			</div>
 		)

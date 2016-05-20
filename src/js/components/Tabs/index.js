@@ -56,7 +56,7 @@ class Tabs extends Component {
 				<div className="tab-content">
 					<TabPanel>
 						<div tabTitle="Koder" className="codes">
-							<Codes items={version.classificationItems} actions={actions} isFetching={isFetching} />
+							<Codes items={version.nestedItems} actions={actions} isFetching={isFetching} />
 						</div>
 						<div tabTitle="Om versjonen" className="about-version">
 							<About actions={actions} version={version} />

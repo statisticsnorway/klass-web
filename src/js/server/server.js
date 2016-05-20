@@ -37,7 +37,7 @@ server.use(cors());
 
 // mock apis
 
-server.get('/classifications/changes/:id', (req, res)=> {
+server.get('/classifications/:id/changes', (req, res)=> {
   let mock_data = require('./mock_data/changes');
   res.send(mock_data);
 });

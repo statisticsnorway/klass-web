@@ -3,6 +3,9 @@
 @import "_reset.scss";
 
 .klass {
+	::-webkit-input-placeholder {
+		font-style: italic;
+	}
 	span {
 		// font-size: 1.2em;
 	}

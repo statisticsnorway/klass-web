@@ -19,7 +19,6 @@ class About extends Component {
 
 	render () {
 		const { version, actions } = this.props
-		moment.locale('nb')
 
 		return (
 			<div className="about-version">

@@ -12,10 +12,10 @@ class SearchResult extends Component {
 
 			let sortedItems = items.sort(function(a, b){
 				if (a.searchScore > b.searchScore) {
-					return 1
+					return -1
 				}
 				if (a.searchScore < b.searchScore) {
-					return -1
+					return 1
 				}
 				return 0
 			})

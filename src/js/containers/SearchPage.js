@@ -14,7 +14,7 @@ class SearchPage extends Component {
 
 		if (!search.query){
 			location.query.includeCodelists = (location.query.includeCodelists === 'true')
-			actions.searchCode(location.query)
+			actions.searchClassification(location.query)
 		}
 	}
 
