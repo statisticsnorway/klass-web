@@ -10,7 +10,21 @@ module.exports = {
     "derivedFrom": "",
     "published": [],
     "correspondenceTables": [],
-    "classificationVariants": [],
+    "classificationVariants": [{
+        "name": "Store og små kommuner",
+        "_links": {
+            "self": {
+                "href": "/variants/467"
+            }
+        }
+    }, {
+        "name": "Store og små kommuner II",
+        "_links": {
+            "self": {
+                "href": "/variants/468"
+            }
+        }
+    }],
     "levels": [
         {
             "levelNumber": 1,

@@ -117,6 +117,15 @@
 				background-color: #f5f5f5;
 			}
 		}
+		
+		.button-heading {
+			text-align: right;
+			margin-bottom: 3em;
+			display: block;
+			button {
+				margin-left: 1em;
+			}
+		}
 
 		/*
 			Codes
@@ -124,14 +133,6 @@
 		.codes {
 			.search-box {
 				width: 70%;
-			}
-			.button-heading {
-				text-align: right;
-				margin-bottom: 3em;
-				display: block;
-				button {
-					margin-left: 1em;
-				}
 			}
 			.results {
 				clear: both;
@@ -174,6 +175,15 @@
 				td:nth-child(2) {
 					border-right: 1px solid #888;
 				}
+			}
+		}
+
+		/*
+			correspondences
+		*/
+		.correspondence {
+			ul.corr-targetlist {
+				list-style-type: none;
 			}
 		}
 

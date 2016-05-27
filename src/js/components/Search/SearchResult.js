@@ -29,7 +29,7 @@ class SearchResult extends Component {
 	}
 
 	render () {
-		const { items, isFetching, search, actions, location } = this.props
+		const { items, isFetching, search, actions } = this.props
     const isEmpty = items.length === 0
 
     if (isEmpty && isFetching) {

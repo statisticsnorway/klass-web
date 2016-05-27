@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 class ListItem extends Component {
 	renderItemList() {
-		const { item, displayName, actions } = this.props;
+		const { item, displayName, type, actions } = this.props;
 
 		if (item.children && item.children.length > 0) {
 			const listEl = item.children.map((childItem, key) =>
@@ -28,6 +28,7 @@ class ListItem extends Component {
 								idx={key}
 								item={childItem}
 								displayName={name}
+								type={type}
 			          actions={actions} />
 						)
 					}
@@ -61,11 +62,11 @@ class ListItem extends Component {
 
 	toggle(e) {
 		e.preventDefault();
-		const { item, idx, actions } = this.props
+		const { item, idx, actions, type } = this.props
 
 		if (item.numberOfClassifications || item.children) {
-			if (item.code) {
-				actions.toggleCode(item.code)
+			if (type == 'code' || type == 'variant') {
+				actions.toggleCode(item.code, type)
 			} else {
 				actions.toggleSubject(idx)
 			}
@@ -77,6 +78,7 @@ ListItem.propTypes = {
 	item: PropTypes.object.isRequired,
 	idx: PropTypes.number.isRequired,
 	displayName: PropTypes.element.isRequired,
+	type: PropTypes.string.isRequired,
 	actions: PropTypes.object.isRequired
 }
 

@@ -28,7 +28,7 @@ class ClassFamiliesPage extends Component {
 					<h3>Eller velg et område</h3>
 				</div>
 				<div className="results class-list" id="expandcollapse">
-					<List items={items} isFetching={isFetching} displayName="childNodes" actions={actions}/>
+					<List items={items} isFetching={isFetching} type="classFamilies" actions={actions}/>
 				</div>
 			</div>
 		)

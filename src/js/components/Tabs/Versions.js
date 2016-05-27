@@ -13,8 +13,8 @@ class Versions extends Component {
 		return versions.map(function(version, key){
 			return (
 				<tr key={key}>
-					<td></td>
-					<td></td>
+					<td>{moment(version.validFrom).format('D.MMMM YYYY')}</td>
+					<td>{moment(version.validTo).isValid() ? moment(version.validTo).format('D.MMMM YYYY') : 'Forstatt gyldig'}</td>
 					<td>
 						<Link to={`/klassifikasjoner/${classificationId}/versjon/${version.id}`}>
 							{version.name}

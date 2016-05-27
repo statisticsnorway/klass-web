@@ -17,6 +17,7 @@ export function getClassification(id) {
 		[CALL_API]: {
 			method: 'get',
 			endpoint: `/classifications/${id}`,
+			id: id,
 			types: [ types.SELECTED_CLASS_REQUEST, types.SELECTED_CLASS_SUCCESS, types.SELECTED_CLASS_FAILURE ]
 		}
 	}
@@ -52,9 +53,9 @@ export function toggleSubject(id) {
 	}
 }
 
-export function toggleCode(code) {
+export function toggleCode(code, kind) {
 	return {
-		type: types.TOGGLE_CODE,
+		type: kind == 'code' ? types.TOGGLE_CODE : types.TOGGLE_VARIANT,
 		code: code
 	}
 }
@@ -125,6 +126,32 @@ export function loadChanges(classificationId, fromDate, toDate) {
 				'Accept': 'application/json'
 			},
 			types: [ types.CHANGES_REQUEST, types.CHANGES_SUCCESS, types.CHANGES_FAILURE ]
+		}
+	}
+}
+
+export function loadCorrespondence(itemId) {
+
+	let url = "/correspondencetables/" + itemId
+	return {
+		[CALL_API]: {
+			method: 'get',
+			endpoint: url,
+			id: itemId,
+			types: [ types.CORRESPONDENCE_REQUEST, types.CORRESPONDENCE_SUCCESS, types.CORRESPONDENCE_FAILURE ]
+		}
+	}
+}
+
+export function loadVariant(itemId) {
+
+	let url = "/variants/" + itemId
+	return {
+		[CALL_API]: {
+			method: 'get',
+			endpoint: url,
+			id: itemId,
+			types: [ types.VARIANT_REQUEST, types.VARIANT_SUCCESS, types.VARIANT_FAILURE ]
 		}
 	}
 }

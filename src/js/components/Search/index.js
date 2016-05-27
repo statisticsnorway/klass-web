@@ -39,10 +39,13 @@ class Search extends Component {
 		const { sections, search } = this.props
 
 		let options
-		if (sections) {
+		if (sections.length) {
+			sections.sort(function(a,b){
+				return a.name - b.name
+			})
 			options = sections.map(function(section, key){
 				return (
-					<option key={key} value={key}>{section.name}</option>
+					<option key={key} value={section.name}>{section.name}</option>
 				)
 			})
 		}

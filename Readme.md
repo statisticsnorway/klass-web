@@ -28,3 +28,39 @@ For å starte applikasjonen, kjør følgende kommando:
 ```
 $ npm start
 ```
+
+## Kodestruktur
+
+```
+.
++-- bin
+|   +-- buildHtml.js	// script fil for å generere produksjonskode fra index.html
++-- config				// Konfigurasjonsfiler for webpack
+|   +-- webpack.config.dev.js
+|   +-- webpack.config.prod.js
++-- src
+|   +-- images
+|   +-- js
+|   |   +-- actions		// Inneholder web api metodekall. Sender/mottar data fra applikasjonen
+|   |   |   +-- index.js
+|   |   +-- components	// Minimale stateless komponenter
+|   |   |   +-- List
+|   |   |   +-- Modal
+|   |   |   +-- Search
+|   |   |   +-- Tabs
+|   |   |   +-- Sidebar.js
+|   |   +-- config		// common app configs
+|   |   +-- constants	// Definisjoner av type attributter som indikerer hvilen action som blir utført
+|   |   +-- containers	// connected to the state
+|   |   +-- lib			// Biblioteksfiler
+|   |   +-- middleware	// Mottar request og genererer response i f.eks. asynkrone API kall. Brukes også til å logge state
+|   |   +-- reducers	// Håndterer state som kommer fra action response. Inneholder metoder som tar inn foregående state og action, og returnerer nye state. Bør være ren og ikke inneholde metoder som manipulerer data.
+|   |   +-- server		// Lokal express server for å lage mock data
+|   |   +-- store		// Holder/bevarer applikasjonens state. Håndterer state aksessering
+|   |   +-- views		// statiske view
+|   |   +-- main.js		// Hoved applikasjonsfil
+|   |   +-- routes.js	// Håndterer routing
+|   +-- styles			// Felles stil-filer (bl.a. fra ssb.no)
+|   +-- index.html
++-- test
+```

@@ -6,7 +6,9 @@ import FlatToNested from '../lib/flat-to-nested'
 
 const initialState = {
 	isFetching: false,
-	version: {}
+	version: {},
+	selectedCorrespondence: {},
+	selectedVariant: {}
 }
 
 const flatToNested = new FlatToNested({
@@ -14,30 +16,29 @@ const flatToNested = new FlatToNested({
 	parent: 'parentCode'
 })
 
-let nestedItems, newState, items
+let nestedItems, newState, items, mappedItems, selectedItem
 
 function selectedVersion(state = initialState, action) {
 	switch (action.type) {
 		case types.SELECTED_VERSION_REQUEST:
+		case types.CORRESPONDENCE_REQUEST:
+		case types.VARIANT_REQUEST:
 			return _.merge({}, state, {
 				isFetching: true
 			})
 
-
 		case types.SELECTED_VERSION_SUCCESS:
-
+			// Converting flat to nested structure here in order to preserve the state
 			nestedItems = flatToNested.convert(_.cloneDeep(action.response.classificationItems))
-
-			const mappedVersion = _.merge({}, action.response, {
+			mappedItems = _.merge({}, action.response, {
 				"id": action.id,
 				"nestedItems": nestedItems.children
 			})
 
 			return _.assign({}, state, {
 				isFetching: false,
-				version: mappedVersion
+				version: mappedItems
 			})
-
 
 		case types.CHANGES_SUCCESS:
 			return _.merge({}, state, {
@@ -47,15 +48,42 @@ function selectedVersion(state = initialState, action) {
 				}
 			})
 
+		case types.CORRESPONDENCE_SUCCESS:
+			return _.assign({}, state, {
+				selectedCorrespondence: action.response
+			})
+
+		case types.VARIANT_SUCCESS:
+			nestedItems = flatToNested.convert(_.cloneDeep(action.response.classificationItems))
+			mappedItems = _.merge({}, action.response, {
+				"id": action.id,
+				"nestedItems": nestedItems.children
+			})
+
+			return _.assign({}, state, {
+				selectedVariant: mappedItems
+			})
+
 		case types.TOGGLE_CODE:
 			nestedItems = _.cloneDeep(state.version.nestedItems)
-
-			let selectedItem = findNestedIndex(nestedItems, {'code': action.code})
-
+			selectedItem = findNestedIndex(nestedItems, {'code': action.code})
 			selectedItem.active = !selectedItem.active
 
 			newState = _.merge({}, state, {
 				version: {
+					nestedItems: nestedItems
+				}
+			})
+
+			return _.assign({}, state, newState)
+
+		case types.TOGGLE_VARIANT:
+			nestedItems = _.cloneDeep(state.selectedVariant.nestedItems)
+			selectedItem = findNestedIndex(nestedItems, {'code': action.code})
+			selectedItem.active = !selectedItem.active
+
+			newState = _.merge({}, state, {
+				selectedVariant: {
 					nestedItems: nestedItems
 				}
 			})
@@ -69,18 +97,19 @@ function selectedVersion(state = initialState, action) {
 			}
 
 			newState = _.merge({}, state)
-
 			_.set(newState, 'version.nestedItems', nestedItems)
 
 			return _.assign({}, state, newState)
 
+		case types.CORRESPONDENCE_FAILURE:
+		case types.VARIANT_FAILURE:
 		case types.CHANGES_FAILURE:
-			return _.merge({}, state, {
-				isFetching: false,
-				version: {
-					changes: action.response
-				}
-			})
+			// return _.merge({}, state, {
+			// 	isFetching: false,
+			// 	version: {
+			// 		changes: action.response
+			// 	}
+			// })
 		case types.SELECTED_VERSION_FAILURE:
 			return _.merge({}, state, {
 				isFetching: false

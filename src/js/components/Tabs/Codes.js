@@ -25,7 +25,7 @@ class Codes extends Component {
 			)
 		}
 		return (
-			<List items={items} displayName="code" actions={actions}/>
+			<List items={items} type="code" actions={actions}/>
 		)
 	}
 

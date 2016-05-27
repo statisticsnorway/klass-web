@@ -46,7 +46,7 @@ class Changes extends Component {
 		}
 
 		for (let idx in classification.versions) {
-			if (classification.versions[idx].id == version.id) {
+			if (classification.versions[idx-1] && classification.versions[idx].id == version.id) {
 				previousVersionName = classification.versions[idx-1].name
 			}
 		}

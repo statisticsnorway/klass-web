@@ -98,6 +98,17 @@ server.get('/versions/:id', (req, res)=> {
   res.send(mock_data);
 });
 
+server.get('/correspondencetables/:id', (req, res)=> {
+  // let mock_data = require('./mock_data/versions');
+	let mock_data;
+	try {
+		mock_data = require('./mock_data/correspondences/correspondence_' + req.params.id);
+	} catch (ex) {
+		mock_data = require('./mock_data/correspondences');
+	}
+  res.send(mock_data);
+});
+
 server.get('/variants/:id', (req, res)=> {
   // let mock_data = require('./mock_data/variants');
 	let mock_data;

@@ -7,13 +7,14 @@ import About from './About'
 import Changes from './Changes'
 import Versions from './Versions'
 import Correspondences from './Correspondences'
+import Variants from './Variants'
 import _ from 'lodash'
 import moment from 'moment'
 
 class Tabs extends Component {
 
 	componentWillMount() {
-		const { classification, version, params, actions } = this.props
+		const { version, params, actions } = this.props
 
 		if (!_.isEmpty(version)) {
 			const fromDate = moment(version.validFrom).subtract(1, 'days').format('YYYY-MM-DD')
@@ -24,7 +25,7 @@ class Tabs extends Component {
 
 	renderVersionInfo () {
 		const { classification, version } = this.props
-		if (version.id !== classification.versions[classification.versions.length-1].id) {
+		if (version.id !== classification.versions[0].id) {
 			return (
 				<div className="version-info">
 					<div className="red-box">OBS! Denne versjonen er ikke lenger gyldig</div>
@@ -40,9 +41,20 @@ class Tabs extends Component {
 		}
 	}
 
+	onActivate (tabIndex) {
+		const { params, tabs } = this.props
+		const classPath = '/' + params.classId
+		const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
+		const tabPath = '/' + Object.keys(tabs[tabIndex])[0]
+
+		const path = "/klassifikasjoner" + classPath + versionPath + tabPath
+		this.context.router.push(path)
+	}
+
 	render () {
 		moment.locale('nb')
-		const { classification, version, actions, isFetching } = this.props
+		const { classification, version, selectedCorrespondence, selectedVariant, actions, isFetching, params, tabs } = this.props
+		let tabIndex = _.findIndex(tabs, params.tab)
 		if (isFetching) {
 			return <div>Laster gjeldende versjon...</div>
 		} else if (_.isEmpty(version)){
@@ -54,7 +66,9 @@ class Tabs extends Component {
 				{this.renderVersionInfo()}
 				<h2>{version.name}</h2>
 				<div className="tab-content">
-					<TabPanel>
+					<TabPanel
+						activeIndex={tabIndex}
+						onActivate={this.onActivate.bind(this)}>
 						<div tabTitle="Koder" className="codes">
 							<Codes items={version.nestedItems} actions={actions} isFetching={isFetching} />
 						</div>
@@ -68,10 +82,10 @@ class Tabs extends Component {
 							<Versions actions={actions} classification={classification} />
 						</div>
 						<div tabTitle="Korrespondanser" className="correspondence">
-							<Correspondences actions={actions} version={version} />
+							<Correspondences actions={actions} version={version} params={params} selectedCorrespondence={selectedCorrespondence} />
 						</div>
 						<div tabTitle="Varianter" className="variants">
-							Andre varianter
+							<Variants actions={actions} version={version} params={params} selectedVariant={selectedVariant} />
 						</div>
 					</TabPanel>
 				</div>
@@ -83,10 +97,25 @@ class Tabs extends Component {
 
 Tabs.propTypes = {
 	version: PropTypes.object.isRequired,
+	selectedCorrespondence: PropTypes.object.isRequired,
+	selectedVariant: PropTypes.object.isRequired,
 	classification: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,
 	isFetching: PropTypes.bool.isRequired
+}
+
+Tabs.defaultProps = {
+	tabs: [{"koder": "Koder"},
+			{"om": "Om versjonen"},
+			{"endringer": "Endringer"},
+			{"versjoner": "Andre versjoner"},
+			{"korrespondanser": "Korrespondanser"},
+			{"varianter": "Varianter"}]
+}
+
+Tabs.contextTypes = {
+	router: PropTypes.object
 }
 
 export default Tabs

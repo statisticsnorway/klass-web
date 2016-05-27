@@ -4,15 +4,16 @@ import ListItem from './ListItem'
 
 class List extends Component {
 	renderList() {
-		const { items, displayName, actions } = this.props
+		const { items, type, actions } = this.props
 		if (items) {
 			return items.map(function(item, key){
 				let name
-				switch (displayName) {
+				switch (type) {
 					case 'code':
+					case 'variant':
 						name = <span><b>{item.code}</b> - {item.name}</span>
 						break;
-					case 'childNodes':
+					case 'classFamilies':
 						name = <span>{item.name} ({item.numberOfClassifications})</span>
 						break;
 					default:
@@ -26,6 +27,7 @@ class List extends Component {
 							idx={key}
 							item={item}
 							displayName={name}
+							type={type}
 							actions={actions} />
 					)
 				}
@@ -57,7 +59,7 @@ List.propTypes = {
 	actions: PropTypes.object.isRequired,
 	items: PropTypes.array.isRequired,
 	isFetching: PropTypes.bool.isRequired,
-	displayName: PropTypes.string
+	type: PropTypes.string.isRequired
 }
 
 List.defaultProps = {

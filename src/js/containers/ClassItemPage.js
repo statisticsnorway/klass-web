@@ -9,13 +9,15 @@ import moment from 'moment'
 
 function loadData(props) {
 	const { params, actions } = props
+
+
 	actions.getClassification(params.classId).then(function(res){
 		const classification = res.response
 		if (!_.isEmpty(classification.versions)) {
 			if (params.versionId) {
 				actions.loadVersion(params.versionId)
 			} else {
-				const url = classification.versions[classification.versions.length-1]._links.self.href
+				const url = classification.versions[0]._links.self.href
 				const versionId = url.substring(url.lastIndexOf("/") + 1, url.length)
 				actions.loadVersion(versionId)
 			}
@@ -28,16 +30,14 @@ class ClassItemPage extends Component {
 		loadData(this.props);
 	}
 
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.params.versionId !== this.props.params.versionId) {
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.params.versionId !== this.props.params.versionId) {
 			nextProps.actions.loadVersion(nextProps.params.versionId)
-    }
+		}
 	}
 
-
 	renderTabs() {
-		const { classification, version, actions, isFetching, params } = this.props
+		const { classification, version, selectedCorrespondence, selectedVariant, actions, isFetching, params } = this.props
 		if (_.isEmpty(version) || (params.versionId && version.id !== params.versionId)) {
 			return (
 				<p>Laster gjeldende versjon...</p>
@@ -48,6 +48,8 @@ class ClassItemPage extends Component {
 			<Tabs
 				classification={classification}
 				version={version}
+				selectedCorrespondence={selectedCorrespondence}
+				selectedVariant={selectedVariant}
 				actions={actions}
 				isFetching={isFetching}
 				params={params} />
@@ -84,6 +86,8 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		classification: state.selectedClass.classification,
 		version: state.selectedVersion.version,
+		selectedCorrespondence: state.selectedVersion.selectedCorrespondence,
+		selectedVariant: state.selectedVersion.selectedVariant,
 		// changes: state.selectedClass.changes,
 		isFetching: state.selectedClass.isFetching
 	};

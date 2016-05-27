@@ -17,6 +17,14 @@
 		margin: 0 auto;
 	}
 
+	.back-link {
+		color: #003399;
+
+		a {
+			text-decoration: underline;
+		}
+	}
+
 	.main {
 		width: 67em;
 		float: left;
@@ -71,6 +79,10 @@
 
 	.alternate tbody tr:hover, .alternate tbody tr.odd:hover {
 		background-color: #ddd !important;
+	}
+
+	.clickable {
+		cursor: pointer;
 	}
 
 	.flex-container {

@@ -10,8 +10,7 @@ import NotFoundView from './views/NotFoundView';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={ClassFamiliesPage} />
-		<Route path="klassifikasjoner/:classId" component={ClassItemPage} />
-		<Route path="klassifikasjoner/:classId/versjon/:versionId" component={ClassItemPage} />
+		<Route path="klassifikasjoner/:classId(/versjon/:versionId)(/:tab)(/:itemId)" component={ClassItemPage} />
 		<Route path="sok" component={SearchPage} />
     <Route path="404" component={NotFoundView} />
     <Redirect from="*" to="404" />
