@@ -36,3 +36,4 @@ export const TOGGLE_SUBJECT = 'TOGGLE_SUBJECT';
 export const TOGGLE_CODE = 'TOGGLE_CODE';
 export const TOGGLE_VARIANT = 'TOGGLE_VARIANT';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';

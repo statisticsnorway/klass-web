@@ -52,7 +52,7 @@
 			background-position: 0.3em 1.15em;
 
 			&:hover {
-				background-color: #eee;
+				background-color: lighten($black, 70%) !important;
 			}
 		}
 
@@ -75,14 +75,14 @@
 		}
 
 		.collapse .delemne-children, .expand>.delemne-children {
-	    max-height: 0;
+	    	max-height: 0;
 			overflow: hidden;
-    	transition-duration: 0.5s;
-    	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+	    	transition-duration: 0.5s;
+	    	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 		}
 		.collapse>.delemne-children {
-    	transition-timing-function: ease-in;
-    	max-height: 1000px;
+	    	transition-timing-function: ease-in;
+	    	max-height: 1000px;
 		}
 	}
 }

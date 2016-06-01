@@ -155,3 +155,20 @@ export function loadVariant(itemId) {
 		}
 	}
 }
+
+export function hideModal() {
+	return toggleModal(false, null, null);
+}
+
+export function displayModal(item, position) {
+	return toggleModal(true, item, position);
+}
+
+function toggleModal(bool, item, position) {
+	return {
+		type: types.TOGGLE_MODAL,
+		display: bool,
+		item: item,
+		position: position
+	}
+}

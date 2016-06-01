@@ -6,6 +6,8 @@ import Tabs from '../components/Tabs'
 import * as ClassActions from '../actions'
 import _ from 'lodash'
 import moment from 'moment'
+import Modal from 'simple-react-modal'
+import config from '../config'
 
 function loadData(props) {
 	const { params, actions } = props
@@ -56,8 +58,63 @@ class ClassItemPage extends Component {
 		)
 	}
 
+	closeModal() {
+		const { actions } = this.props
+		actions.hideModal()
+	}
+
+	renderNoteBlocks(arr) {
+		return arr.map(function(item, key) {
+			var splitted = item.split(/:(.+)?/);
+			return (
+				<div className="flex-container" key={key}>
+					<div className="label">{splitted[0]}:</div>
+					<div className="content">{splitted[1]}</div>
+				</div>
+			)
+		})
+	}
+
+	renderModal() {
+		const { modal } = this.props
+		const modalPosition = 'modal-notes ' + config.NOTES_POSITION;
+
+		let modalPosX, modalPosY
+
+		if (!modal.modalIsOpen) {
+			return null
+		}
+
+		if (!_.isEmpty(modal.position)) {
+			// modalPosX = modalPosition=='left' ? (modal.position.x - 565) : modal.position.x + 65
+			modalPosY = modal.position.y - 40
+		}
+
+		let noteBlock = modal.item.notes.split("\n");
+
+		return (
+			<Modal
+				className="modal-overlay"
+				closeOnOuterClick={true}
+				show={modal.modalIsOpen}
+				onClose={this.closeModal.bind(this)}>
+				<div
+					className={modalPosition}
+					style={{top:modalPosY}}>
+					<div className="modal-content">
+						<a onClick={this.closeModal.bind(this)}>
+							<i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
+						</a>
+						<h5>{modal.item.code} - {modal.item.name}</h5>
+						{this.renderNoteBlocks(noteBlock)}
+					</div>
+				</div>
+			</Modal>
+		)
+	}
+
 	render() {
-		const { classification, actions, isFetching } = this.props
+		const { classification, isFetching } = this.props
 
 		if (_.isEmpty(classification) || isFetching) {
 			return (
@@ -77,6 +134,8 @@ class ClassItemPage extends Component {
 					{this.renderTabs()}
 				</div>
 				<Sidebar contactInfo={classification.contactPerson}></Sidebar>
+
+				{this.renderModal()}
 			</div>
 		)
 	}
@@ -89,7 +148,8 @@ const mapStateToProps = (state, ownProps) => {
 		selectedCorrespondence: state.selectedVersion.selectedCorrespondence,
 		selectedVariant: state.selectedVersion.selectedVariant,
 		// changes: state.selectedClass.changes,
-		isFetching: state.selectedClass.isFetching
+		isFetching: state.selectedClass.isFetching,
+		modal: state.modal
 	};
 }
 

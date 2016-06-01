@@ -5,18 +5,18 @@ import selectedVersion from './selectedVersion';
 import searchResult from './searchResult';
 
 const initialState = {
-	modalType: null,
-	modalProps: {}
+	modalIsOpen: false,
+	item: {},
+	position: {}
 }
 function modal(state = initialState, action) {
 	switch (action.type) {
-		case 'SHOW_MODAL':
+		case 'TOGGLE_MODAL':
 			return {
-				modalType: action.modalType,
-				modalProps: action.modalProps
+				modalIsOpen: action.display,
+				item: action.item,
+				position: action.position
 			}
-		case 'HIDE_MODAL':
-			return initialState
 		default:
 			return state
 
@@ -24,7 +24,7 @@ function modal(state = initialState, action) {
 }
 
 const rootReducer = combineReducers({
-	// modal,
+	modal,
 	classFamilies,
 	selectedClass,
 	selectedVersion,

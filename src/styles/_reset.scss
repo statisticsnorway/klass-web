@@ -7,3 +7,7 @@ tbody tr:hover, tbody tr.odd:hover {
 p {
 	font-size: $body-font-size;
 }
+
+.tab-content, .react-tab-panel__body {
+	overflow: inherit !important;
+}
