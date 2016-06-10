@@ -29,6 +29,26 @@
                         </configuration>
                     </execution>
 
+                    <!--Configure httpsProxy (for jenkins)-->
+                    <execution>
+                        <id>npm https proxy</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>config set https-proxy http://proxy.ssb.no:3128</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm http proxy</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>config set proxy http://proxy.ssb.no:3128</arguments>
+                        </configuration>
+                    </execution>
+
                     <!--download javascript dependencies-->
                     <execution>
                         <id>npm install</id>
