@@ -1,3 +1,4 @@
+@import url(http://www.ssb.no/_public/skins/advanced/ssb.no/styles/styles.css);	// Should be included somehow to avoid CORS issue
 @import "_variables.scss";
 
 @import "_reset.scss";
@@ -6,8 +7,25 @@
 	::-webkit-input-placeholder {
 		font-style: italic;
 	}
-	span {
-		// font-size: 1.2em;
+	.language-selector {
+		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
+    	font-size: 1.1em;
+
+		p {
+			display: inline;
+		}
+		select {
+			border: none;
+			background: inherit;
+			margin-left: 10px;
+			font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
+			text-align: right;
+			cursor: pointer;
+
+			&:focus {
+				outline: none;
+			}
+		}
 	}
 	.klass-item .main {
 		// font-size: 1em !important;

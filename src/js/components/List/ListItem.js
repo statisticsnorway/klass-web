@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
+import Translate from 'react-translate-component'
 import List from './index'
 import Notes from '../Notes'
 import _ from 'lodash'
@@ -16,7 +17,7 @@ class ListItem extends Component {
 							<li key={key}>
 								<Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
 									{childItem.name}
-									<span className="link-type">Klassifikasjon</span>
+									<span className="link-type"><Translate content="CLASSIFICATIONS.CLASSIFICATION" /></span>
 								</Link>
 							</li>
 						)
@@ -47,12 +48,11 @@ class ListItem extends Component {
 	render () {
 		const { item, displayName, actions } = this.props
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
-		// const infoIcon = _.isEmpty(item.notes) ? '' : (<span className="icon-info"></span>)
 
 		return (
 			<li className={toggleIcon}>
 				<a className="toggle-children" onClick={() => this.toggle(event)}>
-					<span className="screen-reader-only">Vis/skjul: </span>
+					<span className="screen-reader-only"><Translate content="CLASSIFICATIONS.DISPLAY_HIDE"/> </span>
 					{displayName}
 					<Notes item={item} actions={actions} />
 				</a>

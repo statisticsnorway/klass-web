@@ -9,7 +9,7 @@
 			label {
 				display: block;
 				font-weight: bold;
-				font-size: $body-font-size;
+				// font-size: $body-font-size;
 				margin-bottom: 0.3em;
 			}
 			input[type="text"], input[type="submit"], button, select {
@@ -38,11 +38,11 @@
 			vertical-align: bottom;
 
 			+ label {
-				font-size: $body-font-size;
+				// font-size: $body-font-size;
 			}
 		}
 		a {
-			font-size: $body-font-size;
+			// font-size: $body-font-size;
 			text-decoration: underline;
 			margin-left: 1em;
 			color: $link-color;

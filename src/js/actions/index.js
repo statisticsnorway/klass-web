@@ -82,19 +82,13 @@ export function loadSSBSections(){
 	}
 }
 
-export function searchClassification(query) {
-	let params
-	if (query) {
-		params = Object.keys(query).map(function(key){
-			return encodeURIComponent(key) + '=' + encodeURIComponent(query[key])
-		}).join('&')
-	}
-	let url = "/classifications/search?" + params
+export function searchClassification(params) {
+	let url = "/classifications/search"
 	return {
 		[CALL_API]: {
 			method: 'get',
 			endpoint: url,
-			params: query,
+			params: params,
 			types: [ types.SEARCH_REQUEST, types.SEARCH_SUCCESS, types.SEARCH_FAILURE ]
 		}
 	}
@@ -114,14 +108,14 @@ export function searchCode(query) {
 	}
 }
 
-export function loadChanges(classificationId, fromDate, toDate) {
-	const to = toDate ? '&to=' + toDate : ''
-	const url = '/classifications/' + classificationId + '/changes?from=' + fromDate + to
+export function loadChanges(classificationId, params) {
+	const url = '/classifications/' + classificationId + '/changes'
 
 	return {
 		[CALL_API]: {
 			method: 'get',
 			endpoint: url,
+			params: params,
 			headers: {
 				'Accept': 'application/json'
 			},

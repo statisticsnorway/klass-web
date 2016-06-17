@@ -14,17 +14,21 @@ import moment from 'moment'
 class Tabs extends Component {
 
 	componentWillMount() {
-		const { version, params, actions } = this.props
+		const { selectedVersion, params, actions } = this.props
+		const version = selectedVersion.version
 
 		if (!_.isEmpty(version)) {
-			const fromDate = moment(version.validFrom).subtract(1, 'days').format('YYYY-MM-DD')
-			const toDate = moment(version.validTo).isValid() ? moment(version.validTo).format('YYYY-MM-DD') : ''
-			actions.loadChanges(params.classId, fromDate, toDate)
+			const query = {
+				from: moment(version.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
+				to: moment(version.validTo).isValid() ? moment(version.validTo).format('YYYY-MM-DD') : ''
+			}
+			actions.loadChanges(params.classId, query)
 		}
 	}
 
 	renderVersionInfo () {
-		const { classification, version } = this.props
+		const { classification, selectedVersion } = this.props
+		const version = selectedVersion.version
 		if (version.id !== classification.versions[0].id) {
 			return (
 				<div className="version-info">
@@ -53,39 +57,40 @@ class Tabs extends Component {
 
 	render () {
 		moment.locale('nb')
-		const { classification, version, selectedCorrespondence, selectedVariant, actions, isFetching, params, tabs } = this.props
+		const { classification, selectedVersion, actions, isFetchingClass, params, tabs } = this.props
 		let tabIndex = _.findIndex(tabs, params.tab)
-		if (isFetching) {
+		if (isFetchingClass) {
 			return <div>Laster gjeldende versjon...</div>
-		} else if (_.isEmpty(version)){
+		} else if (_.isEmpty(selectedVersion.version)){
 			return <div>Ingen versjoner tilgjengelig</div>
 		}
 
 		return (
 			<div className="tabs">
 				{this.renderVersionInfo()}
-				<h2>{version.name}</h2>
+				<h2>{selectedVersion.version.name}</h2>
+
 				<div className="tab-content">
 					<TabPanel
 						activeIndex={tabIndex}
 						onActivate={this.onActivate.bind(this)}>
 						<div tabTitle="Koder" className="codes">
-							<Codes items={version.nestedItems} actions={actions} isFetching={isFetching} />
+							<Codes version={selectedVersion.version} params={params} actions={actions} />
 						</div>
 						<div tabTitle="Om versjonen" className="about-version">
-							<About actions={actions} version={version} />
+							<About actions={actions} version={selectedVersion.version} />
 						</div>
 						<div tabTitle="Endringer" className="changes">
-							<Changes classification={classification} version={version} />
+							<Changes classification={classification} version={selectedVersion.version} />
 						</div>
 						<div tabTitle="Andre versjoner" className="other-versions">
 							<Versions actions={actions} classification={classification} />
 						</div>
 						<div tabTitle="Korrespondanser" className="correspondence">
-							<Correspondences actions={actions} version={version} params={params} selectedCorrespondence={selectedCorrespondence} />
+							<Correspondences actions={actions} selectedVersion={selectedVersion} params={params} />
 						</div>
 						<div tabTitle="Varianter" className="variants">
-							<Variants actions={actions} version={version} params={params} selectedVariant={selectedVariant} />
+							<Variants actions={actions} selectedVersion={selectedVersion} params={params} />
 						</div>
 					</TabPanel>
 				</div>
@@ -96,13 +101,11 @@ class Tabs extends Component {
 }
 
 Tabs.propTypes = {
-	version: PropTypes.object.isRequired,
-	selectedCorrespondence: PropTypes.object.isRequired,
-	selectedVariant: PropTypes.object.isRequired,
+	selectedVersion: PropTypes.object.isRequired,
 	classification: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,
-	isFetching: PropTypes.bool.isRequired
+	isFetchingClass: PropTypes.bool.isRequired
 }
 
 Tabs.defaultProps = {

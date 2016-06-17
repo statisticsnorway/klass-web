@@ -1,6 +1,8 @@
 import './Search.scss'
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
+import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 import _ from 'lodash'
 
 class Search extends Component {
@@ -28,7 +30,7 @@ class Search extends Component {
 	handleChange(event) {
 		const { actions } = this.props
 		const searchObj = {
-			"query": ReactDOM.findDOMNode(this.refs.query).value.trim(),
+			"query": ReactDOM.findDOMNode(this.refs.query).value,
 			"ssbSection": ReactDOM.findDOMNode(this.refs.ssbSection).value,
 			"includeCodelists": ReactDOM.findDOMNode(this.refs.includeCodelists).checked
 		}
@@ -51,7 +53,7 @@ class Search extends Component {
 		}
 		const dropdown = (
 			<select name="seksjon" ref="ssbSection" onChange={this.handleChange.bind(this)} value={search.ssbSection}>
-				<option value="">Alle seksjoner</option>
+				<Translate component="option" value="" content="SEARCH.ALL_SECTIONS" />
 				{options}
 			</select>
 		)
@@ -59,18 +61,20 @@ class Search extends Component {
 			<form onSubmit={this.handleSubmit.bind(this)} className="search-box">
 				<div className="flex-container">
 					<div className="flex-item search-input-text">
-						<label>Søk etter kodeverk</label>
-						<input type="text" ref="query" placeholder="Søk" value={search.query} onChange={this.handleChange.bind(this)} />
+						<Translate component="label" content="SEARCH.SEARCH_KODEVERK" />
+						<Translate component="input" type="text" ref="query" value={search.query} onChange={this.handleChange.bind(this)} attributes={{ placeholder: 'SEARCH.SEARCH' }} />
 					</div>
 					<div className="flex-item search-dropdown-section">
-						<label>Ansvarlig SSB-seksjon</label>
+						<Translate component="label" content="SEARCH.OWNING_SECTION" />
 						{dropdown}
 					</div>
 					<div className="flex-item search-button">
-						<button type="submit">Søk</button>
+						<Translate component="button" type="submit" content="SEARCH.SEARCH" />
 					</div>
 				</div>
-				<input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.handleChange.bind(this)} checked={search.includeCodelists}/><label htmlFor="includeCodelists">Inkludere kodelister</label> <a href="">Hva er en kodeliste?</a>
+				<input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.handleChange.bind(this)} checked={search.includeCodelists}/>
+				<Translate component="label" htmlFor="includeCodelists" content="SEARCH.INCLUDE_CODELISTS" />
+				<Translate component="a" href="" content="SEARCH.WHAT_IS_CODELIST" />
 			</form>
 		)
 	}

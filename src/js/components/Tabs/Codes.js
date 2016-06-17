@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import List from '../List'
+import moment from 'moment'
+import config from '../../config'
 
 class Codes extends Component {
 	handleSubmit (event) {
@@ -17,15 +19,27 @@ class Codes extends Component {
 
 	}
 
+	downloadCodes() {
+		const { version, actions, params } = this.props
+		const fromDate = version.validFrom
+		const toDate = moment(version.validTo).isValid() ? ('&toDate=' + version.validTo) : ''
+		const csvURL = config.API_BASE_URL + '/classifications/' + params.classId + '/codes.csv?from=' + fromDate + toDate + '&csvSeparator=;';
+
+		var tempLink = document.createElement('a');
+		tempLink.href = csvURL;
+		tempLink.setAttribute('download', 'code.csv');
+		tempLink.click();
+	}
+
 	renderList () {
-		const { items, actions } = this.props
-		if (items.length < 1) {
+		const { version, actions } = this.props
+		if (_.isEmpty(version.nestedItems)) {
 			return (
 				<p><i>Fant ingen koder</i></p>
 			)
 		}
 		return (
-			<List items={items} type="code" actions={actions}/>
+			<List items={version.nestedItems} type="code" actions={actions}/>
 		)
 	}
 
@@ -45,7 +59,7 @@ class Codes extends Component {
 				</form>
 				<div className="button-heading">
 					<button className="expand-tree">Åpne hierarkiet</button>
-					<button className="expand-tree">Last ned til Excel (csv)</button>
+					<button className="expand-tree" onClick={this.downloadCodes.bind(this)}>Last ned til Excel (csv)</button>
 				</div>
 					<div className="results class-list" id="expandcollapse">
 						{this.renderList()}
@@ -56,12 +70,9 @@ class Codes extends Component {
 }
 
 Codes.propTypes = {
-	items: PropTypes.array.isRequired,
+	version: PropTypes.object.isRequired,
+	params: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired
-}
-
-Codes.defaultProps = {
-	items: []
 }
 
 export default Codes

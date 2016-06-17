@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import ResultItem from './ResultItem'
 import { Link } from 'react-router'
+import Translate from 'react-translate-component'
+import ResultItem from './ResultItem'
 import _ from 'lodash'
 
 class SearchResult extends Component {
@@ -29,12 +30,12 @@ class SearchResult extends Component {
 	}
 
 	render () {
-		const { items, isFetching, search, actions } = this.props
+		const { items, isFetching, search } = this.props
     const isEmpty = items.length === 0
 
     if (isEmpty && isFetching) {
 			return (
-				<p>Laster innhold...</p>
+				<Translate component="p" content="LOADING.LOADING_CONTENT" />
 			)
 		}
 
@@ -47,7 +48,7 @@ class SearchResult extends Component {
 					{this.renderList()}
 				</div>
 				<p className="back-link">
-					&lt;&lt; <Link to={`/`}>Tilbake til oversikten over klassifikasjoner og kodelister</Link>
+					&lt;&lt; <Link to={`/`}><Translate content="SEARCH.BACK_TO_CLASSIFICATION_OVERVIEW" /></Link>
 				</p>
 			</div>
 		)
