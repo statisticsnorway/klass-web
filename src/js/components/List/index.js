@@ -1,6 +1,7 @@
 import './List.scss'
 import React, {Component, PropTypes} from 'react'
 import ListItem from './ListItem'
+import counterpart from 'counterpart'
 
 class List extends Component {
 	renderList() {
@@ -65,7 +66,8 @@ List.propTypes = {
 List.defaultProps = {
 	items: [],
 	isFetching: true,
-	loadingLabel: 'Laster klassifikasjoner og kodelister...'
+	// loadingLabel: 'Laster klassifikasjoner og kodelister...'
+	loadingLabel: counterpart.translate('LOADING.CLASSIFICATIONS_AND_CODELISTS')
 }
 
 export default List

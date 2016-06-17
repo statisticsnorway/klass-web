@@ -37,6 +37,11 @@ server.use(cors());
 
 // mock apis
 
+server.get('/classifications/:id/codes.csv', (req, res)=> {
+  let mock_data = require('./mock_data/changes');
+  res.send(mock_data);
+});
+
 server.get('/classifications/:id/changes', (req, res)=> {
   let mock_data = require('./mock_data/changes');
   res.send(mock_data);
@@ -45,7 +50,7 @@ server.get('/classifications/:id/changes', (req, res)=> {
 server.get('/classifications/search', (req, res)=> {
 	let mock_data;
 	try {
-		mock_data = require('./mock_data/search/search_' + req.param('query'));
+		mock_data = require('./mock_data/search/search_' + req.params('query'));
 	} catch (ex) {
 		mock_data = require('./mock_data/search');
 	}

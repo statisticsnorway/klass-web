@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Translate from 'react-translate-component'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -26,39 +27,39 @@ class About extends Component {
 				<table className="about-table">
 					<tbody>
 						<tr>
-							<td className="label">Beskrivelse:</td>
+							<td className="label"><Translate content="TABS.ABOUT.DESCRIPTION" />:</td>
 							<td>{version.introduction}</td>
 						</tr>
 						<tr>
-							<td className="label">Ansvarlig:</td>
-							<td>{version.contactPerson}, seksjon for {_.lowerFirst(version.owningSection)}</td>
+							<td className="label"><Translate content="TABS.ABOUT.OWNER" />:</td>
+							<td>{version.contactPerson}, <Translate content="TABS.ABOUT.SECTION_FOR" /> {_.lowerFirst(version.owningSection)}</td>
 						</tr>
 						<tr>
-							<td className="label">Gyldig fra:</td>
+							<td className="label"><Translate content="TABS.ABOUT.VALIDFROM" />:</td>
 							<td>{moment(version.validFrom).format("D MMMM YYYY")}</td>
 						</tr>
 						<tr>
-							<td className="label">Sist oppdatert:</td>
+							<td className="label"><Translate content="TABS.ABOUT.LASTMODIFIED" />:</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td className="label">Publisert på:</td>
+							<td className="label"><Translate content="TABS.ABOUT.PUBLISHED" />:</td>
 							<td>{version.published.join()}</td>
 						</tr>
 						<tr>
-							<td className="label">Basert på:</td>
+							<td className="label"><Translate content="TABS.ABOUT.DERIVEDFROM" />:</td>
 							<td>{version.derivedFrom}</td>
 						</tr>
 						<tr>
-							<td className="label">Lovhjemmel:</td>
+							<td className="label"><Translate content="TABS.ABOUT.LEGALBASE" />:</td>
 							<td>{version.legalBase}</td>
 						</tr>
 						<tr>
-							<td className="label">Publikasjoner:</td>
+							<td className="label"><Translate content="TABS.ABOUT.PUBLICATIONS" />:</td>
 							<td><a href={version.publications}>{version.publications}</a></td>
 						</tr>
 						<tr>
-							<td className="label">Nivåer:</td>
+							<td className="label"><Translate content="TABS.ABOUT.LEVELS" />:</td>
 							<td>
 								<table className="levels-table alternate">
 									<thead>

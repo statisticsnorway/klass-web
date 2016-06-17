@@ -9,9 +9,11 @@ import moment from 'moment'
 import Modal from 'simple-react-modal'
 import config from '../config'
 
-function loadData(props) {
+function loadData(props, selectedLanguage) {
 	const { params, actions } = props
-
+	if (selectedLanguage) {
+		sessionStorage.setItem('selectedLanguage', selectedLanguage);
+	}
 
 	actions.getClassification(params.classId).then(function(res){
 		const classification = res.response
@@ -39,8 +41,8 @@ class ClassItemPage extends Component {
 	}
 
 	renderTabs() {
-		const { classification, version, selectedCorrespondence, selectedVariant, actions, isFetching, params } = this.props
-		if (_.isEmpty(version) || (params.versionId && version.id !== params.versionId)) {
+		const { classification, selectedVersion, actions, isFetching, params } = this.props
+		if (_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) {
 			return (
 				<p>Laster gjeldende versjon...</p>
 			)
@@ -49,11 +51,9 @@ class ClassItemPage extends Component {
 		return (
 			<Tabs
 				classification={classification}
-				version={version}
-				selectedCorrespondence={selectedCorrespondence}
-				selectedVariant={selectedVariant}
+				selectedVersion={selectedVersion}
 				actions={actions}
-				isFetching={isFetching}
+				isFetchingClass={isFetching}
 				params={params} />
 		)
 	}
@@ -114,7 +114,7 @@ class ClassItemPage extends Component {
 	}
 
 	render() {
-		const { classification, isFetching } = this.props
+		const { classification, isFetching, actions, params } = this.props
 
 		if (_.isEmpty(classification) || isFetching) {
 			return (
@@ -133,7 +133,12 @@ class ClassItemPage extends Component {
 					</div>
 					{this.renderTabs()}
 				</div>
-				<Sidebar contactInfo={classification.contactPerson}></Sidebar>
+				<Sidebar
+					contactInfo={classification.contactPerson}
+					onLanguageChange={loadData}
+					actions={actions}
+					params={params}>
+				</Sidebar>
 
 				{this.renderModal()}
 			</div>
@@ -144,10 +149,7 @@ class ClassItemPage extends Component {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		classification: state.selectedClass.classification,
-		version: state.selectedVersion.version,
-		selectedCorrespondence: state.selectedVersion.selectedCorrespondence,
-		selectedVariant: state.selectedVersion.selectedVariant,
-		// changes: state.selectedClass.changes,
+		selectedVersion: state.selectedVersion,
 		isFetching: state.selectedClass.isFetching,
 		modal: state.modal
 	};

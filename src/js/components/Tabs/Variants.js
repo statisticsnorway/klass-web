@@ -39,7 +39,8 @@ class Variants extends Component {
 	}
 
 	renderBody () {
-		const { version } = this.props
+		const { selectedVersion } = this.props
+		const version = selectedVersion.version
 
 		if (version.classificationVariants.length < 1) {
 			return (
@@ -72,7 +73,8 @@ class Variants extends Component {
 	}
 
 	render () {
-		const { selectedVariant, params } = this.props
+		const { selectedVersion, params } = this.props
+		const selectedVariant = selectedVersion.selectedVariant
 
 		if (params.itemId) {
 			if (_.isEmpty(selectedVariant)) {
@@ -122,8 +124,7 @@ class Variants extends Component {
 }
 
 Variants.propTypes = {
-	version: PropTypes.object.isRequired,
-	selectedVariant: PropTypes.object.isRequired,
+	selectedVersion: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired
 }

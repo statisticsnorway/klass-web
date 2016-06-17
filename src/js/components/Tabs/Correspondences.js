@@ -44,7 +44,8 @@ class Correspondences extends Component {
 	}
 
 	renderBody () {
-		const { version } = this.props
+		const { selectedVersion } = this.props
+		const version = selectedVersion.version
 
 		if (version.correspondenceTables.length < 1) {
 			return (
@@ -92,10 +93,20 @@ class Correspondences extends Component {
 		})
 	}
 
+	downloadCodes() {
+
+	}
+
 	render () {
-		const { selectedCorrespondence, params } = this.props
+		const { params, selectedVersion } = this.props
+		const selectedCorrespondence = selectedVersion.selectedCorrespondence
 
 		if (params.itemId) {
+			if (selectedVersion.isFetchingCorrespondence) {
+				return (
+					<div>Laster korrespondansetabell...</div>
+				)
+			}
 			if (_.isEmpty(selectedCorrespondence)) {
 				return (
 					<div>Ingen korrespondansetabell</div>
@@ -110,7 +121,9 @@ class Correspondences extends Component {
 					<div><b>Ansvarlig:</b> {selectedCorrespondence.contactPerson}, seksjon for {selectedCorrespondence.owningSection}</div>
 					<div><b>Publisert på:</b> {selectedCorrespondence.published.join()}</div>
 					<p>{selectedCorrespondence.description}</p>
-					<button className="download-button">Last ned til Excel (csv)</button><br/>
+					<div className="button-heading">
+						<button className="expand-tree" onClick={this.downloadCodes.bind(this)}>Last ned til Excel (csv)</button>
+					</div>
 
 					<table className="table-correspondenceTable alternate">
 						<thead>
@@ -149,8 +162,7 @@ class Correspondences extends Component {
 }
 
 Correspondences.propTypes = {
-	version: PropTypes.object.isRequired,
-	selectedCorrespondence: PropTypes.object.isRequired,
+	selectedVersion: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired
 }

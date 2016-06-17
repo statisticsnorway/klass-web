@@ -6,9 +6,24 @@ import config from '../config'
 const API_ROOT = config.API_BASE_URL;
 const API_LOCAL_ROOT = config.API_LOCAL_BASE_URL;
 
-function callApi(endpoint, headers, local) {
+function callApi(endpoint, headers, params, local) {
 	const baseURL = local ? API_LOCAL_ROOT : API_ROOT
 	const fullUrl = (endpoint.indexOf(baseURL) === -1) ? baseURL + endpoint : endpoint
+
+	if (sessionStorage.getItem('selectedLanguage')) {
+		if (!params) {
+			params = {};
+		}
+		params["language"] = sessionStorage.getItem('selectedLanguage');
+	}
+
+	let apiParams = '';
+	if (params) {
+		apiParams = '?';
+		apiParams += Object.keys(params).map(function(key){
+			return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+		}).join('&');
+	}
 
 	if (config.API_LOCAL_STORAGE){
 		return new Promise((resolve, reject) => {
@@ -18,7 +33,7 @@ function callApi(endpoint, headers, local) {
 				resolve(JSON.parse(cachedResponse));
 			}
 
-			fetch(fullUrl, {
+			fetch(fullUrl + apiParams, {
 				headers: headers
 			}).then(function (response) {
 				if (response.status >= 400) {
@@ -41,7 +56,7 @@ function callApi(endpoint, headers, local) {
 			});
 		})
 	} else {
-		return fetch(fullUrl, {
+		return fetch(fullUrl + apiParams, {
 			headers: headers
 			})
 			.then(response =>
@@ -97,7 +112,7 @@ export default store => next => action => {
 	const [ requestType, successType, failureType ] = types
 	next(actionWith({ type: requestType, params }))
 
-	return callApi(endpoint, headers, local).then(
+	return callApi(endpoint, headers, params, local).then(
 		response => next(actionWith({
 			response,
 			type: successType,

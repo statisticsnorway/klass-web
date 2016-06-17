@@ -25,10 +25,10 @@ function selectedClass(state = initialState, action) {
 			})
 
 			mappedVersion.sort(function(a, b) {
-				// a.validTo = moment(a.validTo).isValid() ? a.validTo : '9999-12-31'
-				// b.validTo = moment(b.validTo).isValid() ? b.validTo : '9999-12-31'
-				// return moment(a.validTo).isAfter(b.validTo) ? -1 : (moment(a.validTo).isBefore(b.validTo) ? 1 : 0)
-				return (moment(b.validTo) - moment(a.validTo) ? moment(b.validTo) - moment(a.validTo) : 1)
+				var validToA = moment(a.validTo).isValid() ? a.validTo : '9999-12-31'
+				var validToB = moment(b.validTo).isValid() ? b.validTo : '9999-12-31'
+				return moment(validToA).isAfter(validToB) ? -1 : (moment(validToA).isBefore(validToB) ? 1 : 0)
+				// return (moment(b.validTo) - moment(a.validTo) ? 1 : moment(b.validTo) - moment(a.validTo))
 			})
 
 			const newState = {

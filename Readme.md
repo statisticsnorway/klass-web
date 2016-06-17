@@ -13,6 +13,8 @@ Denne applikasjonen bruker følgende teknologier:
 
 ## Installasjon
 ```
+Last ned Node.js
+Fungerende versjon: Node (v4.2.2) og npm (v2.14.7)
 $ git clone https://git-adm.ssb.no/scm/klas/klass.ssb.no.git app-name
 $ cd app-name
 $ npm install
@@ -49,13 +51,13 @@ $ npm start
 |   |   |   +-- Search
 |   |   |   +-- Tabs
 |   |   |   +-- Sidebar.js
-|   |   +-- config		// common app configs
-|   |   +-- constants	// Definisjoner av type attributter som indikerer hvilen action som blir utført
+|   |   +-- config		// Konfigurasjoner for applikasjonen
+|   |   +-- constants	// Definisjoner av type attributter som indikerer hvilken action som blir utført
 |   |   +-- containers	// connected to the state
 |   |   +-- lib			// Biblioteksfiler
 |   |   +-- middleware	// Mottar request og genererer response i f.eks. asynkrone API kall. Brukes også til å logge state
 |   |   +-- reducers	// Håndterer state som kommer fra action response. Inneholder metoder som tar inn foregående state og action, og returnerer nye state. Bør være ren og ikke inneholde metoder som manipulerer data.
-|   |   +-- server		// Lokal express server for å lage mock data
+|   |   +-- server		// Lokal Express server for å lage mock data
 |   |   +-- store		// Holder/bevarer applikasjonens state. Håndterer state aksessering
 |   |   +-- views		// statiske view
 |   |   +-- main.js		// Hoved applikasjonsfil

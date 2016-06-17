@@ -22,6 +22,10 @@ function selectedVersion(state = initialState, action) {
 	switch (action.type) {
 		case types.SELECTED_VERSION_REQUEST:
 		case types.CORRESPONDENCE_REQUEST:
+			return _.merge({}, state, {
+				isFetchingCorrespondence: true
+			})
+
 		case types.VARIANT_REQUEST:
 			return _.merge({}, state, {
 				isFetching: true
@@ -50,6 +54,7 @@ function selectedVersion(state = initialState, action) {
 
 		case types.CORRESPONDENCE_SUCCESS:
 			return _.assign({}, state, {
+				isFetchingCorrespondence: false,
 				selectedCorrespondence: action.response
 			})
 
