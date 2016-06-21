@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Translate from 'react-translate-component'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -30,8 +31,8 @@ class Changes extends Component {
 		if (classification.versions.length < 2) {
 			return (
 				<div>
-					<h3>Endringer siden forrige versjon</h3>
-					<p>Forrige versjon finnes ikke</p>
+					<Translate component="h3" content="TABS.CHANGES.PREVIOUS_CHANGES" />
+					<Translate component="p" content="TABS.CHANGES.PREVIOUS_VERSION_NOT_FOUND" />
 				</div>
 			)
 		}
@@ -39,8 +40,8 @@ class Changes extends Component {
 		if (_.isEmpty(version.changes)) {
 			return (
 				<div>
-					<h3>Endringer siden forrige versjon</h3>
-					<p>Fant ingen endringer</p>
+					<Translate component="h3" content="TABS.CHANGES.PREVIOUS_CHANGES" />
+					<Translate component="p" content="TABS.CHANGES.CHANGES_NOT_FOUND" />
 				</div>
 			)
 		}
@@ -53,7 +54,7 @@ class Changes extends Component {
 
 		return (
 			<div>
-				<h3>Endringer siden forrige versjon</h3>
+				<Translate component="h3" content="TABS.CHANGES.PREVIOUS_CHANGES" />
 				<table className="change-table alternate">
 					<thead>
 						<tr>

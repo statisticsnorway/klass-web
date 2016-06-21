@@ -35,7 +35,7 @@ class About extends Component {
 							<td>{version.contactPerson}, <Translate content="TABS.ABOUT.SECTION_FOR" /> {_.lowerFirst(version.owningSection)}</td>
 						</tr>
 						<tr>
-							<td className="label"><Translate content="TABS.ABOUT.VALIDFROM" />:</td>
+							<td className="label"><Translate content="TABS.VALID_FROM" />:</td>
 							<td>{moment(version.validFrom).format("D MMMM YYYY")}</td>
 						</tr>
 						<tr>
@@ -64,11 +64,11 @@ class About extends Component {
 								<table className="levels-table alternate">
 									<thead>
 										<tr>
-											<th className="align-right">Nr.</th>
-											<th>Navn</th>
-											<th>Beskrivelse</th>
-											<th>Struktur</th>
-											<th>Antall enheter</th>
+											<Translate component="th" content="TABS.ABOUT.NUMBER" className="align-right" />
+											<Translate component="th" content="TABS.NAME" />
+											<Translate component="th" content="TABS.ABOUT.DESCRIPTION" />
+											<Translate component="th" content="TABS.ABOUT.STRUCTURE" />
+											<Translate component="th" content="TABS.ABOUT.NUMBER_OF_UNITS" />
 										</tr>
 									</thead>
 									<tbody>

@@ -1,4 +1,9 @@
 module.exports = {
+	'COMMON': {
+		'OPEN_HIERARCHY': 'Åpne hierarkiet',
+		'DOWNLOAD_CSV': 'Last ned til Excel (csv)',
+		'NAME': 'Name'
+	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',
 		'NORWEGIAN': 'Norsk',
@@ -12,7 +17,14 @@ module.exports = {
 	},
 	'CLASSIFICATIONS': {
 		'CLASSIFICATION': 'Klassifikasjon',
-		'DISPLAY_HIDE': 'Vis/skjul:'
+		'DISPLAY_HIDE': 'Vis/skjul:',
+		'CHOOSE_CLASS_FAMILY': 'Eller velg et område',
+		'CLASSIFICATIONS_AND_CODELISTS': 'Klassifikasjoner og kodelister',
+		'CLASS_DESCRIPTION': 'Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.'
+	},
+	'CLASS_ITEM': {
+		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
+		'READ_MORE': 'LES MER'
 	},
 	'LOADING': {
 		'CLASSIFICATIONS_AND_CODELISTS': 'Laster klassifikasjoner og kodelister...',
@@ -28,17 +40,68 @@ module.exports = {
 		'BACK_TO_CLASSIFICATION_OVERVIEW': 'Tilbake til oversikten over klassifikasjoner og kodelister'
 	},
 	'TABS': {
+		'VERSION_NO_LONGER_VALID': 'OBS! Denne versjonen er ikke lenger gyldig',
+		'VERSION_EXPIRED': 'Utgått versjon',
+		'CURRENT_VERSION': 'Gjeldende versjon',
+		'VALID_FROM': 'Gyldig fra',
+		'VALID_TO': 'Gyldig til',
+		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
+		'VERSIONS_NOT_FOUND': 'Ingen versjoner tilgjengelig',
 		'ABOUT': {
+			'ABOUT': 'Om versjonen',
 			'DESCRIPTION': 'Beskrivelse',
 			'OWNER': 'Ansvarlig',
 			'SECTION_FOR': 'seksjon for',
-			'VALIDFROM': 'Gyldig fra',
 			'LASTMODIFIED': 'Sist oppdatert',
 			'PUBLISHED': 'Publisert på',
 			'DERIVEDFROM': 'Basert på',
 			'LEGALBASE': 'Lovhjemmel',
 			'PUBLICATIONS': 'Publikasjoner',
-			'LEVELS': 'Nivåer'
+			'LEVELS': 'Nivåer',
+			'NUMBER': 'Nr.',
+			'STRUCTURE': 'Struktur',
+			'NUMBER_OF_UNITS' : 'Antall enheter'
+		},
+		'CHANGES': {
+			'CHANGES': 'Endringer',
+			'PREVIOUS_CHANGES': 'Endringer siden forrige versjon',
+			'PREVIOUS_VERSION_NOT_FOUND': 'Forrige versjon finnes ikke',
+			'CHANGES_NOT_FOUND': 'Fant ingen endringer'
+		},
+		'CODES': {
+			'CODES': 'Koder',
+			'SEARCH_BY_CODE_OR_NAME': 'Søk etter koder eller navn',
+			'SHOW_SHORT_TITLES': 'Vis korte titler',
+			'CODES_NOT_FOUND': 'Fant ingen koder'
+		},
+		'CORRESPONDENCES': {
+			'CORRESPONDENCES': 'Korrespondanser',
+			'DESCRIPTION': 'En kort tekst som forteller hva en korrespondansetabell er.',
+			'CORRESPONDENCE_NOT_FOUND': 'Fant ingen korrespondanser',
+			'CORRESPONDENCES_FROM': 'Korrespondanser fra',
+			'CORRESPONDENCES_TO': 'Korrespondanser til',
+			'OWNER': 'Eier',
+			'OWNING_SECTION': 'Ansvarlig seksjon',
+			'LOADING_CORRESPONDENCE_TABLE': 'Laster korrespondansetabell...',
+			'CORRESPONDENCE_TABLE_NOT_FOUND': 'Ingen korrespondansetabell',
+			'BACK_TO_CORRESPONDENCES': 'Tilbake til alle korrespondanser',
+			'RESPONSIBLE': 'Ansvarlig',
+			'SECTION_FOR': 'seksjon for',
+			'PUBLISHED': 'Publisert på',
+		},
+		'VARIANTS': {
+			'VARIANTS': 'Varianter',
+			'DESCRIPTION': 'En kort tekst som forteller hva en variant er.',
+			'VARIANT': 'Variant',
+			'OWNER': 'Eier',
+			'VARIANTS_NOT_FOUND': 'Fant ingen varianter',
+			'VARIANT_EMPTY': 'Varianten er tom',
+			'SECTION_FOR': 'seksjon for',
+			'BACK_TO_VARIANTS': 'Tilbake til alle varianter'
+		},
+		'VERSIONS': {
+			'VERSIONS': 'Andre versjoner',
+			'OTHER_VERSIONS_OF': 'Andre versjoner av'
 		}
 	}
 };

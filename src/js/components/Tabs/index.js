@@ -1,5 +1,7 @@
 import './Tabs.scss'
 import React, { Component, PropTypes } from 'react'
+import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 import TabPanel, { TabStrip } from 'react-tab-panel' // from http://react-components.com/component/react-tab-panel
 import 'react-tab-panel/base.css'
 import Codes from './Codes'
@@ -32,14 +34,14 @@ class Tabs extends Component {
 		if (version.id !== classification.versions[0].id) {
 			return (
 				<div className="version-info">
-					<div className="red-box">OBS! Denne versjonen er ikke lenger gyldig</div>
-					<div><label>Utgått versjon:</label> <b>({moment(version.validFrom).format("D. MMMM YYYY")} - {moment(version.validTo).format("D. MMMM YYYY")})</b></div>
+					<Translate component="div" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />
+					<div><label><Translate content="TABS.VERSION_EXPIRED" />:</label> <b>({moment(version.validFrom).format("D. MMMM YYYY")} - {moment(version.validTo).format("D. MMMM YYYY")})</b></div>
 				</div>
 			)
 		} else {
 			return (
 				<div className="version-info">
-					<label>Gjeldende versjon:</label> <b>(Gyldig fra {moment(version.validFrom).format("D. MMMM YYYY")})</b>
+					<label><Translate content="TABS.CURRENT_VERSION" />:</label> <b>(<Translate content="TABS.VALID_FROM" /> {moment(version.validFrom).format("D. MMMM YYYY")})</b>
 				</div>
 			)
 		}
@@ -60,9 +62,9 @@ class Tabs extends Component {
 		const { classification, selectedVersion, actions, isFetchingClass, params, tabs } = this.props
 		let tabIndex = _.findIndex(tabs, params.tab)
 		if (isFetchingClass) {
-			return <div>Laster gjeldende versjon...</div>
+			return <Translate component="div" content="TABS.LOADING_CURRENT_VERSION" />
 		} else if (_.isEmpty(selectedVersion.version)){
-			return <div>Ingen versjoner tilgjengelig</div>
+			return <Translate content="TABS.VERSIONS_NOT_FOUND" />
 		}
 
 		return (
@@ -74,22 +76,22 @@ class Tabs extends Component {
 					<TabPanel
 						activeIndex={tabIndex}
 						onActivate={this.onActivate.bind(this)}>
-						<div tabTitle="Koder" className="codes">
+						<div tabTitle={counterpart.translate('TABS.CODES.CODES')} className="codes">
 							<Codes version={selectedVersion.version} params={params} actions={actions} />
 						</div>
-						<div tabTitle="Om versjonen" className="about-version">
+						<div tabTitle={counterpart.translate('TABS.ABOUT.ABOUT')} className="about-version">
 							<About actions={actions} version={selectedVersion.version} />
 						</div>
-						<div tabTitle="Endringer" className="changes">
+						<div tabTitle={counterpart.translate('TABS.CHANGES.CHANGES')} className="changes">
 							<Changes classification={classification} version={selectedVersion.version} />
 						</div>
-						<div tabTitle="Andre versjoner" className="other-versions">
+						<div tabTitle={counterpart.translate('TABS.VERSIONS.VERSIONS')} className="other-versions">
 							<Versions actions={actions} classification={classification} />
 						</div>
-						<div tabTitle="Korrespondanser" className="correspondence">
+						<div tabTitle={counterpart.translate('TABS.CORRESPONDENCES.CORRESPONDENCES')} className="correspondence">
 							<Correspondences actions={actions} selectedVersion={selectedVersion} params={params} />
 						</div>
-						<div tabTitle="Varianter" className="variants">
+						<div tabTitle={counterpart.translate('TABS.VARIANTS.VARIANTS')} className="variants">
 							<Variants actions={actions} selectedVersion={selectedVersion} params={params} />
 						</div>
 					</TabPanel>
@@ -109,12 +111,12 @@ Tabs.propTypes = {
 }
 
 Tabs.defaultProps = {
-	tabs: [{"koder": "Koder"},
-			{"om": "Om versjonen"},
-			{"endringer": "Endringer"},
-			{"versjoner": "Andre versjoner"},
-			{"korrespondanser": "Korrespondanser"},
-			{"varianter": "Varianter"}]
+	tabs: [{"koder": counterpart.translate('TABS.CODES.CODES')},
+			{"om": counterpart.translate('TABS.ABOUT.ABOUT')},
+			{"endringer": counterpart.translate('TABS.CHANGES.CHANGES')},
+			{"versjoner": counterpart.translate('TABS.VERSIONS.VERSIONS')},
+			{"korrespondanser": counterpart.translate('TABS.CORRESPONDENCES.CORRESPONDENCES')},
+			{"varianter": counterpart.translate('TABS.VARIANTS.VARIANTS')}]
 }
 
 Tabs.contextTypes = {

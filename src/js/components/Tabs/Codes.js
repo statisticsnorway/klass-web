@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
+import Translate from 'react-translate-component'
 import _ from 'lodash'
 import List from '../List'
 import moment from 'moment'
@@ -35,7 +36,7 @@ class Codes extends Component {
 		const { version, actions } = this.props
 		if (_.isEmpty(version.nestedItems)) {
 			return (
-				<p><i>Fant ingen koder</i></p>
+				<p><i><Translate content="TABS.CODES.CODES_NOT_FOUND" /></i></p>
 			)
 		}
 		return (
@@ -49,17 +50,22 @@ class Codes extends Component {
 				<form onSubmit={this.handleSubmit.bind(this)} className="search-box">
 					<div className="flex-container">
 						<div className="flex-item search-input-text">
-							<input type="text" ref="query" name="kodeverk" placeholder="Søk etter koder eller navn" onChange={this.handleChange.bind(this)} />
+							<Translate
+								component="input"
+								attributes={{ placeholder: 'TABS.CODES.SEARCH_BY_CODE_OR_NAME' }}
+								onChange={this.handleChange.bind(this)}
+								type="text" ref="query" name="kodeverk" />
 						</div>
 						<div className="flex-item search-button">
 							<input type="submit" value="Søk" />
 						</div>
 					</div>
-					<input type="checkbox" id="includeCodelist"/><label htmlFor="includeCodelist">Vis korte titler</label>
+					<input type="checkbox" id="includeCodelist"/>
+					<Translate component="label" content="TABS.CODES.SHOW_SHORT_TITLES" htmlFor="includeCodelist" />
 				</form>
 				<div className="button-heading">
-					<button className="expand-tree">Åpne hierarkiet</button>
-					<button className="expand-tree" onClick={this.downloadCodes.bind(this)}>Last ned til Excel (csv)</button>
+					<Translate component="button" content="COMMON.OPEN_HIERARCHY" className="expand-tree" />
+					<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
 				</div>
 					<div className="results class-list" id="expandcollapse">
 						{this.renderList()}

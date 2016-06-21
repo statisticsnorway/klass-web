@@ -1,3 +1,5 @@
+require('babel-polyfill');
+
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -48,12 +50,12 @@ const sassLoaders = [
 module.exports = {
   entry: {
     app: path.resolve(PATHS.app, 'main.js'),
-    vendor: ['react']
+    vendor: ['babel-polyfill', 'react']
   },
   output: {
     path: PATHS.build,
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: '/klass-ssb-no/'
   },
   stats: {
     colors: true

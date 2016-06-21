@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom'
 import _ from 'lodash'
 
 class Note extends Component {
-	handleClick (actions, item, modal, e) {
+	handleClick (e, actions, item, modal) {
+		console.log(e)
 		e.stopPropagation()
 		actions.displayModal(item, {x:e.pageX, y:e.pageY});
 	}
@@ -18,7 +19,7 @@ class Note extends Component {
 
 		return (
 			<span className="icon-info">
-				<i className="fa fa-info-circle" aria-hidden="true" onClick={this.handleClick.bind(event, actions, item, modal)}></i>
+				<i className="fa fa-info-circle" aria-hidden="true" onClick={(ev) => this.handleClick(ev, actions, item, modal)}></i>
 			</span>
 		)
 	}

@@ -51,7 +51,7 @@ class ListItem extends Component {
 
 		return (
 			<li className={toggleIcon}>
-				<a className="toggle-children" onClick={() => this.toggle(event)}>
+				<a className="toggle-children" onClick={(ev) => this.toggle(ev)}>
 					<span className="screen-reader-only"><Translate content="CLASSIFICATIONS.DISPLAY_HIDE"/> </span>
 					{displayName}
 					<Notes item={item} actions={actions} />

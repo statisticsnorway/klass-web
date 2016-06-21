@@ -35,13 +35,6 @@ let ComponentEl;
 // } else {
 	ComponentEl = (
 		<div className="sitewrapper">
-			<div id="navigation-path">
-				<h2 className="screen-reader-only">Du er her:</h2>
-				<ul id="breadcrumbs" className="nav leftadjust">
-					<li><a href="/">Forsiden</a> > </li>
-					<li>Klassifikasjoner og kodelister</li>
-				</ul>
-			</div>
 			<Router history={browserHistory} routes={routes}/>
 		</div>
 	);

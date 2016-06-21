@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Translate from 'react-translate-component'
 import _ from 'lodash'
 import List from '../List'
 import FlatToNested from '../../lib/flat-to-nested'
@@ -45,16 +46,16 @@ class Variants extends Component {
 		if (version.classificationVariants.length < 1) {
 			return (
 				<tr>
-					<td colSpan="2">Fant ingen varianter</td>
+					<Translate component="td" content="TABS.VARIANTS.VARIANTS_NOT_FOUND" colSpan="2" />
 				</tr>
 			)
 		}
 
 		return version.classificationVariants.map(function(variant, key) {
 			return (
-				<tr key={key} className="clickable" onClick={() => this.handleClick(event, variant)}>
+				<tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, variant)}>
 					<td>{variant.name}</td>
-					<td>Seksjon for {variant.owningSection}</td>
+					<td><Translate content="TABS.VARIANTS.SECTION_FOR" /> {variant.owningSection}</td>
 				</tr>
 			)
 		}.bind(this))
@@ -64,7 +65,7 @@ class Variants extends Component {
 		const { actions } = this.props
 		if (items.length < 1) {
 			return (
-				<p><i>Fant ingen varianter</i></p>
+				<p><Translate component="i" content="TABS.VARIANTS.VARIANTS_NOT_FOUND" /></p>
 			)
 		}
 		return (
@@ -79,21 +80,21 @@ class Variants extends Component {
 		if (params.itemId) {
 			if (_.isEmpty(selectedVariant)) {
 				return (
-					<div>Ingen korrespondansetabell</div>
+					<Translate component="div" content="TABS.VARIANTS.VARIANT_EMPTY" />
 				)
 			}
 			return (
 				<div>
 					<p className="back-link">
-						&lt;&lt; <a href="javascript:history.back()">Tilbake til alle varianter</a>
+						&lt;&lt; <Translate component="a" content="TABS.VARIANTS.BACK_TO_VARIANTS" href="javascript:history.back()" />
 					</p>
 					<h3>{selectedVariant.name}</h3>
-					<div><b>Ansvarlig:</b> {selectedVariant.contactPerson}, seksjon for {selectedVariant.owningSection}</div>
-					<div><b>Publisert på:</b> {selectedVariant.published.join()}</div>
+					<div><b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedVariant.owningSection}</div>
+					<div><b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedVariant.published.join()}</div>
 					<p>{selectedVariant.description}</p>
 					<div className="button-heading">
-						<button className="expand-tree">Åpne hierarkiet</button>
-						<button className="expand-tree">Last ned til Excel (csv)</button>
+						<Translate component="button" content="COMMON.OPEN_HIERARCHY" className="expand-tree" />
+						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" />
 					</div>
 
 					<div className="results class-list" id="expandcollapse">
@@ -105,13 +106,13 @@ class Variants extends Component {
 
 		return (
 			<div>
-				<h3>Varianter</h3>
-				<p>En kort tekst som forteller hva en variant er.</p>
+				<Translate component="h3" content="TABS.VARIANTS.VARIANTS" />
+				<Translate component="p" content="TABS.VARIANTS.DESCRIPTION" />
 				<table className="table-correspondences alternate">
 					<thead>
 						<tr>
-							<th>Variant</th>
-							<th>Eier</th>
+							<Translate component="th" content="TABS.VARIANTS.VARIANT" />
+							<Translate component="th" content="TABS.VARIANTS.OWNER" />
 						</tr>
 					</thead>
 					<tbody>

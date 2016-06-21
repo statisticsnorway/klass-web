@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Translate from 'react-translate-component'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Sidebar from '../components/Sidebar'
@@ -44,7 +45,7 @@ class ClassItemPage extends Component {
 		const { classification, selectedVersion, actions, isFetching, params } = this.props
 		if (_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) {
 			return (
-				<p>Laster gjeldende versjon...</p>
+				<Translate component="p" content="CLASS_ITEM.LOADING_CURRENT_VERSION" />
 			)
 		}
 
@@ -118,7 +119,7 @@ class ClassItemPage extends Component {
 
 		if (_.isEmpty(classification) || isFetching) {
 			return (
-				<p>Laster innhold...</p>
+				<Translate component="p" content="LOADING.LOADING_CONTENT" />
 			)
 		}
 
@@ -129,7 +130,7 @@ class ClassItemPage extends Component {
 						<div>Statisk enhet: <b>Foretak</b></div>
 						<h1>{classification.name}</h1>
 						<p className="description">{classification.description}</p>
-						<a href="#">+ LES MER</a>
+						<a href="#">+ <Translate content="CLASS_ITEM.READ_MORE" /></a>
 					</div>
 					{this.renderTabs()}
 				</div>

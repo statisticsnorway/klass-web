@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Translate from 'react-translate-component'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -25,10 +26,10 @@ class SearchPage extends Component {
 		return (
 			<div className="content">
 				<div className="heading">
-					<h1>Klassifikasjoner og kodelister</h1>
+					<Translate component="h1" content="CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS" />
 				</div>
 				<div className="main">
-					<p>Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.</p>
+					<Translate component="p" content="CLASSIFICATIONS.CLASS_DESCRIPTION" />
 					<Search actions={actions} sections={ssbSections} search={searchObj} />
 					<SearchResult items={items} actions={actions} isFetching={isFetching} search={location.query} />
 				</div>

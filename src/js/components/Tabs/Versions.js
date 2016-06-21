@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Translate from 'react-translate-component'
 import { Link } from 'react-router'
 import _ from 'lodash'
 import moment from 'moment'
@@ -30,13 +31,13 @@ class Versions extends Component {
 
 		return (
 			<div>
-				<h3>Andre versjoner av {classification.name}</h3>
+				<h3><Translate content="TABS.VERSIONS.OTHER_VERSIONS_OF" /> {classification.name}</h3>
 				<table className="versions-table alternate">
 					<thead>
 						<tr>
-							<th>Gyldig fra</th>
-							<th>Gyldig til</th>
-							<th>Navn</th>
+							<Translate component="th" content="TABS.VALID_FROM" />
+							<Translate component="th" content="TABS.VALID_TO" />
+							<Translate component="th" content="COMMON.NAME" />
 						</tr>
 					</thead>
 					<tbody>

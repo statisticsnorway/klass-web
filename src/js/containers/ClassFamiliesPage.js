@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Translate from 'react-translate-component'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -24,8 +25,8 @@ class ClassFamiliesPage extends Component {
 		return (
 			<div>
 				<div className="list-heading">
-					<button className="expand-tree">Åpne hierarkiet</button>
-					<h3>Eller velg et område</h3>
+					<Translate component="button" content="COMMON.OPEN_HIERARCHY" className="expand-tree" />
+					<Translate component="h3" content="CLASSIFICATIONS.CHOOSE_CLASS_FAMILY" />
 				</div>
 				<div className="results class-list" id="expandcollapse">
 					<List items={items} isFetching={isFetching} type="classFamilies" actions={actions}/>
@@ -39,12 +40,12 @@ class ClassFamiliesPage extends Component {
 		return (
 			<div className="content">
 				<div className="heading">
-					<h1>Klassifikasjoner og kodelister</h1>
+					<Translate component="h1" content="CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS" />
 				</div>
 				<div className="main">
-					<p>Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.</p>
+					<Translate component="p" content="CLASSIFICATIONS.CLASS_DESCRIPTION" />
 					<Search actions={actions} sections={ssbSections} search={search} />
-						{this.renderContent()}
+					{this.renderContent()}
 				</div>
 				<Sidebar></Sidebar>
 			</div>

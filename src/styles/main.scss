@@ -1,11 +1,15 @@
 @import url(http://www.ssb.no/_public/skins/advanced/ssb.no/styles/styles.css);	// Should be included somehow to avoid CORS issue
-@import "_variables.scss";
+@import '_variables.scss';
 
-@import "_reset.scss";
+@import '_reset.scss';
 
 .klass {
 	::-webkit-input-placeholder {
 		font-style: italic;
+	}
+	.breadcrumbs {
+		font-size: 1.3em;
+		line-height: 1.3em;
 	}
 	.language-selector {
 		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;

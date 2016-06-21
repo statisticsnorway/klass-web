@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Translate from 'react-translate-component'
 import _ from 'lodash'
 
 function groupBy(array, f) {
@@ -50,17 +51,17 @@ class Correspondences extends Component {
 		if (version.correspondenceTables.length < 1) {
 			return (
 				<tr>
-					<td colSpan="3">Fant ingen korrespondanser</td>
+					<Translate component="td" content="TABS.CORRESPONDENCES.CORRESPONDENCE_NOT_FOUND" colSpan="3" />
 				</tr>
 			)
 		}
 
 		return version.correspondenceTables.map(function(correspondence, key) {
 			return (
-				<tr key={key} className="clickable" onClick={() => this.handleClick(event, correspondence)}>
+				<tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, correspondence)}>
 					<td>{correspondence.source}</td>
 					<td>{correspondence.target}</td>
-					<td>Ansvarlig seksjon {correspondence.owningSection}</td>
+					<td><Translate content="TABS.CORRESPONDENCES.OWNING_SECTION" /> {correspondence.owningSection}</td>
 				</tr>
 			)
 		}.bind(this))
@@ -104,25 +105,25 @@ class Correspondences extends Component {
 		if (params.itemId) {
 			if (selectedVersion.isFetchingCorrespondence) {
 				return (
-					<div>Laster korrespondansetabell...</div>
+					<div><Translate content="TABS.CORRESPONDENCES.LOADING_CORRESPONDENCE_TABLE" /></div>
 				)
 			}
 			if (_.isEmpty(selectedCorrespondence)) {
 				return (
-					<div>Ingen korrespondansetabell</div>
+					<Translate component="div" content="TABS.CORRESPONDENCES.CORRESPONDENCE_TABLE_NOT_FOUND" />
 				)
 			}
 			return (
 				<div>
 					<p className="back-link">
-						&lt;&lt; <a href="javascript:history.back()">Tilbake til alle korrespondanser</a>
+						&lt;&lt; <Translate component="a" content="TABS.CORRESPONDENCES.BACK_TO_CORRESPONDENCES" href="javascript:history.back()" />
 					</p>
 					<h3>{selectedCorrespondence.name}</h3>
-					<div><b>Ansvarlig:</b> {selectedCorrespondence.contactPerson}, seksjon for {selectedCorrespondence.owningSection}</div>
-					<div><b>Publisert på:</b> {selectedCorrespondence.published.join()}</div>
+					<div><b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedCorrespondence.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedCorrespondence.owningSection}</div>
+					<div><b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedCorrespondence.published.join()}</div>
 					<p>{selectedCorrespondence.description}</p>
 					<div className="button-heading">
-						<button className="expand-tree" onClick={this.downloadCodes.bind(this)}>Last ned til Excel (csv)</button>
+						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
 					</div>
 
 					<table className="table-correspondenceTable alternate">
@@ -142,14 +143,14 @@ class Correspondences extends Component {
 
 		return (
 			<div>
-				<h3>Korrespondanser</h3>
-				<p>En kort tekst som forteller hva en korrespondansetabell er.</p>
+				<Translate component="h3" content="TABS.CORRESPONDENCES.CORRESPONDENCES" />
+				<Translate component="p" content="TABS.CORRESPONDENCES.DESCRIPTION" />
 				<table className="table-correspondences alternate">
 					<thead>
 						<tr>
-							<th>Korrespondanser fra</th>
-							<th>Korrespondanser til</th>
-							<th>Eier</th>
+							<Translate component="th" content="TABS.CORRESPONDENCES.CORRESPONDENCES_FROM" />
+							<Translate component="th" content="TABS.CORRESPONDENCES.CORRESPONDENCES_TO" />
+							<Translate component="th" content="TABS.CORRESPONDENCES.OWNER" />
 						</tr>
 					</thead>
 					<tbody>
