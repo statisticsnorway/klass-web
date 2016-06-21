@@ -17,6 +17,7 @@ const rootElement = document.getElementById('app');
 counterpart.registerTranslations('DE', require('counterpart/locales/de'));
 
 counterpart.registerTranslations('EN', require('./locales/en'))
+counterpart.registerTranslations('NN', require('./locales/nn'))
 counterpart.registerTranslations('NO', require('./locales/no'))
 
 counterpart.setLocale('NO');		// TODO: Will be set from topmenu in outer frame
