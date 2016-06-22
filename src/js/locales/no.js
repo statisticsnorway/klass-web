@@ -1,6 +1,7 @@
 module.exports = {
 	'COMMON': {
 		'OPEN_HIERARCHY': 'Åpne hierarkiet',
+		'CLOSE_HIERARCHY': 'Lukke hierarkiet',
 		'DOWNLOAD_CSV': 'Last ned til Excel (csv)',
 		'NAME': 'Navn'
 	},

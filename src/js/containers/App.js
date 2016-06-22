@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import { Link } from 'react-router'
-import Breadcrumbs from 'react-breadcrumbs'
-import {connect} from 'react-redux';
+// import Breadcrumbs from 'react-breadcrumbs'
+import {connect} from 'react-redux'
 
 class App extends Component {
-	renderBreadcrumbs() {
+	renderBreadcrumbs () {
 		// return (
 		// 	<div id="navigation-path">
 		// 		<h2 className="screen-reader-only">Du er her:</h2>
@@ -30,18 +30,18 @@ class App extends Component {
 			</div>
 		)
 	}
-    render() {
+    render () {
         return (
             <div>
 				{this.renderBreadcrumbs()}
 				{this.props.children}
             </div>
-        );
+        )
     }
 }
 
-function mapStateToProps() {
-    return {};
+function mapStateToProps () {
+    return {}
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App)

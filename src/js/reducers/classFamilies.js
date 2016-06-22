@@ -30,7 +30,6 @@ function classFamilies(state = initialState, action) {
 					})
 				}
 				merge(state.items[action.id], {
-					active: !state.items[action.id].active,
 					children: mappedClass
 				})
 				return merge({}, state, {
@@ -42,8 +41,15 @@ function classFamilies(state = initialState, action) {
 				isFetching: false
 			})
 		case types.TOGGLE_SUBJECT:
+            let active
+            if (action.show == undefined) {
+                active = !state.items[action.id].active
+            } else {
+                if (action.show == true) active = true
+                else active = false
+            }
 			merge(state.items[action.id], {
-				active: !state.items[action.id].active
+				active: active
 			})
 			return merge({}, state)
 

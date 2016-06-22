@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import Translate from 'react-translate-component'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -6,24 +7,23 @@ import Sidebar from '../components/Sidebar'
 import Tabs from '../components/Tabs'
 import * as ClassActions from '../actions'
 import _ from 'lodash'
-import moment from 'moment'
 import Modal from 'simple-react-modal'
 import config from '../config'
 
-function loadData(props, selectedLanguage) {
+function loadData (props, selectedLanguage) {
 	const { params, actions } = props
 	if (selectedLanguage) {
-		sessionStorage.setItem('selectedLanguage', selectedLanguage);
+		sessionStorage.setItem('selectedLanguage', selectedLanguage)
 	}
 
-	actions.getClassification(params.classId).then(function(res){
+	actions.getClassification(params.classId).then(function (res) {
 		const classification = res.response
 		if (!_.isEmpty(classification.versions)) {
 			if (params.versionId) {
 				actions.loadVersion(params.versionId)
 			} else {
 				const url = classification.versions[0]._links.self.href
-				const versionId = url.substring(url.lastIndexOf("/") + 1, url.length)
+				const versionId = url.substring(url.lastIndexOf('/') + 1, url.length)
 				actions.loadVersion(versionId)
 			}
 		}
@@ -31,17 +31,17 @@ function loadData(props, selectedLanguage) {
 }
 
 class ClassItemPage extends Component {
-	componentDidMount() {
-		loadData(this.props);
+	componentDidMount () {
+		loadData(this.props)
 	}
 
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps (nextProps) {
 		if (nextProps.params.versionId !== this.props.params.versionId) {
 			nextProps.actions.loadVersion(nextProps.params.versionId)
 		}
 	}
 
-	renderTabs() {
+	renderTabs () {
 		const { classification, selectedVersion, actions, isFetching, params } = this.props
 		if (_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) {
 			return (
@@ -59,14 +59,14 @@ class ClassItemPage extends Component {
 		)
 	}
 
-	closeModal() {
+	closeModal () {
 		const { actions } = this.props
 		actions.hideModal()
 	}
 
-	renderNoteBlocks(arr) {
-		return arr.map(function(item, key) {
-			var splitted = item.split(/:(.+)?/);
+	renderNoteBlocks (arr) {
+		return arr.map(function (item, key) {
+			var splitted = item.split(/:(.+)?/)
 			return (
 				<div className="flex-container" key={key}>
 					<div className="label">{splitted[0]}:</div>
@@ -76,32 +76,31 @@ class ClassItemPage extends Component {
 		})
 	}
 
-	renderModal() {
+	renderModal () {
 		const { modal } = this.props
-		const modalPosition = 'modal-notes ' + config.NOTES_POSITION;
+		const modalPosition = 'modal-notes ' + config.NOTES_POSITION
 
-		let modalPosX, modalPosY
+		let modalPosY
 
 		if (!modal.modalIsOpen) {
 			return null
 		}
 
 		if (!_.isEmpty(modal.position)) {
-			// modalPosX = modalPosition=='left' ? (modal.position.x - 565) : modal.position.x + 65
 			modalPosY = modal.position.y - 40
 		}
 
-		let noteBlock = modal.item.notes.split("\n");
+		let noteBlock = modal.item.notes.split('\n')
 
 		return (
 			<Modal
-				className="modal-overlay"
+				className='modal-overlay'
 				closeOnOuterClick={true}
 				show={modal.modalIsOpen}
 				onClose={this.closeModal.bind(this)}>
 				<div
 					className={modalPosition}
-					style={{top:modalPosY}}>
+					style={{top: modalPosY}}>
 					<div className="modal-content">
 						<a onClick={this.closeModal.bind(this)}>
 							<i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
@@ -114,7 +113,12 @@ class ClassItemPage extends Component {
 		)
 	}
 
-	render() {
+	showFullDescription (ev) {
+		ReactDOM.findDOMNode(this.refs.description).setAttribute('class', 'description')
+		ev.target.parentNode.setAttribute('class', 'hide')
+	}
+
+	render () {
 		const { classification, isFetching, actions, params } = this.props
 
 		if (_.isEmpty(classification) || isFetching) {
@@ -129,8 +133,8 @@ class ClassItemPage extends Component {
 					<div className="heading">
 						<div>Statisk enhet: <b>Foretak</b></div>
 						<h1>{classification.name}</h1>
-						<p className="description">{classification.description}</p>
-						<a href="#">+ <Translate content="CLASS_ITEM.READ_MORE" /></a>
+						<p className="description short" ref="description">{classification.description}</p>
+						<span className="clickable" onClick={(ev) => this.showFullDescription(ev)}>+ <Translate content="CLASS_ITEM.READ_MORE" /></span>
 					</div>
 					{this.renderTabs()}
 				</div>
@@ -138,8 +142,7 @@ class ClassItemPage extends Component {
 					contactInfo={classification.contactPerson}
 					onLanguageChange={loadData}
 					actions={actions}
-					params={params}>
-				</Sidebar>
+					params={params} />
 
 				{this.renderModal()}
 			</div>
@@ -153,16 +156,16 @@ const mapStateToProps = (state, ownProps) => {
 		selectedVersion: state.selectedVersion,
 		isFetching: state.selectedClass.isFetching,
 		modal: state.modal
-	};
+	}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
 	return {
 		actions: bindActionCreators(ClassActions, dispatch)
-	};
+	}
 }
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(ClassItemPage);
+)(ClassItemPage)

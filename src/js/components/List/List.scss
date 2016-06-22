@@ -14,9 +14,13 @@
 			padding: 0;
 			border-bottom: 1px solid #bbb;
 
+            &:first-child {
+                border-top: 1px solid #bbb;
+            }
+
 			li {
 		    border-top: 1px solid #e7e7e7 !important;
-				border-bottom: 0 !important;
+			border-bottom: 0 !important;
 
 				&:first-child {
 					border-top: 0 !important;

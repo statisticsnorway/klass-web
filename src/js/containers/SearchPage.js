@@ -1,26 +1,26 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react'
 import Translate from 'react-translate-component'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-import * as ClassActions from '../actions';
-import Search from '../components/Search';
+import * as ClassActions from '../actions'
+import Search from '../components/Search'
 import SearchResult from '../components/Search/SearchResult'
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar'
 
 class SearchPage extends Component {
 
-	componentWillMount() {
+	componentWillMount () {
 		const { search, actions, location } = this.props
 
-		if (!search.query){
+		if (!search.query) {
 			location.query.includeCodelists = (location.query.includeCodelists === 'true')
 			actions.searchClassification(location.query)
 		}
 	}
 
-	render() {
-		const {isFetching, items, search, actions, ssbSections, location } = this.props
+	render () {
+		const { isFetching, items, search, actions, ssbSections, location } = this.props
 		const searchObj = search.query ? search : location.query
 
 		return (
@@ -33,7 +33,7 @@ class SearchPage extends Component {
 					<Search actions={actions} sections={ssbSections} search={searchObj} />
 					<SearchResult items={items} actions={actions} isFetching={isFetching} search={location.query} />
 				</div>
-				<Sidebar></Sidebar>
+				<Sidebar />
 			</div>
 		)
 	}
@@ -45,13 +45,13 @@ const mapStateToProps = (state, ownProps) => {
 		search: state.searchResult.search,
 		isFetching: state.searchResult.isFetching,
 		ssbSections: state.classFamilies.ssbSections
-	};
+	}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
 	return {
 		actions: bindActionCreators(ClassActions, dispatch)
-	};
+	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPage)

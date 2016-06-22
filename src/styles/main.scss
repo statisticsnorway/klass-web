@@ -53,12 +53,12 @@
 		margin-right: 3em;
 
 		.heading {
-			.description {
+			.description.short {
 				overflow: hidden;
 				text-overflow: ellipsis;
 				display: -webkit-box;
 				line-height: 1.5em;     /* fallback */
-		   	max-height: 6em;      /* fallback */
+		   		max-height: 6em;      /* fallback */
 				-webkit-line-clamp: 4;
 				-webkit-box-orient: vertical;
 			}
@@ -105,6 +105,11 @@
 
 	.clickable {
 		cursor: pointer;
+	}
+
+	span.clickable {
+		text-decoration: underline;
+		color: $link-color;
 	}
 
 	.modal-overlay {
