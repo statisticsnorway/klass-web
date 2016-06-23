@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 import _ from 'lodash'
 import List from '../List'
 import FlatToNested from '../../lib/flat-to-nested'
@@ -73,6 +74,19 @@ class Variants extends Component {
 		)
 	}
 
+    openHierarchy (ev) {
+        const {version, actions} = this.props
+        if (ev.currentTarget.value == 'true') {
+            ev.target.innerHTML = counterpart.translate('COMMON.CLOSE_HIERARCHY')
+            ev.currentTarget.value = 'false'
+            actions.toggleAll(true, 'variant')
+        } else {
+            ev.target.innerHTML = counterpart.translate('COMMON.OPEN_HIERARCHY')
+            ev.currentTarget.value = 'true'
+            actions.toggleAll(false, 'variant')
+        }
+    }
+
 	render () {
 		const { selectedVersion, params } = this.props
 		const selectedVariant = selectedVersion.selectedVariant
@@ -93,7 +107,9 @@ class Variants extends Component {
 					<div><b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedVariant.published.join()}</div>
 					<p>{selectedVariant.description}</p>
 					<div className="button-heading">
-						<Translate component="button" content="COMMON.OPEN_HIERARCHY" className="expand-tree" />
+                        <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
+                            <Translate content="COMMON.OPEN_HIERARCHY"/>
+                        </button>
 						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" />
 					</div>
 

@@ -1,8 +1,8 @@
+import './Sidebar.scss'
 import React, { Component, PropTypes } from 'react'
 import counterpart from 'counterpart'
 import Translate from 'react-translate-component'
 import LocaleSwitcher from './LocaleSwitcher'
-
 
 class Sidebar extends Component{
 

@@ -77,9 +77,18 @@ export function toggleAllSubjects(toggle) {
     }
 }
 
-export function toggleCode(code, kind) {
+export function toggleAll(toggle, tab) {
     return {
-        type: kind === 'code' ? types.TOGGLE_CODE : types.TOGGLE_VARIANT,
+        type: types.TOGGLE_ALL,
+        tab: tab,
+        show: toggle
+    }
+}
+
+export function toggleCode(code, tab) {
+    return {
+        type: types.TOGGLE_CODE,
+        tab: tab,
         code: code
     }
 }

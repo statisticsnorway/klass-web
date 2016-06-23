@@ -69,31 +69,65 @@ function selectedVersion(state = initialState, action) {
 				selectedVariant: mappedItems
 			})
 
+        case types.TOGGLE_ALL:
+			nestedItems = (action.tab == 'code') ? _.cloneDeep(state.version.nestedItems) : _.cloneDeep(state.selectedVariant.nestedItems)
+            traverseToggle(nestedItems, action.show)
+
+            switch (action.tab) {
+                case 'code':
+                    newState = _.merge({}, state, {
+                        version: {
+                            nestedItems: nestedItems
+                        }
+                    })
+                    break;
+                case 'variant':
+                    newState = _.merge({}, state, {
+                        selectedVariant: {
+                            nestedItems: nestedItems
+                        }
+                    })
+                    break;
+            }
+
+            return _.assign({}, state, newState)
+
 		case types.TOGGLE_CODE:
-			nestedItems = _.cloneDeep(state.version.nestedItems)
+			nestedItems = (action.tab == 'code') ? _.cloneDeep(state.version.nestedItems) : _.cloneDeep(state.selectedVariant.nestedItems)
 			selectedItem = findNestedIndex(nestedItems, {'code': action.code})
 			selectedItem.active = !selectedItem.active
 
-			newState = _.merge({}, state, {
-				version: {
-					nestedItems: nestedItems
-				}
-			})
+            switch (action.tab) {
+                case 'code':
+                    newState = _.merge({}, state, {
+                        version: {
+                            nestedItems: nestedItems
+                        }
+                    })
+                    break;
+                case 'variant':
+        			newState = _.merge({}, state, {
+        				selectedVariant: {
+        					nestedItems: nestedItems
+        				}
+        			})
+                    break;
+            }
 
 			return _.assign({}, state, newState)
 
-		case types.TOGGLE_VARIANT:
-			nestedItems = _.cloneDeep(state.selectedVariant.nestedItems)
-			selectedItem = findNestedIndex(nestedItems, {'code': action.code})
-			selectedItem.active = !selectedItem.active
-
-			newState = _.merge({}, state, {
-				selectedVariant: {
-					nestedItems: nestedItems
-				}
-			})
-
-			return _.assign({}, state, newState)
+		// case types.TOGGLE_VARIANT:
+		// 	nestedItems = _.cloneDeep(state.selectedVariant.nestedItems)
+		// 	selectedItem = findNestedIndex(nestedItems, {'code': action.code})
+		// 	selectedItem.active = !selectedItem.active
+        //
+		// 	newState = _.merge({}, state, {
+		// 		selectedVariant: {
+		// 			nestedItems: nestedItems
+		// 		}
+		// 	})
+        //
+		// 	return _.assign({}, state, newState)
 
 		case types.SEARCH_CODE:
 			nestedItems = flatToNested.convert(_.cloneDeep(state.version.classificationItems)).children
@@ -123,6 +157,15 @@ function selectedVersion(state = initialState, action) {
 		default:
 			return state
 	}
+}
+
+function traverseToggle(items, toggle) {
+    _.forEach(items, function(item) {
+        item.active = toggle
+        if (item.children) {
+            traverseToggle(item.children, toggle)
+        }
+    })
 }
 
 function findNestedIndex(items, attrs) {

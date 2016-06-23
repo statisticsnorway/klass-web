@@ -81,24 +81,6 @@
 	}
 
 
-	.sidebar {
-		width: 25em;
-		float: right;
-
-		h2 {
-			font-size: 1.7em;
-		    line-height: 1.5;
-		    border-bottom: 1px dotted #888;
-		    color: #3e8601;
-		    text-transform: uppercase;
-
-			.overskrift-tekst {
-				background: url("../images/icon-envelope.png") no-repeat scroll right 0.3em transparent;
-				padding-right: 30px;
-			}
-		}
-	}
-
 	.alternate tbody tr:hover, .alternate tbody tr.odd:hover {
 		background-color: lighten($black, 70%) !important;
 	}

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 import _ from 'lodash'
 import List from '../List'
 import moment from 'moment'
@@ -13,23 +14,18 @@ class Codes extends Component {
 		const query = ReactDOM.findDOMNode(this.refs.query).value.trim()
 
 		actions.searchCode(query)
-
-	}
-
-	handleChange (event) {
-
 	}
 
 	downloadCodes() {
 		const { version, actions, params } = this.props
 		const fromDate = version.validFrom
 		const toDate = moment(version.validTo).isValid() ? ('&toDate=' + version.validTo) : ''
-		const csvURL = config.API_BASE_URL + '/classifications/' + params.classId + '/codes.csv?from=' + fromDate + toDate + '&csvSeparator=;';
+		const csvURL = config.API_BASE_URL + '/classifications/' + params.classId + '/codes.csv?from=' + fromDate + toDate + '&csvSeparator=;'
 
-		var tempLink = document.createElement('a');
-		tempLink.href = csvURL;
-		tempLink.setAttribute('download', 'code.csv');
-		tempLink.click();
+		var tempLink = document.createElement('a')
+		tempLink.href = csvURL
+		tempLink.setAttribute('download', 'code.csv')
+		tempLink.click()
 	}
 
 	renderList () {
@@ -44,6 +40,19 @@ class Codes extends Component {
 		)
 	}
 
+    openHierarchy (ev) {
+        const {version, actions} = this.props
+        if (ev.currentTarget.value == 'true') {
+            ev.target.innerHTML = counterpart.translate('COMMON.CLOSE_HIERARCHY')
+            ev.currentTarget.value = 'false'
+            actions.toggleAll(true, 'code')
+        } else {
+            ev.target.innerHTML = counterpart.translate('COMMON.OPEN_HIERARCHY')
+            ev.currentTarget.value = 'true'
+            actions.toggleAll(false, 'code')
+        }
+    }
+
 	render () {
 		return (
 			<div>
@@ -53,7 +62,6 @@ class Codes extends Component {
 							<Translate
 								component="input"
 								attributes={{ placeholder: 'TABS.CODES.SEARCH_BY_CODE_OR_NAME' }}
-								onChange={this.handleChange.bind(this)}
 								type="text" ref="query" name="kodeverk" />
 						</div>
 						<div className="flex-item search-button">
@@ -64,7 +72,9 @@ class Codes extends Component {
 					<Translate component="label" content="TABS.CODES.SHOW_SHORT_TITLES" htmlFor="includeCodelist" />
 				</form>
 				<div className="button-heading">
-					<Translate component="button" content="COMMON.OPEN_HIERARCHY" className="expand-tree" />
+                    <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
+                        <Translate content="COMMON.OPEN_HIERARCHY"/>
+                    </button>
 					<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
 				</div>
 					<div className="results class-list" id="expandcollapse">

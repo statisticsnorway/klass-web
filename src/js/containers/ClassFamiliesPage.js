@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 import {connect} from 'react-redux'
@@ -20,15 +19,15 @@ class ClassFamiliesPage extends Component {
         loadData(this.props)
     }
 
-    openHierarchy() {
+    openHierarchy(ev) {
         const {items, actions} = this.props
-        if (ReactDOM.findDOMNode(this.refs.openCloseButton).value == 'true') {
-            ReactDOM.findDOMNode(this.refs.openCloseButton).innerHTML = counterpart.translate('COMMON.CLOSE_HIERARCHY')
-            ReactDOM.findDOMNode(this.refs.openCloseButton).value = 'false';
+        if (ev.currentTarget.value == 'true') {
+            ev.target.innerHTML = counterpart.translate('COMMON.CLOSE_HIERARCHY')
+            ev.currentTarget.value = 'false';
             actions.toggleAllSubjects(true)
         } else {
-            ReactDOM.findDOMNode(this.refs.openCloseButton).innerHTML = counterpart.translate('COMMON.OPEN_HIERARCHY')
-            ReactDOM.findDOMNode(this.refs.openCloseButton).value = 'true';
+            ev.target.innerHTML = counterpart.translate('COMMON.OPEN_HIERARCHY')
+            ev.currentTarget.value = 'true';
             actions.toggleAllSubjects(false)
         }
     }
@@ -39,8 +38,7 @@ class ClassFamiliesPage extends Component {
         return (
             <div>
                 <div className="list-heading">
-                    <div ref="rendering"></div>
-                    <button ref="openCloseButton" className="expand-tree" value="true" onClick={() => this.openHierarchy()}>
+                    <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
                         <Translate content="COMMON.OPEN_HIERARCHY"/>
                     </button>
                     <Translate component="h3" content="CLASSIFICATIONS.CHOOSE_CLASS_FAMILY"/>
