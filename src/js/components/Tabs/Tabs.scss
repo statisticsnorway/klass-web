@@ -122,6 +122,9 @@
 			text-align: right;
 			margin-bottom: 3em;
 			display: block;
+            .flex-item {
+                display: inline;
+            }
 			button {
 				margin-left: 1em;
 			}
@@ -187,4 +190,45 @@
 		}
 
 	}
+}
+
+@media screen and (max-width: 700px) {
+    .klass-item .tabs {
+        .codes .search-box {
+            width: 100%;
+        }
+
+        .tab-content {
+            .react-tab-panel__tab-strip-inner {
+                flex-flow: row wrap;
+                flex: auto;
+
+                .react-tab-panel__tab-title {
+                    display: block;
+                    border-bottom: 1px solid #ccc !important;
+                    border-radius: 0.3em;
+                    margin-bottom: 0.7em;
+
+                    .react-tab-panel__tab-title-inner {
+                        padding-top: 0.5em;
+                        padding-bottom: 0.5em;
+                    }
+                }
+
+                .react-tab-panel__tab-title--active {
+                    border-bottom: 1px solid #a53d7c !important;
+
+                    .react-tab-panel__tab-title-inner {
+                        background: #545454;
+                        color: #fff;
+                    }
+                }
+
+                .react-tab-panel__tab-strip-between,
+                .react-tab-panel__tab-strip-after {
+                    border-bottom: none !important;
+                }
+            }
+        }
+    }
 }

@@ -3,10 +3,17 @@
 
 @import '_reset.scss';
 
+body {
+    min-width: 980px;
+}
+
 .klass {
 	::-webkit-input-placeholder {
 		font-style: italic;
 	}
+    label {
+        font-size: $body-font-size;
+    }
 	.breadcrumbs {
 		font-size: 1.3em;
 		line-height: 1.3em;
@@ -36,7 +43,7 @@
 		// font-size: 120%;
 	}
 	.sitewrapper {
-		margin: 0 auto;
+		// margin: 0 auto;
 	}
 
 	.back-link {
@@ -200,6 +207,7 @@
 	.flex-container {
 		display: flex;
 		flex-direction: row;
+        flex-flow: row wrap;
 		align-content: stretch;
 		justify-content: space-around;
 		flex: 1 0 0;
@@ -212,4 +220,24 @@
 	    color: #000;
 	    padding: 0.2em 0;
 	}
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        min-width: auto;
+    }
+    .klass {
+        .sitewrapper, .main {
+            width: auto;
+            max-width: 100%;
+            min-width: 0;
+        }
+    	.sitewrapper {
+    		padding: 0 10px;
+    	}
+        .main {
+            margin-right: 0;
+            float: none;
+        }
+    }
 }

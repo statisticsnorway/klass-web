@@ -65,17 +65,21 @@ class Codes extends Component {
 								type="text" ref="query" name="kodeverk" />
 						</div>
 						<div className="flex-item search-button">
-							<input type="submit" value="Søk" />
+    						<Translate component="button" type="submit" content="SEARCH.SEARCH" />
 						</div>
 					</div>
 					<input type="checkbox" id="includeCodelist"/>
 					<Translate component="label" content="TABS.CODES.SHOW_SHORT_TITLES" htmlFor="includeCodelist" />
 				</form>
 				<div className="button-heading">
-                    <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
-                        <Translate content="COMMON.OPEN_HIERARCHY"/>
-                    </button>
-					<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
+                    <div className="flex-item">
+                        <button ref="openCloseButton" value="true" onClick={(ev) => this.openHierarchy(ev)}>
+                            <Translate content="COMMON.OPEN_HIERARCHY"/>
+                        </button>
+                    </div>
+                    <div className="flex-item">
+                        <Translate component="button" content="COMMON.DOWNLOAD_CSV" onClick={this.downloadCodes.bind(this)} />
+                    </div>
 				</div>
 					<div className="results class-list" id="expandcollapse">
 						{this.renderList()}
