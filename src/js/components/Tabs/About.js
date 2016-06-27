@@ -18,6 +18,15 @@ class About extends Component {
 		})
 	}
 
+    renderChangeLog () {
+        // TODO: Load changelog from API
+        return (
+            <tr>
+                <td colSpan="3">Ingen endringer</td>
+            </tr>
+        )
+    }
+
 	render () {
 		const { version, actions } = this.props
 
@@ -37,10 +46,6 @@ class About extends Component {
 						<tr>
 							<td className="label"><Translate content="TABS.VALID_FROM" />:</td>
 							<td>{moment(version.validFrom).format("D MMMM YYYY")}</td>
-						</tr>
-						<tr>
-							<td className="label"><Translate content="TABS.ABOUT.LASTMODIFIED" />:</td>
-							<td></td>
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.ABOUT.PUBLISHED" />:</td>
@@ -65,7 +70,7 @@ class About extends Component {
 									<thead>
 										<tr>
 											<Translate component="th" content="TABS.ABOUT.NUMBER" className="align-right" />
-											<Translate component="th" content="TABS.NAME" />
+											<Translate component="th" content="COMMON.NAME" />
 											<Translate component="th" content="TABS.ABOUT.DESCRIPTION" />
 											<Translate component="th" content="TABS.ABOUT.STRUCTURE" />
 											<Translate component="th" content="TABS.ABOUT.NUMBER_OF_UNITS" />
@@ -73,6 +78,23 @@ class About extends Component {
 									</thead>
 									<tbody>
 										{this.renderLevels(version.levels)}
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td className="label"><Translate content="TABS.ABOUT.CHANGELOG" />:</td>
+							<td>
+								<table className="levels-table alternate">
+									<thead>
+										<tr>
+											<Translate component="th" content="COMMON.DATE" />
+											<Translate component="th" content="COMMON.TIME" />
+											<Translate component="th" content="COMMON.COMMENTS" />
+										</tr>
+									</thead>
+									<tbody>
+										{this.renderChangeLog()}
 									</tbody>
 								</table>
 							</td>

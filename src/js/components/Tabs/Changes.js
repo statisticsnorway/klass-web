@@ -2,78 +2,214 @@ import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
 import _ from 'lodash'
 import moment from 'moment'
+import commonUtils from '../../lib/common-utils'
 
 class Changes extends Component {
-	renderTableBody () {
-		const { classification, version } = this.props
-		const changes = version.changes.codeChanges
 
-		return changes.map(function(code, key){
-			return (
-				<tr key={key}>
-					<td>
-						<b>{code.newCode}</b>
-					</td>
-					<td>{code.newName}</td>
-					<td>
-						<b>{code.oldCode}</b>
-					</td>
-					<td>{code.oldName}</td>
-				</tr>
-			)
-		})
+	componentWillReceiveProps(nextProps) {
+		const { actions, classification } = this.props
+
+		if (nextProps.params.itemId && (nextProps.params.itemId !== this.props.params.itemId)) {
+            let selectedChanges
+            _.forEach(classification.versions, function(v) {
+                if (v.id == nextProps.params.itemId) {
+                    selectedChanges = v
+                    return false
+                }
+            })
+
+            if (!_.isEmpty(selectedChanges)){
+                const query = {
+                    from: moment(selectedChanges.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
+                    to: moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('YYYY-MM-DD') : ''
+                }
+                actions.loadChanges(nextProps.params.classId, query)
+            }
+		}
 	}
 
+	componentDidMount() {
+		const { actions, classification, params } = this.props
+		if (params.itemId) {
+            let selectedChanges
+            _.forEach(classification.versions, function(v) {
+                if (v.id == params.itemId) {
+                    selectedChanges = v
+                    return false
+                }
+            })
+
+            if (!_.isEmpty(selectedChanges)){
+                const query = {
+                    from: moment(selectedChanges.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
+                    to: moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('YYYY-MM-DD') : ''
+                }
+                actions.loadChanges(params.classId, query)
+            }
+		}
+	}
+
+    handleClick (version) {
+        const { params } = this.props
+
+		const changesPath = '/' + version.id
+
+		const classPath = '/' + params.classId
+		const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
+		const tabPath = '/' + params.tab
+
+		const path = "/klassifikasjoner" + classPath + versionPath + tabPath + changesPath
+		this.context.router.push(path)
+    }
+
+	renderTableBody () {
+		const { classification } = this.props
+		const versions = classification.versions
+
+		return versions.map(function(version, key){
+			return (
+				<tr key={key} className="clickable" onClick={() => this.handleClick(version)}>
+					<td>{moment(version.validFrom).format('D.MMMM YYYY')}</td>
+					<td>{moment(version.validTo).isValid() ? moment(version.validTo).format('D.MMMM YYYY') : 'Forstatt gyldig'}</td>
+				</tr>
+			)
+		}.bind(this))
+
+
+	}
+
+    renderChangesBody () {
+		const { classification, selectedVersion } = this.props
+		const changes = selectedVersion.changes
+
+        if (selectedVersion.isFetching) {
+            return (
+                <tr>
+                    <Translate component="td" colSpan="2" content="LOADING.LOADING_CONTENT" />
+                </tr>
+            )
+        }
+
+        if (_.isEmpty(changes.codeChanges)) {
+            return (
+                <tr>
+                    <Translate component="td" colSpan="2" content="TABS.CHANGES.CHANGES_NOT_FOUND" />
+                </tr>
+            )
+        }
+
+
+        if (!_.isEmpty(changes.codeChanges)) {
+            // TODO: Grouping items by newCode or oldCode?
+
+    		changes.codeChanges.sort(function(a,b) {
+    			return a.newCode - b.newCode
+    		})
+
+            let groupedArray = commonUtils.groupBy(changes.codeChanges, function(item) {
+                return [item.newCode]
+            })
+
+    		return groupedArray.map(function(item, key){
+    			let targetList = item.sort(function(a,b){return a.oldCode-b.oldCode}).map(function(subItem, key){
+    				return (
+    					<li key={key}><b>{subItem.oldCode}</b> - {subItem.oldName}</li>
+    				)
+    			})
+
+    			return (
+    				<tr key={key}>
+    					<td>
+                            <b>{item[0].newCode}</b> - {item[0].newName}
+                        </td>
+    					<td>
+    						<ul className="grouped-codelist">{targetList}</ul>
+    					</td>
+    				</tr>
+    			)
+    		})
+        }
+
+        return null
+
+    }
+
 	render () {
-		const { classification, version, params } = this.props
-		let previousVersionName = '-'
+		const { classification, selectedVersion, params } = this.props
 
-		if (classification.versions.length < 2) {
-			return (
-				<div>
-					<Translate component="h3" content="TABS.CHANGES.PREVIOUS_CHANGES" />
-					<Translate component="p" content="TABS.CHANGES.PREVIOUS_VERSION_NOT_FOUND" />
-				</div>
-			)
-		}
+		if (params.itemId) {
+            let selectedChanges
+            _.forEach(classification.versions, function(v) {
+                if (v.id == params.itemId) {
+                    selectedChanges = v
+                    return false
+                }
+            })
 
-		if (_.isEmpty(version.changes)) {
-			return (
-				<div>
-					<Translate component="h3" content="TABS.CHANGES.PREVIOUS_CHANGES" />
-					<Translate component="p" content="TABS.CHANGES.CHANGES_NOT_FOUND" />
-				</div>
-			)
-		}
+            if (_.isEmpty(selectedChanges)) {
+                return (
+                    <div>
+                        <p className="back-link">
+                            &lt;&lt; <Translate component="a" content="TABS.CHANGES.BACK_TO_CHANGES" href="javascript:history.back()" />
+                        </p>
+	                   <Translate component="p" content="TABS.CHANGES.CHANGES_NOT_FOUND" />
+                    </div>
+                )
+            }
 
-		for (let idx in classification.versions) {
-			if (classification.versions[idx-1] && classification.versions[idx].id == version.id) {
-				previousVersionName = classification.versions[idx-1].name
-			}
-		}
+            const validFrom = moment(selectedChanges.validFrom).format('D.MMMM YYYY')
+            const validTo = moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('D.MMMM YYYY') : 'Gjeldende versjon'
+    		return (
+    			<div>
+					<p className="back-link">
+						&lt;&lt; <Translate component="a" content="TABS.CHANGES.BACK_TO_CHANGES" href="javascript:history.back()" />
+					</p>
+                    <h3>
+                        <Translate content="TABS.CHANGES.CHANGES_FROM" /> {validFrom} <Translate content="TABS.CHANGES.TO" /> {validTo.toLowerCase()}
+                    </h3>
+    				<table className="change-table alternate">
+    					<thead>
+    						<tr>
+								<th>{validFrom}</th>
+								<th>{validTo}</th>
+    						</tr>
+    					</thead>
+    					<tbody>
+    						{this.renderChangesBody()}
+    					</tbody>
+    				</table>
+    			</div>
+    		)
+        }
 
-		return (
-			<div>
-				<Translate component="h3" content="TABS.CHANGES.PREVIOUS_CHANGES" />
-				<table className="change-table alternate">
-					<thead>
-						<tr>
-							<th colSpan="2" width="50%">{version.name}</th>
-							<th colSpan="2" width="50%">{previousVersionName}</th>
-						</tr>
-					</thead>
-					<tbody>
-						{this.renderTableBody()}
-					</tbody>
-				</table>
-			</div>
-		)
+        return (
+            <div>
+                <Translate component="h3" content="TABS.CHANGES.CHANGES" />
+                <table className="change-table alternate">
+                    <thead>
+                        <tr>
+                            <Translate component="th" content="TABS.CHANGES.CHANGES_FROM" />
+                            <Translate component="th" content="TABS.CHANGES.CHANGES_TO" />
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderTableBody()}
+                    </tbody>
+                </table>
+            </div>
+        )
 	}
 }
 
 Changes.propTypes = {
 	classification: PropTypes.object.isRequired,
-	version: PropTypes.object.isRequired
+	selectedVersion: PropTypes.object.isRequired,
+	actions: PropTypes.object.isRequired,
+	params: PropTypes.object.isRequired
+}
+
+Changes.contextTypes = {
+	router: PropTypes.object
 }
 
 export default Changes

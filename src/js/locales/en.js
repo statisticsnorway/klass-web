@@ -1,8 +1,12 @@
 module.exports = {
 	'COMMON': {
 		'OPEN_HIERARCHY': 'Open hierarchy',
+		'CLOSE_HIERARCHY': 'Close hierarchy',
 		'DOWNLOAD_CSV': 'Download to Excel (csv)',
-		'NAME': 'Name'
+		'NAME': 'Name',
+        'DATE': 'Date',
+        'TIME': 'Time',
+        'COMMENTS': 'Comments'
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Choose language for kodeverk:',
@@ -60,13 +64,18 @@ module.exports = {
 			'LEVELS': 'Levels',
 			'NUMBER': 'No.',
 			'STRUCTURE': 'Structure',
-			'NUMBER_OF_UNITS' : 'Number of units'
+			'NUMBER_OF_UNITS' : 'Number of units',
+            'CHANGELOG': 'Change log'
 		},
 		'CHANGES': {
 			'CHANGES': 'Changes',
 			'PREVIOUS_CHANGES': 'Changes since last version',
 			'PREVIOUS_VERSION_NOT_FOUND': 'Previous version not found',
-			'CHANGES_NOT_FOUND': 'No changes found'
+			'CHANGES_NOT_FOUND': 'No changes found',
+            'CHANGES_FROM': 'Changes from',
+            'CHANGES_TO': 'Changes to',
+            'TO': 'to',
+            'BACK_TO_CHANGES': 'Back to all changes'
 		},
 		'CODES': {
 			'CODES': 'Codes',

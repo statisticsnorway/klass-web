@@ -8,7 +8,8 @@ const initialState = {
 	isFetching: false,
 	version: {},
 	selectedCorrespondence: {},
-	selectedVariant: {}
+	selectedVariant: {},
+    changes: {}
 }
 
 const flatToNested = new FlatToNested({
@@ -21,6 +22,11 @@ let nestedItems, newState, items, mappedItems, selectedItem
 function selectedVersion(state = initialState, action) {
 	switch (action.type) {
 		case types.SELECTED_VERSION_REQUEST:
+		case types.CHANGES_REQUEST:
+			return _.assign({}, state, {
+				isFetching: true,
+				changes: {}
+			})
 		case types.CORRESPONDENCE_REQUEST:
 			return _.merge({}, state, {
 				isFetchingCorrespondence: true
@@ -45,11 +51,9 @@ function selectedVersion(state = initialState, action) {
 			})
 
 		case types.CHANGES_SUCCESS:
-			return _.merge({}, state, {
+			return _.assign({}, state, {
 				isFetching: false,
-				version: {
-					changes: action.response
-				}
+				changes: action.response
 			})
 
 		case types.CORRESPONDENCE_SUCCESS:
@@ -143,12 +147,10 @@ function selectedVersion(state = initialState, action) {
 		case types.CORRESPONDENCE_FAILURE:
 		case types.VARIANT_FAILURE:
 		case types.CHANGES_FAILURE:
-			// return _.merge({}, state, {
-			// 	isFetching: false,
-			// 	version: {
-			// 		changes: action.response
-			// 	}
-			// })
+			return _.assign({}, state, {
+				isFetching: false,
+				changes: {}
+			})
 		case types.SELECTED_VERSION_FAILURE:
 			return _.merge({}, state, {
 				isFetching: false

@@ -15,19 +15,6 @@ import moment from 'moment'
 
 class Tabs extends Component {
 
-	componentWillMount() {
-		const { selectedVersion, params, actions } = this.props
-		const version = selectedVersion.version
-
-		if (!_.isEmpty(version)) {
-			const query = {
-				from: moment(version.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
-				to: moment(version.validTo).isValid() ? moment(version.validTo).format('YYYY-MM-DD') : ''
-			}
-			actions.loadChanges(params.classId, query)
-		}
-	}
-
 	renderVersionInfo () {
 		const { classification, selectedVersion } = this.props
 		const version = selectedVersion.version
@@ -83,7 +70,7 @@ class Tabs extends Component {
 							<About actions={actions} version={selectedVersion.version} />
 						</div>
 						<div tabTitle={counterpart.translate('TABS.CHANGES.CHANGES')} className="changes">
-							<Changes classification={classification} version={selectedVersion.version} />
+							<Changes actions={actions} classification={classification} selectedVersion={selectedVersion} params={params} />
 						</div>
 						<div tabTitle={counterpart.translate('TABS.VERSIONS.VERSIONS')} className="other-versions">
 							<Versions actions={actions} classification={classification} />

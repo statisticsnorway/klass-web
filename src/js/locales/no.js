@@ -3,7 +3,10 @@ module.exports = {
 		'OPEN_HIERARCHY': 'Åpne hierarkiet',
 		'CLOSE_HIERARCHY': 'Lukke hierarkiet',
 		'DOWNLOAD_CSV': 'Last ned til Excel (csv)',
-		'NAME': 'Navn'
+		'NAME': 'Navn',
+        'DATE': 'Dato',
+        'TIME': 'Klokkeslett',
+        'COMMENTS': 'Kommentarer'
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',
@@ -61,13 +64,18 @@ module.exports = {
 			'LEVELS': 'Nivåer',
 			'NUMBER': 'Nr.',
 			'STRUCTURE': 'Struktur',
-			'NUMBER_OF_UNITS' : 'Antall enheter'
+			'NUMBER_OF_UNITS' : 'Antall enheter',
+            'CHANGELOG': 'Endringslogg'
 		},
 		'CHANGES': {
 			'CHANGES': 'Endringer',
 			'PREVIOUS_CHANGES': 'Endringer siden forrige versjon',
 			'PREVIOUS_VERSION_NOT_FOUND': 'Forrige versjon finnes ikke',
-			'CHANGES_NOT_FOUND': 'Fant ingen endringer'
+			'CHANGES_NOT_FOUND': 'Fant ingen endringer',
+            'CHANGES_FROM': 'Endringer fra',
+            'CHANGES_TO': 'Endringer til',
+            'TO': 'til',
+            'BACK_TO_CHANGES': 'Tilbake til alle endringer'
 		},
 		'CODES': {
 			'CODES': 'Koder',
