@@ -78,7 +78,7 @@ class ClassItemPage extends Component {
 
 	renderModal () {
 		const { modal } = this.props
-		const modalPosition = 'modal-notes ' + config.NOTES_POSITION
+		const modalPosition = 'modal-notes'// + config.NOTES_POSITION
 
 		let modalPosY
 

@@ -1,13 +1,17 @@
-import '../styles/main.scss';
+import '../styles/main.scss'
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore  from './store/configureStore';
-import { Router, browserHistory } from 'react-router';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import configureStore  from './store/configureStore'
+import { Router, browserHistory, useRouterHistory  } from 'react-router'
+import { createHashHistory } from 'history'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 import counterpart from 'counterpart'
 
 import routes from './routes';
+
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 
 const store = configureStore();
 const rootElement = document.getElementById('app');
@@ -36,7 +40,7 @@ let ComponentEl;
 // } else {
 	ComponentEl = (
 		<div className="sitewrapper">
-			<Router history={browserHistory} routes={routes}/>
+			<Router history={appHistory} routes={routes}/>
 		</div>
 	);
 // }

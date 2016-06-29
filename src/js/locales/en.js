@@ -9,7 +9,7 @@ module.exports = {
         'COMMENTS': 'Comments'
 	},
 	'LANGUAGE': {
-		'CHOOSE_LANGUAGE': 'Choose language for kodeverk:',
+		'CHOOSE_LANGUAGE': 'Choose language for code:',
 		'NORWEGIAN': 'Norwegian',
 		'NYNORSK': 'Nynorsk',
 		'ENGLISH': 'English'

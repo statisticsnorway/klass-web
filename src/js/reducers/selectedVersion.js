@@ -22,6 +22,10 @@ let nestedItems, newState, items, mappedItems, selectedItem
 function selectedVersion(state = initialState, action) {
 	switch (action.type) {
 		case types.SELECTED_VERSION_REQUEST:
+            return _.assign({}, state, {
+                isFetching: true,
+                version: {}
+            })
 		case types.CHANGES_REQUEST:
 			return _.assign({}, state, {
 				isFetching: true,
@@ -120,19 +124,6 @@ function selectedVersion(state = initialState, action) {
 
 			return _.assign({}, state, newState)
 
-		// case types.TOGGLE_VARIANT:
-		// 	nestedItems = _.cloneDeep(state.selectedVariant.nestedItems)
-		// 	selectedItem = findNestedIndex(nestedItems, {'code': action.code})
-		// 	selectedItem.active = !selectedItem.active
-        //
-		// 	newState = _.merge({}, state, {
-		// 		selectedVariant: {
-		// 			nestedItems: nestedItems
-		// 		}
-		// 	})
-        //
-		// 	return _.assign({}, state, newState)
-
 		case types.SEARCH_CODE:
 			nestedItems = flatToNested.convert(_.cloneDeep(state.version.classificationItems)).children
 			if (action.query) {
@@ -152,10 +143,10 @@ function selectedVersion(state = initialState, action) {
 				changes: {}
 			})
 		case types.SELECTED_VERSION_FAILURE:
-			return _.merge({}, state, {
-				isFetching: false
-			})
-
+            return _.assign({}, state, {
+                isFetching: false,
+                version: {}
+            })
 		default:
 			return state
 	}
