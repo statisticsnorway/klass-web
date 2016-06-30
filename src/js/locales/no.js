@@ -1,4 +1,11 @@
 module.exports = {
+    'MENU': {
+        'STATISTICS': 'Statistikk',
+        'RESEARCH': 'Forskning',
+        'DATA_COLLECTION': 'Innrapportering',
+        'ABOUT_SSB': 'Om SSB',
+        'MY_PAGE': 'Mitt SSB'
+    },
 	'COMMON': {
 		'OPEN_HIERARCHY': 'Åpne hierarkiet',
 		'CLOSE_HIERARCHY': 'Lukke hierarkiet',
@@ -12,7 +19,11 @@ module.exports = {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',
 		'NORWEGIAN': 'Norsk',
 		'NYNORSK': 'Nynorsk',
-		'ENGLISH': 'Engelsk'
+		'ENGLISH': 'Engelsk',
+        'TOGGLE': 'Engelsk',
+        'TOGGLE_SHORT': 'en',
+        'SWITCH_LANGUAGE': 'Bytt språk',
+        'CHOSEN_LANG_SHORT': 'no'
 	},
 	'CONTACT': {
 		'HEADER': 'Kontakt',

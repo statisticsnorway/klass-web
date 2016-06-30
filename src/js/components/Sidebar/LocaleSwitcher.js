@@ -12,7 +12,7 @@ function getLocale() {
 
 class LocaleSwitcher extends Component {
 	handleChange(e) {
-    	counterpart.setLocale(e.target.value);
+    	// counterpart.setLocale(e.target.value);
 		const { onLanguageChange } = this.props
 		onLanguageChange(this.props, e.target.value);
 	}

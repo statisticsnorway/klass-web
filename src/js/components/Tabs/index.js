@@ -63,6 +63,7 @@ class Tabs extends Component {
 					<TabPanel
 						activeIndex={tabIndex}
 						onActivate={this.onActivate.bind(this)}>
+
 						<div tabTitle={counterpart.translate('TABS.CODES.CODES')} className="codes">
 							<Codes version={selectedVersion.version} params={params} actions={actions} modal={modal} />
 						</div>

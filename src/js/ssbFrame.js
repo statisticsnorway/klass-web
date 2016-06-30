@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 
 class SSBHeader extends Component {
     setTextSize (ev, size) {
@@ -23,6 +25,15 @@ class SSBHeader extends Component {
             </li>
         )
     }
+    toggleLanguage (e) {
+        e.preventDefault();
+        const lang = e.currentTarget.lang.toUpperCase()
+
+    	// counterpart.setLocale(lang);
+        sessionStorage.setItem('selectedOuterLanguage', lang)
+        // this.forceUpdate()
+        window.location.reload()
+    }
 	render () {
         return (
             <div id="header" className="menu-closed">
@@ -33,12 +44,23 @@ class SSBHeader extends Component {
                     <div id="global-tools">
                         <ul className="global-links nav">
                             {this.renderLetterSize()}
-                            <li id="global-language" className="bubble-dialog-origin" lang="en"><span className="screen-reader-only" lang="en">Switch language</span><a id="change-language" lang="en" href="http://www.ssb.no/en/arbeid-og-lonn">English</a></li>
+                            <li id="global-language" className="bubble-dialog-origin" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')}>
+                                <span className="screen-reader-only" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')}><Translate content="LANGUAGE.SWITCH_LANGUAGE" /></span>
+                                <a id="change-language" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')} href={'#'+counterpart.translate('LANGUAGE.TOGGLE_SHORT')} onClick={(ev) => this.toggleLanguage(ev)}><Translate content="LANGUAGE.TOGGLE" /></a>
+                            </li>
                             <li id="global-cookies" className="shortcut keywords"><a id="cookies" href="http://www.ssb.no/omssb/personvern/">Cookies og personvern</a></li>
                             <li className="shortcut keywords"><a href="http://www.ssb.no/a-aa" title="Stikkord A-Å">Stikkord A-Å</a></li>
                             <li id="global-contact" className="shortcut last"><a href="http://www.ssb.no/omssb/kontakt-oss" accesskey="7">Kontakt oss</a></li>
                         </ul>
                     </div>
+                    <form id="search" action="http://www.ssb.no/en/sok" method="get" role="search">
+                       <fieldset>
+                          <legend className="screen-reader-only">Site search</legend>
+                          <label for="sok" className="screen-reader-only">Search</label>
+                          <input id="sok" name="sok" type="text" accesskey="4" tabindex="5" />
+                          <input type="submit" value="Search" className="submit" tabindex="6" />
+                      </fieldset>
+                    </form>
                     {this.renderMainMenu()}
                 </div>
             </div>
@@ -48,21 +70,21 @@ class SSBHeader extends Component {
     renderMainMenu() {
         return (
             <div id="main-menu" role="navigation">
-                <ul id="main-menu-top" className="nav no" role="menu">
+                <ul id="main-menu-top" className={'nav '+counterpart.translate('LANGUAGE.CHOSEN_LANG_SHORT')} role="menu">
                     <li className="top-level statistikk" role="menuitem">
-                        <a id="statistics-menu-toggle" href="http://www.ssb.no/">Statistikk</a>
+                        <a id="statistics-menu-toggle" href="http://www.ssb.no/"><Translate content="MENU.STATISTICS" /></a>
                     </li>
                     <li className="top-level forskning" role="menuitem">
-                        <a id="forskning-menu-toggle" href="http://www.ssb.no/forskning">Forskning</a>
+                        <a id="forskning-menu-toggle" href="http://www.ssb.no/forskning"><Translate content="MENU.RESEARCH" /></a>
                     </li>
                     <li className="top-level innrapportering" role="menuitem">
-                        <a href="http://www.ssb.no/innrapportering" title="Innrapportering">Innrapportering</a>
+                        <a href="http://www.ssb.no/innrapportering" title="Innrapportering"><Translate content="MENU.DATA_COLLECTION" /></a>
                     </li>
                     <li className="top-level omssb" role="menuitem">
-                        <a id="omssb-menu-toggle" href="http://www.ssb.no/omssb">Om SSB</a>
+                        <a id="omssb-menu-toggle" href="http://www.ssb.no/omssb"><Translate content="MENU.ABOUT_SSB" /></a>
                     </li>
                     <li className="top-level mittssb" role="menuitem">
-                        <a href="http://www.ssb.no/mittssb/profil" title="Mitt SSB ">Mitt SSB </a>
+                        <a href="http://www.ssb.no/mittssb/profil" title="Mitt SSB "><Translate content="MENU.MY_PAGE" /> </a>
                     </li>
                 </ul>
             </div>

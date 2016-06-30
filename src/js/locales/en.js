@@ -1,4 +1,11 @@
 module.exports = {
+    'MENU': {
+        'STATISTICS': 'Statistics',
+        'RESEARCH': 'Research',
+        'DATA_COLLECTION': 'Data collection',
+        'ABOUT_SSB': 'About statistics Norway',
+        'MY_PAGE': 'My page'
+    },
 	'COMMON': {
 		'OPEN_HIERARCHY': 'Open hierarchy',
 		'CLOSE_HIERARCHY': 'Close hierarchy',
@@ -12,7 +19,11 @@ module.exports = {
 		'CHOOSE_LANGUAGE': 'Choose language for code:',
 		'NORWEGIAN': 'Norwegian',
 		'NYNORSK': 'Nynorsk',
-		'ENGLISH': 'English'
+		'ENGLISH': 'English',
+        'TOGGLE': 'Norwegian',
+        'TOGGLE_SHORT': 'no',
+        'SWITCH_LANGUAGE': 'Switch language',
+        'CHOSEN_LANG_SHORT': 'en'
 	},
 	'CONTACT': {
 		'HEADER': 'Contact',

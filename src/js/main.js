@@ -25,7 +25,11 @@ counterpart.registerTranslations('EN', require('./locales/en'))
 counterpart.registerTranslations('NN', require('./locales/nn'))
 counterpart.registerTranslations('NO', require('./locales/no'))
 
-counterpart.setLocale('NO');		// TODO: Will be set from topmenu in outer frame
+if (sessionStorage.getItem('selectedOuterLanguage')) {
+    counterpart.setLocale(sessionStorage.getItem('selectedOuterLanguage'));
+} else {
+    counterpart.setLocale('NO')
+}
 
 let ComponentEl;
 
