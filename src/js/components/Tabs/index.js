@@ -46,7 +46,7 @@ class Tabs extends Component {
 
 	render () {
 		moment.locale('nb')
-		const { classification, selectedVersion, actions, isFetchingClass, params, tabs } = this.props
+		const { classification, selectedVersion, actions, isFetchingClass, params, tabs, modal } = this.props
 		let tabIndex = _.findIndex(tabs, params.tab)
 		if (isFetchingClass) {
 			return <Translate component="div" content="TABS.LOADING_CURRENT_VERSION" />
@@ -64,7 +64,7 @@ class Tabs extends Component {
 						activeIndex={tabIndex}
 						onActivate={this.onActivate.bind(this)}>
 						<div tabTitle={counterpart.translate('TABS.CODES.CODES')} className="codes">
-							<Codes version={selectedVersion.version} params={params} actions={actions} />
+							<Codes version={selectedVersion.version} params={params} actions={actions} modal={modal} />
 						</div>
 						<div tabTitle={counterpart.translate('TABS.ABOUT.ABOUT')} className="about-version">
 							<About actions={actions} version={selectedVersion.version} />
@@ -94,6 +94,7 @@ Tabs.propTypes = {
 	classification: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,
+	modal: PropTypes.object.isRequired,
 	isFetchingClass: PropTypes.bool.isRequired
 }
 

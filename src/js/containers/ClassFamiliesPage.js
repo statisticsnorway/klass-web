@@ -33,7 +33,7 @@ class ClassFamiliesPage extends Component {
     }
 
     renderContent() {
-        const {items, isFetching, actions} = this.props
+        const {items, isFetching, actions, modal} = this.props
 
         return (
             <div>
@@ -44,7 +44,7 @@ class ClassFamiliesPage extends Component {
                     <Translate component="h3" content="CLASSIFICATIONS.CHOOSE_CLASS_FAMILY"/>
                 </div>
                 <div className="results class-list" id="expandcollapse">
-                    <List items={items} isFetching={isFetching} type="classFamilies" actions={actions}/>
+                    <List items={items} isFetching={isFetching} type="classFamilies" actions={actions} modal={modal}/>
                 </div>
             </div>
         )
@@ -75,7 +75,8 @@ const mapStateToProps = (state, ownProps) => {
 
         search: state.searchResult.search,
         searchResult: state.searchResult.items,
-        searchIsFetching: state.searchResult.isFetching
+        searchIsFetching: state.searchResult.isFetching,
+		modal: state.modal
     }
 }
 

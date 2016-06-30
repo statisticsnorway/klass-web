@@ -10,10 +10,13 @@
 	.expandcollapse {
 	    margin: 2em 0 4em 0;
 
+        > li {
+            position: relative;
+        }
+
 		li {
 			padding: 0;
 			border-bottom: 1px solid #bbb;
-            position: relative;
 
             &:first-child {
                 border-top: 1px solid #bbb;
@@ -55,6 +58,7 @@
 			color: #333;
 			text-decoration: none;
 			background-position: 0.3em 1.15em;
+            position: relative;
 
 			&:hover {
 				background-color: lighten($black, 70%) !important;
@@ -79,7 +83,8 @@
 			margin: 0 0 0 2em;
 		}
 
-		.collapse .delemne-children, .expand>.delemne-children {
+		// .collapse .delemne-children,
+        .expand>.delemne-children {
 	    	max-height: 0;
 			overflow: hidden;
 	    	transition-duration: 0.5s;

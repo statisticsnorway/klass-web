@@ -5,7 +5,7 @@ import counterpart from 'counterpart'
 
 class List extends Component {
 	renderList() {
-		const { items, type, actions } = this.props
+		const { items, type, actions, modal } = this.props
 		if (items) {
 			return items.map(function(item, key){
 				let name
@@ -29,7 +29,8 @@ class List extends Component {
 							item={item}
 							displayName={name}
 							type={type}
-							actions={actions} />
+							actions={actions}
+                            modal={modal} />
 					)
 				}
 			})
@@ -57,6 +58,7 @@ class List extends Component {
 }
 
 List.propTypes = {
+	modal: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,
 	items: PropTypes.array.isRequired,
 	isFetching: PropTypes.bool.isRequired,

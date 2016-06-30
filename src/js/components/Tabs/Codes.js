@@ -17,7 +17,7 @@ class Codes extends Component {
 	}
 
 	downloadCodes() {
-		const { version, actions, params } = this.props
+		const { version, actions, params, modal } = this.props
 		const fromDate = version.validFrom
 		const toDate = moment(version.validTo).isValid() ? ('&toDate=' + version.validTo) : ''
 		const csvURL = config.API_BASE_URL + '/classifications/' + params.classId + '/codes.csv?from=' + fromDate + toDate + '&csvSeparator=;'
@@ -29,14 +29,14 @@ class Codes extends Component {
 	}
 
 	renderList () {
-		const { version, actions } = this.props
+		const { version, actions, modal } = this.props
 		if (_.isEmpty(version.nestedItems)) {
 			return (
 				<p><i><Translate content="TABS.CODES.CODES_NOT_FOUND" /></i></p>
 			)
 		}
 		return (
-			<List items={version.nestedItems} type="code" actions={actions}/>
+			<List items={version.nestedItems} type="code" actions={actions} modal={modal}/>
 		)
 	}
 
@@ -92,7 +92,8 @@ class Codes extends Component {
 Codes.propTypes = {
 	version: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired,
-	actions: PropTypes.object.isRequired
+	actions: PropTypes.object.isRequired,
+	modal: PropTypes.object.isRequired
 }
 
 export default Codes

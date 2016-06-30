@@ -79,7 +79,7 @@ var config = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, '../src'),
-		historyApiFallback: true,
+	historyApiFallback: true,
     port: 3000
 	// proxy: {
 	// 	'/api/*': {

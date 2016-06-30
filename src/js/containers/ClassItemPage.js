@@ -42,7 +42,7 @@ class ClassItemPage extends Component {
 	}
 
 	renderTabs () {
-		const { classification, selectedVersion, actions, isFetching, params } = this.props
+		const { classification, selectedVersion, actions, isFetching, params, modal } = this.props
 		if (_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) {
 			return (
 				<Translate component="p" content="CLASS_ITEM.LOADING_CURRENT_VERSION" />
@@ -55,61 +55,8 @@ class ClassItemPage extends Component {
 				selectedVersion={selectedVersion}
 				actions={actions}
 				isFetchingClass={isFetching}
-				params={params} />
-		)
-	}
-
-	closeModal () {
-		const { actions } = this.props
-		actions.hideModal()
-	}
-
-	renderNoteBlocks (arr) {
-		return arr.map(function (item, key) {
-			var splitted = item.split(/:(.+)?/)
-			return (
-				<div className="flex-container" key={key}>
-					<div className="label">{splitted[0]}:</div>
-					<div className="content">{splitted[1]}</div>
-				</div>
-			)
-		})
-	}
-
-	renderModal () {
-		const { modal } = this.props
-		const modalPosition = 'modal-notes'// + config.NOTES_POSITION
-
-		let modalPosY
-
-		if (!modal.modalIsOpen) {
-			return null
-		}
-
-		if (!_.isEmpty(modal.position)) {
-			modalPosY = modal.position.y - 40
-		}
-
-		let noteBlock = modal.item.notes.split('\n')
-
-		return (
-			<Modal
-				className='modal-overlay'
-				closeOnOuterClick={true}
-				show={modal.modalIsOpen}
-				onClose={this.closeModal.bind(this)}>
-				<div
-					className={modalPosition}
-					style={{top: modalPosY}}>
-					<div className="modal-content">
-						<a onClick={this.closeModal.bind(this)}>
-							<i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
-						</a>
-						<h5>{modal.item.code} - {modal.item.name}</h5>
-						{this.renderNoteBlocks(noteBlock)}
-					</div>
-				</div>
-			</Modal>
+				params={params}
+                modal={modal} />
 		)
 	}
 
@@ -143,8 +90,6 @@ class ClassItemPage extends Component {
 					onLanguageChange={loadData}
 					actions={actions}
 					params={params} />
-
-				{this.renderModal()}
 			</div>
 		)
 	}

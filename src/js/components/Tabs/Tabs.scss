@@ -8,8 +8,9 @@
 	}
 
 	.icon-info {
-		position: relative;
-		float: right;
+		position: absolute;
+		right: 0.6em;
+        top: 0.6em;
 
 		i {
 			cursor: pointer;

@@ -3,11 +3,12 @@ import { Link } from 'react-router'
 import Translate from 'react-translate-component'
 import List from './index'
 import Notes from '../Notes'
+import Modal from 'simple-react-modal'
 import _ from 'lodash'
 
 class ListItem extends Component {
 	renderItemList() {
-		const { item, displayName, type, actions } = this.props;
+		const { item, displayName, type, actions, modal } = this.props;
 
 		if (item.children && item.children.length > 0) {
 			const listEl = item.children.map((childItem, key) =>
@@ -31,7 +32,8 @@ class ListItem extends Component {
 								item={childItem}
 								displayName={name}
 								type={type}
-			          actions={actions} />
+		                        actions={actions}
+                                modal={modal} />
 						)
 					}
 				}
@@ -50,16 +52,61 @@ class ListItem extends Component {
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
 
 		return (
-			<li className={toggleIcon}>
+			<li className={toggleIcon} id={item.level+'_'+item.code}>
 				<a className="toggle-children" onClick={(ev) => this.toggle(ev)}>
 					<span className="screen-reader-only"><Translate content="CLASSIFICATIONS.DISPLAY_HIDE"/> </span>
 					{displayName}
-					<Notes item={item} actions={actions} />
+                    <Notes item={item} actions={actions} />
 				</a>
+                {this.renderModal()}
 				{this.renderItemList()}
 			</li>
 		)
 	}
+
+	closeModal () {
+		const { actions } = this.props
+		actions.hideModal()
+	}
+
+	renderNoteBlocks (arr) {
+		return arr.map(function (item, key) {
+			var splitted = item.split(/:(.+)?/)
+			return (
+				<div className="flex-container" key={key}>
+					<div className="label">{splitted[0]}:</div>
+					<div className="content">{splitted[1]}</div>
+				</div>
+			)
+		})
+	}
+
+    renderModal () {
+		const { modal, item } = this.props
+
+
+		if (!modal.modalIsOpen || (!_.isEqual(modal.item, item))) {
+			return null
+		}
+
+		let noteBlock = modal.item.notes.split('\n')
+
+		return (
+			<Modal
+				className='modal-notes'
+				closeOnOuterClick={true}
+				show={modal.modalIsOpen}
+				onClose={this.closeModal.bind(this)}>
+					<div className="modal-content">
+						<a onClick={this.closeModal.bind(this)}>
+							<i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
+						</a>
+						<h5>{modal.item.code} - {modal.item.name}</h5>
+						{this.renderNoteBlocks(noteBlock)}
+					</div>
+			</Modal>
+		)
+    }
 
 	toggle(e) {
 		e.preventDefault();
@@ -75,12 +122,14 @@ class ListItem extends Component {
 	}
 }
 
+
 ListItem.propTypes = {
 	item: PropTypes.object.isRequired,
 	idx: PropTypes.number.isRequired,
 	displayName: PropTypes.element.isRequired,
 	type: PropTypes.string.isRequired,
-	actions: PropTypes.object.isRequired
+	actions: PropTypes.object.isRequired,
+	modal: PropTypes.object.isRequired
 }
 
 export default ListItem
