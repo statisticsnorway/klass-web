@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
 
 class SSBHeader extends Component {
+    setTextSize (ev, size) {
+        ev.preventDefault()
+        document.body.className = size
+    }
     renderLetterSize () {
-        return null
         return (
             <li id="letter-size" className="first">
                 <span className="screen-reader-only">Velg tekststørrelse</span>
                 <ul>
-                    <li><a title="Normal" href="#normal" className="size-default">A <span className="screen-reader-only">Vanlig</span></a></li>
-                    <li><a title="Stor tekst" href="#stor-tekst" className="size-l">A <span className="screen-reader-only">Større</span></a></li>
-                    <li><a title="Ekstra stor tekst" href="#ekstra-stor-tekst" className="size-xl">A<span className="screen-reader-only">Størst</span></a></li>
+                    <li>
+                        <a title="Normal" href="#normal" className="size-default" onClick={(ev) => this.setTextSize(ev)}>A <span className="screen-reader-only">Vanlig</span></a>
+                    </li>
+                    <li>
+                        <a title="Stor tekst" href="#stor-tekst" className="size-l" onClick={(ev) => this.setTextSize(ev, 'large')}>A <span className="screen-reader-only">Større</span></a>
+                    </li>
+                    <li>
+                        <a title="Ekstra stor tekst" href="#ekstra-stor-tekst" className="size-xl" onClick={(ev) => this.setTextSize(ev, 'extra-large')}>A<span className="screen-reader-only">Størst</span></a>
+                    </li>
                 </ul>
             </li>
         )

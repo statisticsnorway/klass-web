@@ -24,7 +24,7 @@
 	}
 
 	.tabs {
-		font-size: 125%;
+		// font-size: 125%;
 		line-height: $body-line-height;
 
 		.version-info {
@@ -40,6 +40,7 @@
 				background-color: #FFDCED;
 			}
 		}
+
 
 		/*
 			react-tab-panel
@@ -79,8 +80,9 @@
 			}
 
 			.react-tab-panel__tab-title-inner {
-				padding: 0.75em 0.7em 0.66em 0.7em;
-	    	text-align: center;
+	            padding: 0.75em 0.7em 0.66em 0.7em;
+	            text-align: center;
+                font-size: $body-font-size;
 			}
 
 			.react-tab-panel__tab-title:not(.react-tab-panel__tab-title--active) {
@@ -159,9 +161,17 @@
 					text-decoration: underline;
 				}
 
+                th {
+                    white-space: nowrap;
+                }
+
 				td, th {
 					padding-left: 0;
 				}
+
+                td table td, td table th {
+                    font-size: 1em;
+                }
 
 				.levels-table {
 					margin-top: 0;

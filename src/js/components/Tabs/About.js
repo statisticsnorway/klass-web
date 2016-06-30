@@ -22,7 +22,7 @@ class About extends Component {
 		const { version, actions } = this.props
 
 		return (
-			<div className="about-version">
+			<div>
 				<h3>Om {version.name}</h3>
 				<table className="about-table">
 					<tbody>

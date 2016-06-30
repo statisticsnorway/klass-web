@@ -78,10 +78,10 @@ class ClassItemPage extends Component {
 			<div className="content klass-item">
 				<div className="main">
 					<div className="heading">
-						<div>Statisk enhet: <b>Foretak</b></div>
+						<p>Statisk enhet: <b>Foretak</b></p>
 						<h1>{classification.name}</h1>
 						<p className="description short" ref="description">{classification.description}</p>
-						<span className="clickable" onClick={(ev) => this.showFullDescription(ev)}>+ <Translate content="CLASS_ITEM.READ_MORE" /></span>
+						<p className="clickable" onClick={(ev) => this.showFullDescription(ev)}>+ <Translate content="CLASS_ITEM.READ_MORE" /></p>
 					</div>
 					{this.renderTabs()}
 				</div>

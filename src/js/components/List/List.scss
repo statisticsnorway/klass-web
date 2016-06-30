@@ -9,6 +9,7 @@
 .class-list {
 	.expandcollapse {
 	    margin: 2em 0 4em 0;
+        font-size: 1em;
 
         > li {
             position: relative;
@@ -36,7 +37,7 @@
 			display: block;
 			margin: 0;
 			padding: 0.9em 1.5em 0.8em 1.5em;
-			font-size: 14px;
+			font-size: $list-font-size;
 
 			.link-type {
 				float: right;
