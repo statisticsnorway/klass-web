@@ -4,9 +4,8 @@ import _ from 'lodash'
 
 class Note extends Component {
 	handleClick (e, actions, item) {
-		console.log(e)
 		e.stopPropagation()
-		actions.displayModal(item, {x:e.pageX, y:e.pageY});
+		actions.displayModal(item);
 	}
 
 	render () {

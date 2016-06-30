@@ -4,6 +4,25 @@
 	.search-box {
 		margin-bottom: 3em;
 
+        .fa-info-circle {
+            font-size: 1.5em;
+            cursor: pointer;
+            margin-left: 0.5em;
+        }
+
+        .close-button {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            font-size: 2em;
+            color: lighten($purple, 50%);
+        }
+
+        .modal-content, .modal-content p {
+            color: #fff;
+        }
+
 		.flex-container {
 			align-items: flex-end;
 			label {

@@ -1,7 +1,9 @@
 import './Search.scss'
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
+import { connect } from 'react-redux'
 import Translate from 'react-translate-component'
+import Modal from 'simple-react-modal'
 import counterpart from 'counterpart'
 import _ from 'lodash'
 
@@ -36,6 +38,45 @@ class Search extends Component {
 		}
 		actions.setSearchObject(searchObj);
 	}
+
+    displayModal () {
+        const { actions } = this.props
+        const item = {
+            "title": counterpart.translate('SEARCH.WHAT_IS_CODELIST_HEADER'),
+            "body": counterpart.translate('SEARCH.WHAT_IS_CODELIST_BODY')
+        }
+
+		actions.displayModal(item);
+    }
+
+	closeModal () {
+		const { actions } = this.props
+		actions.hideModal()
+	}
+
+    renderModal () {
+        const { modal } = this.props
+
+        if (modal && !_.isEmpty(modal.item)) {
+            return (
+    			<Modal
+    				closeOnOuterClick={true}
+                    style={{background: 'rgba(0, 0, 0, 0.2)'}}
+                    containerStyle={{background: '#666666'}}
+    				show={modal.modalIsOpen}
+    				onClose={this.closeModal.bind(this)}>
+    					<div className="modal-content">
+    						<a onClick={this.closeModal.bind(this)}>
+    							<i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
+    						</a>
+    						<h2>{modal.item.title}</h2>
+    						<div><p>{modal.item.body}</p></div>
+    					</div>
+    			</Modal>
+            )
+        }
+        return null
+    }
 
 	render () {
 		const { sections, search } = this.props
@@ -74,7 +115,8 @@ class Search extends Component {
 				</div>
 				<input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.handleChange.bind(this)} checked={search.includeCodelists}/>
 				<Translate component="label" htmlFor="includeCodelists" content="SEARCH.INCLUDE_CODELISTS" />
-				<Translate component="a" href="" content="SEARCH.WHAT_IS_CODELIST" />
+				<i className="fa fa-info-circle" aria-hidden="true" onClick={() => this.displayModal()}></i>
+                {this.renderModal()}
 			</form>
 		)
 	}
@@ -86,8 +128,16 @@ Search.propTypes = {
 	search: PropTypes.object.isRequired
 }
 
+const mapStateToProps = (state, ownProps) => {
+	return {
+		modal: state.modal
+	}
+}
+
 Search.contextTypes = {
 	router: PropTypes.object
 }
 
-export default Search
+export default connect(
+	mapStateToProps
+)(Search)

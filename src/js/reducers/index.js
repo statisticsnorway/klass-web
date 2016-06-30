@@ -6,16 +6,14 @@ import searchResult from './searchResult';
 
 const initialState = {
 	modalIsOpen: false,
-	item: {},
-	position: {}
+	item: {}
 }
 function modal(state = initialState, action) {
 	switch (action.type) {
 		case 'TOGGLE_MODAL':
 			return {
 				modalIsOpen: action.display,
-				item: action.item,
-				position: action.position
+				item: action.item
 			}
 		default:
 			return state

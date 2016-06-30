@@ -182,18 +182,17 @@ export function loadVariant(itemId) {
 }
 
 export function hideModal() {
-    return toggleModal(false, null, null)
+    return toggleModal(false, null)
 }
 
-export function displayModal(item, position) {
-    return toggleModal(true, item, position)
+export function displayModal(item) {
+    return toggleModal(true, item)
 }
 
-function toggleModal(bool, item, position) {
+function toggleModal(bool, item) {
     return {
         type: types.TOGGLE_MODAL,
         display: bool,
-        item: item,
-        position: position
+        item: item
     }
 }
