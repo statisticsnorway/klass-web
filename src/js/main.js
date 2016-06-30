@@ -8,6 +8,7 @@ import { Router, browserHistory, useRouterHistory  } from 'react-router'
 import { createHashHistory } from 'history'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import counterpart from 'counterpart'
+import { SSBHeader, SSBFooter } from './ssbFrame'
 
 import routes from './routes';
 
@@ -39,9 +40,15 @@ let ComponentEl;
 // 	);
 // } else {
 	ComponentEl = (
-		<div className="sitewrapper">
-			<Router history={appHistory} routes={routes}/>
-		</div>
+        <div>
+            <SSBHeader />
+            <div id="page">
+                <div className="sitewrapper">
+                    <Router history={appHistory} routes={routes}/>
+                </div>
+            </div>
+            <SSBFooter />
+        </div>
 	);
 // }
 
