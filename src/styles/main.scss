@@ -16,8 +16,13 @@ body {
             font-size: $body-font-size;
             line-height: $body-line-height;
         }
-    	.breadcrumbs {
+    	#navigation-path {
     		line-height: $body-line-height;
+            font-size: $body-font-size;
+
+            .breadcrumbs {
+                display: inline;
+            }
     	}
     	.language-selector {
     		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;

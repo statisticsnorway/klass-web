@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router'
-// import Breadcrumbs from 'react-breadcrumbs'
+import Breadcrumbs from 'react-breadcrumbs'
 import {connect} from 'react-redux'
 
 class App extends Component {
@@ -8,14 +8,10 @@ class App extends Component {
 		// return (
 		// 	<div id="navigation-path">
 		// 		<h2 className="screen-reader-only">Du er her:</h2>
-		// 		<ul id="breadcrumbs" className="nav leftadjust">
-		// 			<li><a href="/">Forsiden > </a></li>
-		// 			<li>Klassifikasjoner og kodelister</li>
-		// 		</ul>
+		// 		<span><a href="http://www.ssb.no/">Forsiden</a> > </span>
 		// 		<Breadcrumbs
 		// 			routes={this.props.routes}
 		// 			params={this.props.params}
-		// 			setDocumentTitle={true}
 		// 			excludes={['Klassifikasjoner']}
 		// 			/>
 		// 	</div>
@@ -23,10 +19,8 @@ class App extends Component {
 		return (
 			<div id="navigation-path">
 				<h2 className="screen-reader-only">Du er her:</h2>
-				<ul id="breadcrumbs" className="nav leftadjust">
-					<li><Link to="/">Forsiden</Link> > </li>
-					<li>Klassifikasjoner og kodelister</li>
-				</ul>
+				<span><a href="http://www.ssb.no/">Forsiden</a> > </span>
+				<span>Klassifikasjoner og kodelister</span>
 			</div>
 		)
 	}

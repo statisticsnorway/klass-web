@@ -14,7 +14,7 @@ export default (
 		</Route>
 	</Route>
 	<Route path="sok" name="Søkeresultat" component={SearchPage} />
-    <Route path="404" component={NotFoundView} />
+    <Route path="404" name="404: Fant ingen sider" component={NotFoundView} />
     <Redirect from="*" to="404" />
   </Route>
 );
