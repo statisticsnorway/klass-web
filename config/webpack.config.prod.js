@@ -55,6 +55,7 @@ module.exports = {
   output: {
     path: PATHS.build,
     filename: 'js/[name].js',
+    sourceMapFilename: 'js/[name].js.map',
     publicPath: '/klass-ssb-no/'
   },
   stats: {

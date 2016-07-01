@@ -39,7 +39,7 @@ class SSBHeader extends Component {
             <div id="header" className="menu-closed">
                 <div className="sitewrapper">
                     <a id="logo" href="http://www.ssb.no/" title="Gå til forsiden">
-                        <img src="../images/SSB_logo.png" alt="SSB logo (Gå til forsiden)" />
+                        <img src="./images/SSB_logo.png" alt="SSB logo (Gå til forsiden)" />
                     </a>
                     <div id="global-tools">
                         <ul className="global-links nav">
@@ -115,8 +115,8 @@ class SSBFooter extends Component {
                        </li>
                     </ul>
                     <ul className="social-links">
-                       <li><a title="Twitter" href="https://twitter.com/ssbnytt"><img alt="Twitter" src="../images/twitter_ssb.png" /></a></li>
-                       <li><a title="RSS" href="http://www.ssb.no/informasjon/rss"><img alt="RSS" src="../images/icon-rss-footer.png" /></a></li>
+                       <li><a title="Twitter" href="https://twitter.com/ssbnytt"><img alt="Twitter" src="./images/twitter_ssb.png" /></a></li>
+                       <li><a title="RSS" href="http://www.ssb.no/informasjon/rss"><img alt="RSS" src="./images/icon-rss-footer.png" /></a></li>
                     </ul>
                 </div>
             </div>

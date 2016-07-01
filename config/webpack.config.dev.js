@@ -39,7 +39,7 @@ var config = {
   output: {
     path: PATHS.build,
     filename: 'js/[name].js',
-    publicPath: '/klass-ssb-no/'
+    publicPath: '/'
   },
   stats: {
     colors: true,
