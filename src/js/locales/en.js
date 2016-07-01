@@ -1,10 +1,25 @@
 module.exports = {
-    'MENU': {
-        'STATISTICS': 'Statistics',
-        'RESEARCH': 'Research',
-        'DATA_COLLECTION': 'Data collection',
-        'ABOUT_SSB': 'About statistics Norway',
-        'MY_PAGE': 'My page'
+    'SSB_FRAME': {
+        'HEADER': {
+            'STATISTICS': 'Statistics',
+            'RESEARCH': 'Research',
+            'DATA_COLLECTION': 'Data collection',
+            'ABOUT_SSB': 'About statistics Norway',
+            'MY_PAGE': 'My page',
+            'COOKIES': 'Cookies and privacy',
+            'KEYWORDS': 'Keywords A-Z',
+            'CONTACT_US': 'Contact us',
+            'CHOOSE_LETTER_SIZE': 'Choose text size',
+            'LETTER_REGULAR': 'Regular',
+            'LETTER_LARGER': 'Larger',
+            'LETTER_LARGEST': 'Largest',
+            'SITE_SEARCH': 'Site search'
+        },
+        'FOOTER': {
+            'NEWSLETTER': 'News via e-mail',
+            'SITEMAP': 'site map',
+            'COPYRIGHT': '2016 © Statistics Norway'
+        }
     },
 	'COMMON': {
 		'OPEN_HIERARCHY': 'Open hierarchy',
@@ -20,7 +35,7 @@ module.exports = {
 		'NORWEGIAN': 'Norwegian',
 		'NYNORSK': 'Nynorsk',
 		'ENGLISH': 'English',
-        'TOGGLE': 'Norwegian',
+        'TOGGLE': 'Norsk',
         'TOGGLE_SHORT': 'no',
         'SWITCH_LANGUAGE': 'Switch language',
         'CHOSEN_LANG_SHORT': 'en'

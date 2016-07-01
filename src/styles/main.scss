@@ -8,112 +8,114 @@ body {
 }
 
 .klass {
-	::-webkit-input-placeholder {
-		font-style: italic;
-	}
-    label, td, th {
-        font-size: $body-font-size;
-        line-height: $body-line-height;
+    #page {
+    	::-webkit-input-placeholder {
+    		font-style: italic;
+    	}
+        label, td, th {
+            font-size: $body-font-size;
+            line-height: $body-line-height;
+        }
+    	.breadcrumbs {
+    		line-height: $body-line-height;
+    	}
+    	.language-selector {
+    		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
+        	font-size: 1.1em;
+
+    		p {
+    			display: inline;
+    		}
+    		select {
+    			border: none;
+    			background: inherit;
+    			margin-left: 10px;
+    			font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
+    			text-align: right;
+    			cursor: pointer;
+
+    			&:focus {
+    				outline: none;
+    			}
+    		}
+    	}
+
+    	.back-link {
+    		color: #003399;
+
+    		a {
+    			text-decoration: underline;
+    		}
+    	}
+
+    	.main {
+    		width: 67em;
+    		float: left;
+    		margin-right: 3em;
+
+    		.heading {
+    			.description.short {
+    				overflow: hidden;
+    				text-overflow: ellipsis;
+    				display: -webkit-box;
+    				line-height: 1.5em;     /* fallback */
+    		   		max-height: 6em;      /* fallback */
+    				-webkit-line-clamp: 4;
+    				-webkit-box-orient: vertical;
+    			}
+    		}
+    	}
+
+    	h1 {
+    		font-size: 3.6em;
+    	}
+
+        input[type="text"], input[type="submit"], button {
+            font-size: $body-font-size;
+        }
+
+    	input[type="submit"], button {
+    		background: linear-gradient(#fff, #D8D8D8);
+    		height: 2em;
+    		border-width: 1px;
+    		cursor: pointer;
+    	}
+
+    	select {
+    		background: linear-gradient(#fff, #D8D8D8);
+    	}
+
+
+    	.alternate tbody tr:hover, .alternate tbody tr.odd:hover {
+    		background-color: lighten($black, 70%) !important;
+    	}
+
+    	.clickable {
+    		cursor: pointer;
+    	}
+
+    	p.clickable {
+    		text-decoration: underline;
+    		color: $link-color;
+    	}
+
+    	.flex-container {
+    		display: flex;
+    		flex-direction: row;
+            flex-flow: row wrap;
+    		align-content: stretch;
+    		justify-content: space-around;
+    		flex: 1 0 0;
+
+    	}
+
+    	.browsehappy {
+    	    margin: 0.2em 0;
+    	    background: #ccc;
+    	    color: #000;
+    	    padding: 0.2em 0;
+    	}
     }
-	.breadcrumbs {
-		line-height: $body-line-height;
-	}
-	.language-selector {
-		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
-    	font-size: 1.1em;
-
-		p {
-			display: inline;
-		}
-		select {
-			border: none;
-			background: inherit;
-			margin-left: 10px;
-			font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
-			text-align: right;
-			cursor: pointer;
-
-			&:focus {
-				outline: none;
-			}
-		}
-	}
-
-	.back-link {
-		color: #003399;
-
-		a {
-			text-decoration: underline;
-		}
-	}
-
-	.main {
-		width: 67em;
-		float: left;
-		margin-right: 3em;
-
-		.heading {
-			.description.short {
-				overflow: hidden;
-				text-overflow: ellipsis;
-				display: -webkit-box;
-				line-height: 1.5em;     /* fallback */
-		   		max-height: 6em;      /* fallback */
-				-webkit-line-clamp: 4;
-				-webkit-box-orient: vertical;
-			}
-		}
-	}
-
-	h1 {
-		font-size: 3.6em;
-	}
-
-    input[type="text"], input[type="submit"], button {
-        font-size: $body-font-size;
-    }
-
-	input[type="submit"], button {
-		background: linear-gradient(#fff, #D8D8D8);
-		height: 2em;
-		border-width: 1px;
-		cursor: pointer;
-	}
-
-	select {
-		background: linear-gradient(#fff, #D8D8D8);
-	}
-
-
-	.alternate tbody tr:hover, .alternate tbody tr.odd:hover {
-		background-color: lighten($black, 70%) !important;
-	}
-
-	.clickable {
-		cursor: pointer;
-	}
-
-	p.clickable {
-		text-decoration: underline;
-		color: $link-color;
-	}
-
-	.flex-container {
-		display: flex;
-		flex-direction: row;
-        flex-flow: row wrap;
-		align-content: stretch;
-		justify-content: space-around;
-		flex: 1 0 0;
-
-	}
-
-	.browsehappy {
-	    margin: 0.2em 0;
-	    background: #ccc;
-	    color: #000;
-	    padding: 0.2em 0;
-	}
 }
 
 @media screen and (max-width: 700px) {
@@ -121,17 +123,19 @@ body {
         min-width: auto;
     }
     .klass {
-        .sitewrapper, .main {
-            width: auto;
-            max-width: 100%;
-            min-width: 0;
-        }
-    	.sitewrapper {
-    		padding: 0 10px;
-    	}
-        .main {
-            margin-right: 0;
-            float: none;
+        #page {
+            .sitewrapper, .main {
+                width: auto;
+                max-width: 100%;
+                min-width: 0;
+            }
+        	.sitewrapper {
+        		padding: 0 10px;
+        	}
+            .main {
+                margin-right: 0;
+                float: none;
+            }
         }
     }
 }

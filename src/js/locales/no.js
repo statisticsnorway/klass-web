@@ -1,10 +1,25 @@
 module.exports = {
-    'MENU': {
-        'STATISTICS': 'Statistikk',
-        'RESEARCH': 'Forskning',
-        'DATA_COLLECTION': 'Innrapportering',
-        'ABOUT_SSB': 'Om SSB',
-        'MY_PAGE': 'Mitt SSB'
+    'SSB_FRAME': {
+        'HEADER': {
+            'STATISTICS': 'Statistikk',
+            'RESEARCH': 'Forskning',
+            'DATA_COLLECTION': 'Innrapportering',
+            'ABOUT_SSB': 'Om SSB',
+            'MY_PAGE': 'Mitt SSB',
+            'COOKIES': 'Cookies og personvern',
+            'KEYWORDS': 'Stikkord A-Å',
+            'CONTACT_US': 'Kontakt oss',
+            'CHOOSE_LETTER_SIZE': 'Velg tekststørrelse',
+            'LETTER_REGULAR': 'Vanlig',
+            'LETTER_LARGER': 'Større',
+            'LETTER_LARGEST': 'Størst',
+            'SITE_SEARCH': 'Nettstedsøk'
+        },
+        'FOOTER': {
+            'NEWSLETTER': 'Nyhetsbrev',
+            'SITEMAP': 'Nettstedskart',
+            'COPYRIGHT': '2016 © Statistisk sentralbyrå'
+        }
     },
 	'COMMON': {
 		'OPEN_HIERARCHY': 'Åpne hierarkiet',
@@ -20,7 +35,7 @@ module.exports = {
 		'NORWEGIAN': 'Norsk',
 		'NYNORSK': 'Nynorsk',
 		'ENGLISH': 'Engelsk',
-        'TOGGLE': 'Engelsk',
+        'TOGGLE': 'English',
         'TOGGLE_SHORT': 'en',
         'SWITCH_LANGUAGE': 'Bytt språk',
         'CHOSEN_LANG_SHORT': 'no'
