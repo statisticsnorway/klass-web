@@ -80,7 +80,7 @@ class Tabs extends Component {
 							<Correspondences actions={actions} selectedVersion={selectedVersion} params={params} />
 						</div>
 						<div tabTitle={counterpart.translate('TABS.VARIANTS.VARIANTS')} className="variants">
-							<Variants actions={actions} selectedVersion={selectedVersion} params={params} />
+							<Variants actions={actions} selectedVersion={selectedVersion} params={params} modal={modal} />
 						</div>
 					</TabPanel>
 				</div>

@@ -4,6 +4,7 @@ import counterpart from 'counterpart'
 import _ from 'lodash'
 import List from '../List'
 import FlatToNested from '../../lib/flat-to-nested'
+import config from '../../config'
 
 const flatToNested = new FlatToNested({
 	id: 'code',
@@ -63,14 +64,14 @@ class Variants extends Component {
 	}
 
 	renderVariantList(items) {
-		const { actions } = this.props
+		const { actions, modal } = this.props
 		if (items.length < 1) {
 			return (
 				<p><Translate component="i" content="TABS.VARIANTS.VARIANTS_NOT_FOUND" /></p>
 			)
 		}
 		return (
-			<List items={items} displayName="code" type="variant" actions={actions}/>
+			<List items={items} displayName="code" type="variant" actions={actions} modal={modal}/>
 		)
 	}
 
@@ -85,6 +86,16 @@ class Variants extends Component {
             ev.currentTarget.value = 'true'
             actions.toggleAll(false, 'variant')
         }
+    }
+
+    downloadCodes () {
+		const { params } = this.props
+		const csvURL = config.API_BASE_URL + '/variants/' + params.itemId + '.csv'
+
+		var tempLink = document.createElement('a')
+		tempLink.href = csvURL
+		tempLink.setAttribute('download', 'variant')
+		tempLink.click()
     }
 
 	render () {
@@ -110,7 +121,7 @@ class Variants extends Component {
                         <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
                             <Translate content="COMMON.OPEN_HIERARCHY"/>
                         </button>
-						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" />
+						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
 					</div>
 
 					<div className="results class-list" id="expandcollapse">
@@ -143,6 +154,7 @@ class Variants extends Component {
 Variants.propTypes = {
 	selectedVersion: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,
+	modal: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired
 }
 

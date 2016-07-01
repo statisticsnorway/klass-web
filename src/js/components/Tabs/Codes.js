@@ -17,14 +17,12 @@ class Codes extends Component {
 	}
 
 	downloadCodes() {
-		const { version, actions, params, modal } = this.props
-		const fromDate = version.validFrom
-		const toDate = moment(version.validTo).isValid() ? ('&toDate=' + version.validTo) : ''
-		const csvURL = config.API_BASE_URL + '/classifications/' + params.classId + '/codes.csv?from=' + fromDate + toDate + '&csvSeparator=;'
+		const { version } = this.props
+		const csvURL = config.API_BASE_URL + '/versions/' + version.id + '.csv'
 
 		var tempLink = document.createElement('a')
 		tempLink.href = csvURL
-		tempLink.setAttribute('download', 'code.csv')
+		tempLink.setAttribute('download', 'code')
 		tempLink.click()
 	}
 

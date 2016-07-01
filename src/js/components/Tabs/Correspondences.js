@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
 import _ from 'lodash'
+import config from '../../config'
 
 function groupBy(array, f) {
 	var groups = {};
@@ -95,7 +96,13 @@ class Correspondences extends Component {
 	}
 
 	downloadCodes() {
+		const { params } = this.props
+		const csvURL = config.API_BASE_URL + '/correspondencetables/' + params.itemId + '.csv'
 
+		var tempLink = document.createElement('a')
+		tempLink.href = csvURL
+		tempLink.setAttribute('download', 'correspondencetable')
+		tempLink.click()
 	}
 
 	render () {
