@@ -12,7 +12,7 @@ class List extends Component {
 				switch (type) {
 					case 'code':
 					case 'variant':
-						name = <span><b>{item.code}</b> - {item.name}</span>
+						name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span><span className="shortName">{item.shortName}</span></span>
 						break;
 					case 'classFamilies':
 						name = <span>{item.name} ({item.numberOfClassifications})</span>

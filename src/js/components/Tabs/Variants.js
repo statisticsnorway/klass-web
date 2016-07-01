@@ -114,9 +114,11 @@ class Variants extends Component {
 						&lt;&lt; <Translate component="a" content="TABS.VARIANTS.BACK_TO_VARIANTS" href="javascript:history.back()" />
 					</p>
 					<h3>{selectedVariant.name}</h3>
-					<div><b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedVariant.owningSection}</div>
-					<div><b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedVariant.published.join()}</div>
-					<p>{selectedVariant.description}</p>
+					<p>
+                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedVariant.owningSection}<br/>
+                        <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedVariant.published.join()}<br/>
+                        {selectedVariant.description}
+                    </p>
 					<div className="button-heading">
                         <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
                             <Translate content="COMMON.OPEN_HIERARCHY"/>

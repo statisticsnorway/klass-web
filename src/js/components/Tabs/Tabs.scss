@@ -142,6 +142,10 @@
 			}
 			.results {
 				clear: both;
+
+                .shortName {
+                    display: none;
+                }
 			}
 		}
 
@@ -170,7 +174,7 @@
 				}
 
                 td table td, td table th {
-                    font-size: 1em;
+                    font-size: 1em !important;
                 }
 
 				.levels-table {

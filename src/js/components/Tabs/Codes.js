@@ -51,6 +51,20 @@ class Codes extends Component {
         }
     }
 
+    handleChange (e) {
+        if (e.target.checked) {
+            _.forEach(document.getElementsByClassName('itemName'), function(el) {
+                el.getElementsByClassName('longName')[0].style.display = 'none'
+                el.getElementsByClassName('shortName')[0].style.display = 'inline'
+            })
+        } else {
+            _.forEach(document.getElementsByClassName('itemName'), function(el) {
+                el.getElementsByClassName('longName')[0].style.display = 'inline'
+                el.getElementsByClassName('shortName')[0].style.display = 'none'
+            })
+        }
+    }
+
 	render () {
 		return (
 			<div>
@@ -66,7 +80,7 @@ class Codes extends Component {
     						<Translate component="button" type="submit" content="SEARCH.SEARCH" />
 						</div>
 					</div>
-					<input type="checkbox" id="includeCodelist"/>
+					<input type="checkbox" id="includeCodelist" onChange={(ev) => this.handleChange(ev)}/>
 					<Translate component="label" content="TABS.CODES.SHOW_SHORT_TITLES" htmlFor="includeCodelist" />
 				</form>
 				<div className="button-heading">

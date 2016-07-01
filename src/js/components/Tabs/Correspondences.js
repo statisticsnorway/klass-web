@@ -126,9 +126,11 @@ class Correspondences extends Component {
 						&lt;&lt; <Translate component="a" content="TABS.CORRESPONDENCES.BACK_TO_CORRESPONDENCES" href="javascript:history.back()" />
 					</p>
 					<h3>{selectedCorrespondence.name}</h3>
-					<div><b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedCorrespondence.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedCorrespondence.owningSection}</div>
-					<div><b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedCorrespondence.published.join()}</div>
-					<p>{selectedCorrespondence.description}</p>
+					<p>
+                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedCorrespondence.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedCorrespondence.owningSection}<br/>
+                        <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedCorrespondence.published.join()}<br/>
+    					{selectedCorrespondence.description}
+                    </p>
 					<div className="button-heading">
 						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
 					</div>
