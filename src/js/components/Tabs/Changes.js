@@ -6,76 +6,25 @@ import commonUtils from '../../lib/common-utils'
 
 class Changes extends Component {
 
-	componentWillReceiveProps(nextProps) {
-		const { actions, classification } = this.props
-
-		if (nextProps.params.itemId && (nextProps.params.itemId !== this.props.params.itemId)) {
-            let selectedChanges
-            _.forEach(classification.versions, function(v) {
-                if (v.id == nextProps.params.itemId) {
-                    selectedChanges = v
-                    return false
-                }
-            })
-
-            if (!_.isEmpty(selectedChanges)){
-                const query = {
-                    from: moment(selectedChanges.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
-                    to: moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('YYYY-MM-DD') : ''
-                }
-                actions.loadChanges(nextProps.params.classId, query)
-            }
-		}
-	}
-
 	componentDidMount() {
 		const { actions, classification, params } = this.props
-		if (params.itemId) {
-            let selectedChanges
+        let selectedChanges = classification.versions[0]
+		if (params.versionId) {
             _.forEach(classification.versions, function(v) {
-                if (v.id == params.itemId) {
+                if (v.id == params.versionId) {
                     selectedChanges = v
                     return false
                 }
             })
+        }
 
-            if (!_.isEmpty(selectedChanges)){
-                const query = {
-                    from: moment(selectedChanges.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
-                    to: moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('YYYY-MM-DD') : ''
-                }
-                actions.loadChanges(params.classId, query)
+        if (!_.isEmpty(selectedChanges)){
+            const query = {
+                from: moment(selectedChanges.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
+                to: moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('YYYY-MM-DD') : ''
             }
-		}
-	}
-
-    handleClick (version) {
-        const { params } = this.props
-
-		const changesPath = '/' + version.id
-
-		const classPath = '/' + params.classId
-		const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
-		const tabPath = '/' + params.tab
-
-		const path = "/klassifikasjoner" + classPath + versionPath + tabPath + changesPath
-		this.context.router.push(path)
-    }
-
-	renderTableBody () {
-		const { classification } = this.props
-		const versions = classification.versions
-
-		return versions.map(function(version, key){
-			return (
-				<tr key={key} className="clickable" onClick={() => this.handleClick(version)}>
-					<td>{moment(version.validFrom).format('D.MMMM YYYY')}</td>
-					<td>{moment(version.validTo).isValid() ? moment(version.validTo).format('D.MMMM YYYY') : 'Forstatt gyldig'}</td>
-				</tr>
-			)
-		}.bind(this))
-
-
+            actions.loadChanges(params.classId, query)
+        }
 	}
 
     renderChangesBody () {
@@ -135,65 +84,45 @@ class Changes extends Component {
     }
 
 	render () {
-		const { classification, selectedVersion, params } = this.props
+		const { classification, params } = this.props
+        let selectedChanges = classification.versions[0]
 
-		if (params.itemId) {
-            let selectedChanges
+		if (params.versionId) {
             _.forEach(classification.versions, function(v) {
-                if (v.id == params.itemId) {
+                if (v.id == params.versionId) {
                     selectedChanges = v
                     return false
                 }
             })
-
-            if (_.isEmpty(selectedChanges)) {
-                return (
-                    <div>
-                        <p className="back-link">
-                            &lt;&lt; <Translate component="a" content="TABS.CHANGES.BACK_TO_CHANGES" href="javascript:history.back()" />
-                        </p>
-	                   <Translate component="p" content="TABS.CHANGES.CHANGES_NOT_FOUND" />
-                    </div>
-                )
-            }
-
-            const validFrom = moment(selectedChanges.validFrom).format('D.MMMM YYYY')
-            const validTo = moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('D.MMMM YYYY') : 'Gjeldende versjon'
-    		return (
-    			<div>
-					<p className="back-link">
-						&lt;&lt; <Translate component="a" content="TABS.CHANGES.BACK_TO_CHANGES" href="javascript:history.back()" />
-					</p>
-                    <h3>
-                        <Translate content="TABS.CHANGES.CHANGES_FROM" /> {validFrom} <Translate content="TABS.CHANGES.TO" /> {validTo.toLowerCase()}
-                    </h3>
-    				<table className="change-table alternate">
-    					<thead>
-    						<tr>
-								<th>{validFrom}</th>
-								<th>{validTo}</th>
-    						</tr>
-    					</thead>
-    					<tbody>
-    						{this.renderChangesBody()}
-    					</tbody>
-    				</table>
-    			</div>
-    		)
         }
 
+        if (_.isEmpty(selectedChanges)) {
+            return (
+                <div>
+                <p className="back-link">
+                &lt;&lt; <Translate component="a" content="TABS.CHANGES.BACK_TO_CHANGES" href="javascript:history.back()" />
+                </p>
+                <Translate component="p" content="TABS.CHANGES.CHANGES_NOT_FOUND" />
+                </div>
+            )
+        }
+
+        const validFrom = moment(selectedChanges.validFrom).format('D.MMMM YYYY')
+        const validTo = moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('D.MMMM YYYY') : 'Gjeldende versjon'
         return (
             <div>
-                <Translate component="h3" content="TABS.CHANGES.CHANGES" />
+                <h3>
+                    <Translate content="TABS.CHANGES.CHANGES_FROM" /> {validFrom} <Translate content="TABS.CHANGES.TO" /> {validTo.toLowerCase()}
+                </h3>
                 <table className="change-table alternate">
                     <thead>
                         <tr>
-                            <Translate component="th" content="TABS.CHANGES.CHANGES_FROM" />
-                            <Translate component="th" content="TABS.CHANGES.CHANGES_TO" />
+                            <th>{validFrom}</th>
+                            <th>{validTo}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.renderTableBody()}
+                        {this.renderChangesBody()}
                     </tbody>
                 </table>
             </div>
