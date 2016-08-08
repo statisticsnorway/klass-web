@@ -20,10 +20,10 @@ class Tabs extends Component {
 		const version = selectedVersion.version
 		if (version.id !== classification.versions[0].id) {
 			return (
-				<p className="version-info">
-					<Translate component="div" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />
+				<div className="version-info">
+					<Translate component="p" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />
 					<div><Translate component="span" content="TABS.VERSION_EXPIRED" />: <b>({moment(version.validFrom).format("D. MMMM YYYY")} - {moment(version.validTo).format("D. MMMM YYYY")})</b></div>
-				</p>
+				</div>
 			)
 		} else {
 			return (

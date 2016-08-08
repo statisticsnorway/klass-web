@@ -21,6 +21,7 @@ class Codes extends Component {
 		const csvURL = config.API_BASE_URL + '/versions/' + version.id + '.csv'
 
 		var tempLink = document.createElement('a')
+        document.body.appendChild(tempLink)
 		tempLink.href = csvURL
 		tempLink.setAttribute('download', 'code')
 		tempLink.click()

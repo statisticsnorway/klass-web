@@ -100,6 +100,7 @@ class Correspondences extends Component {
 		const csvURL = config.API_BASE_URL + '/correspondencetables/' + params.itemId + '.csv'
 
 		var tempLink = document.createElement('a')
+        document.body.appendChild(tempLink)
 		tempLink.href = csvURL
 		tempLink.setAttribute('download', 'correspondencetable')
 		tempLink.click()
