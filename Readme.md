@@ -1,4 +1,4 @@
-# Metadataportal
+# Klass.ssb.no
 Søk og utlisting av klassifikasjoner og kodeverk fra Rest API.
 
 Denne applikasjonen bruker følgende teknologier:

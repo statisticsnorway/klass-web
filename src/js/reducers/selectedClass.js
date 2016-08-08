@@ -41,8 +41,9 @@ function selectedClass(state = initialState, action) {
 			return _.merge({}, newState)
 
 		case types.SELECTED_CLASS_FAILURE:
-			return _.merge({}, state, {
-				isFetching: false
+			return _.assign({}, state, {
+				isFetching: false,
+            	classification: {}
 			})
 
 		default:

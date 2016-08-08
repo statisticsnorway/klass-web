@@ -47,6 +47,7 @@ module.exports = {
 	},
 	'CLASSIFICATIONS': {
 		'CLASSIFICATION': 'Klassifikasjon',
+        'NO_CLASS_FOUND': 'Ingen klassifikasjoner funnet',
 		'DISPLAY_HIDE': 'Vis/skjul:',
 		'CHOOSE_CLASS_FAMILY': 'Eller velg et område',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Klassifikasjoner og kodelister',
@@ -136,7 +137,7 @@ module.exports = {
 			'BACK_TO_VARIANTS': 'Tilbake til alle varianter'
 		},
 		'VERSIONS': {
-			'VERSIONS': 'Andre versjoner',
+			'VERSIONS': 'Alle versjoner',
 			'OTHER_VERSIONS_OF': 'Andre versjoner av'
 		}
 	}

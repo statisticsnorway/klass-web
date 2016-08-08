@@ -18,7 +18,7 @@ function loadData (props, selectedLanguage) {
 
 	actions.getClassification(params.classId).then(function (res) {
 		const classification = res.response
-		if (!_.isEmpty(classification.versions)) {
+		if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
 			if (params.versionId) {
 				actions.loadVersion(params.versionId)
 			} else {
@@ -39,13 +39,20 @@ class ClassItemPage extends Component {
 		if (nextProps.params.versionId !== this.props.params.versionId) {
 			nextProps.actions.loadVersion(nextProps.params.versionId)
 		}
+		if (nextProps.params.classId !== this.props.params.classId) {
+    		loadData(nextProps)
+		}
 	}
 
 	renderTabs () {
 		const { classification, selectedVersion, actions, isFetching, params, modal } = this.props
 		if (_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) {
 			return (
-				<Translate component="p" content="CLASS_ITEM.LOADING_CURRENT_VERSION" />
+                <div className="spinner">
+                    <div className="bounce1"></div>
+                    <div className="bounce2"></div>
+                    <div className="bounce3"></div>
+                </div>
 			)
 		}
 
@@ -68,11 +75,33 @@ class ClassItemPage extends Component {
 	render () {
 		const { classification, isFetching, actions, params } = this.props
 
+        let breadcrumbStep = document.getElementsByClassName('step')
+
+        if (_.isEmpty(classification)) {
+            if (breadcrumbStep.length > 0) {
+                breadcrumbStep[breadcrumbStep.length-1].textContent = ""
+            }
+            return (
+                <Translate component="p" content="CLASSIFICATIONS.NO_CLASS_FOUND" />
+            )
+        }
+
 		if (_.isEmpty(classification) || isFetching) {
+            if (breadcrumbStep.length > 0) {
+                breadcrumbStep[breadcrumbStep.length-1].textContent = ""
+            }
 			return (
-				<Translate component="p" content="LOADING.LOADING_CONTENT" />
+                <div className="spinner">
+                    <div className="bounce1"></div>
+                    <div className="bounce2"></div>
+                    <div className="bounce3"></div>
+                </div>
 			)
 		}
+
+        if (breadcrumbStep.length > 0) {
+            breadcrumbStep[breadcrumbStep.length-1].textContent = classification.name
+        }
 
 		return (
 			<div className="content klass-item">
