@@ -115,7 +115,11 @@ class Correspondences extends Component {
 		if (params.itemId) {
 			if (selectedVersion.isFetchingCorrespondence) {
 				return (
-					<div><Translate content="TABS.CORRESPONDENCES.LOADING_CORRESPONDENCE_TABLE" /></div>
+                    <div className="spinner">
+                        <div className="bounce1"></div>
+                        <div className="bounce2"></div>
+                        <div className="bounce3"></div>
+                    </div>
 				)
 			}
 			if (_.isEmpty(selectedCorrespondence)) {

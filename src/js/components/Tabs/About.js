@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -20,6 +21,13 @@ class About extends Component {
 
 	render () {
 		const { version, actions } = this.props
+
+        let publications
+        if (version.publications) {
+            publications = <a href={version.publications}>{version.publications}</a>
+        } else {
+            publications = counterpart.translate('TABS.ABOUT.NOT_RELEVANT')
+        }
 
 		return (
 			<div>
@@ -44,15 +52,15 @@ class About extends Component {
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.ABOUT.DERIVEDFROM" />:</td>
-							<td>{version.derivedFrom}</td>
+							<td>{version.derivedFrom ? version.derivedFrom : counterpart.translate('TABS.ABOUT.NOT_RELEVANT')}</td>
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.ABOUT.LEGALBASE" />:</td>
-							<td>{version.legalBase}</td>
+							<td>{version.legalBase ? version.legalBase : counterpart.translate('TABS.ABOUT.NOT_RELEVANT')}</td>
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.ABOUT.PUBLICATIONS" />:</td>
-							<td><a href={version.publications}>{version.publications}</a></td>
+							<td>{publications}</td>
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.ABOUT.LEVELS" />:</td>

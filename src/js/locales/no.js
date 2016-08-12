@@ -93,7 +93,8 @@ module.exports = {
 			'NUMBER': 'Nr.',
 			'STRUCTURE': 'Struktur',
 			'NUMBER_OF_UNITS' : 'Antall enheter',
-            'CHANGELOG': 'Endringslogg'
+            'CHANGELOG': 'Endringslogg',
+            'NOT_RELEVANT': 'Ikke relevant'
 		},
 		'CHANGES': {
 			'CHANGES': 'Endringer',

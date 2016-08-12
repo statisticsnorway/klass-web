@@ -92,7 +92,8 @@ module.exports = {
 			'NUMBER': 'No.',
 			'STRUCTURE': 'Structure',
 			'NUMBER_OF_UNITS' : 'Number of units',
-            'CHANGELOG': 'Change log'
+            'CHANGELOG': 'Change log',
+            'NOT_RELEVANT': 'Not relevant'
 		},
 		'CHANGES': {
 			'CHANGES': 'Changes',
