@@ -27,7 +27,15 @@ function classFamilies(state = initialState, action) {
 						const url = classification._links.self.href
 						const id = url.substring(url.lastIndexOf("/") + 1, url.length)
 						return merge({}, classification, {"id": id})
-					})
+					}).sort(function(a,b){
+        				if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        					return 1
+        				}
+        				if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        					return -1
+        				}
+        				return 0
+        			})
 				}
 				merge(state.items[action.id], {
 					children: mappedClass

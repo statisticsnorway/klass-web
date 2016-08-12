@@ -38,6 +38,16 @@
 			margin: 0;
 			padding: 0.9em 1.5em 0.8em 1.5em;
 			font-size: $list-font-size;
+            line-height: $body-line-height;
+
+            > span:first-child {
+                max-width: 500px;
+                display: inline-block;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
 
 			.link-type {
 				float: right;
@@ -46,10 +56,6 @@
 
 			&:hover .link-type {
 				color: #000;
-			}
-
-			&.child-link:after {
-				content: "\00a0\00a0\00bb";
 			}
 		}
 

@@ -17,7 +17,7 @@ class ListItem extends Component {
 						return (
 							<li key={key}>
 								<Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
-									{childItem.name}
+									<span>{childItem.name}&#160;&#160;»</span>
 									<span className="link-type"><Translate content="CLASSIFICATIONS.CLASSIFICATION" /></span>
 								</Link>
 							</li>
