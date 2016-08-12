@@ -58,13 +58,15 @@ class Correspondences extends Component {
 		}
 
 		return version.correspondenceTables.map(function(correspondence, key) {
-			return (
-				<tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, correspondence)}>
-					<td>{correspondence.source}</td>
-					<td>{correspondence.target}</td>
-					<td><Translate content="TABS.CORRESPONDENCES.OWNING_SECTION" /> {correspondence.owningSection}</td>
-				</tr>
-			)
+            if (!correspondence.changeTable){
+                return (
+                    <tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, correspondence)}>
+                        <td>{correspondence.source}</td>
+                        <td>{correspondence.target}</td>
+                        <td><Translate content="TABS.CORRESPONDENCES.OWNING_SECTION" /> {correspondence.owningSection}</td>
+                    </tr>
+                )
+            }
 		}.bind(this))
 	}
 

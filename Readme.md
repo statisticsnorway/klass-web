@@ -61,8 +61,13 @@ $ npm start
 |   |   +-- store		// Holder/bevarer applikasjonens state. Håndterer state aksessering
 |   |   +-- views		// statiske view
 |   |   +-- main.js		// Hoved applikasjonsfil
+|   |   +-- ssbFrame.js	// Statiske HTML komponenter for å lage ssb.no rammen rundt applikasjonen
 |   |   +-- routes.js	// Håndterer routing
 |   +-- styles			// Felles stil-filer (bl.a. fra ssb.no)
 |   +-- index.html
 +-- test
 ```
+
+
+## ssb.no ramme
+Det er implementert statiske HTML komponenter for å plassere klass.ssb.no applikasjonen innenfor www.ssb.no sin ramme (header- og footer seksjon). Komponentene er implementert i ssbFrame.js og blir brukt i main.js å genere header og footer. CSS stiler er lenket direkte til ssb.no og kan forårsake crossdomain problemer. Legg merke til at endringer som blir gjort på rammen til ssb.no må synkroniseres og implementeres i den statiske fila ssbFrame.js.

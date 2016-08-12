@@ -31,9 +31,9 @@ class SearchResult extends Component {
 
 	render () {
 		const { items, isFetching, search } = this.props
-    const isEmpty = items.length === 0
+        const isEmpty = items.length === 0
 
-    if (isEmpty && isFetching) {
+        if (isEmpty && isFetching) {
 			return (
 				<Translate component="p" content="LOADING.LOADING_CONTENT" />
 			)

@@ -52,7 +52,7 @@ class ListItem extends Component {
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
 
 		return (
-			<li className={toggleIcon} id={item.level+'_'+item.code}>
+			<li className={toggleIcon}>
 				<a className="toggle-children" onClick={(ev) => this.toggle(ev)}>
 					<span className="screen-reader-only"><Translate content="CLASSIFICATIONS.DISPLAY_HIDE"/> </span>
 					{displayName}

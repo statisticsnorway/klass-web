@@ -32,7 +32,7 @@ module.exports = {
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',
-		'NORWEGIAN': 'Norsk',
+		'NORWEGIAN': 'Bokmål',
 		'NYNORSK': 'Nynorsk',
 		'ENGLISH': 'Engelsk',
         'TOGGLE': 'English',

@@ -24,7 +24,7 @@ function searchResult(state = initialState, action) {
 			})
 		case types.SEARCH_FAILURE:
 			return merge({}, state, {
-				isFetching: true
+				isFetching: false
 			})
 		case types.SET_SEARCH_QUERY:
 			return merge({}, state, {
