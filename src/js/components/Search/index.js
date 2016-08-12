@@ -32,11 +32,12 @@ class Search extends Component {
 	handleChange(event) {
 		const { actions } = this.props
 		const searchObj = {
-			"query": ReactDOM.findDOMNode(this.refs.query).value,
-			"ssbSection": ReactDOM.findDOMNode(this.refs.ssbSection).value,
-			"includeCodelists": ReactDOM.findDOMNode(this.refs.includeCodelists).checked
+			"query": this.refs.query.value,
+			"ssbSection": this.refs.ssbSection.value,
+			"includeCodelists": this.refs.includeCodelists.checked
 		}
 		actions.setSearchObject(searchObj);
+
 	}
 
     displayModal () {
@@ -81,6 +82,7 @@ class Search extends Component {
 	render () {
 		const { sections, search } = this.props
 
+
 		let options
 		if (sections.length) {
 			sections.sort(function(a,b){
@@ -93,7 +95,7 @@ class Search extends Component {
 			})
 		}
 		const dropdown = (
-			<select name="seksjon" ref="ssbSection" onChange={this.handleChange.bind(this)} value={search.ssbSection}>
+			<select name="seksjon" ref="ssbSection" defaultValue={search.ssbSection} onChange={this.handleChange.bind(this)}>
 				<Translate component="option" value="" content="SEARCH.ALL_SECTIONS" />
 				{options}
 			</select>
@@ -103,7 +105,7 @@ class Search extends Component {
 				<div className="flex-container">
 					<div className="flex-item search-input-text">
 						<Translate component="label" content="SEARCH.SEARCH_KODEVERK" />
-						<Translate component="input" type="text" ref="query" value={search.query} onChange={this.handleChange.bind(this)} attributes={{ placeholder: 'SEARCH.SEARCH' }} />
+						<Translate component="input" type="text" ref="query" defaultValue={search.query} onChange={this.handleChange.bind(this)} attributes={{ placeholder: 'SEARCH.SEARCH' }} />
 					</div>
 					<div className="flex-item search-dropdown-section">
 						<Translate component="label" content="SEARCH.OWNING_SECTION" />
@@ -113,7 +115,7 @@ class Search extends Component {
 						<Translate component="button" type="submit" content="SEARCH.SEARCH" />
 					</div>
 				</div>
-				<input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.handleChange.bind(this)} checked={search.includeCodelists}/>
+				<input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.handleChange.bind(this)} defaultChecked={search.includeCodelists == true}/>
 				<Translate component="label" htmlFor="includeCodelists" content="SEARCH.INCLUDE_CODELISTS" />
 				<i className="fa fa-info-circle" aria-hidden="true" onClick={() => this.displayModal()}></i>
                 {this.renderModal()}
