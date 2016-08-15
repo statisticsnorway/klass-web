@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 import _ from 'lodash'
 import moment from 'moment'
 import commonUtils from '../../lib/common-utils'
@@ -86,11 +87,13 @@ class Changes extends Component {
 	render () {
 		const { classification, params } = this.props
         let selectedChanges = classification.versions[0]
+        let previousVersion = classification.versions[1]
 
 		if (params.versionId) {
-            _.forEach(classification.versions, function(v) {
+            _.forEach(classification.versions, function(v, i) {
                 if (v.id == params.versionId) {
                     selectedChanges = v
+                    previousVersion = classification.versions[i+1]
                     return false
                 }
             })
@@ -109,16 +112,17 @@ class Changes extends Component {
 
         const validFrom = moment(selectedChanges.validFrom).format('D.MMMM YYYY')
         const validTo = moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('D.MMMM YYYY') : 'Gjeldende versjon'
+        const previousVersion_validFrom = (previousVersion && moment(previousVersion.validFrom).isValid()) ? moment(previousVersion.validFrom).format('D.MMMM YYYY') : '-'
         return (
             <div>
                 <h3>
-                    <Translate content="TABS.CHANGES.CHANGES_FROM" /> {validFrom} <Translate content="TABS.CHANGES.TO" /> {validTo.toLowerCase()}
+                    <Translate content="TABS.CHANGES.CHANGES_FROM" /> {counterpart.translate('TABS.CURRENT_VERSION').toLowerCase()} <Translate content="TABS.CHANGES.TO" /> {counterpart.translate('TABS.PREVIOUS_VERSION').toLowerCase()}
                 </h3>
                 <table className="change-table alternate">
                     <thead>
                         <tr>
                             <th>{validFrom}</th>
-                            <th>{validTo}</th>
+                            <th>{previousVersion_validFrom}</th>
                         </tr>
                     </thead>
                     <tbody>

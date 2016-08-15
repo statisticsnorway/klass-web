@@ -74,6 +74,7 @@ module.exports = {
 		'VERSION_NO_LONGER_VALID': 'OBS! This version is no longer valid',
 		'VERSION_EXPIRED': 'Expired version',
 		'CURRENT_VERSION': 'Current version',
+        'PREVIOUS_VERSION': 'Previous version',
 		'VALID_FROM': 'Valid from',
 		'VALID_TO': 'Valid to',
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
