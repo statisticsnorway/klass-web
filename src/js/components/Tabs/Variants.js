@@ -65,7 +65,8 @@ class Variants extends Component {
 
 	renderVariantList(items) {
 		const { actions, modal } = this.props
-		if (items.length < 1) {
+		
+        if (_.isEmpty(items)) {
 			return (
 				<p><Translate component="i" content="TABS.VARIANTS.VARIANTS_NOT_FOUND" /></p>
 			)

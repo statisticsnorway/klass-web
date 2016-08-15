@@ -16,6 +16,13 @@ class Codes extends Component {
 		actions.searchCode(query)
 	}
 
+    resetFilter (ev) {
+        ev.preventDefault()
+        const { actions } = this.props
+        ReactDOM.findDOMNode(this.refs.query).value = ''
+		actions.searchCode("")
+    }
+
 	downloadCodes() {
 		const { version } = this.props
 		const csvURL = config.API_BASE_URL + '/versions/' + version.id + '.csv'
@@ -78,7 +85,10 @@ class Codes extends Component {
 								type="text" ref="query" name="kodeverk" />
 						</div>
 						<div className="flex-item search-button">
-    						<Translate component="button" type="submit" content="SEARCH.SEARCH" />
+    						<Translate component="button" type="submit" content="SEARCH.FILTER" />
+						</div>
+						<div className="flex-item reset-button">
+    						<Translate component="button" content="SEARCH.RESET" onClick={(ev) => this.resetFilter(ev)} />
 						</div>
 					</div>
 					<input type="checkbox" id="includeCodelist" onChange={(ev) => this.handleChange(ev)}/>

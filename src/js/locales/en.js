@@ -63,6 +63,8 @@ module.exports = {
 	},
 	'SEARCH': {
 		'SEARCH': 'Search',
+        'FILTER': 'Filter',
+        'RESET': 'Reset',
 		'ALL_SECTIONS': 'All sections',
 		'SEARCH_KODEVERK': 'Search for kodeverk',
 		'OWNING_SECTION': 'Owning SSB-section',

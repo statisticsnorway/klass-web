@@ -26,7 +26,9 @@ function loadData (props, selectedLanguage) {
 				const versionId = url.substring(url.lastIndexOf('/') + 1, url.length)
 				actions.loadVersion(versionId)
 			}
-		}
+		} else {
+            actions.loadVersion()
+        }
 	})
 }
 
@@ -46,7 +48,7 @@ class ClassItemPage extends Component {
 
 	renderTabs () {
 		const { classification, selectedVersion, actions, isFetching, params, modal } = this.props
-		if (_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) {
+		if ((_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) && selectedVersion.isFetching) {
 			return (
                 <div className="spinner">
                     <div className="bounce1"></div>

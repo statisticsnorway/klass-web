@@ -64,6 +64,8 @@ module.exports = {
 	},
 	'SEARCH': {
 		'SEARCH': 'Søk',
+        'FILTER': 'Filtrer',
+        'RESET': 'Nullstill',
 		'ALL_SECTIONS': 'Alle seksjoner',
 		'SEARCH_KODEVERK': 'Søk etter kodeverk',
 		'OWNING_SECTION': 'Ansvarlig SSB-seksjon',

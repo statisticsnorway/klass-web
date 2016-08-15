@@ -18,7 +18,7 @@ class Tabs extends Component {
 	renderVersionInfo () {
 		const { classification, selectedVersion } = this.props
 		const version = selectedVersion.version
-		if (version.id !== classification.versions[0].id) {
+		if (!_.isEmpty(classification.versions) && version.id !== classification.versions[0].id) {
 			return (
 				<div className="version-info">
 					<Translate component="p" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />
@@ -51,7 +51,7 @@ class Tabs extends Component {
 		if (isFetchingClass) {
 			return <Translate component="div" content="TABS.LOADING_CURRENT_VERSION" />
 		} else if (_.isEmpty(selectedVersion.version)){
-			return <Translate content="TABS.VERSIONS_NOT_FOUND" />
+			return <Translate content="TABS.VERSIONS_NOT_FOUND" component="p" />
 		}
 
 		return (
