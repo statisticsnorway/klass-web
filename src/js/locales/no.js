@@ -28,7 +28,8 @@ module.exports = {
 		'NAME': 'Navn',
         'DATE': 'Dato',
         'TIME': 'Klokkeslett',
-        'COMMENTS': 'Kommentarer'
+        'COMMENTS': 'Kommentarer',
+        'INVERT_TABLE': 'Inverter tabell'
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',

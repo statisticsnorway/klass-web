@@ -7,6 +7,19 @@ import commonUtils from '../../lib/common-utils'
 
 class Changes extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            invertedTable: true
+        }
+    }
+
+    invertTable () {
+        this.setState({
+            invertedTable: !this.state.invertedTable
+        })
+    }
+
 	componentDidMount() {
 		const { actions, classification, params } = this.props
         let selectedChanges = classification.versions[0]
@@ -50,34 +63,72 @@ class Changes extends Component {
 
 
         if (!_.isEmpty(changes.codeChanges)) {
-            // TODO: Grouping items by newCode or oldCode?
+            let groupedArray
 
-    		changes.codeChanges.sort(function(a,b) {
-    			return a.newCode - b.newCode
-    		})
+            switch (this.state.invertedTable) {
+                case false:
 
-            let groupedArray = commonUtils.groupBy(changes.codeChanges, function(item) {
-                return [item.newCode]
-            })
+            		changes.codeChanges.sort(function(a,b) {
+            			return a.oldCode - b.oldCode
+            		})
 
-    		return groupedArray.map(function(item, key){
-    			let targetList = item.sort(function(a,b){return a.oldCode-b.oldCode}).map(function(subItem, key){
-    				return (
-    					<li key={key}><b>{subItem.oldCode}</b> - {subItem.oldName}</li>
-    				)
-    			})
+                    groupedArray = commonUtils.groupBy(changes.codeChanges, function(item) {
+                        return [item.oldCode]
+                    })
 
-    			return (
-    				<tr key={key}>
-    					<td>
-                            <b>{item[0].newCode}</b> - {item[0].newName}
-                        </td>
-    					<td>
-    						<ul className="grouped-codelist">{targetList}</ul>
-    					</td>
-    				</tr>
-    			)
-    		})
+            		return groupedArray.map(function(item, key){
+            			let targetList = item.sort(function(a,b){return a.newCode-b.newCode}).map(function(subItem, key){
+            				return (
+            					<li key={key}><b>{subItem.newCode}</b> - {subItem.newName}</li>
+            				)
+            			})
+
+            			return (
+            				<tr key={key}>
+            					<td>
+                                    <b>{item[0].oldCode}</b> - {item[0].oldName}
+                                </td>
+            					<td>
+            						<ul className="grouped-codelist">{targetList}</ul>
+            					</td>
+            				</tr>
+            			)
+            		})
+
+                    break
+                case true:
+
+            		changes.codeChanges.sort(function(a,b) {
+            			return a.newCode - b.newCode
+            		})
+
+                    groupedArray = commonUtils.groupBy(changes.codeChanges, function(item) {
+                        return [item.newCode]
+                    })
+
+            		return groupedArray.map(function(item, key){
+            			let targetList = item.sort(function(a,b){return a.oldCode-b.oldCode}).map(function(subItem, key){
+            				return (
+            					<li key={key}><b>{subItem.oldCode}</b> - {subItem.oldName}</li>
+            				)
+            			})
+
+            			return (
+            				<tr key={key}>
+            					<td>
+                                    <b>{item[0].newCode}</b> - {item[0].newName}
+                                </td>
+            					<td>
+            						<ul className="grouped-codelist">{targetList}</ul>
+            					</td>
+            				</tr>
+            			)
+            		})
+
+                    break
+            }
+
+
         }
 
         return null
@@ -118,11 +169,14 @@ class Changes extends Component {
                 <h3>
                     <Translate content="TABS.CHANGES.CHANGES_FROM" /> {counterpart.translate('TABS.CURRENT_VERSION').toLowerCase()} <Translate content="TABS.CHANGES.TO" /> {counterpart.translate('TABS.PREVIOUS_VERSION').toLowerCase()}
                 </h3>
+                <div className="button-heading">
+                    <Translate component="button" content="COMMON.INVERT_TABLE" className="expand-tree" onClick={this.invertTable.bind(this)} />
+                </div>
                 <table className="change-table alternate">
                     <thead>
                         <tr>
-                            <th>{validFrom}</th>
-                            <th>{previousVersion_validFrom}</th>
+                            <th>{this.state.invertedTable ? validFrom : previousVersion_validFrom}</th>
+                            <th>{this.state.invertedTable ? previousVersion_validFrom : validFrom}</th>
                         </tr>
                     </thead>
                     <tbody>

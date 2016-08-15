@@ -28,7 +28,8 @@ module.exports = {
 		'NAME': 'Name',
         'DATE': 'Date',
         'TIME': 'Time',
-        'COMMENTS': 'Comments'
+        'COMMENTS': 'Comments',
+        'INVERT_TABLE': 'Invert table'
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Choose language for code:',

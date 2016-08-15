@@ -17,6 +17,19 @@ function groupBy(array, f) {
 
 class Correspondences extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            invertedTable: true
+        }
+    }
+
+    invertTable () {
+        this.setState({
+            invertedTable: !this.state.invertedTable
+        })
+    }
+
 	componentWillReceiveProps(nextProps) {
 		const { actions } = this.props
 		if (nextProps.params.itemId && (nextProps.params.itemId !== this.props.params.itemId)) {
@@ -49,7 +62,8 @@ class Correspondences extends Component {
 		const { selectedVersion } = this.props
 		const version = selectedVersion.version
 
-		if (version.correspondenceTables.length < 1) {
+		if (version.correspondenceTables.length < 1 ||
+            (version.correspondenceTables.length == 1 && version.correspondenceTables[0].changeTable)) {
 			return (
 				<tr>
 					<Translate component="td" content="TABS.CORRESPONDENCES.CORRESPONDENCE_NOT_FOUND" colSpan="3" />
@@ -71,30 +85,74 @@ class Correspondences extends Component {
 	}
 
 	renderCorrTableBody(corrArr) {
-		corrArr.sort(function(a,b) {
-			return a.sourceCode - b.sourceCode
-		})
+        let groupedArray
 
-		let groupedArray = groupBy(corrArr, function(item) {
-			return [item.sourceCode];
-		})
+        switch (this.state.invertedTable) {
+            case false:
+                corrArr.sort(function(a,b) {
+    				if (a.targetCode.toLowerCase() > b.targetCode.toLowerCase()) {
+    					return 1
+    				}
+    				if (a.targetCode.toLowerCase() < b.targetCode.toLowerCase()) {
+    					return -1
+    				}
+    				return 0
+                })
 
-		return groupedArray.map(function(item, key) {
-			let targetList = item.sort(function(a,b){return a.targetCode-b.targetCode}).map(function(subItem, key){
-				return (
-					<li key={key}><b>{subItem.targetCode}</b> - {subItem.targetName}</li>
-				)
-			})
+                groupedArray = groupBy(corrArr, function(item) {
+                    return [item.targetCode];
+                })
 
-			return (
-				<tr key={key}>
-					<td><b>{item[0].sourceCode}</b> - {item[0].sourceName}</td>
-					<td>
-						<ul className="corr-targetlist">{targetList}</ul>
-					</td>
-				</tr>
-			)
-		})
+                return groupedArray.map(function(item, key) {
+                    let targetList = item.sort(function(a,b){return a.sourceCode-b.sourceCode}).map(function(subItem, key){
+                        return (
+                            <li key={key}><b>{subItem.sourceCode}</b> - {subItem.sourceName}</li>
+                        )
+                    })
+
+                    return (
+                        <tr key={key}>
+                            <td><b>{item[0].targetCode}</b> - {item[0].targetName}</td>
+                            <td>
+                                <ul className="corr-targetlist">{targetList}</ul>
+                            </td>
+                        </tr>
+                    )
+                })
+                break
+            case true:
+                corrArr.sort(function(a,b) {
+    				if (a.sourceCode.toLowerCase() > b.sourceCode.toLowerCase()) {
+    					return 1
+    				}
+    				if (a.sourceCode.toLowerCase() < b.sourceCode.toLowerCase()) {
+    					return -1
+    				}
+    				return 0
+                })
+
+                groupedArray = groupBy(corrArr, function(item) {
+                    return [item.sourceCode];
+                })
+
+                return groupedArray.map(function(item, key) {
+                    let targetList = item.sort(function(a,b){return a.targetCode-b.targetCode}).map(function(subItem, key){
+                        return (
+                            <li key={key}><b>{subItem.targetCode}</b> - {subItem.targetName}</li>
+                        )
+                    })
+
+                    return (
+                        <tr key={key}>
+                            <td><b>{item[0].sourceCode}</b> - {item[0].sourceName}</td>
+                            <td>
+                                <ul className="corr-targetlist">{targetList}</ul>
+                            </td>
+                        </tr>
+                    )
+                })
+                break
+        }
 	}
 
 	downloadCodes() {
@@ -139,14 +197,15 @@ class Correspondences extends Component {
     					{selectedCorrespondence.description}
                     </p>
 					<div className="button-heading">
+                        <Translate component="button" content="COMMON.INVERT_TABLE" className="expand-tree" onClick={this.invertTable.bind(this)} />
 						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
 					</div>
 
 					<table className="table-correspondenceTable alternate">
 						<thead>
 							<tr>
-								<th>{selectedCorrespondence.source}</th>
-								<th>{selectedCorrespondence.target}</th>
+                                <th>{this.state.invertedTable ? selectedCorrespondence.source : selectedCorrespondence.target}</th>
+								<th>{this.state.invertedTable ? selectedCorrespondence.target : selectedCorrespondence.source}</th>
 							</tr>
 						</thead>
 						<tbody>

@@ -202,6 +202,9 @@
 			correspondences
 		*/
 		.correspondence {
+            .table-correspondenceTable th {
+                width: 50%;
+            }
 			ul.corr-targetlist {
 				list-style-type: none;
 			}
