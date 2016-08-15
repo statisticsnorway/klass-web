@@ -43,7 +43,12 @@ server.get('/classifications/:id/codes.csv', (req, res)=> {
 });
 
 server.get('/classifications/:id/changes', (req, res)=> {
-  let mock_data = require('./mock_data/changes');
+  let mock_data;
+  try {
+      mock_data = require('./mock_data/changes/' + req.params.id);
+  } catch (ex) {
+      mock_data = require('./mock_data/changes');
+  }
   res.send(mock_data);
 });
 
