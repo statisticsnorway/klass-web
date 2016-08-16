@@ -17,14 +17,14 @@ class Sidebar extends Component{
                         <Translate content="CONTACT.HEADER" />
                     </span></h2>
                     <div className="contact">
-                        <p className="name">{contactInfo}</p>
+                        <p className="name">{contactInfo.name}</p>
                         <p className="e-mail">
                             <span className="key"><Translate content="CONTACT.EMAIL" />: </span>
-                            <a className="value" href="mailto:anne.gro.hustoft@ssb.no">anne.gro.hustoft@ssb.no</a>
+                            <a className="value" href={"mailto:" + contactInfo.email}>{contactInfo.email}</a>
                         </p>
                         <p className="phone">
                             <span className="key"><Translate content="CONTACT.PHONE" />: </span>
-                            <span className="value">62 88 55 48</span>
+                            <span className="value">{contactInfo.phone}</span>
                         </p>
                     </div>
 				</div>
@@ -34,7 +34,7 @@ class Sidebar extends Component{
 }
 
 Sidebar.propTypes = {
-	contactInfo: PropTypes.string.isRequired, // Should be object?
+	contactInfo: PropTypes.object.isRequired, // Should be object?
 	onLanguageChange: PropTypes.func,
 	params: PropTypes.object,
 	actions: PropTypes.object
