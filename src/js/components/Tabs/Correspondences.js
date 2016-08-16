@@ -192,7 +192,7 @@ class Correspondences extends Component {
 					</p>
 					<h3>{selectedCorrespondence.name}</h3>
 					<p>
-                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedCorrespondence.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedCorrespondence.owningSection}<br/>
+                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedCorrespondence.contactPerson.name}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedCorrespondence.owningSection}<br/>
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedCorrespondence.published.join()}<br/>
     					{selectedCorrespondence.description}
                     </p>

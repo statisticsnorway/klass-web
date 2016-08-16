@@ -40,7 +40,7 @@ class About extends Component {
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.ABOUT.OWNER" />:</td>
-							<td>{version.contactPerson}, <Translate content="TABS.ABOUT.SECTION_FOR" /> {_.lowerFirst(version.owningSection)}</td>
+							<td>{version.contactPerson.name}, <Translate content="TABS.ABOUT.SECTION_FOR" /> {_.lowerFirst(version.owningSection)}</td>
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.VALID_FROM" />:</td>

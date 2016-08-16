@@ -65,7 +65,7 @@ class Variants extends Component {
 
 	renderVariantList(items) {
 		const { actions, modal } = this.props
-		
+
         if (_.isEmpty(items)) {
 			return (
 				<p><Translate component="i" content="TABS.VARIANTS.VARIANTS_NOT_FOUND" /></p>
@@ -117,7 +117,7 @@ class Variants extends Component {
 					</p>
 					<h3>{selectedVariant.name}</h3>
 					<p>
-                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedVariant.owningSection}<br/>
+                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson.name}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedVariant.owningSection}<br/>
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedVariant.published.join()}<br/>
                         {selectedVariant.description}
                     </p>
