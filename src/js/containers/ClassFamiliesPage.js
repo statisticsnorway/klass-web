@@ -59,7 +59,8 @@ class ClassFamiliesPage extends Component {
                 </div>
                 <div className="main">
                     <Translate component="p" content="CLASSIFICATIONS.CLASS_DESCRIPTION"/>
-                    <Search actions={actions} sections={ssbSections} search={search}/> {this.renderContent()}
+                    <Search actions={actions} sections={ssbSections} search={search}/>
+                    {this.renderContent()}
                 </div>
                 <Sidebar/>
             </div>

@@ -33,7 +33,7 @@ module.exports = {
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Choose language for code:',
-		'NORWEGIAN': 'Norwegian',
+		'NORWEGIAN': 'Bokmål',
 		'NYNORSK': 'Nynorsk',
 		'ENGLISH': 'English',
         'TOGGLE': 'Norsk',
