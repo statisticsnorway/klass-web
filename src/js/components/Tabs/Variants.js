@@ -57,7 +57,6 @@ class Variants extends Component {
 			return (
 				<tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, variant)}>
 					<td>{variant.name}</td>
-					<td><Translate content="TABS.VARIANTS.SECTION_FOR" /> {variant.owningSection}</td>
 				</tr>
 			)
 		}.bind(this))
@@ -117,7 +116,7 @@ class Variants extends Component {
 					</p>
 					<h3>{selectedVariant.name}</h3>
 					<p>
-                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson.name}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedVariant.owningSection}<br/>
+                        <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson.name}<br/>
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedVariant.published.join()}<br/>
                         {selectedVariant.description}
                     </p>
@@ -143,7 +142,6 @@ class Variants extends Component {
 					<thead>
 						<tr>
 							<Translate component="th" content="TABS.VARIANTS.VARIANT" />
-							<Translate component="th" content="TABS.VARIANTS.OWNER" />
 						</tr>
 					</thead>
 					<tbody>
