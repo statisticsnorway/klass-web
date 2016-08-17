@@ -24,7 +24,18 @@ class ListItem extends Component {
 						)
 					} else {
 						const toggleIcon = childItem.active ? 'hovedemne collapse' : 'hovedemne expand';
-						let name = <span><b>{childItem.code}</b> - {childItem.name}</span>
+        				let name
+        				switch (type) {
+        					case 'code':
+        					case 'variant':
+        						name = <span className="itemName"><b>{childItem.code}</b> - <span className="longName">{childItem.name}</span><span className="shortName">{childItem.shortName}</span></span>
+        						break;
+        					case 'classFamilies':
+        						name = <span>{childItem.name} ({childItem.numberOfClassifications})</span>
+        						break;
+        					default:
+        						name = <span>{childItem.name}</span>
+        				}
 						return (
 							<ListItem
 								key={key}
