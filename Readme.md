@@ -8,8 +8,8 @@ Denne applikasjonen bruker følgende teknologier:
 - [React](https://facebook.github.io/react/) og [JSX](https://facebook.github.io/jsx/)
 - [Redux](http://redux.js.org/)
 - [Sass](http://sass-lang.com/)
-- [Mocha](https://mochajs.org/)
-- [Chai](http://chaijs.com/)
+- [Protractor](https://angular.github.io/protractor/) (e2e testing med [Selenium WebDriver](http://www.seleniumhq.org))
+- [Mocha](https://mochajs.org/) / [Chai](http://chaijs.com/) (Test rammeverk for unit testing)
 
 ## Installasjon
 ```
@@ -19,6 +19,11 @@ $ git clone https://git-adm.ssb.no/scm/klas/klass.ssb.no.git app-name
 $ cd app-name
 $ npm install
 ```
+
+### Konfiguere Protractor for e2e testing
+Protractor blir installert via `npm install` men krever i tillegg Selenium standalone server og Chromedriver for å kunne kjøre testene lokalt via Chrome sin nettleser. Last ned `selenium-server-standalone-{VERSION}.jar` fil fra [Selenium sin hjemmeside](http://selenium-release.storage.googleapis.com/index.html) og plasser den i denne mappen: `/node_modules/protractor/node_modules/webdriver-manager/selenium/`. For å teste med Chrome sin nettleser, last ned [ChromeDriver binary fila](http://chromedriver.storage.googleapis.com/index.html) og plasser den i samme mappe. Protractor konfigurasjonsfila ligger i rotmappen og er pt konfigurert til å bruke følgende versjoner:
+- seleniumVersion: 2.53.1
+- chromedriverVersion: 2.22
 
 ## Oppstart
 Applikasjonen bruker et Rest API fra [Klass](http://al-klass-app-u1.ssb.no:8080/rest/v1) ([dokumentasjon](http://al-klass-app-u1.ssb.no:8080/docs/api-guide.html)). Dersom API-et er utilgjengelig, kan applikasjonen bruke mock data som ligger i følgende mappe: `src/js/server/`. Da må konfigurasjonsfila endres til å peke BASE_URL mot localhost istedenfor API url-en. konfigurasjonsfila ligger her: `src/js/config/index.js`. For å bruke mockdata, må det kjøres en egen lokal server parallelt med applikasjonen:
@@ -30,6 +35,7 @@ For å starte applikasjonen, kjør følgende kommando:
 ```
 $ npm start
 ```
+
 
 ## Kodestruktur
 
@@ -75,3 +81,18 @@ Det er implementert statiske HTML komponenter for å plassere klass.ssb.no appli
 
 ## Språk
 Klass.ssb.no har 2 separate språk implementasjoner. Den ene gjelder språk som blir hentet fra Rest API-et. Her gjøres det kall til API-et med en language parameter når man er inne på en spesifikk klassifikasjon. Den andre gjelder statiske tekster inkludert ssb rammen. Oversettelse av statiske tekster gjøres ved hjelp av et react translate komponent (react-translate-component). Dokumentasjon på hvordan dette brukes, finnes her: https://github.com/martinandert/react-translate-component
+
+
+## Test
+### Ende til ende test
+e2e tester ligger følgende mappe: `/test/e2e/spec`.
+Åpne tre terminaler for å kjøre testene lokalt:
+- `nodemon src/js/server`: Starte opp API mock server lokalt
+- `npm run webpack-mock`: Starte opp klass.ssb.no applikasjonen
+- `npm run test-e2e`: Starter e2e testene via protractor mot din lokale mock server
+
+
+### Unit test
+
+
+## Bygg og deploy
