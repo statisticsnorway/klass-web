@@ -44,7 +44,7 @@ const mapStateToProps = (state, ownProps) => {
 		items: state.searchResult.items,
 		search: state.searchResult.search,
 		isFetching: state.searchResult.isFetching,
-		ssbSections: state.classFamilies.ssbSections
+        ssbSections: state.ssbSections
 	}
 }
 
