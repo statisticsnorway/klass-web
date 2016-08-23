@@ -167,7 +167,7 @@ class Changes extends Component {
         return (
             <div>
                 <h3>
-                    <Translate content="TABS.CHANGES.CHANGES_FROM" /> {counterpart.translate('TABS.CURRENT_VERSION').toLowerCase()} <Translate content="TABS.CHANGES.TO" /> {counterpart.translate('TABS.PREVIOUS_VERSION').toLowerCase()}
+                    <Translate content="TABS.CHANGES.HEADER" />
                 </h3>
                 <div className="button-heading">
                     <Translate component="button" content="COMMON.INVERT_TABLE" className="expand-tree" onClick={this.invertTable.bind(this)} />

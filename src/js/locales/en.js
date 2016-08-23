@@ -101,6 +101,7 @@ module.exports = {
 		},
 		'CHANGES': {
 			'CHANGES': 'Changes',
+            'HEADER': 'The differences between the current version and previous version',
 			'PREVIOUS_CHANGES': 'Changes since last version',
 			'PREVIOUS_VERSION_NOT_FOUND': 'Previous version not found',
 			'CHANGES_NOT_FOUND': 'No changes found',

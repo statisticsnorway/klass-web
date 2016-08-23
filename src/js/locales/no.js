@@ -102,6 +102,7 @@ module.exports = {
 		},
 		'CHANGES': {
 			'CHANGES': 'Endringer',
+            'HEADER': 'Forskjellene mellom gjeldende versjon og forrige versjon',
 			'PREVIOUS_CHANGES': 'Endringer siden forrige versjon',
 			'PREVIOUS_VERSION_NOT_FOUND': 'Forrige versjon finnes ikke',
 			'CHANGES_NOT_FOUND': 'Fant ingen endringer',
