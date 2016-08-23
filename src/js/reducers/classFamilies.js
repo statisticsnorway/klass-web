@@ -3,9 +3,7 @@ import merge from 'lodash/merge'
 
 const initialState = {
 	isFetching: false,
-	items: [],
-	ssbSections: []
-	// search: {}
+	items: []
 }
 
 function classFamilies(state = initialState, action) {
@@ -60,28 +58,6 @@ function classFamilies(state = initialState, action) {
 				active: active
 			})
 			return merge({}, state)
-
-
-
-		case types.SSB_SECTION_REQUEST:
-			return Object.assign({}, state, {
-				isFetching: true
-			})
-		case types.SSB_SECTION_SUCCESS:
-			return merge({}, state, {
-				isFetching: false,
-				// search: {
-					ssbSections: action.response._embedded.ssbSections
-				// 	query: "",
-				// 	includeCodelists: false
-				// }
-			})
-		case types.SSB_SECTION_FAILURE:
-			return Object.assign({}, state, {
-				isFetching: false
-			})
-
-
 
 		default:
 			return state;

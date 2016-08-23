@@ -15,9 +15,9 @@ class Note extends Component {
 		}
 
 		return (
-			<div className="icon-info">
-				<i className="fa fa-info-circle" aria-hidden="true" onClick={(ev) => this.handleClick(ev, actions, item)}></i>
-			</div>
+			<button aria-label="info" className="icon-info" onClick={(ev) => this.handleClick(ev, actions, item)}>
+				<i className="fa fa-info-circle" aria-hidden="true"></i>
+			</button>
 		)
 	}
 }

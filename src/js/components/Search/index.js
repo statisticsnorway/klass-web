@@ -81,14 +81,14 @@ class Search extends Component {
 
 	render () {
 		const { sections, search } = this.props
-
+        const ssbSections = sections.ssbSections
 
 		let options
-		if (sections.length) {
-			sections.sort(function(a,b){
+		if (ssbSections.length) {
+			ssbSections.sort(function(a,b){
 				return a.name - b.name
 			})
-			options = sections.map(function(section, key){
+			options = ssbSections.map(function(section, key){
 				return (
 					<option key={key} value={section.name}>{section.name}</option>
 				)
@@ -126,7 +126,7 @@ class Search extends Component {
 
 Search.propTypes = {
 	actions: PropTypes.object.isRequired,
-	sections: PropTypes.array.isRequired,
+	sections: PropTypes.object.isRequired,
 	search: PropTypes.object.isRequired
 }
 

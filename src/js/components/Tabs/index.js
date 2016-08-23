@@ -2,7 +2,8 @@ import './Tabs.scss'
 import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
-import TabPanel, { TabStrip } from 'react-tab-panel' // from http://react-components.com/component/react-tab-panel
+// import TabPanel1, { TabStrip } from 'react-tab-panel' // from http://react-components.com/component/react-tab-panel
+import { Wrapper, TabList, Tab, TabPanel } from 'react-aria-tabpanel' //https://github.com/davidtheclark/react-aria-tabpanel
 import 'react-tab-panel/base.css'
 import Codes from './Codes'
 import About from './About'
@@ -35,58 +36,102 @@ class Tabs extends Component {
 	}
 
 	onActivate (tabIndex) {
-		const { params, tabs } = this.props
+		const { params } = this.props
 		const classPath = '/' + params.classId
 		const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
-		const tabPath = '/' + Object.keys(tabs[tabIndex])[0]
-
+		const tabPath = '/' + tabIndex
 		const path = "/klassifikasjoner" + classPath + versionPath + tabPath
+
 		this.context.router.push(path)
 	}
 
 	render () {
 		moment.locale('nb')
-		const { classification, selectedVersion, actions, isFetchingClass, params, tabs, modal } = this.props
-		let tabIndex = _.findIndex(tabs, params.tab)
+		const { classification, selectedVersion, actions, isFetchingClass, params, modal } = this.props
+
 		if (isFetchingClass) {
 			return <Translate component="div" content="TABS.LOADING_CURRENT_VERSION" />
 		} else if (_.isEmpty(selectedVersion.version)){
 			return <Translate content="TABS.VERSIONS_NOT_FOUND" component="p" />
 		}
 
-		return (
-			<div className="tabs">
+        const tabDescriptions = [
+            {
+                title: counterpart.translate('TABS.CODES.CODES'),
+                id: 'koder',
+                content: (<Codes version={selectedVersion.version} params={params} actions={actions} modal={modal} />)
+            },
+            {
+                title: counterpart.translate('TABS.ABOUT.ABOUT'),
+                id: 'om',
+                content: (<About actions={actions} version={selectedVersion.version} />)
+            },
+            {
+                title: counterpart.translate('TABS.CHANGES.CHANGES'),
+                id: 'endringer',
+                content: (<Changes actions={actions} classification={classification} selectedVersion={selectedVersion} params={params} />)
+            },
+            {
+                title: counterpart.translate('TABS.VERSIONS.VERSIONS'),
+                id: 'versjoner',
+                content: (<Versions actions={actions} classification={classification} />)
+            },
+            {
+                title: counterpart.translate('TABS.CORRESPONDENCES.CORRESPONDENCES'),
+                id: 'korrespondanser',
+                content: (<Correspondences actions={actions} selectedVersion={selectedVersion} params={params} />)
+            },
+            {
+                title: counterpart.translate('TABS.VARIANTS.VARIANTS'),
+                id: 'varianter',
+                content: (<Variants actions={actions} selectedVersion={selectedVersion} params={params} modal={modal} />)
+            }
+        ]
+
+        const tabIndex = params.tab ? params.tab : 'koder'
+        const tabs = tabDescriptions.map((tabDescription, i) => {
+            let innerCl
+            return (
+                <li key={i}>
+                    <Tab id={tabDescription.id} active={tabDescription.id === tabIndex}>
+                        {tabDescription.title}
+                    </Tab>
+                </li>
+            )
+        })
+
+        const panels = tabDescriptions.map((tabDescription, i) => {
+            return (
+                <TabPanel
+                    key={i}
+                    tabId={tabDescription.id}
+                    active={tabDescription.id === tabIndex}
+                >
+                    {tabDescription.content}
+                </TabPanel>
+            )
+        })
+
+        return (
+            <div className="tabs">
 				{this.renderVersionInfo()}
 				<h2>{selectedVersion.version.name}</h2>
 
 				<div className="tab-content">
-					<TabPanel
-						activeIndex={tabIndex}
-						onActivate={this.onActivate.bind(this)}>
+                    <Wrapper onChange={this.onActivate.bind(this)} activeTabId={tabIndex}>
+                        <TabList>
+                            <ul>
+                                {tabs}
+                            </ul>
+                        </TabList>
+                        <div className="tabBody">
+                            {panels}
+                        </div>
+                    </Wrapper>
+                </div>
+            </div>
+        )
 
-						<div tabTitle={counterpart.translate('TABS.CODES.CODES')} className="codes">
-							<Codes version={selectedVersion.version} params={params} actions={actions} modal={modal} />
-						</div>
-						<div tabTitle={counterpart.translate('TABS.ABOUT.ABOUT')} className="about-version">
-							<About actions={actions} version={selectedVersion.version} />
-						</div>
-						<div tabTitle={counterpart.translate('TABS.CHANGES.CHANGES')} className="changes">
-							<Changes actions={actions} classification={classification} selectedVersion={selectedVersion} params={params} />
-						</div>
-						<div tabTitle={counterpart.translate('TABS.VERSIONS.VERSIONS')} className="other-versions">
-							<Versions actions={actions} classification={classification} />
-						</div>
-						<div tabTitle={counterpart.translate('TABS.CORRESPONDENCES.CORRESPONDENCES')} className="correspondence">
-							<Correspondences actions={actions} selectedVersion={selectedVersion} params={params} />
-						</div>
-						<div tabTitle={counterpart.translate('TABS.VARIANTS.VARIANTS')} className="variants">
-							<Variants actions={actions} selectedVersion={selectedVersion} params={params} modal={modal} />
-						</div>
-					</TabPanel>
-				</div>
-			</div>
-
-		)
 	}
 }
 
@@ -97,15 +142,6 @@ Tabs.propTypes = {
 	actions: PropTypes.object.isRequired,
 	modal: PropTypes.object.isRequired,
 	isFetchingClass: PropTypes.bool.isRequired
-}
-
-Tabs.defaultProps = {
-	tabs: [{"koder": counterpart.translate('TABS.CODES.CODES')},
-			{"om": counterpart.translate('TABS.ABOUT.ABOUT')},
-			{"endringer": counterpart.translate('TABS.CHANGES.CHANGES')},
-			{"versjoner": counterpart.translate('TABS.VERSIONS.VERSIONS')},
-			{"korrespondanser": counterpart.translate('TABS.CORRESPONDENCES.CORRESPONDENCES')},
-			{"varianter": counterpart.translate('TABS.VARIANTS.VARIANTS')}]
 }
 
 Tabs.contextTypes = {

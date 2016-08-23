@@ -72,8 +72,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         items: state.classFamilies.items,
         isFetching: state.classFamilies.isFetching,
-        ssbSections: state.classFamilies.ssbSections,
-
+        ssbSections: state.ssbSections,
         search: state.searchResult.search,
         searchResult: state.searchResult.items,
         searchIsFetching: state.searchResult.isFetching,

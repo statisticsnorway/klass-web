@@ -3,6 +3,7 @@ import classFamilies from './classFamilies';
 import selectedClass from './selectedClass';
 import selectedVersion from './selectedVersion';
 import searchResult from './searchResult';
+import ssbSections from './ssbSections';
 
 const initialState = {
 	modalIsOpen: false,
@@ -24,6 +25,7 @@ function modal(state = initialState, action) {
 const rootReducer = combineReducers({
 	modal,
 	classFamilies,
+    ssbSections,
 	selectedClass,
 	selectedVersion,
 	searchResult
