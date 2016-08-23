@@ -34,6 +34,17 @@ class Codes extends Component {
 		tempLink.click()
 	}
 
+    filterText () {
+        const { version } = this.props
+        if (!_.isEmpty(version.filterQuery)) {
+            return (
+                <h3>
+                    <Translate content="TABS.CODES.FILTERED_BY" /> "{version.filterQuery}"
+                </h3>
+            )
+        }
+    }
+
 	renderList () {
 		const { version, actions, modal } = this.props
 		if (_.isEmpty(version.nestedItems)) {
@@ -42,7 +53,10 @@ class Codes extends Component {
 			)
 		}
 		return (
-			<List items={version.nestedItems} type="code" actions={actions} modal={modal}/>
+            <div>
+                {this.filterText()}
+                <List items={version.nestedItems} type="code" actions={actions} modal={modal}/>
+            </div>
 		)
 	}
 

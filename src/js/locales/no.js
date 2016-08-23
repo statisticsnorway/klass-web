@@ -113,9 +113,10 @@ module.exports = {
 		},
 		'CODES': {
 			'CODES': 'Koder',
-			'SEARCH_BY_CODE_OR_NAME': 'Søk etter koder eller navn',
+			'SEARCH_BY_CODE_OR_NAME': 'Filtrer etter koder eller navn',
 			'SHOW_SHORT_TITLES': 'Vis korte titler',
-			'CODES_NOT_FOUND': 'Fant ingen koder'
+			'CODES_NOT_FOUND': 'Fant ingen koder',
+            'FILTERED_BY': 'Resultat filtrert på'
 		},
 		'CORRESPONDENCES': {
 			'CORRESPONDENCES': 'Korrespondanser',

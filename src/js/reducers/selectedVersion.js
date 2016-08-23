@@ -132,6 +132,7 @@ function selectedVersion(state = initialState, action) {
 
 			newState = _.merge({}, state)
 			_.set(newState, 'version.nestedItems', nestedItems)
+			_.set(newState, 'version.filterQuery', action.query)
 
 			return _.assign({}, state, newState)
 

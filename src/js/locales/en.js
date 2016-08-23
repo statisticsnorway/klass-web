@@ -112,9 +112,10 @@ module.exports = {
 		},
 		'CODES': {
 			'CODES': 'Codes',
-			'SEARCH_BY_CODE_OR_NAME': 'Search by code or name',
+			'SEARCH_BY_CODE_OR_NAME': 'Filter by code or name',
 			'SHOW_SHORT_TITLES': 'Show short titles',
-			'CODES_NOT_FOUND': 'No codes found'
+			'CODES_NOT_FOUND': 'No codes found',
+            'FILTERED_BY': 'Result filtered by'
 		},
 		'CORRESPONDENCES': {
 			'CORRESPONDENCES': 'Correspondences',

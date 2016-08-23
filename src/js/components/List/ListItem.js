@@ -15,7 +15,7 @@ class ListItem extends Component {
 				{
 					if (childItem._links) {
 						return (
-							<li key={key}>
+							<li key={key} role="treeitem" tabIndex="-1">
 								<Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
 									<span>{childItem.name}&#160;&#160;»</span>
 									<span className="link-type"><Translate content="CLASSIFICATIONS.CLASSIFICATION" /></span>
@@ -51,7 +51,7 @@ class ListItem extends Component {
 			)
 
 			return (
-				<ol className="delemne-children">
+				<ol className="delemne-children" role="tree">
 					{listEl}
 				</ol>
 			)
@@ -63,7 +63,7 @@ class ListItem extends Component {
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
 
 		return (
-			<li className={toggleIcon}>
+			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
 				<a className="toggle-children" onClick={(ev) => this.toggle(ev)}>
 					<span className="screen-reader-only"><Translate content="CLASSIFICATIONS.DISPLAY_HIDE"/> </span>
 					{displayName}
