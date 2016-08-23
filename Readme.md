@@ -72,6 +72,9 @@ $ npm start
 |   +-- styles			// Felles stil-filer (bl.a. fra ssb.no)
 |   +-- index.html
 +-- test
+|   +-- e2e             // e2e testing med Protractor
+|   |   +-- spec        // Her plasseres alle testene. Bruk filendelsen *.spec.js
+|   +-- unit
 ```
 
 
@@ -86,9 +89,8 @@ Klass.ssb.no har 2 separate språk implementasjoner. Den ene gjelder språk som 
 ## Test
 ### Ende til ende test
 e2e tester ligger følgende mappe: `/test/e2e/spec`.
-Åpne tre terminaler for å kjøre testene lokalt:
-- `nodemon src/js/server`: Starte opp API mock server lokalt
-- `npm run webpack-mock`: Starte opp klass.ssb.no applikasjonen
+Åpne to terminaler for å kjøre testene lokalt:
+- `npm start`: Starte opp klass.ssb.no applikasjonen
 - `npm run test-e2e`: Starter e2e testene via protractor mot din lokale mock server
 
 
