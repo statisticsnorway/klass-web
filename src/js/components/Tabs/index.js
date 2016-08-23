@@ -2,9 +2,7 @@ import './Tabs.scss'
 import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
-// import TabPanel1, { TabStrip } from 'react-tab-panel' // from http://react-components.com/component/react-tab-panel
 import { Wrapper, TabList, Tab, TabPanel } from 'react-aria-tabpanel' //https://github.com/davidtheclark/react-aria-tabpanel
-import 'react-tab-panel/base.css'
 import Codes from './Codes'
 import About from './About'
 import Changes from './Changes'
