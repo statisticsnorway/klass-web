@@ -65,7 +65,6 @@ class ListItem extends Component {
 		return (
 			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
 				<a className="toggle-children" onClick={(ev) => this.toggle(ev)}>
-					<span className="screen-reader-only"><Translate content="CLASSIFICATIONS.DISPLAY_HIDE"/> </span>
 					{displayName}
                     <Notes item={item} actions={actions} />
 				</a>
