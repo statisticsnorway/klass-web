@@ -98,7 +98,7 @@ class Tabs extends Component {
             )
         })
 
-        const panels = tabDescriptions.map((tabDescription, i) => {
+        const panels = tabDescriptions.map((tabDescription, i) =>
             <TabPanel
                 key={i}
                 tabId={tabDescription.id}
@@ -106,7 +106,7 @@ class Tabs extends Component {
             >
                 {tabDescription.content}
             </TabPanel>
-        })
+        )
 
         return (
             <div className="tabs">
