@@ -9,3 +9,4 @@ src/styles/ssb/modules/
 src/styles/ssb/*.scss
 src/styles/ssb/*.css.map
 target/
+node/
