@@ -14,7 +14,6 @@ class SearchPage extends Component {
 		const { search, actions, location } = this.props
 
 		if (!search.query) {
-			location.query.includeCodelists = (location.query.includeCodelists === 'true')
 			actions.searchClassification(location.query)
 		}
 	}
@@ -30,7 +29,7 @@ class SearchPage extends Component {
 				</div>
 				<div className="main">
 					<Translate component="p" content="CLASSIFICATIONS.CLASS_DESCRIPTION" />
-					<Search actions={actions} sections={ssbSections} search={searchObj} />
+					<Search actions={actions} sections={ssbSections} search={searchObj} location={location} />
 					<SearchResult items={items} actions={actions} isFetching={isFetching} search={location.query} />
 				</div>
 				<Sidebar />

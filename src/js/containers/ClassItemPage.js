@@ -71,7 +71,7 @@ class ClassItemPage extends Component {
 
 	showFullDescription (ev) {
 		ReactDOM.findDOMNode(this.refs.description).setAttribute('class', 'description')
-		ev.target.parentNode.setAttribute('class', 'hide')
+		ReactDOM.findDOMNode(this.refs.descLink).setAttribute('class', 'hide')
 	}
 
 	render () {
@@ -112,7 +112,7 @@ class ClassItemPage extends Component {
 						<p>Statisk enhet: <b>Foretak</b></p>
 						<h1>{classification.name}</h1>
 						<p className="description short" ref="description">{classification.description}</p>
-						<p className="clickable" onClick={(ev) => this.showFullDescription(ev)}>+ <Translate content="CLASS_ITEM.READ_MORE" /></p>
+						<p className="clickable" ref="descLink" onClick={(ev) => this.showFullDescription(ev)}>+ <Translate content="CLASS_ITEM.READ_MORE" /></p>
 					</div>
 					{this.renderTabs()}
 				</div>

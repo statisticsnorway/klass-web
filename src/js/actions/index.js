@@ -1,12 +1,13 @@
 import { CALL_API } from '../middleware/api'
 import * as types from '../constants/ActionTypes'
 
-export function loadSubjects() {
+export function loadSubjects(params) {
     return {
         [CALL_API]: {
             // local: true,
             method: 'get',
             endpoint: '/classificationfamilies',
+            params: params,
             types: [types.SUBJECTS_REQUEST, types.SUBJECTS_SUCCESS, types.SUBJECTS_FAILURE]
         }
     }
@@ -27,11 +28,12 @@ export function fetchClassification1(url, id) {
     return fetchClassification(url, id);
 }
 
-function fetchClassification(url, id) {
+function fetchClassification(url, id, params) {
     return {
         [CALL_API]: {
             method: 'get',
             endpoint: `${url}`,
+            params: params,
             id: id,
             types: [types.SUBJECTS_REQUEST, types.SUBJECTS_SUCCESS, types.SUBJECTS_FAILURE]
         }
@@ -46,16 +48,16 @@ function justToggleIt(id, toggle) {
     }
 }
 
-export function toggleSubject(id) {
-    return fetchAndToggleSubject(id)
+export function toggleSubject(id, params) {
+    return fetchAndToggleSubject(id, undefined, params)
 }
 
-function fetchAndToggleSubject(id, toggle) {
+function fetchAndToggleSubject(id, toggle, params) {
     return (dispatch, getState) => {
         const url = getState().classFamilies.items[id]._links.self.href
         const item = getState().classFamilies.items[id]
         if (!item.children) {
-            dispatch(fetchClassification(url, id))
+            dispatch(fetchClassification(url, id, params))
         }
         dispatch(justToggleIt(id, toggle))
     }

@@ -51,7 +51,7 @@ class ClassFamiliesPage extends Component {
     }
 
     render() {
-        const {actions, ssbSections, search} = this.props
+        const {actions, ssbSections, search, location} = this.props
         return (
             <div className="content">
                 <div className="heading">
@@ -59,7 +59,7 @@ class ClassFamiliesPage extends Component {
                 </div>
                 <div className="main">
                     <Translate component="p" content="CLASSIFICATIONS.CLASS_DESCRIPTION"/>
-                    <Search actions={actions} sections={ssbSections} search={search}/>
+                    <Search actions={actions} sections={ssbSections} search={search} location={location}/>
                     {this.renderContent()}
                 </div>
                 <Sidebar/>

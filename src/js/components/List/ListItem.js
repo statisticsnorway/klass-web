@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
+import {connect} from 'react-redux'
 import Translate from 'react-translate-component'
 import List from './index'
 import Notes from '../Notes'
@@ -64,7 +65,7 @@ class ListItem extends Component {
 
 		return (
 			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
-				<a className="toggle-children" onClick={(ev) => this.toggle(ev)}>
+				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} href="#">
 					{displayName}
                     <Notes item={item} actions={actions} />
 				</a>
@@ -120,13 +121,13 @@ class ListItem extends Component {
 
 	toggle(e) {
 		e.preventDefault();
-		const { item, idx, actions, type } = this.props
+		const { item, idx, actions, type, search } = this.props
 
 		if (item.numberOfClassifications || item.children) {
 			if (type == 'code' || type == 'variant') {
 				actions.toggleCode(item.code, type)
 			} else {
-				actions.toggleSubject(idx)
+				actions.toggleSubject(idx, search)
 			}
 		}
 	}
@@ -142,4 +143,11 @@ ListItem.propTypes = {
 	modal: PropTypes.object.isRequired
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        search: state.searchResult.search
+    }
+}
+
 export default ListItem
+export default connect(mapStateToProps)(ListItem)

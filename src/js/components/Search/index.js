@@ -14,19 +14,38 @@ class Search extends Component {
 		actions.loadSSBSections()
 	}
 
+    componentWillUnmount () {
+        this.resetSearch()
+    }
+
+    resetSearch() {
+        const { actions } = this.props
+        const searchObj = {}
+        actions.setSearchObject(searchObj);
+
+    }
+
 	handleSubmit(event) {
-		event.preventDefault()
-		const { actions } = this.props
-		const searchObj = {
-			"query": ReactDOM.findDOMNode(this.refs.query).value.trim(),
-			"ssbSection": ReactDOM.findDOMNode(this.refs.ssbSection).value,
-			"includeCodelists": ReactDOM.findDOMNode(this.refs.includeCodelists).checked
-		}
+		const { actions, location } = this.props
+        if (event) {
+            event.preventDefault()
+        }
+        const query = ReactDOM.findDOMNode(this.refs.query).value.trim()
 
-		actions.searchClassification(searchObj)
+        if (_.isEmpty(query)) {
+            ReactDOM.findDOMNode(this.refs.error).style.display = 'block'
+        } else {
+            const searchObj = {
+                "query": ReactDOM.findDOMNode(this.refs.query).value.trim(),
+                "ssbSection": ReactDOM.findDOMNode(this.refs.ssbSection).value,
+                "includeCodelists": this.refs.includeCodelists.checked
+            }
 
-		const path = "/sok?query=" + searchObj.query + "&includeCodelists=" + searchObj.includeCodelists + "&ssbSection=" + searchObj.ssbSection
-		this.context.router.push(path)
+            actions.searchClassification(searchObj)
+
+            const path = "/sok?query=" + searchObj.query + "&includeCodelists=" + searchObj.includeCodelists + "&ssbSection=" + searchObj.ssbSection
+            this.context.router.push(path)
+        }
 	}
 
 	handleChange(event) {
@@ -39,6 +58,21 @@ class Search extends Component {
 		actions.setSearchObject(searchObj);
 
 	}
+
+    filterParams(event) {
+		const { actions, location } = this.props
+        this.handleChange(event)
+        let searchObj = {
+            "ssbSection": this.refs.ssbSection.value,
+            "includeCodelists": this.refs.includeCodelists.checked
+        }
+
+        if (location.pathname.indexOf('sok') > -1) {
+            this.handleSubmit()
+        } else {
+            actions.loadSubjects(searchObj)
+        }
+    }
 
     displayModal () {
         const { actions } = this.props
@@ -95,7 +129,7 @@ class Search extends Component {
 			})
 		}
 		const dropdown = (
-			<select name="seksjon" ref="ssbSection" defaultValue={search.ssbSection} onChange={this.handleChange.bind(this)}>
+			<select name="seksjon" ref="ssbSection" defaultValue={search.ssbSection} onChange={this.filterParams.bind(this)}>
 				<Translate component="option" value="" content="SEARCH.ALL_SECTIONS" />
 				{options}
 			</select>
@@ -107,17 +141,25 @@ class Search extends Component {
 						<Translate component="label" content="SEARCH.SEARCH_KODEVERK" />
 						<Translate component="input" type="text" ref="query" defaultValue={search.query} onChange={this.handleChange.bind(this)} attributes={{ placeholder: 'SEARCH.SEARCH' }} />
 					</div>
-					<div className="flex-item search-dropdown-section">
-						<Translate component="label" content="SEARCH.OWNING_SECTION" />
-						{dropdown}
-					</div>
 					<div className="flex-item search-button">
 						<Translate component="button" type="submit" content="SEARCH.SEARCH" />
 					</div>
 				</div>
-				<input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.handleChange.bind(this)} defaultChecked={search.includeCodelists == true}/>
-				<Translate component="label" htmlFor="includeCodelists" content="SEARCH.INCLUDE_CODELISTS" />
-				<i className="fa fa-info-circle" aria-hidden="true" onClick={() => this.displayModal()}></i>
+                <Translate component="p" content="SEARCH.SEARCH_ERROR" ref="error" className="error" />
+
+                <div className="flex-container filter">
+                    <label>Filtrer:</label>
+                    <div>
+                        <input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.filterParams.bind(this)} defaultChecked={search.includeCodelists === true}/>
+                        <Translate component="label" htmlFor="includeCodelists" content="SEARCH.INCLUDE_CODELISTS" />
+                        <i className="fa fa-info-circle" aria-hidden="true" onClick={() => this.displayModal()}></i>
+                    </div>
+					<div className="search-dropdown-section">
+						<Translate component="label" content="SEARCH.OWNING_SECTION" />
+                        {dropdown}
+                    </div>
+                </div>
+
                 {this.renderModal()}
 			</form>
 		)
@@ -127,6 +169,7 @@ class Search extends Component {
 Search.propTypes = {
 	actions: PropTypes.object.isRequired,
 	sections: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
 	search: PropTypes.object.isRequired
 }
 

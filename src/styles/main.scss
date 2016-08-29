@@ -147,6 +147,7 @@ body {
     	p.clickable {
     		text-decoration: underline;
     		color: $link-color;
+            display: inline-block;
     	}
 
     	.flex-container {

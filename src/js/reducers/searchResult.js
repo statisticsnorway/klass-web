@@ -23,11 +23,11 @@ function searchResult(state = initialState, action) {
 				items: action.response._embedded ? action.response._embedded.searchResults : []
 			})
 		case types.SEARCH_FAILURE:
-			return merge({}, state, {
+			return Object.assign({}, state, {
 				isFetching: false
 			})
 		case types.SET_SEARCH_QUERY:
-			return merge({}, state, {
+			return Object.assign({}, state, {
 				search: action.search
 			})
 		default:

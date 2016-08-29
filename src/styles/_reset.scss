@@ -8,6 +8,10 @@ p {
 	// font-size: $body-font-size;
 }
 
+label {
+    cursor: default;
+}
+
 .tab-content, .react-tab-panel__body {
 	overflow: inherit !important;
 }
