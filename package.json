@@ -23,11 +23,8 @@
     "start": "webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress",
     "prebuild": "npm run clean:build && npm run build:html",
     "build": "SET NODE_ENV=production& NODE_ENV=production& webpack -p --config ./config/webpack.config.prod.js --progress",
-    "lint": "eslint config src/js/**/*.js",
     "jscs": "jscs src/js/",
-    "test": "npm run lint && npm run karma",
     "lint": "eslint --ext .js --ext .jsx src test config",
-    "test:watch": "npm run test -- --watch",
     "test-e2e": "./node_modules/.bin/protractor protractor.config.js"
   },
   "devDependencies": {
