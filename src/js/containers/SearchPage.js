@@ -38,14 +38,12 @@ class SearchPage extends Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => {
-	return {
-		items: state.searchResult.items,
-		search: state.searchResult.search,
-		isFetching: state.searchResult.isFetching,
-        ssbSections: state.ssbSections
-	}
-}
+const mapStateToProps = (state, ownProps) => ({
+	items: state.searchResult.items,
+	search: state.searchResult.search,
+	isFetching: state.searchResult.isFetching,
+    ssbSections: state.ssbSections
+})
 
 function mapDispatchToProps (dispatch) {
 	return {

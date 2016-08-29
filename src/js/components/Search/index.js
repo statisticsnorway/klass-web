@@ -173,11 +173,9 @@ Search.propTypes = {
 	search: PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => {
-	return {
-		modal: state.modal
-	}
-}
+const mapStateToProps = (state, ownProps) => ({
+	modal: state.modal
+})
 
 Search.contextTypes = {
 	router: PropTypes.object

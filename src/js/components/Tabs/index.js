@@ -99,15 +99,13 @@ class Tabs extends Component {
         })
 
         const panels = tabDescriptions.map((tabDescription, i) => {
-            return (
-                <TabPanel
-                    key={i}
-                    tabId={tabDescription.id}
-                    active={tabDescription.id === tabIndex}
-                >
-                    {tabDescription.content}
-                </TabPanel>
-            )
+            <TabPanel
+                key={i}
+                tabId={tabDescription.id}
+                active={tabDescription.id === tabIndex}
+            >
+                {tabDescription.content}
+            </TabPanel>
         })
 
         return (

@@ -88,7 +88,7 @@ module.exports = {
 			'BACK_TO_CORRESPONDENCES': 'Tilbake til alle korrespondanser',
 			'RESPONSIBLE': 'Ansvarlig',
 			'SECTION_FOR': 'seksjon for',
-			'PUBLISHED': 'Publisert på',
+			'PUBLISHED': 'Publisert på'
 		},
 		'VARIANTS': {
 			'VARIANTS': 'Varianter',

@@ -1,5 +1,4 @@
 module.exports = (function () {
-  'use strict';
 
   /**
    * Create a new FlatToNested object.

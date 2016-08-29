@@ -59,22 +59,6 @@ class ListItem extends Component {
 		}
 	}
 
-	render () {
-		const { item, displayName, actions } = this.props
-		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
-
-		return (
-			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
-				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} href="#">
-					{displayName}
-                    <Notes item={item} actions={actions} />
-				</a>
-                {this.renderModal()}
-				{this.renderItemList()}
-			</li>
-		)
-	}
-
 	closeModal () {
 		const { actions } = this.props
 		actions.hideModal()
@@ -131,6 +115,22 @@ class ListItem extends Component {
 			}
 		}
 	}
+
+	render () {
+		const { item, displayName, actions } = this.props
+		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
+
+		return (
+			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
+				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} href="#">
+					{displayName}
+                    <Notes item={item} actions={actions} />
+				</a>
+                {this.renderModal()}
+				{this.renderItemList()}
+			</li>
+		)
+	}
 }
 
 
@@ -143,11 +143,9 @@ ListItem.propTypes = {
 	modal: PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        search: state.searchResult.search
-    }
-}
+const mapStateToProps = (state, ownProps) => ({
+    search: state.searchResult.search
+})
 
 export default ListItem
 export default connect(mapStateToProps)(ListItem)

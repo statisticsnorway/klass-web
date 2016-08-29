@@ -68,17 +68,15 @@ class ClassFamiliesPage extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        items: state.classFamilies.items,
-        isFetching: state.classFamilies.isFetching,
-        ssbSections: state.ssbSections,
-        search: state.searchResult.search,
-        searchResult: state.searchResult.items,
-        searchIsFetching: state.searchResult.isFetching,
-		modal: state.modal
-    }
-}
+const mapStateToProps = (state, ownProps) => ({
+    items: state.classFamilies.items,
+    isFetching: state.classFamilies.isFetching,
+    ssbSections: state.ssbSections,
+    search: state.searchResult.search,
+    searchResult: state.searchResult.items,
+    searchIsFetching: state.searchResult.isFetching,
+	modal: state.modal
+})
 
 function mapDispatchToProps(dispatch) {
     return {

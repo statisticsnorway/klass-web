@@ -131,7 +131,7 @@ module.exports = {
 			'BACK_TO_CORRESPONDENCES': 'Back to correspondence overview',
 			'RESPONSIBLE': 'Responsible',
 			'SECTION_FOR': 'section for',
-			'PUBLISHED': 'Published on',
+			'PUBLISHED': 'Published on'
 		},
 		'VARIANTS': {
 			'VARIANTS': 'Variants',

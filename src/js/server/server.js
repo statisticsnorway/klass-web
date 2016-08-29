@@ -37,97 +37,97 @@ server.use(cors());
 
 // mock apis
 
-server.get('/classifications/:id/codes.csv', (req, res)=> {
-  let mock_data = require('./mock_data/changes');
-  res.send(mock_data);
+server.get('/classifications/:id/codes.csv', (req, res) => {
+  let mockData = require('./mockData/changes')
+  res.send(mockData);
 });
 
-server.get('/classifications/:id/changes', (req, res)=> {
-  let mock_data;
+server.get('/classifications/:id/changes', (req, res) => {
+  let mockData;
   try {
-      mock_data = require('./mock_data/changes/' + req.params.id);
+      mockData = require('./mockData/changes/' + req.params.id);
   } catch (ex) {
-      mock_data = require('./mock_data/changes');
+      mockData = require('./mockData/changes');
   }
-  res.send(mock_data);
+  res.send(mockData);
 });
 
-server.get('/classifications/search', (req, res)=> {
-	let mock_data;
+server.get('/classifications/search', (req, res) => {
+	let mockData;
 	try {
-		mock_data = require('./mock_data/search/search_' + req.params('query'));
+		mockData = require('./mockData/search/search_' + req.params('query'));
 	} catch (ex) {
-		mock_data = require('./mock_data/search');
+		mockData = require('./mockData/search');
 	}
-  res.send(mock_data);
+  res.send(mockData);
 });
 
-server.get('/ssbsections', (req, res)=> {
-  let mock_data = require('./mock_data/ssbsections');
-  res.send(mock_data);
+server.get('/ssbsections', (req, res) => {
+  let mockData = require('./mockData/ssbsections');
+  res.send(mockData);
 });
 
-server.get('/classificationfamilies', (req, res)=> {
-  let mock_data = require('./mock_data/classificationfamilies');
-  res.send(mock_data);
+server.get('/classificationfamilies', (req, res) => {
+  let mockData = require('./mockData/classificationfamilies');
+  res.send(mockData);
 });
 
-server.get('/classificationfamilies/:id', (req, res)=> {
-	let mock_data;
+server.get('/classificationfamilies/:id', (req, res) => {
+	let mockData;
 	try {
-		mock_data = require('./mock_data/classificationfamilies/classificationfamily_' + req.params.id);
+		mockData = require('./mockData/classificationfamilies/classificationfamily_' + req.params.id);
 	} catch (ex) {
-		mock_data = require('./mock_data/classificationfamilies/classificationfamily');
+		mockData = require('./mockData/classificationfamilies/classificationfamily');
 	}
-  res.send(mock_data);
+  res.send(mockData);
 });
 
-server.get('/classifications', (req, res)=> {
-  let mock_data = require('./mock_data/classifications');
-  res.send(mock_data);
+server.get('/classifications', (req, res) => {
+  let mockData = require('./mockData/classifications');
+  res.send(mockData);
 });
 
-server.get('/classifications/:id', (req, res)=> {
-	let mock_data;
+server.get('/classifications/:id', (req, res) => {
+	let mockData;
 	try {
-		mock_data = require('./mock_data/classifications/classification_' + req.params.id);
+		mockData = require('./mockData/classifications/classification_' + req.params.id);
 	} catch (ex) {
-		mock_data = require('./mock_data/classifications/classification');
+		mockData = require('./mockData/classifications/classification');
 	}
-  res.send(mock_data);
+  res.send(mockData);
 });
 
-server.get('/versions/:id', (req, res)=> {
-  // let mock_data = require('./mock_data/versions');
-	let mock_data;
+server.get('/versions/:id', (req, res) => {
+  // let mockData = require('./mockData/versions');
+	let mockData;
 	try {
-		mock_data = require('./mock_data/versions/version_' + req.params.id);
+		mockData = require('./mockData/versions/version_' + req.params.id);
 	} catch (ex) {
-		mock_data = require('./mock_data/versions/version');
+		mockData = require('./mockData/versions/version');
 	}
-  res.send(mock_data);
+  res.send(mockData);
 });
 
-server.get('/correspondencetables/:id', (req, res)=> {
-  // let mock_data = require('./mock_data/versions');
-	let mock_data;
+server.get('/correspondencetables/:id', (req, res) => {
+  // let mockData = require('./mockData/versions');
+	let mockData;
 	try {
-		mock_data = require('./mock_data/correspondences/correspondence_' + req.params.id);
+		mockData = require('./mockData/correspondences/correspondence_' + req.params.id);
 	} catch (ex) {
-		mock_data = require('./mock_data/correspondences');
+		mockData = require('./mockData/correspondences');
 	}
-  res.send(mock_data);
+  res.send(mockData);
 });
 
-server.get('/variants/:id', (req, res)=> {
-  // let mock_data = require('./mock_data/variants');
-	let mock_data;
+server.get('/variants/:id', (req, res) => {
+  // let mockData = require('./mockData/variants');
+	let mockData;
 	try {
-		mock_data = require('./mock_data/variants/variant_' + req.params.id);
+		mockData = require('./mockData/variants/variant_' + req.params.id);
 	} catch (ex) {
-		mock_data = require('./mock_data/variants/variant');
+		mockData = require('./mockData/variants/variant');
 	}
-  res.send(mock_data);
+  res.send(mockData);
 });
 
 console.log(`Server is listening to port: ${port}`);

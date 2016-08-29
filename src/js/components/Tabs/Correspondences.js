@@ -24,11 +24,12 @@ class Correspondences extends Component {
         }
     }
 
-    invertTable () {
-        this.setState({
-            invertedTable: !this.state.invertedTable
-        })
-    }
+	componentDidMount() {
+		const { actions, params } = this.props
+		if (params.itemId) {
+			actions.loadCorrespondence(params.itemId)
+		}
+	}
 
 	componentWillReceiveProps(nextProps) {
 		const { actions } = this.props
@@ -37,12 +38,11 @@ class Correspondences extends Component {
 		}
 	}
 
-	componentDidMount() {
-		const { actions, params } = this.props
-		if (params.itemId) {
-			actions.loadCorrespondence(params.itemId)
-		}
-	}
+    invertTable () {
+        this.setState({
+            invertedTable: !this.state.invertedTable
+        })
+    }
 
 	handleClick(event, correspondence) {
 		const { params } = this.props
@@ -119,7 +119,6 @@ class Correspondences extends Component {
                         </tr>
                     )
                 })
-                break
             case true:
                 corrArr.sort(function(a,b) {
     				if (a.sourceCode.toLowerCase() > b.sourceCode.toLowerCase()) {
@@ -151,7 +150,6 @@ class Correspondences extends Component {
                         </tr>
                     )
                 })
-                break
         }
 	}
 

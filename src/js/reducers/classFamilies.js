@@ -42,6 +42,7 @@ function classFamilies(state = initialState, action) {
 					isFetching: false
 				})
 			}
+            break
 		case types.SUBJECTS_FAILURE:
 			return Object.assign({}, state, {
 				isFetching: false

@@ -126,14 +126,12 @@ class ClassItemPage extends Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => {
-	return {
-		classification: state.selectedClass.classification,
-		selectedVersion: state.selectedVersion,
-		isFetching: state.selectedClass.isFetching,
-		modal: state.modal
-	}
-}
+const mapStateToProps = (state, ownProps) => ({
+	classification: state.selectedClass.classification,
+	selectedVersion: state.selectedVersion,
+	isFetching: state.selectedClass.isFetching,
+	modal: state.modal
+})
 
 function mapDispatchToProps (dispatch) {
 	return {

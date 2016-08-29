@@ -59,8 +59,8 @@ function callApi(endpoint, headers, params, local) {
 		return fetch(fullUrl + apiParams, {
 			headers: headers
 			})
-			.then(response =>
-				response.json().then(json => ({ json, response }))
+			.then((response) =>
+				response.json().then((json) => ({ json, response }))
 			).then(({ json, response }) => {
 				if (!response.ok) {
 					return Promise.reject(json)
@@ -82,7 +82,7 @@ export const CALL_API = Symbol('CALL_API')
 
 // A Redux middleware that interprets actions with CALL_API info specified.
 // Performs the call and promises when such actions are dispatched.
-export default store => next => action => {
+export default (store) => (next) => (action) => {
 	const callAPI = action[CALL_API]
 	if (typeof callAPI === 'undefined') {
 		return next(action)
@@ -99,7 +99,7 @@ export default store => next => action => {
 		throw new Error('Specify a string endpoint URL.')
 	}
 
-	if (!types.every(type => typeof type === 'string')) {
+	if (!types.every((type) => typeof type === 'string')) {
 		throw new Error('Expected action types to be strings.')
 	}
 
@@ -113,12 +113,12 @@ export default store => next => action => {
 	next(actionWith({ type: requestType, params }))
 
 	return callApi(endpoint, headers, params, local).then(
-		response => next(actionWith({
+		(response) => next(actionWith({
 			response,
 			type: successType,
 			id: id
 		})),
-		error => next(actionWith({
+		(error) => next(actionWith({
 			type: failureType,
 			error: error.message || 'Something bad happened'
 		}))

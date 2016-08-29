@@ -8,7 +8,8 @@ import { Router, browserHistory, useRouterHistory  } from 'react-router'
 import { createHashHistory } from 'history'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import counterpart from 'counterpart'
-import { SSBHeader, SSBFooter } from './ssbFrame'
+import SSBHeader from './SSBHeader'
+import SSBFooter from './SSBFooter'
 
 import routes from './routes';
 

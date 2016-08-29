@@ -14,12 +14,6 @@ class Changes extends Component {
         }
     }
 
-    invertTable () {
-        this.setState({
-            invertedTable: !this.state.invertedTable
-        })
-    }
-
 	componentDidMount() {
 		const { actions, classification, params } = this.props
         let selectedChanges = classification.versions[0]
@@ -40,6 +34,12 @@ class Changes extends Component {
             actions.loadChanges(params.classId, query)
         }
 	}
+
+    invertTable () {
+        this.setState({
+            invertedTable: !this.state.invertedTable
+        })
+    }
 
     renderChangesBody () {
 		const { classification, selectedVersion } = this.props
@@ -95,7 +95,6 @@ class Changes extends Component {
             			)
             		})
 
-                    break
                 case true:
 
             		changes.codeChanges.sort(function(a,b) {
@@ -125,7 +124,6 @@ class Changes extends Component {
             			)
             		})
 
-                    break
             }
 
 
@@ -163,7 +161,7 @@ class Changes extends Component {
 
         const validFrom = moment(selectedChanges.validFrom).format('D.MMMM YYYY')
         const validTo = moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('D.MMMM YYYY') : 'Gjeldende versjon'
-        const previousVersion_validFrom = (previousVersion && moment(previousVersion.validFrom).isValid()) ? moment(previousVersion.validFrom).format('D.MMMM YYYY') : '-'
+        const previousVersionValidFrom = (previousVersion && moment(previousVersion.validFrom).isValid()) ? moment(previousVersion.validFrom).format('D.MMMM YYYY') : '-'
         return (
             <div>
                 <h3>
@@ -175,8 +173,8 @@ class Changes extends Component {
                 <table className="change-table alternate">
                     <thead>
                         <tr>
-                            <th>{this.state.invertedTable ? validFrom : previousVersion_validFrom}</th>
-                            <th>{this.state.invertedTable ? previousVersion_validFrom : validFrom}</th>
+                            <th>{this.state.invertedTable ? validFrom : previousVersionValidFrom}</th>
+                            <th>{this.state.invertedTable ? previousVersionValidFrom : validFrom}</th>
                         </tr>
                     </thead>
                     <tbody>

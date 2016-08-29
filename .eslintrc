@@ -8,13 +8,19 @@
   ],
 
   "globals": {
+    "goToUrl": true,
+    "waitUntilIsElementPresent": true,
+    "sinon": true,
     define: true
   },
 
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "mocha": true,
+    "jasmine": true,
+    "protractor": true
   },
 
   "ecmaFeatures": {
@@ -37,19 +43,18 @@
     "strict": [2, "global"],
     "no-unused-vars": 0,
     "no-console": 0,
+    "no-mixed-spaces-and-tabs": 0,
     "camelcase": [2, {"properties": "always"}],
     "consistent-return": 2,
     "arrow-spacing": 2,
     "arrow-parens": [2, "always"],
     "arrow-body-style": [2, "as-needed"],
-    "semi": [2, "always"],
     "react/jsx-uses-react": 1,
     "react/jsx-no-undef": 2,
     "react/no-is-mounted": 2,
     "react/wrap-multilines": 2,
     "react/display-name": [ 1, {"acceptTranspilerName": true }],
     "react/forbid-prop-types": [1, {"forbid": "any"}],
-    "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-curly-spacing": 1,
     "react/jsx-indent-props": 0,

@@ -19,6 +19,34 @@ class About extends Component {
 		})
 	}
 
+    renderChangeLog () {
+        const { version } = this.props
+
+        if (_.isEmpty(version.changelogs)){
+            return (
+                <tr>
+                    <td colSpan="3">Ingen endringer</td>
+                </tr>
+            )
+        }
+
+        return this.changeLogBody(version.changelogs)
+    }
+
+    changeLogBody (items) {
+
+        return items.map(function(change, key) {
+            return (
+                <tr key={key}>
+                    <td>{moment(change.changeOccured).format("DD.MMMM YYYY")}</td>
+                    <td>{moment(change.changeOccured).format("H:m:s")}</td>
+                    <td>{change.description}</td>
+                </tr>
+            )
+        })
+
+    }
+
 	render () {
 		const { version, actions } = this.props
 
@@ -103,34 +131,6 @@ class About extends Component {
 			</div>
 		)
 	}
-
-    renderChangeLog () {
-        const { version } = this.props
-
-        if (_.isEmpty(version.changelogs)){
-            return (
-                <tr>
-                    <td colSpan="3">Ingen endringer</td>
-                </tr>
-            )
-        }
-
-        return this.changeLogBody(version.changelogs)
-    }
-
-    changeLogBody (items) {
-
-        return items.map(function(change, key) {
-            return (
-                <tr key={key}>
-                    <td>{moment(change.changeOccured).format("DD.MMMM YYYY")}</td>
-                    <td>{moment(change.changeOccured).format("H:m:s")}</td>
-                    <td>{change.description}</td>
-                </tr>
-            )
-        })
-
-    }
 }
 
 About.propTypes = {
