@@ -4,7 +4,7 @@ import * as types from '../constants/ActionTypes'
 export function loadSubjects(params) {
     return {
         [CALL_API]: {
-            // local: true,
+            frontpage: true,
             method: 'get',
             endpoint: '/classificationfamilies',
             params: params,
@@ -24,13 +24,10 @@ export function getClassification(id) {
     }
 }
 
-export function fetchClassification1(url, id) {
-    return fetchClassification(url, id);
-}
-
 function fetchClassification(url, id, params) {
     return {
         [CALL_API]: {
+            frontpage: true,
             method: 'get',
             endpoint: `${url}`,
             params: params,

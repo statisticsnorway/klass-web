@@ -26,8 +26,8 @@ counterpart.registerTranslations('EN', require('./locales/en'))
 counterpart.registerTranslations('NN', require('./locales/nn'))
 counterpart.registerTranslations('NO', require('./locales/no'))
 
-if (sessionStorage.getItem('selectedOuterLanguage')) {
-    counterpart.setLocale(sessionStorage.getItem('selectedOuterLanguage'));
+if (sessionStorage.getItem('selectedLanguage')) {
+    counterpart.setLocale(sessionStorage.getItem('selectedLanguage'));
 } else {
     counterpart.setLocale('NO')
 }

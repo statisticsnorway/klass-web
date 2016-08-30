@@ -13,7 +13,7 @@ import config from '../config'
 function loadData (props, selectedLanguage) {
 	const { params, actions } = props
 	if (selectedLanguage) {
-		sessionStorage.setItem('selectedLanguage', selectedLanguage)
+		sessionStorage.setItem('selectedAPILanguage', selectedLanguage)
 	}
 
 	actions.getClassification(params.classId).then(function (res) {

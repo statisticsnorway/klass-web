@@ -4,9 +4,11 @@ import counterpart from 'counterpart'
 import config from '../../config'
 
 function getLocale() {
-	if (sessionStorage.getItem('selectedLanguage')) {
-		return sessionStorage.getItem('selectedLanguage')
-	}
+	if (sessionStorage.getItem('selectedAPILanguage')) {
+		return sessionStorage.getItem('selectedAPILanguage')
+	} else if (sessionStorage.getItem('selectedLanguage')) {
+        return sessionStorage.getItem('selectedLanguage')
+    }
 	return 'NO'
 }
 

@@ -29,7 +29,8 @@ class SSBHeader extends Component {
         e.preventDefault();
         const lang = e.currentTarget.lang.toUpperCase()
 
-        sessionStorage.setItem('selectedOuterLanguage', lang)
+        sessionStorage.clear('selectedAPILanguage')
+        sessionStorage.setItem('selectedLanguage', lang)
         window.location.reload()
     }
 
