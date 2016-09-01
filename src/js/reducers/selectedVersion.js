@@ -233,6 +233,7 @@ function filterTree(items, query) {
 				retArray.push(obj)
 			} else if (	_.includes(item.name.toLowerCase(), query.toLowerCase()) ||
                         _.includes(item.shortName.toLowerCase(), query.toLowerCase()) ||
+                        _.includes(item.notes.toLowerCase(), query.toLowerCase()) ||
 						_.includes(item.code.toLowerCase(), query.toLowerCase())) {
 				obj = _.omit(item, ['children'])
 				retArray.push(obj)
@@ -240,6 +241,7 @@ function filterTree(items, query) {
 		} else {
 			if (_.includes(item.name.toLowerCase(), query.toLowerCase()) ||
                 _.includes(item.shortName.toLowerCase(), query.toLowerCase()) ||
+                _.includes(item.notes.toLowerCase(), query.toLowerCase()) ||
 				_.includes(item.code.toLowerCase(), query.toLowerCase())) {
 				retArray.push(item)
 			}
