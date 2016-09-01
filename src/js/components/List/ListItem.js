@@ -122,7 +122,7 @@ class ListItem extends Component {
 
 		return (
 			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
-				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} href="#">
+				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} role="link" tabIndex="0">
 					{displayName}
                     <Notes item={item} actions={actions} />
 				</a>

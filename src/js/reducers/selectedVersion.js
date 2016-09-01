@@ -6,6 +6,9 @@ import FlatToNested from '../lib/flat-to-nested'
 
 const initialState = {
 	isFetching: false,
+    isFetchingChanges: false,
+    isFetchingCorrespondence: false,
+    isFetchingVariant: false,
 	version: {},
 	selectedCorrespondence: {},
 	selectedVariant: {},
@@ -29,7 +32,7 @@ function selectedVersion(state = initialState, action) {
             })
 		case types.CHANGES_REQUEST:
 			return _.assign({}, state, {
-				isFetching: true,
+				isFetchingChanges: true,
 				changes: {}
 			})
 		case types.CORRESPONDENCE_REQUEST:
@@ -39,7 +42,7 @@ function selectedVersion(state = initialState, action) {
 
 		case types.VARIANT_REQUEST:
 			return _.merge({}, state, {
-				isFetching: true
+				isFetchingVariant: true
 			})
 
 		case types.SELECTED_VERSION_SUCCESS:
@@ -57,7 +60,7 @@ function selectedVersion(state = initialState, action) {
 
 		case types.CHANGES_SUCCESS:
 			return _.assign({}, state, {
-				isFetching: false,
+				isFetchingChanges: false,
 				changes: action.response,
                 errorMsg: ''
 			})
@@ -76,6 +79,7 @@ function selectedVersion(state = initialState, action) {
 			})
 
 			return _.assign({}, state, {
+				isFetchingVariant: false,
 				selectedVariant: mappedItems
 			})
 
@@ -139,10 +143,20 @@ function selectedVersion(state = initialState, action) {
 			return _.assign({}, state, newState)
 
 		case types.CORRESPONDENCE_FAILURE:
+            return _.merge({}, state, {
+				isFetchingCorrespondence: false,
+				selectedCorrespondence: {},
+                errorMsg: action.error
+            })
 		case types.VARIANT_FAILURE:
+            return _.merge({}, state, {
+				isFetchingVariant: false,
+				selectedVariant: {},
+                errorMsg: action.error
+            })
 		case types.CHANGES_FAILURE:
 			return _.assign({}, state, {
-				isFetching: false,
+				isFetchingChanges: false,
 				changes: {},
                 errorMsg: action.error
 			})

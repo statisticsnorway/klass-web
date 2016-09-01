@@ -104,6 +104,15 @@ class Variants extends Component {
 		const selectedVariant = selectedVersion.selectedVariant
 
 		if (params.itemId) {
+            if (selectedVersion.isFetchingVariant) {
+                return (
+                    <div className="spinner">
+                        <div className="bounce1"></div>
+                        <div className="bounce2"></div>
+                        <div className="bounce3"></div>
+                    </div>
+                )
+            }
 			if (_.isEmpty(selectedVariant)) {
 				return (
 					<Translate component="div" content="TABS.VARIANTS.VARIANT_EMPTY" />
