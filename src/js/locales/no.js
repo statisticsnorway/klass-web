@@ -29,7 +29,9 @@ module.exports = {
         'DATE': 'Dato',
         'TIME': 'Klokkeslett',
         'COMMENTS': 'Kommentarer',
-        'INVERT_TABLE': 'Inverter tabell'
+        'INVERT_TABLE': 'Inverter tabell',
+        'YOU_ARE_HERE': 'Du er her',
+        'FRONTPAGE': 'Forsiden'
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',
@@ -75,6 +77,14 @@ module.exports = {
 		'BACK_TO_CLASSIFICATION_OVERVIEW': 'Tilbake til oversikten over klassifikasjoner og kodelister',
         'SEARCH_ERROR': '* Søkestreng påkrevd'
 	},
+    'SUBSCRIPTION': {
+        'HEADER': 'Abonnement',
+        'DESCRIPTION': 'Abonner på endringer i kodeverket',
+        'SUBSCRIBE': 'Abonner',
+        'SUBSCRIBED': 'Du vil motta en mail. Følg instruksjonene i mailen for å starte ditt abonnement.',
+        'EMAIL_ERROR': '* Ugyldig e-post',
+        'GENERAL_ERROR': '* Noe gikk galt. Se loggen og prøv igjen senere.'
+    },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! Denne versjonen er ikke lenger gyldig',
 		'VERSION_EXPIRED': 'Utgått versjon',

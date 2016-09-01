@@ -14,27 +14,6 @@ class Changes extends Component {
         }
     }
 
-	componentDidMount() {
-		const { actions, classification, params } = this.props
-        let selectedChanges = classification.versions[0]
-		if (params.versionId) {
-            _.forEach(classification.versions, function(v) {
-                if (v.id == params.versionId) {
-                    selectedChanges = v
-                    return false
-                }
-            })
-        }
-
-        if (!_.isEmpty(selectedChanges)){
-            const query = {
-                from: moment(selectedChanges.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
-                to: moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('YYYY-MM-DD') : ''
-            }
-            actions.loadChanges(params.classId, query)
-        }
-	}
-
     invertTable () {
         this.setState({
             invertedTable: !this.state.invertedTable

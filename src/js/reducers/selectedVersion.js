@@ -9,7 +9,8 @@ const initialState = {
 	version: {},
 	selectedCorrespondence: {},
 	selectedVariant: {},
-    changes: {}
+    changes: {},
+    errorMsg: ''
 }
 
 const flatToNested = new FlatToNested({
@@ -57,7 +58,8 @@ function selectedVersion(state = initialState, action) {
 		case types.CHANGES_SUCCESS:
 			return _.assign({}, state, {
 				isFetching: false,
-				changes: action.response
+				changes: action.response,
+                errorMsg: ''
 			})
 
 		case types.CORRESPONDENCE_SUCCESS:
@@ -141,7 +143,8 @@ function selectedVersion(state = initialState, action) {
 		case types.CHANGES_FAILURE:
 			return _.assign({}, state, {
 				isFetching: false,
-				changes: {}
+				changes: {},
+                errorMsg: action.error
 			})
 		case types.SELECTED_VERSION_FAILURE:
             return _.assign({}, state, {

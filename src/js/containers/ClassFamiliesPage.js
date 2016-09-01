@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux'
 import * as ClassActions from '../actions'
 import Search from '../components/Search'
 import List from '../components/List'
-import Sidebar from '../components/Sidebar'
+import Contact from '../components/Sidebar/Contact'
 
 function loadData(props) {
     const {actions} = props
@@ -62,7 +62,9 @@ class ClassFamiliesPage extends Component {
                     <Search actions={actions} sections={ssbSections} search={search} location={location}/>
                     {this.renderContent()}
                 </div>
-                <Sidebar/>
+    			<div className="sidebar">
+                    <Contact />
+                </div>
             </div>
         )
     }

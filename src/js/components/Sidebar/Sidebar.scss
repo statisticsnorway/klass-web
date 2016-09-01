@@ -4,6 +4,10 @@
 	width: 25em;
 	float: right;
 
+    > div {
+        margin-bottom: 3em;
+    }
+
 	h2 {
 		font-size: 1.7em;
 	    line-height: 1.5;
@@ -11,18 +15,25 @@
 	    color: #3e8601;
 	    text-transform: uppercase;
 
-		.overskrift-tekst {
+		.icon-contact {
 			background: url("../../../images/icon-envelope.png") no-repeat scroll right 0.3em transparent;
 			padding-right: 30px;
 		}
 	}
 
-    #contacts {
-        margin-bottom: 3em;
+    #subscription {
+        input[type=text] {
+            display: block;
+            width: 100%;
+        }
 
-        .contact {
-            border-bottom: 1px dotted #888;
-            padding-bottom: 0.4em;
+        .error {
+            position: absolute;
+            font-size: 1.2em;
+        }
+
+        button {
+            margin-top: 1.5em;
         }
     }
 }

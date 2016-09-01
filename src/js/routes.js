@@ -5,9 +5,12 @@ import ClassFamiliesPage from './containers/ClassFamiliesPage';
 import ClassItemPage from './containers/ClassItemPage';
 import SearchPage from './containers/SearchPage';
 import NotFoundView from './views/NotFoundView';
+import Translate from 'react-translate-component'
+
+const classCode = <Translate content="CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS" />
 
 export default (
-  <Route path="/" name="Klassifikasjoner og kodelister" component={App}>
+  <Route path="/" name={classCode} component={App}>
     <IndexRoute component={ClassFamiliesPage} />
 	<Route path="klassifikasjoner" component={ClassItemPage} name="exclude">
         <Route path=":classId(/versjon/:versionId)(/:tab)(/:itemId)" component={ClassItemPage} />

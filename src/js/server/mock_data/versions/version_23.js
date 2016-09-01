@@ -3,7 +3,11 @@ module.exports = {
     "validFrom": "2000-01-01",
     "validTo": "2000-02-01",
     "introduction": "hirarkiske data PoC",
-    "contactPerson": "Klass Administrator",
+    "contactPerson": {
+        "name": "Klass Administrator",
+        "email": "admin@ssb.no",
+        "phone": "62 88 55 48"
+    },
     "owningSection": "133",
     "legalBase": "",
     "publications": "",

@@ -29,7 +29,9 @@ module.exports = {
         'DATE': 'Date',
         'TIME': 'Time',
         'COMMENTS': 'Comments',
-        'INVERT_TABLE': 'Invert table'
+        'INVERT_TABLE': 'Invert table',
+        'YOU_ARE_HERE': 'You are here',
+        'FRONTPAGE': 'Frontpage'
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Choose language for code:',
@@ -49,7 +51,7 @@ module.exports = {
 	'CLASSIFICATIONS': {
 		'CLASSIFICATION': 'Classification',
 		'DISPLAY_HIDE': 'Show/hide:',
-		'CHOOSE_CLASS_FAMILY': 'Or choose an area',
+		'CHOOSE_CLASS_FAMILY': 'Navigate by subject area',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Classifications and codelists',
 		'CLASS_DESCRIPTION': 'Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.'
 	},
@@ -65,15 +67,23 @@ module.exports = {
 		'SEARCH': 'Search',
         'FILTER': 'Filter',
         'RESET': 'Reset',
-		'ALL_SECTIONS': 'All sections',
-		'SEARCH_KODEVERK': 'Search for kodeverk',
-		'OWNING_SECTION': 'Owning SSB-section',
+		'ALL_SECTIONS': 'All divisions',
+		'SEARCH_KODEVERK': 'Search for classifications (and codelists)',
+		'OWNING_SECTION': 'Responsible division',
 		'INCLUDE_CODELISTS': 'Include codelists',
 		'WHAT_IS_CODELIST_HEADER': 'What is a codelist?',
 		'WHAT_IS_CODELIST_BODY': 'Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vært bransjens standard for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å lage et prøveeksemplar av en bok. Lorem Ipsum har tålt tidens tann usedvanlig godt, og har i tillegg til å bestå gjennom fem århundrer også tålt spranget over til elektronisk typografi uten vesentlige endringer. Lorem Ipsum ble gjort allment kjent i 1960-årene ved lanseringen av Letraset-ark med avsnitt fra Lorem Ipsum, og senere med sideombrekkingsprogrammet Aldus PageMaker som tok i bruk nettopp Lorem Ipsum for dummytekst.',
 		'BACK_TO_CLASSIFICATION_OVERVIEW': 'Back to classifications and codelists overview',
         'SEARCH_ERROR': '* Searchstring required'
 	},
+    'SUBSCRIPTION': {
+        'HEADER': 'Subscription',
+        'DESCRIPTION': 'Subscribe for changes in codelist',
+        'SUBSCRIBE': 'Subscribe',
+        'SUBSCRIBED': 'You will receive an email. Follow the instructions email to start your subscription.',
+        'EMAIL_ERROR': '* Invalid e-mail',
+        'GENERAL_ERROR': '* Something went wrong. Check the log and try again.'
+    },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! This version is no longer valid',
 		'VERSION_EXPIRED': 'Expired version',

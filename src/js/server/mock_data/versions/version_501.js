@@ -3,7 +3,11 @@ module.exports = {
   "validFrom" : "2009-01-01",
   "validTo" : "+999999999-12-31",
   "introduction" : "Standarden er i første rekke en statistisk standard. Den danner grunnlag for koding av enheter etter viktigste aktivitet i Statistisk sentralbyrås bedrifts- og foretaksregister og for enheter i Enhetsregisteret. Den er en av de viktigste standardene i økonomisk statistikk og gjør det mulig å sammenlikne og analysere statistiske opplysninger både nasjonalt og internasjonalt og over tid.",
-  "contactPerson" : "Haugen, Kristin Foldal",
+  "contactPerson" : {
+      "name": "Haugen, Kristin Foldal",
+      "email": "kristin.foldal.haugen@ssb.no",
+      "phone": "62 88 55 48"
+  },
   "owningSection" : "830",
   "legalBase" : "Rådsforordning (EF) nr. 1893/2006",
   "publications" : "http://www.ssb.no/a/publikasjoner/pdf/nos_d383/nos_d383.pdf",

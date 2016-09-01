@@ -148,7 +148,7 @@ class Search extends Component {
                 <Translate component="p" content="SEARCH.SEARCH_ERROR" ref="error" className="error" />
 
                 <div className="flex-container filter">
-                    <label>Filtrer:</label>
+                    <label><Translate content="SEARCH.FILTER" />:</label>
                     <div>
                         <input type="checkbox" id="includeCodelists" ref="includeCodelists" onChange={this.filterParams.bind(this)} defaultChecked={search.includeCodelists === true}/>
                         <Translate component="label" htmlFor="includeCodelists" content="SEARCH.INCLUDE_CODELISTS" />

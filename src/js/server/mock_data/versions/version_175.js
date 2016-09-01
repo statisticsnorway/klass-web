@@ -3,7 +3,11 @@ module.exports = {
     "validFrom": "2014-01-01",
     "validTo": "2015-12-01",
     "introduction": "Kommuneinndelingen er en administrativ inndeling av Norge. Kommunen er betegnelsen både på en politisk og forvaltningsmessig nivå og betegnelsen på et regionalt nivå i statistikken.\n\nI medhold av kommuneloven §3 nr. 3 ble det den 7. mars 2014 vedtatt trespråklig kommunenavn Omasvuotna Storfjord Omasvuonon (samisk norsk kvensk) på 1939 Storfjord kommune og den 13. juni 2014 vedtatt tospråklig kommunenavn Raarvihke Røyrvik (samisk norsk) på 1739 Røyrvik kommune.",
-    "contactPerson": "hhe",
+    "contactPerson": {
+        "name": "hhe",
+        "email": "hhe@ssb.no",
+        "phone": "62 88 55 48"
+    },
     "owningSection": "320",
     "legalBase": "Ikke relevant",
     "publications": "http://www.ssb.no/emner/00/90/rapp_9913/ \nhttp://www.ssb.no/emner/00/00/20/nos_c513/\nhttp://www.ssb.no/vis/kommuner/dokumentasjon.html",

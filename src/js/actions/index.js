@@ -195,3 +195,16 @@ function toggleModal(bool, item) {
         item: item
     }
 }
+
+export function subscribe(classId, email) {
+    const params = {email: email}
+    let url = '/classifications/' + classId + '/trackChanges'
+    return {
+        [CALL_API]: {
+            method: 'post',
+            endpoint: url,
+            params: params,
+            types: [types.SUBSCRIPTION_REQUEST, types.SUBSCRIPTION_SUCCESS, types.SUBSCRIPTION_FAILURE]
+        }
+    }
+}

@@ -4,6 +4,7 @@ import selectedClass from './selectedClass';
 import selectedVersion from './selectedVersion';
 import searchResult from './searchResult';
 import ssbSections from './ssbSections';
+import subscription from './subscription';
 
 const initialState = {
 	modalIsOpen: false,
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
     ssbSections,
 	selectedClass,
 	selectedVersion,
-	searchResult
+	searchResult,
+    subscription
 })
 
 export default rootReducer

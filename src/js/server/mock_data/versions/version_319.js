@@ -3,7 +3,11 @@ module.exports = {
     "validFrom": "2011-01-01",
     "validTo": "+999999999-12-31",
     "introduction": "Standarden er basert på den internasjonale standarden for yrkesklassifisering fra ILO i 2008 - International Standard Classification of Occupations 2008 - ISCO-08. Den norske standarden har fått navnet STYRK-08. Denne standarden erstatter tidligere standard kalt STYRK som igjen var basert på ISCO-88(COM). Et yrke er karakterisert ved ensartethet i arbeidsoppgaver, kompetansenivå og spesialisering.\n\nStandard for yrkesklassifisering er beregnet for bruk i offisiell norsk statistikk og vil også være et viktig verktøy innen arbeidsformidling og yrkesrettledning. STYRK-08 vil bli tatt i bruk i offisiell statistikk for 2011, samt i rutiner for arbeidsformidling. Men når det gjelder innrapportering av yrker til Arbeidstakerregisteret, skal denne fortsatt foregå med STYRK-koder (7 siffer). SSB vil foreta omkoding til STYRK-08 ved publisering.\n\nKlassifikasjonsprinsippene følger STYRK, men for å få bedre internasjonal sammenliknbarhet har likhet i arbeidsoppgaver fått prioritet uavhengig av det enkelte lands krav til utdanningsbakgrunn. Dette medfører at nå er alle sykepleiere og lærere samlet i ett yrkesfelt (2 Akademiske yrker). Standarden er også utvidet med flere yrker innen IKT, mens det er færre innen håndverks- og industrioperatøryrker.",
-    "contactPerson": "iha",
+    "contactPerson": {
+        "name": "Administrator",
+        "email": "admin@ssb.no",
+        "phone": "62 88 55 48"
+    },
     "owningSection": "260",
     "legalBase": "Ikke relevant",
     "publications": "http://www.ssb.no/emner/06/90/notat_201117/",

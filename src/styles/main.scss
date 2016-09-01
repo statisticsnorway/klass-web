@@ -8,6 +8,12 @@ body {
 }
 
 .klass {
+
+    .error {
+        display: none;
+        color: red;
+        margin-bottom: 0;
+    }
     .spinner {
         margin: 50px auto 0;
         width: 70px;
@@ -72,6 +78,7 @@ body {
     	.language-selector {
     		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
         	font-size: 1.1em;
+            margin-bottom: 3em;
 
     		p {
     			display: inline;

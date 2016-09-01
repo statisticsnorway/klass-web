@@ -7,7 +7,11 @@ module.exports = {
   "copyrighted" : false,
   "includeShortName" : true,
   "includeNotes" : true,
-  "contactPerson" : "Haugen, Kristin Foldal",
+  "contactPerson" : {
+      "name": "Haugen, Kristin Foldal",
+      "email": "kristin.foldal.haugen@ssb.no",
+      "phone": "62 88 55 48"
+  },
   "owningSection" : "830",
   "statisticalUnits" : [ "Foretak" ],
   "versions" : [ {

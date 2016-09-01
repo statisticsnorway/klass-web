@@ -7,7 +7,7 @@ import _ from 'lodash'
 const API_ROOT = config.API_BASE_URL;
 const API_LOCAL_ROOT = config.API_LOCAL_BASE_URL;
 
-function callApi(endpoint, headers, params, frontpage) {
+function callApi(endpoint, method, headers, params, frontpage) {
 	const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
     if (!params) {
@@ -29,11 +29,17 @@ function callApi(endpoint, headers, params, frontpage) {
 	}
 
 	return fetch(fullUrl + apiParams, {
-		headers: headers
+            method: method,
+    		headers: headers
 		})
-		.then((response) =>
-			response.json().then((json) => ({ json, response }))
-		).then(({ json, response }) => {
+        .then((response) => {
+            if (response.status >= 400) {
+                return response.text().then((json) => ({ json, response }))
+            }
+            return response.clone().json().catch(() => {
+                return response.text()
+            }).then((json) => ({ json, response }))
+        }).then(({ json, response }) => {
 			if (!response.ok) {
 				return Promise.reject(json)
 			}
@@ -60,7 +66,7 @@ export default (store) => (next) => (action) => {
 	}
 
 	let { frontpage, endpoint } = callAPI
-	const { types, id, headers, params } = callAPI
+	const { types, id, method, headers, params } = callAPI
 
 	if (typeof endpoint === 'function') {
 		endpoint = endpoint(store.getState())
@@ -83,7 +89,7 @@ export default (store) => (next) => (action) => {
 	const [ requestType, successType, failureType ] = types
 	next(actionWith({ type: requestType, params }))
 
-	return callApi(endpoint, headers, params, frontpage).then(
+	return callApi(endpoint, method, headers, params, frontpage).then(
 		(response) => next(actionWith({
 			response,
 			type: successType,
@@ -91,7 +97,7 @@ export default (store) => (next) => (action) => {
 		})),
 		(error) => next(actionWith({
 			type: failureType,
-			error: error.message || 'Something bad happened'
+			error: error || 'Something bad happened'
 		}))
 	)
 }

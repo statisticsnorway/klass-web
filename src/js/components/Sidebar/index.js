@@ -3,6 +3,8 @@ import React, { Component, PropTypes } from 'react'
 import counterpart from 'counterpart'
 import Translate from 'react-translate-component'
 import LocaleSwitcher from './LocaleSwitcher'
+import Contact from './Contact'
+import Subscription from './Subscription'
 
 class Sidebar extends Component{
 
@@ -11,41 +13,18 @@ class Sidebar extends Component{
 		return (
 			<div className="sidebar">
 				<LocaleSwitcher onLanguageChange={onLanguageChange} actions={actions} params={params} />
-
-				<div id="contacts">
-                    <h2><span className="overskrift-tekst">
-                        <Translate content="CONTACT.HEADER" />
-                    </span></h2>
-                    <div className="contact">
-                        <p className="name">{contactInfo.name}</p>
-                        <p className="e-mail">
-                            <span className="key"><Translate content="CONTACT.EMAIL" />: </span>
-                            <a className="value" href={"mailto:" + contactInfo.email}>{contactInfo.email}</a>
-                        </p>
-                        <p className="phone">
-                            <span className="key"><Translate content="CONTACT.PHONE" />: </span>
-                            <span className="value">{contactInfo.phone}</span>
-                        </p>
-                    </div>
-				</div>
+                <Contact contactInfo={contactInfo} />
+                <Subscription actions={actions} params={params} />
 			</div>
 		)
 	}
 }
 
 Sidebar.propTypes = {
-	contactInfo: PropTypes.object,
-	onLanguageChange: PropTypes.func,
-	params: PropTypes.object,
-	actions: PropTypes.object
-}
-
-Sidebar.defaultProps = {
-    contactInfo: {
-        name: 'Anne Gro Hustoft',
-        email: 'anne.gro.hustoft@ssb.no',
-        phone: '62 88 55 48'
-    }
+	contactInfo: PropTypes.object.isRequired,
+	onLanguageChange: PropTypes.func.isRequired,
+	params: PropTypes.object.isRequired,
+	actions: PropTypes.object.isRequired
 }
 
 export default Sidebar

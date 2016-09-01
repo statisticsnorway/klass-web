@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar'
 import Tabs from '../components/Tabs'
 import * as ClassActions from '../actions'
 import _ from 'lodash'
+import moment from 'moment'
 import Modal from 'simple-react-modal'
 import config from '../config'
 
@@ -19,15 +20,31 @@ function loadData (props, selectedLanguage) {
 	actions.getClassification(params.classId).then(function (res) {
 		const classification = res.response
 		if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
+            let selectedChanges = classification.versions[0]
 			if (params.versionId) {
+                _.forEach(classification.versions, function(v) {
+                    if (v.id == params.versionId) {
+                        selectedChanges = v
+                        return false
+                    }
+                })
 				actions.loadVersion(params.versionId)
 			} else {
 				const url = classification.versions[0]._links.self.href
 				const versionId = url.substring(url.lastIndexOf('/') + 1, url.length)
 				actions.loadVersion(versionId)
 			}
-		} else {
-            actions.loadVersion()
+
+            if (!_.isEmpty(selectedChanges)){
+                const query = {
+                    from: moment(selectedChanges.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
+                    to: moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('YYYY-MM-DD') : ''
+                }
+                actions.loadChanges(params.classId, query)
+            }
+
+		// } else {
+            // actions.loadVersion()
         }
 	})
 }

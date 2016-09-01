@@ -7,7 +7,11 @@ module.exports = {
     "copyrighted": false,
     "includeShortName": false,
     "includeNotes": true,
-    "contactPerson": "hhe",
+    "contactPerson": {
+        "name": "hhe",
+        "email": "hhe@ssb.no",
+        "phone": "62 88 55 48"
+    },
     "owningSection": "320",
     "statisticalUnits": ["Region"],
     "versions": [{
