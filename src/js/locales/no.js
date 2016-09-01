@@ -50,6 +50,7 @@ module.exports = {
 	},
 	'CLASSIFICATIONS': {
 		'CLASSIFICATION': 'Klassifikasjon',
+        'STATISTICAL_UNIT': 'Statistisk enhet',
         'NO_CLASS_FOUND': 'Ingen klassifikasjoner funnet',
 		'DISPLAY_HIDE': 'Vis/skjul:',
 		'CHOOSE_CLASS_FAMILY': 'Eller velg et område',

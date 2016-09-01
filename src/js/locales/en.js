@@ -34,7 +34,7 @@ module.exports = {
         'FRONTPAGE': 'Frontpage'
 	},
 	'LANGUAGE': {
-		'CHOOSE_LANGUAGE': 'Choose language for code:',
+		'CHOOSE_LANGUAGE': 'Choose language:',
 		'NORWEGIAN': 'Bokmål',
 		'NYNORSK': 'Nynorsk',
 		'ENGLISH': 'English',
@@ -50,6 +50,7 @@ module.exports = {
 	},
 	'CLASSIFICATIONS': {
 		'CLASSIFICATION': 'Classification',
+        'STATISTICAL_UNIT': 'Statistical unit',
 		'DISPLAY_HIDE': 'Show/hide:',
 		'CHOOSE_CLASS_FAMILY': 'Navigate by subject area',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Classifications and codelists',
@@ -94,7 +95,7 @@ module.exports = {
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
 		'VERSIONS_NOT_FOUND': 'No versions found',
 		'ABOUT': {
-			'ABOUT': 'About version',
+			'ABOUT': 'About the version',
 			'DESCRIPTION': 'Description',
 			'OWNER': 'Owner',
 			'SECTION_FOR': 'section for',
@@ -135,7 +136,7 @@ module.exports = {
 			'CORRESPONDENCES_FROM': 'Correspondences from',
 			'CORRESPONDENCES_TO': 'Correspondences to',
 			'OWNER': 'Owner',
-			'OWNING_SECTION': 'Owning section',
+			'OWNING_SECTION': 'Division',
 			'LOADING_CORRESPONDENCE_TABLE': 'Loading correspondence table...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'No correspondence tables',
 			'BACK_TO_CORRESPONDENCES': 'Back to correspondence overview',
@@ -154,7 +155,7 @@ module.exports = {
 			'BACK_TO_VARIANTS': 'Back to variants overview'
 		},
 		'VERSIONS': {
-			'VERSIONS': 'Other versions',
+			'VERSIONS': 'All versions',
 			'OTHER_VERSIONS_OF': 'Other versions of'
 		}
 	}

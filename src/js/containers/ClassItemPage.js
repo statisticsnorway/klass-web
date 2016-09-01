@@ -126,7 +126,7 @@ class ClassItemPage extends Component {
 			<div className="content klass-item">
 				<div className="main">
 					<div className="heading">
-						<p>Statisk enhet: <b>Foretak</b></p>
+						<p><Translate content="CLASSIFICATIONS.STATISTICAL_UNIT" />: <b>{classification.statisticalUnits[0]}</b></p>
 						<h1>{classification.name}</h1>
 						<p className="description short" ref="description">{classification.description}</p>
 						<p className="clickable" ref="descLink" onClick={(ev) => this.showFullDescription(ev)}>+ <Translate content="CLASS_ITEM.READ_MORE" /></p>
