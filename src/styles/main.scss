@@ -8,7 +8,9 @@ body {
 }
 
 .klass {
-
+    .clear {
+        clear: both;
+    }
     .error {
         display: none;
         color: red;
