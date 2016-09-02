@@ -138,7 +138,7 @@ class ClassItemPage extends Component {
 					onLanguageChange={loadData}
 					actions={actions}
 					params={params} />
-                <div className="clear" />
+                <div className="clear-fix" />
 			</div>
 		)
 	}

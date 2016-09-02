@@ -65,6 +65,7 @@ class ClassFamiliesPage extends Component {
     			<div className="sidebar">
                     <Contact />
                 </div>
+                <div className="clear-fix" />
             </div>
         )
     }

@@ -139,7 +139,7 @@ class Search extends Component {
 				<div className="flex-container">
 					<div className="flex-item search-input-text">
 						<Translate component="label" content="SEARCH.SEARCH_KODEVERK" />
-						<Translate component="input" type="text" ref="query" defaultValue={search.query} onChange={this.handleChange.bind(this)} attributes={{ placeholder: 'SEARCH.SEARCH' }} />
+						<Translate component="input" type="text" ref="query" defaultValue={search.query} onChange={this.handleChange.bind(this)} aria-label={counterpart.translate('SEARCH.SEARCH')} attributes={{ placeholder: 'SEARCH.SEARCH' }} />
 					</div>
 					<div className="flex-item search-button">
 						<Translate component="button" type="submit" content="SEARCH.SEARCH" />
