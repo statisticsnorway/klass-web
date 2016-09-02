@@ -40,15 +40,6 @@
 			font-size: $list-font-size;
             line-height: $body-line-height;
 
-            > span:first-child {
-                max-width: 500px;
-                display: inline-block;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-
 			.link-type {
 				float: right;
 				color: #bbb;
@@ -56,6 +47,7 @@
 
 			&:hover .link-type {
 				color: #000;
+                text-decoration: none;
 			}
 		}
 

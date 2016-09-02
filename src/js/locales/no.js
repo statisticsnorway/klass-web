@@ -31,7 +31,8 @@ module.exports = {
         'COMMENTS': 'Kommentarer',
         'INVERT_TABLE': 'Inverter tabell',
         'YOU_ARE_HERE': 'Du er her',
-        'FRONTPAGE': 'Forsiden'
+        'FRONTPAGE': 'Forsiden',
+		'SHOW_HIDE': 'Vis/skjul:'
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',
@@ -52,7 +53,6 @@ module.exports = {
 		'CLASSIFICATION': 'Klassifikasjon',
         'STATISTICAL_UNIT': 'Statistisk enhet',
         'NO_CLASS_FOUND': 'Ingen klassifikasjoner funnet',
-		'DISPLAY_HIDE': 'Vis/skjul:',
 		'CHOOSE_CLASS_FAMILY': 'Eller velg et område',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Klassifikasjoner og kodelister',
 		'CLASS_DESCRIPTION': 'Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.'

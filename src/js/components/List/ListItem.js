@@ -121,10 +121,13 @@ class ListItem extends Component {
 	render () {
 		const { item, displayName, actions } = this.props
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
+        // const showHide = item.children ? <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" /> : ''
+        const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" />
 
 		return (
 			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
 				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} role="link" tabIndex="0">
+                    {showHide}
 					{displayName}
                     <Notes item={item} actions={actions} />
 				</a>
