@@ -51,8 +51,10 @@ class ListItem extends Component {
 				}
 			)
 
+            const hidden = item.active ? 'false' : 'true'
+
 			return (
-				<ol className="delemne-children" role="tree">
+				<ol className="delemne-children" role="tree" aria-hidden={hidden}>
 					{listEl}
 				</ol>
 			)

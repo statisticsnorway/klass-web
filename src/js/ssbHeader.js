@@ -83,8 +83,8 @@ class SSBHeader extends Component {
                           <label htmlFor="sok" className="screen-reader-only">ø
                               <Translate content="SEARCH.SEARCH" />
                           </label>
-                          <input id="sok" name="sok" type="text" accessKey="4" tabIndex="5" />
-                          <input type="submit" value={counterpart.translate('SEARCH.SEARCH')} className="submit" tabIndex="6" />
+                          <input id="sok" name="sok" type="text" accessKey="4" tabIndex="-1" />
+                          <input type="submit" value={counterpart.translate('SEARCH.SEARCH')} className="submit" tabIndex="-1" />
                       </fieldset>
                     </form>
                     {this.renderMainMenu()}

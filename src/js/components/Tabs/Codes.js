@@ -95,6 +95,7 @@ class Codes extends Component {
 						<div className="flex-item search-input-text">
 							<Translate
 								component="input"
+                                aria-label={counterpart.translate('TABS.CODES.SEARCH_BY_CODE_OR_NAME')}
 								attributes={{ placeholder: 'TABS.CODES.SEARCH_BY_CODE_OR_NAME' }}
 								type="text" ref="query" name="kodeverk" />
 						</div>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import {connect} from 'react-redux'
 import Translate from 'react-translate-component'
+import counterpart from 'counterpart'
 
 class Subscription extends Component {
 
@@ -76,6 +77,7 @@ class Subscription extends Component {
                 <Translate content="SUBSCRIPTION.DESCRIPTION" component="p" />
                 <Translate
                     component="input"
+                    aria-label={counterpart.translate('CONTACT.EMAIL')}
                     attributes={{ placeholder: 'CONTACT.EMAIL' }}
                     className="subscriptionEmail"
                     onChange={this.handleChange.bind(this)}
