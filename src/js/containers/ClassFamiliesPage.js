@@ -12,6 +12,7 @@ import Contact from '../components/Sidebar/Contact'
 function loadData(props) {
     const {actions} = props
     actions.loadSubjects()
+    actions.hideModal();
 }
 
 class ClassFamiliesPage extends Component {

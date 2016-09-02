@@ -84,14 +84,16 @@
 
 		// .collapse .delemne-children,
         .expand>.delemne-children {
-	    	max-height: 0;
-			overflow: hidden;
-	    	transition-duration: 0.5s;
-	    	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+	    	// max-height: 0;
+			// overflow: hidden;
+	    	// transition-duration: 0.5s;
+	    	// transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+            display: none;
 		}
 		.collapse>.delemne-children {
-	    	transition-timing-function: ease-in;
-	    	max-height: 10000px;
+	    	// transition-timing-function: ease-in;
+	    	// max-height: 10000px;
+            display: block;
 		}
 	}
 }
