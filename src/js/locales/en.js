@@ -54,7 +54,7 @@ module.exports = {
         'STATISTICAL_UNIT': 'Statistical unit',
 		'CHOOSE_CLASS_FAMILY': 'Navigate by subject area',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Classifications and codelists',
-		'CLASS_DESCRIPTION': 'Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.'
+		'CLASS_DESCRIPTION': 'This web page gives you the opportunity to search for and download Statistical classifications and code lists. You may use free text search or navigate using the subject areas listed. A statistical classification is “official”,  and its elements are mutually exclusive and complete for the area covered by the classification. These requirements are not extended to code lists which may be fitted to one specific statistic. By default only statistical classifications are included in the search process, but it is possible to include the code lists (by ticking off  the relevant box). However, we don’t recommend external users to include code lists. The amount of search results can be vast, including a lot of code lists adapted to specific Statistics Norway needs.  For those of you who would like to use the classifications in your own programs, we recommend the use of our API (lenke kommer).'
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
@@ -98,7 +98,7 @@ module.exports = {
 			'ABOUT': 'About the version',
 			'DESCRIPTION': 'Description',
 			'OWNER': 'Owner',
-			'SECTION_FOR': 'section for',
+			'SECTION_FOR': 'division',
 			'LASTMODIFIED': 'Last modified',
 			'PUBLISHED': 'Published on',
 			'DERIVEDFROM': 'Based on',
@@ -131,7 +131,7 @@ module.exports = {
 		},
 		'CORRESPONDENCES': {
 			'CORRESPONDENCES': 'Correspondences',
-			'DESCRIPTION': 'En kort tekst som forteller hva en korrespondansetabell er på engelsk.',
+			'DESCRIPTION': 'The correspondence table shows the relationship between two versions of different statistical classifications or codelists, e.g. the relationships between Police districts 2016 and Municipalities 2014 (which municipalities correspond to which police districts). If you would like to check the difference between two consecutive versions of the same statistical classification or code list, you find this information under  the “Changes”- tab.',
 			'CORRESPONDENCE_NOT_FOUND': 'No correspondences found',
 			'CORRESPONDENCES_FROM': 'Correspondences from',
 			'CORRESPONDENCES_TO': 'Correspondences to',
@@ -141,17 +141,17 @@ module.exports = {
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'No correspondence tables',
 			'BACK_TO_CORRESPONDENCES': 'Back to correspondence overview',
 			'RESPONSIBLE': 'Responsible',
-			'SECTION_FOR': 'section for',
+			'SECTION_FOR': 'division',
 			'PUBLISHED': 'Published on'
 		},
 		'VARIANTS': {
 			'VARIANTS': 'Variants',
-			'DESCRIPTION': 'En kort tekst som forteller hva en variant er, på engelsk.',
+			'DESCRIPTION': 'A variant is based on a statistical classification version, and represents an alternative grouping of the a statistical classification version (the grouping CAN violate the structure of the original classification structure). Variants are often used to meet the demands of specific statistics, e.g. a variant of the Standard Industrial classification (Norwegian version) is used to produce our Environmental account.',
 			'VARIANT': 'Variant',
 			'OWNER': 'Owner',
 			'VARIANTS_NOT_FOUND': 'No variants found',
 			'VARIANT_EMPTY': 'Variant is empty',
-			'SECTION_FOR': 'section for',
+			'SECTION_FOR': 'division',
 			'BACK_TO_VARIANTS': 'Back to variants overview'
 		},
 		'VERSIONS': {

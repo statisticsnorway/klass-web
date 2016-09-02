@@ -55,7 +55,7 @@ module.exports = {
         'NO_CLASS_FOUND': 'Ingen klassifikasjoner funnet',
 		'CHOOSE_CLASS_FAMILY': 'Eller velg et område',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Klassifikasjoner og kodelister',
-		'CLASS_DESCRIPTION': 'Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.'
+		'CLASS_DESCRIPTION': 'På denne sida kan du søke etter og laste ned (til Excel) statistiske klassifikasjoner og kodelister.  Du kan bruke enten fritekst-søk eller navigere vha. de listede temaene. Klassifikasjonene er «offisielle» kodeverk der kategoriene skal være gjensidig utelukkende og uttømmende for området kodeverket dekker. Det er ikke de samme kravene til kodelister, de kan være tilpasset en spesiell statistikk. I utgangspunktet søkes det bare i klassifikasjonene. Det er mulig å inkludere kodelistene i søket (ved å krysse av i relevant boks), men vi anbefaler ikke eksterne brukere å gjøre dette. Det kan bli veldig mange treff i søket, og en risikerer også å få fram kodelister som er tilpasset spesielle behov i SSB.  For de som ønsker å bruke klassifikasjonene i egne programmer, anbefales bruk av API-et (lenke kommer).'
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
@@ -132,7 +132,7 @@ module.exports = {
 		},
 		'CORRESPONDENCES': {
 			'CORRESPONDENCES': 'Korrespondanser',
-			'DESCRIPTION': 'En kort tekst som forteller hva en korrespondansetabell er.',
+			'DESCRIPTION': 'Korrespondansetabellen viser sammenhengen mellom versjoner av to ulike kodeverk, f.eks. sammenhengen mellom Politidistrikt 2016 og Kommuneinndeling 2014 (hvilke kommuner tilhører hvilke politidistrikt). Dersom du ønsker å se forskjellen mellom to påfølgende versjoner av samme kodeliste, f.eks. mellom Kommuneinndeling 2014 og Kommuneinndeling 2013, finner du den under fanen «Endringer».',
 			'CORRESPONDENCE_NOT_FOUND': 'Fant ingen korrespondanser',
 			'CORRESPONDENCES_FROM': 'Korrespondanser fra',
 			'CORRESPONDENCES_TO': 'Korrespondanser til',
@@ -147,7 +147,7 @@ module.exports = {
 		},
 		'VARIANTS': {
 			'VARIANTS': 'Varianter',
-			'DESCRIPTION': 'En kort tekst som forteller hva en variant er.',
+			'DESCRIPTION': 'En variant baserer seg på en klassifikasjonsversjon, og representerer en alternativ gruppering av denne (grupperingen KAN gå på tvers av strukturen i den opprinnelige klassifikasjonen). Varianter brukes ofte for å oppfylle krav til spesifikke statistikker, f.eks. brukes en variant av Standard for næringsgruppering for å lage Miljøregnskap.',
 			'VARIANT': 'Variant',
 			'OWNER': 'Eier',
 			'VARIANTS_NOT_FOUND': 'Fant ingen varianter',
