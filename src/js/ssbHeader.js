@@ -58,9 +58,27 @@ class SSBHeader extends Component {
         )
     }
 
+    toggleMenu (e) {
+        if (document.body.className.indexOf('menu_open') > -1) {
+            document.body.classList.remove('menu_open')
+        } else {
+            document.body.classList.add('menu_open')
+        }
+    }
+
+    toggleSearch (e) {
+        if (document.body.className.indexOf('search_open') > -1) {
+            document.body.classList.remove('search_open')
+        } else {
+            document.body.classList.add('search_open')
+        }
+    }
+
 	render () {
         return (
             <div id="header" className="menu-closed">
+                <span className="menuBtn" onClick={(ev) => this.toggleMenu()} />
+                <span className="searchBtn" onClick={(ev) => this.toggleSearch()} />
                 <div className="sitewrapper">
                     <a id="logo" href="http://www.ssb.no/" title="Gå til forsiden">
                         <img src="./images/SSB_logo.png" alt="SSB logo (Gå til forsiden)" />
@@ -72,7 +90,9 @@ class SSBHeader extends Component {
                                 <span className="screen-reader-only" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')}><Translate content="LANGUAGE.SWITCH_LANGUAGE" /></span>
                                 <a id="change-language" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')} href={'#'+counterpart.translate('LANGUAGE.TOGGLE_SHORT')} onClick={(ev) => this.toggleLanguage(ev)}><Translate content="LANGUAGE.TOGGLE" /></a>
                             </li>
-                            <li id="global-cookies" className="shortcut keywords"><a id="cookies" href="http://www.ssb.no/omssb/personvern/"><Translate content="SSB_FRAME.HEADER.COOKIES" /></a></li>
+                            <li id="global-cookies" className="shortcut keywords">
+                                <Translate content="SSB_FRAME.HEADER.COOKIES" component="a" id="cookies" href="http://www.ssb.no/omssb/personvern/" />
+                            </li>
                             <li className="shortcut keywords"><a href="http://www.ssb.no/a-aa" title="Stikkord A-Å"><Translate content="SSB_FRAME.HEADER.KEYWORDS" /></a></li>
                             <li id="global-contact" className="shortcut last"><a href="http://www.ssb.no/omssb/kontakt-oss" accessKey="7"><Translate content="SSB_FRAME.HEADER.CONTACT_US" /></a></li>
                         </ul>

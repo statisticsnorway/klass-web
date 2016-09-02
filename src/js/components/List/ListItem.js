@@ -126,14 +126,15 @@ class ListItem extends Component {
 	}
 
 	render () {
-		const { item, displayName, actions } = this.props
+		const { item, displayName, actions, idx } = this.props
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
         // const showHide = item.children ? <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" /> : ''
         const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" />
         const toggleLink = (item.children || item.numberOfClassifications) ? 'toggle-children' : ''
+        const itemId = item.code ? (item.level + '_' + item.code) : idx
 
         return (
-            <div role="treeitem" aria-expanded={item.active === true}>
+            <div role="treeitem" aria-expanded={item.active === true} id={itemId}>
 				<a className={toggleLink} onClick={(ev) => this.toggle(ev)} href="#">
                     {showHide}
 					{displayName}
@@ -145,7 +146,7 @@ class ListItem extends Component {
         )
 
 		return (
-			<li className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
+			<li className={toggleIcon} role="treeitem" aria-expanded={item.active === true} >
 				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} role="link" href="#">
                     {showHide}
 					{displayName}
