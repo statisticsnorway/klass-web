@@ -77,12 +77,16 @@ class Codes extends Component {
         if (e.target.checked) {
             _.forEach(document.getElementsByClassName('itemName'), function(el) {
                 el.getElementsByClassName('longName')[0].style.display = 'none'
+                el.getElementsByClassName('longName')[0].setAttribute('aria-hidden', 'true')
                 el.getElementsByClassName('shortName')[0].style.display = 'inline'
+                el.getElementsByClassName('shortName')[0].setAttribute('aria-hidden', 'false')
             })
         } else {
             _.forEach(document.getElementsByClassName('itemName'), function(el) {
                 el.getElementsByClassName('longName')[0].style.display = 'inline'
+                el.getElementsByClassName('longName')[0].setAttribute('aria-hidden', 'false')
                 el.getElementsByClassName('shortName')[0].style.display = 'none'
+                el.getElementsByClassName('shortName')[0].setAttribute('aria-hidden', 'true')
             })
         }
     }

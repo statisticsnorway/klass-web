@@ -29,7 +29,7 @@ class ListItem extends Component {
         				switch (type) {
         					case 'code':
         					case 'variant':
-        						name = <span className="itemName"><b>{childItem.code}</b> - <span className="longName">{childItem.name}</span><span className="shortName">{childItem.shortName}</span></span>
+        						name = <span className="itemName"><b>{childItem.code}</b> - <span className="longName">{childItem.name}</span><span className="shortName" aria-hidden="true">{childItem.shortName}</span></span>
         						break;
         					case 'classFamilies':
         						name = <span>{childItem.name} ({childItem.numberOfClassifications})</span>
