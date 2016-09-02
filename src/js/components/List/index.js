@@ -49,6 +49,12 @@ class List extends Component {
 			)
 		}
 
+        return (
+            <div role="tree">
+                {this.renderList()}
+            </div>
+        )
+
 		return (
 			<ol className="expandcollapse" role="tree">
 				{this.renderList()}

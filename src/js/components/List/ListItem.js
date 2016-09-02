@@ -6,6 +6,7 @@ import List from './index'
 import Notes from '../Notes'
 import Modal from 'simple-react-modal'
 import _ from 'lodash'
+import { Panel } from 'react-bootstrap'
 
 class ListItem extends Component {
 	renderItemList() {
@@ -16,12 +17,12 @@ class ListItem extends Component {
 				{
 					if (childItem._links) {
 						return (
-							<li key={key} role="treeitem" tabIndex="-1">
+							<div key={key} role="treeitem" tabIndex="-1">
 								<Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
 									<span>{childItem.name}&#160;&#160;»</span>
 									<span className="link-type"><Translate content="CLASSIFICATIONS.CLASSIFICATION" /></span>
 								</Link>
-							</li>
+							</div>
 						)
 					} else {
 						const toggleIcon = childItem.active ? 'hovedemne collapse' : 'hovedemne expand';
@@ -52,6 +53,12 @@ class ListItem extends Component {
 			)
 
             const hidden = item.active ? 'false' : 'true'
+
+            return (
+                <Panel collapsible expanded={item.active} role="tree" aria-hidden={hidden}>
+                    {listEl}
+                </Panel>
+            )
 
 			return (
 				<ol className="delemne-children" role="tree" aria-hidden={hidden}>
@@ -123,6 +130,19 @@ class ListItem extends Component {
 		const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
         // const showHide = item.children ? <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" /> : ''
         const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" />
+        const toggleLink = (item.children || item.numberOfClassifications) ? 'toggle-children' : ''
+
+        return (
+            <div role="treeitem" aria-expanded={item.active === true}>
+				<a className={toggleLink} onClick={(ev) => this.toggle(ev)} href="#">
+                    {showHide}
+					{displayName}
+                    <Notes item={item} actions={actions} />
+				</a>
+                {this.renderModal()}
+				{this.renderItemList()}
+            </div>
+        )
 
 		return (
 			<li className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>

@@ -53,10 +53,7 @@ class Codes extends Component {
 			)
 		}
 		return (
-            <div>
-                {this.filterText()}
-                <List items={version.nestedItems} type="code" actions={actions} modal={modal}/>
-            </div>
+            <List items={version.nestedItems} type="code" actions={actions} modal={modal}/>
 		)
 	}
 
@@ -123,9 +120,10 @@ class Codes extends Component {
                         <Translate component="button" content="COMMON.DOWNLOAD_CSV" onClick={this.downloadCodes.bind(this)} />
                     </div>
 				</div>
-					<div className="results class-list" id="expandcollapse">
-						{this.renderList()}
-					</div>
+				<div className="results class-list" id="expandcollapse">
+                    {this.filterText()}
+					{this.renderList()}
+				</div>
 			</div>
 		)
 	}

@@ -5,6 +5,7 @@ import _ from 'lodash'
 class Note extends Component {
 	handleClick (e, actions, item) {
 		e.stopPropagation()
+        e.preventDefault()
 		actions.displayModal(item);
 	}
 
