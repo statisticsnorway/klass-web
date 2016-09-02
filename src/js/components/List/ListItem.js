@@ -125,8 +125,8 @@ class ListItem extends Component {
         const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" />
 
 		return (
-			<li className={toggleIcon} role="treeitem" tabIndex="-1" aria-expanded={item.active === true}>
-				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} role="link" tabIndex="0">
+			<li className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
+				<a className="toggle-children" onClick={(ev) => this.toggle(ev)} role="link" href="#">
                     {showHide}
 					{displayName}
                     <Notes item={item} actions={actions} />
