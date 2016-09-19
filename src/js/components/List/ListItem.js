@@ -20,7 +20,7 @@ class ListItem extends Component {
 							<div key={key} role="treeitem" tabIndex="-1">
 								<Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
 									<span>{childItem.name}&#160;&#160;»</span>
-									<span className="link-type"><Translate content="CLASSIFICATIONS.CLASSIFICATION" /></span>
+									<span className="link-type">{childItem.classificationType}</span>
 								</Link>
 							</div>
 						)
@@ -173,5 +173,4 @@ const mapStateToProps = (state, ownProps) => ({
     search: state.searchResult.search
 })
 
-export default ListItem
 export default connect(mapStateToProps)(ListItem)
