@@ -10,7 +10,10 @@ import Versions from './Versions'
 import Correspondences from './Correspondences'
 import Variants from './Variants'
 import _ from 'lodash'
+
 import moment from 'moment'
+import 'moment/locale/nb.js'
+import 'moment/locale/nn.js'
 
 class Tabs extends Component {
 
@@ -44,7 +47,16 @@ class Tabs extends Component {
 	}
 
 	render () {
-		moment.locale('nb')
+        if (sessionStorage.getItem('selectedLanguage')) {
+            switch (sessionStorage.getItem('selectedLanguage')) {
+                case 'NO' : moment.locale('nb'); break;
+                case 'NN' : moment.locale('nn'); break;
+                case 'EN' : moment.locale('en'); break;
+            }
+        } else {
+            moment.locale('nb')
+        }
+
 		const { classification, selectedVersion, actions, isFetchingClass, params, modal } = this.props
 
 		if (isFetchingClass) {
