@@ -156,6 +156,7 @@ module.exports = {
 			'BACK_TO_VARIANTS': 'Tilbake til alle varianter'
 		},
 		'VERSIONS': {
+			'STILL_VALID': 'Forstatt gyldig',
 			'VERSIONS': 'Alle versjoner',
 			'OTHER_VERSIONS_OF': 'Andre versjoner av'
 		}

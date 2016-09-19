@@ -155,6 +155,7 @@ module.exports = {
 			'BACK_TO_VARIANTS': 'Back to variants overview'
 		},
 		'VERSIONS': {
+			'STILL_VALID': 'Still valid',
 			'VERSIONS': 'All versions',
 			'OTHER_VERSIONS_OF': 'Other versions of'
 		}

@@ -15,7 +15,7 @@ class Versions extends Component {
 			return (
 				<tr key={key}>
 					<td>{moment(version.validFrom).format('D.MMMM YYYY')}</td>
-					<td>{moment(version.validTo).isValid() ? moment(version.validTo).format('D.MMMM YYYY') : 'Forstatt gyldig'}</td>
+					<td>{moment(version.validTo).isValid() ? moment(version.validTo).format('D.MMMM YYYY') :  <Translate content="TABS.VERSIONS.STILL_VALID" />}</td>
 					<td>
 						<Link to={`/klassifikasjoner/${classificationId}/versjon/${version.id}`}>
 							{version.name}
