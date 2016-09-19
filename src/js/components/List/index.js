@@ -49,11 +49,11 @@ class List extends Component {
 			)
 		}
 
-        return (
-            <div role="tree">
-                {this.renderList()}
-            </div>
-        )
+        // return (
+        //     <div role="tree">
+        //         {this.renderList()}
+        //     </div>
+        // )
 
 		return (
 			<ol className="expandcollapse" role="tree">
@@ -74,7 +74,6 @@ List.propTypes = {
 List.defaultProps = {
 	items: [],
 	isFetching: true,
-	// loadingLabel: 'Laster klassifikasjoner og kodelister...'
 	loadingLabel: counterpart.translate('LOADING.CLASSIFICATIONS_AND_CODELISTS')
 }
 

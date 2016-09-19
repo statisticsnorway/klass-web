@@ -17,12 +17,12 @@ class ListItem extends Component {
 				{
 					if (childItem._links) {
 						return (
-							<div key={key} role="treeitem" tabIndex="-1">
+							<li key={key} role="treeitem" tabIndex="-1">
 								<Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
 									<span>{childItem.name}&#160;&#160;»</span>
 									<span className="link-type">{childItem.classificationType}</span>
 								</Link>
-							</div>
+							</li>
 						)
 					} else {
 						const toggleIcon = childItem.active ? 'hovedemne collapse' : 'hovedemne expand';
@@ -54,11 +54,11 @@ class ListItem extends Component {
 
             const hidden = item.active ? 'false' : 'true'
 
-            return (
-                <Panel collapsible expanded={item.active} role="tree" aria-hidden={hidden}>
-                    {listEl}
-                </Panel>
-            )
+            // return (
+            //     <Panel collapsible expanded={item.active} role="tree" aria-hidden={hidden}>
+            //         {listEl}
+            //     </Panel>
+            // )
 
 			return (
 				<ol className="delemne-children" role="tree" aria-hidden={hidden}>
@@ -133,17 +133,17 @@ class ListItem extends Component {
         const toggleLink = (item.children || item.numberOfClassifications) ? 'toggle-children' : ''
         const itemId = item.code ? (item.level + '_' + item.code) : idx
 
-        return (
-            <div role="treeitem" aria-expanded={item.active === true} id={itemId}>
-				<a className={toggleLink} onClick={(ev) => this.toggle(ev)} href="#">
-                    {showHide}
-					{displayName}
-                    <Notes item={item} actions={actions} />
-				</a>
-                {this.renderModal()}
-				{this.renderItemList()}
-            </div>
-        )
+        // return (
+        //     <div role="treeitem" aria-expanded={item.active === true} id={itemId}>
+		// 		<a className={toggleLink} onClick={(ev) => this.toggle(ev)} href="#">
+        //             {showHide}
+		// 			{displayName}
+        //             <Notes item={item} actions={actions} />
+		// 		</a>
+        //         {this.renderModal()}
+		// 		{this.renderItemList()}
+        //     </div>
+        // )
 
 		return (
 			<li className={toggleIcon} role="treeitem" aria-expanded={item.active === true} >
