@@ -9,10 +9,10 @@ import Subscription from './Subscription'
 class Sidebar extends Component{
 
 	render () {
-		const { contactInfo, onLanguageChange, actions, params } = this.props
+		const { contactInfo, languages, onLanguageChange, actions, params } = this.props
 		return (
 			<div className="sidebar">
-				<LocaleSwitcher onLanguageChange={onLanguageChange} actions={actions} params={params} />
+				<LocaleSwitcher languages={languages} onLanguageChange={onLanguageChange} actions={actions} params={params} />
                 <Contact contactInfo={contactInfo} />
                 <Subscription actions={actions} params={params} />
 			</div>
@@ -22,6 +22,7 @@ class Sidebar extends Component{
 
 Sidebar.propTypes = {
 	contactInfo: PropTypes.object.isRequired,
+	languages: PropTypes.array.isRequired,
 	onLanguageChange: PropTypes.func.isRequired,
 	params: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired

@@ -92,7 +92,7 @@ class ClassItemPage extends Component {
 	}
 
 	render () {
-		const { classification, isFetching, actions, params } = this.props
+		const { classification, selectedVersion, isFetching, actions, params } = this.props
 
         let breadcrumbStep = document.getElementsByClassName('step')
 
@@ -121,7 +121,6 @@ class ClassItemPage extends Component {
         if (breadcrumbStep.length > 0) {
             breadcrumbStep[breadcrumbStep.length-1].textContent = classification.name
         }
-
 		return (
 			<div className="content klass-item">
 				<div className="main">
@@ -135,6 +134,7 @@ class ClassItemPage extends Component {
 				</div>
 				<Sidebar
 					contactInfo={classification.contactPerson}
+					languages={selectedVersion.version.published}
 					onLanguageChange={loadData}
 					actions={actions}
 					params={params} />
