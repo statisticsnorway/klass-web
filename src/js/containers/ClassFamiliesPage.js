@@ -8,6 +8,7 @@ import * as ClassActions from '../actions'
 import Search from '../components/Search'
 import List from '../components/List'
 import Contact from '../components/Sidebar/Contact'
+import config from '../config'
 
 function loadData(props) {
     const {actions} = props
@@ -60,6 +61,7 @@ class ClassFamiliesPage extends Component {
                 </div>
                 <div className="main">
                     <Translate component="p" content="CLASSIFICATIONS.CLASS_DESCRIPTION"/>
+                    <p><a class="child-link" href={config.API_BASE_URL}>{config.API_BASE_URL}</a></p>
                     <Search actions={actions} sections={ssbSections} search={search} location={location}/>
                     {this.renderContent()}
                 </div>
