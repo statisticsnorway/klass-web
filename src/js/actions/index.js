@@ -92,13 +92,14 @@ export function toggleCode(code, tab) {
     }
 }
 
-export function loadVersion(id) {
+export function loadVersion(id, languageOverride) {
     const url = '/versions/' + id
     return {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
             id: id,
+            language: languageOverride,
             types: [types.SELECTED_VERSION_REQUEST, types.SELECTED_VERSION_SUCCESS, types.SELECTED_VERSION_FAILURE]
         }
     }
@@ -140,7 +141,7 @@ export function searchCode(query) {
     }
 }
 
-export function loadChanges(classificationId, params) {
+export function loadChanges(classificationId, params, languageOverride) {
     const url = '/classifications/' + classificationId + '/changes'
 
     return {
@@ -148,6 +149,7 @@ export function loadChanges(classificationId, params) {
             method: 'get',
             endpoint: url,
             params: params,
+            language: languageOverride,
             headers: {
                 'Accept': 'application/json'
             },
@@ -156,25 +158,27 @@ export function loadChanges(classificationId, params) {
     }
 }
 
-export function loadCorrespondence(itemId) {
+export function loadCorrespondence(itemId, languageOverride) {
     let url = '/correspondencetables/' + itemId
     return {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
             id: itemId,
+            language: languageOverride,
             types: [types.CORRESPONDENCE_REQUEST, types.CORRESPONDENCE_SUCCESS, types.CORRESPONDENCE_FAILURE]
         }
     }
 }
 
-export function loadVariant(itemId) {
+export function loadVariant(itemId, languageOverride) {
     let url = '/variants/' + itemId
     return {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
             id: itemId,
+            language: languageOverride,
             types: [types.VARIANT_REQUEST, types.VARIANT_SUCCESS, types.VARIANT_FAILURE]
         }
     }

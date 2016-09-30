@@ -13,12 +13,15 @@ function callApi(endpoint, method, headers, params, frontpage) {
     if (!params) {
         params = {};
     }
-	if (sessionStorage.getItem('selectedLanguage')) {
-		params["language"] = sessionStorage.getItem('selectedLanguage');
+    // only set language if we have not defined a language (allows us to override)
+    if (typeof params["language"] === "undefined") {
+		if (sessionStorage.getItem('selectedLanguage')) {
+			params["language"] = sessionStorage.getItem('selectedLanguage');
+		}
+		if (sessionStorage.getItem('selectedAPILanguage') && !frontpage) {
+			params["language"] = sessionStorage.getItem('selectedAPILanguage');
+		}
 	}
-	if (sessionStorage.getItem('selectedAPILanguage') && !frontpage) {
-        params["language"] = sessionStorage.getItem('selectedAPILanguage');
-    }
 
 	let apiParams = '';
 	if (!_.isEmpty(params)) {
@@ -66,7 +69,7 @@ export default (store) => (next) => (action) => {
 	}
 
 	let { frontpage, endpoint } = callAPI
-	const { types, id, method, headers, params } = callAPI
+	let { types, id, method, headers, params, language } = callAPI
 
 	if (typeof endpoint === 'function') {
 		endpoint = endpoint(store.getState())
@@ -78,6 +81,10 @@ export default (store) => (next) => (action) => {
 
 	if (!types.every((type) => typeof type === 'string')) {
 		throw new Error('Expected action types to be strings.')
+	}
+	if (typeof language == 'string') {
+		if (!params)params = {};
+		params["language"] = language;
 	}
 
 	function actionWith(data) {

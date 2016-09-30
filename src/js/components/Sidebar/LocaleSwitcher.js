@@ -16,7 +16,6 @@ class LocaleSwitcher extends Component {
 	handleChange(e) {
     	// counterpart.setLocale(e.target.value);
 		const { languages, onLanguageChange } = this.props
-		Console.log(languages)
 		onLanguageChange(this.props, e.target.value);
 		forceUpdate();
 	}
@@ -33,9 +32,9 @@ class LocaleSwitcher extends Component {
 						<Translate content="LANGUAGE.CHOOSE_LANGUAGE" />
 					</p>
 					<select defaultValue={getLocale()} onChange={this.handleChange.bind(this)}>
-						{languages.indexOf("Bokmål")  >-1 ? <Translate component="option" value={config.LANGUAGES.BOKMAL} content="LANGUAGE.NORWEGIAN" /> : null}
-						{languages.indexOf("Nynorsk") >-1 ? <Translate component="option" value={config.LANGUAGES.NYNORSK} content="LANGUAGE.NYNORSK" /> : null}
-						{languages.indexOf("Engelsk") >-1 ? <Translate component="option" value={config.LANGUAGES.ENGLISH} content="LANGUAGE.ENGLISH" /> : null}
+						{languages.indexOf(config.LANGUAGES.BOKMAL)  >-1 ? <Translate component="option" value={config.LANGUAGES.BOKMAL} content="LANGUAGE.NORWEGIAN" /> : null}
+						{languages.indexOf(config.LANGUAGES.NYNORSK) >-1 ? <Translate component="option" value={config.LANGUAGES.NYNORSK} content="LANGUAGE.NYNORSK" /> : null}
+						{languages.indexOf(config.LANGUAGES.ENGLISH) >-1 ? <Translate component="option" value={config.LANGUAGES.ENGLISH} content="LANGUAGE.ENGLISH" /> : null}
 					</select>
 				</div>
 			)
