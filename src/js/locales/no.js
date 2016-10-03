@@ -55,7 +55,8 @@ module.exports = {
         'NO_CLASS_FOUND': 'Ingen klassifikasjoner funnet',
 		'CHOOSE_CLASS_FAMILY': 'Eller velg et område',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Klassifikasjoner og kodelister',
-		'CLASS_DESCRIPTION': 'På denne sida kan du søke etter og laste ned (til Excel) statistiske klassifikasjoner og kodelister.  Du kan bruke enten fritekst-søk eller navigere vha. de listede temaene. Klassifikasjonene er «offisielle» kodeverk der kategoriene skal være gjensidig utelukkende og uttømmende for området kodeverket dekker. Det er ikke de samme kravene til kodelister, de kan være tilpasset en spesiell statistikk. I utgangspunktet søkes det bare i klassifikasjonene. Det er mulig å inkludere kodelistene i søket (ved å krysse av i relevant boks), men vi anbefaler ikke eksterne brukere å gjøre dette. Det kan bli veldig mange treff i søket, og en risikerer også å få fram kodelister som er tilpasset spesielle behov i SSB.  For de som ønsker å bruke klassifikasjonene i egne programmer, anbefales bruk av API-et.'
+		'CLASS_DESCRIPTION': 'Klassifikasjoner er "offisielle" kodeverk der kategoriene skal være gjensidig utelukkende og uttømmende. Kodelister er ikke "offisielle", de kan være tilpasset en spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpasset spesielle behov i SSB.',
+		'API_LINK_TEXT': 'API mot klassifikasjoner og kodelister'
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',

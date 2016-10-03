@@ -54,7 +54,8 @@ module.exports = {
         'STATISTICAL_UNIT': 'Statistical unit',
 		'CHOOSE_CLASS_FAMILY': 'Navigate by subject area',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Classifications and codelists',
-		'CLASS_DESCRIPTION': 'This web page gives you the opportunity to search for and download Statistical classifications and code lists. You may use free text search or navigate using the subject areas listed. A statistical classification is “official”,  and its elements are mutually exclusive and complete for the area covered by the classification. These requirements are not extended to code lists which may be fitted to one specific statistic. By default only statistical classifications are included in the search process, but it is possible to include the code lists (by ticking off  the relevant box). However, we don’t recommend external users to include code lists. The amount of search results can be vast, including a lot of code lists adapted to specific Statistics Norway needs.  For those of you who would like to use the classifications in your own programs, we recommend the use of our API.'
+		'CLASS_DESCRIPTION': 'A statistical classification is “official”, and its elements are mutually exclusive and complete. Code lists are not "official" and may be fitted to one specific statistic. Code lists may be included in the search process by ticking off the box. Note that the amount of search results can be vast, including a lot of code lists adapted to specific Statistics Norway needs.',
+		'API_LINK_TEXT': 'API to retrieve classifications and codelists',
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
