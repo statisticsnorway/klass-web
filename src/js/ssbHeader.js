@@ -27,7 +27,7 @@ class SSBHeader extends Component {
     }
     toggleLanguage (e) {
         e.preventDefault();
-        const lang = e.currentTarget.lang.toUpperCase()
+        const lang = e.currentTarget.lang;
 
         sessionStorage.clear('selectedAPILanguage')
         sessionStorage.setItem('selectedLanguage', lang)

@@ -48,11 +48,13 @@ class Tabs extends Component {
 
 	render () {
         if (sessionStorage.getItem('selectedLanguage')) {
-            switch (sessionStorage.getItem('selectedLanguage')) {
-                case 'NO' : moment.locale('nb'); break;
-                case 'NN' : moment.locale('nn'); break;
-                case 'EN' : moment.locale('en'); break;
-            }
+            moment.locale(sessionStorage.getItem('selectedLanguage'))
+            // switch (sessionStorage.getItem('selectedLanguage')) {
+            //     //TODO fix now that  case is not nessesary
+            //     case 'nb' : moment.locale('nb'); break;
+            //     case 'nn' : moment.locale('nn'); break;
+            //     case 'en' : moment.locale('en'); break;
+            // }
         } else {
             moment.locale('nb')
         }

@@ -42,7 +42,7 @@ module.exports = {
         'TOGGLE': 'English',
         'TOGGLE_SHORT': 'en',
         'SWITCH_LANGUAGE': 'Bytt språk',
-        'CHOSEN_LANG_SHORT': 'no'
+        'CHOSEN_LANG_SHORT': 'nb'
 	},
 	'CONTACT': {
 		'HEADER': 'Kontakt',

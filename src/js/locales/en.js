@@ -40,7 +40,7 @@ module.exports = {
 		'NYNORSK': 'Nynorsk',
 		'ENGLISH': 'English',
         'TOGGLE': 'Norsk',
-        'TOGGLE_SHORT': 'no',
+        'TOGGLE_SHORT': 'nb',
         'SWITCH_LANGUAGE': 'Switch language',
         'CHOSEN_LANG_SHORT': 'en'
 	},

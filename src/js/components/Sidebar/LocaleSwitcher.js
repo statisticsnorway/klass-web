@@ -9,7 +9,7 @@ function getLocale() {
 	} else if (sessionStorage.getItem('selectedLanguage')) {
         return sessionStorage.getItem('selectedLanguage')
     }
-	return 'NO'
+	return 'nb'
 }
 
 class LocaleSwitcher extends Component {

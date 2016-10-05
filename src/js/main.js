@@ -20,16 +20,16 @@ const rootElement = document.getElementById('app');
 
 // this is required to disable counterpart's warning
 // about a missing pluralization algorithm for German
-counterpart.registerTranslations('DE', require('counterpart/locales/de'));
+counterpart.registerTranslations('de', require('counterpart/locales/de'));
 
-counterpart.registerTranslations('EN', require('./locales/en'))
-counterpart.registerTranslations('NN', require('./locales/nn'))
-counterpart.registerTranslations('NO', require('./locales/no'))
+counterpart.registerTranslations('en', require('./locales/en'))
+counterpart.registerTranslations('nn', require('./locales/nn'))
+counterpart.registerTranslations('nb', require('./locales/nb'))
 
 if (sessionStorage.getItem('selectedLanguage')) {
     counterpart.setLocale(sessionStorage.getItem('selectedLanguage'));
 } else {
-    counterpart.setLocale('NO')
+    counterpart.setLocale('nb')
 }
 
 let ComponentEl;

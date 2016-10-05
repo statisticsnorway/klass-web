@@ -8,7 +8,10 @@ module.exports = {
 		'CHOOSE_LANGUAGE': 'Velg språk for kodeverk:',
 		'NORWEGIAN': 'Norsk',
 		'NYNORSK': 'Nynorsk',
-		'ENGLISH': 'Engelsk'
+		'ENGLISH': 'Engelsk',
+		'TOGGLE_SHORT': 'nb',
+		'SWITCH_LANGUAGE': 'Bytt språk',
+		'CHOSEN_LANG_SHORT': 'nb'
 	},
 	'CONTACT': {
 		'HEADER': 'Kontakt',
