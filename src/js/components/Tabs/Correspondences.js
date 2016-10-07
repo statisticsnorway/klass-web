@@ -183,6 +183,12 @@ class Correspondences extends Component {
 					<Translate component="div" content="TABS.CORRESPONDENCES.CORRESPONDENCE_TABLE_NOT_FOUND" />
 				)
 			}
+			let joinedLanguages = selectedCorrespondence.published.map(function(val){
+				let comma = (val == selectedCorrespondence.published[selectedCorrespondence.published.length-1]) ? "" : ",";
+				if (val == "nb")return <span><Translate content="LANGUAGE.NORWEGIAN" />{comma} </span>;
+				if (val == "nn")return <span><Translate content="LANGUAGE.NYNORSK" />{comma} </span>;
+				if (val == "en")return <span><Translate content="LANGUAGE.ENGLISH" />{comma} </span>;
+			})
 			return (
 				<div>
 					<p className="back-link">
@@ -191,7 +197,7 @@ class Correspondences extends Component {
 					<h3>{selectedCorrespondence.name}</h3>
 					<p>
                         <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedCorrespondence.contactPerson.name}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedCorrespondence.owningSection}<br/>
-                        <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedCorrespondence.published.join()}<br/>
+                        <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {joinedLanguages}<br/>
     					{selectedCorrespondence.description}
                     </p>
 					<div className="button-heading">

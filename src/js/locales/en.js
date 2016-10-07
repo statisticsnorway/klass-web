@@ -102,7 +102,7 @@ module.exports = {
 			'OWNER': 'Owner',
 			'SECTION_FOR': 'division',
 			'LASTMODIFIED': 'Last modified',
-			'PUBLISHED': 'Published on',
+			'PUBLISHED': 'Published in',
 			'DERIVEDFROM': 'Based on',
 			'LEGALBASE': 'Legal base',
 			'PUBLICATIONS': 'Publications',
@@ -144,7 +144,7 @@ module.exports = {
 			'BACK_TO_CORRESPONDENCES': 'Back to correspondence overview',
 			'RESPONSIBLE': 'Responsible',
 			'SECTION_FOR': 'division',
-			'PUBLISHED': 'Published on'
+			'PUBLISHED': 'Published in'
 		},
 		'VARIANTS': {
 			'VARIANTS': 'Variants',

@@ -118,6 +118,12 @@ class Variants extends Component {
 					<Translate component="div" content="TABS.VARIANTS.VARIANT_EMPTY" />
 				)
 			}
+			let joinedLanguages = selectedVariant.published.map(function(val){
+				let comma = (val == selectedVariant.published[selectedVariant.published.length-1]) ? "" : ",";
+				if (val == "nb")return <span><Translate content="LANGUAGE.NORWEGIAN" />{comma} </span>;
+				if (val == "nn")return <span><Translate content="LANGUAGE.NYNORSK" />{comma} </span>;
+				if (val == "en")return <span><Translate content="LANGUAGE.ENGLISH" />{comma} </span>;
+			})
 			return (
 				<div>
 					<p className="back-link">
@@ -126,7 +132,7 @@ class Variants extends Component {
 					<h3>{selectedVariant.name}</h3>
 					<p>
                         <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson.name}<br/>
-                        <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {selectedVariant.published.join()}<br/>
+                        <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {joinedLanguages}<br/>
                         {selectedVariant.description}
                     </p>
 					<div className="button-heading">
