@@ -97,6 +97,7 @@ module.exports = {
 		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
 		'VERSIONS_NOT_FOUND': 'Ingen versjoner tilgjengelig',
 		'ABOUT': {
+			'ABOUT_PREFIX': 'Om',
 			'ABOUT': 'Om versjonen',
 			'DESCRIPTION': 'Beskrivelse',
 			'OWNER': 'Ansvarlig',

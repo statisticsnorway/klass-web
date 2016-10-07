@@ -36,8 +36,8 @@ module.exports = {
 	},
 	'LANGUAGE': {
 		'CHOOSE_LANGUAGE': 'Choose language:',
-		'NORWEGIAN': 'Bokmål',
-		'NYNORSK': 'Nynorsk',
+		'NORWEGIAN': 'Norwegian (bokmål)',
+		'NYNORSK': 'Norwegian (Nynorsk)',
 		'ENGLISH': 'English',
         'TOGGLE': 'Norsk',
         'TOGGLE_SHORT': 'nb',
@@ -96,6 +96,7 @@ module.exports = {
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
 		'VERSIONS_NOT_FOUND': 'No versions found',
 		'ABOUT': {
+			'ABOUT_PREFIX': 'About',
 			'ABOUT': 'About the version',
 			'DESCRIPTION': 'Description',
 			'OWNER': 'Owner',
