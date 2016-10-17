@@ -90,7 +90,7 @@ var config = {
 	//     	}
 	// 	}
 	// }
-  },
+  },debug:true,
   devtool: 'eval'
 };
 

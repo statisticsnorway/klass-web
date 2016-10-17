@@ -12,6 +12,7 @@ const PATHS = {
   app: path.resolve(__dirname, '../src/js'),
   styles: path.resolve(__dirname, '../src/styles'),
   images: path.resolve(__dirname, '../src/images'),
+  static: path.resolve(__dirname, '../src/static'),
   build: path.resolve(__dirname, '../build')
 };
 
@@ -20,6 +21,10 @@ const plugins = [
     {
       from: PATHS.images,
       to: 'images'
+    },
+    {
+      from: PATHS.static,
+      to: 'static'
     }
   ]),
   // Shared code
