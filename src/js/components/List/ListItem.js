@@ -1,12 +1,10 @@
-import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
-import {connect} from 'react-redux'
-import Translate from 'react-translate-component'
-import List from './index'
-import Notes from '../Notes'
-import Modal from 'simple-react-modal'
-import _ from 'lodash'
-import { Panel } from 'react-bootstrap'
+import React, {Component, PropTypes} from "react";
+import {Link} from "react-router";
+import {connect} from "react-redux";
+import Translate from "react-translate-component";
+import Notes from "../Notes";
+import Modal from "simple-react-modal";
+import _ from "lodash";
 
 class ListItem extends Component {
 	renderItemList() {
@@ -76,12 +74,21 @@ class ListItem extends Component {
 	renderNoteBlocks (arr) {
 		return arr.map(function (item, key) {
 			var splitted = item.split(/:(.+)?/)
-			return (
-				<div className="flex-container" key={key}>
-					<div className="label">{splitted[0]}:</div>
-					<div className="content">{splitted[1]}</div>
-				</div>
-			)
+			if (splitted.length > 1) {
+				return (
+					<div className="flex-container" key={key}>
+						<div className="label">{splitted[0]}:</div>
+						<div className="content">{splitted[1]}</div>
+					</div>
+				)
+			}else {
+				return (
+					<div className="flex-container" key={key}>
+						<div className="content">{splitted[0]}</div>
+					</div>
+				)
+			}
+
 		})
 	}
 
