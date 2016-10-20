@@ -7,6 +7,9 @@
     <groupId>no.ssb.klas</groupId>
     <artifactId>klass.ssb.no</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
+    </properties>
     <packaging>war</packaging>
 
 
@@ -30,27 +33,6 @@
                         </configuration>
                     </execution>
 
-                    <!--&lt;!&ndash;Configure httpsProxy (for jenkins)&ndash;&gt;-->
-                    <!--<execution>-->
-                        <!--<id>npm https proxy</id>-->
-                        <!--<goals>-->
-                            <!--<goal>npm</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<arguments>config set https-proxy http://proxy.ssb.no:3128</arguments>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>npm http proxy</id>-->
-                        <!--<goals>-->
-                            <!--<goal>npm</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<arguments>config set proxy http://proxy.ssb.no:3128</arguments>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-
-                    <!--download javascript dependencies-->
                     <execution>
                         <id>npm install</id>
                         <goals>
@@ -123,5 +105,122 @@
             </plugins>
         </pluginManagement>
     </build>
-    
+
+
+    <profiles>
+        <profile>
+            <id>Production</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/js/config/</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/env/config/prod/</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/js/config/</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/env/config/test/</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Test-no-cache</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/js/config/</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/env/config/test_nocache/</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Local</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/js/config/</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/env/config/local/</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
 </project>
