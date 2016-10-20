@@ -10,9 +10,7 @@ const API_LOCAL_ROOT = config.API_LOCAL_BASE_URL;
 function callApi(endpoint, method, headers, params, frontpage) {
 	const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
-    if (!params) {
-        params = {};
-    }
+
     // only set language if we have not defined a language (allows us to override)
     if (typeof params["language"] === "undefined") {
 		if (sessionStorage.getItem('selectedLanguage')) {
@@ -70,6 +68,7 @@ export default (store) => (next) => (action) => {
 
 	let { frontpage, endpoint } = callAPI
 	let { types, id, method, headers, params, language } = callAPI
+	if (!params)params = {};
 
 	if (typeof endpoint === 'function') {
 		endpoint = endpoint(store.getState())
@@ -82,8 +81,8 @@ export default (store) => (next) => (action) => {
 	if (!types.every((type) => typeof type === 'string')) {
 		throw new Error('Expected action types to be strings.')
 	}
+
 	if (typeof language == 'string') {
-		if (!params)params = {};
 		params["language"] = language;
 	}
 
@@ -99,6 +98,7 @@ export default (store) => (next) => (action) => {
 	return callApi(endpoint, method, headers, params, frontpage).then(
 		(response) => next(actionWith({
 			response,
+			requestParams: params,
 			type: successType,
 			id: id
 		})),

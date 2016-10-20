@@ -50,6 +50,7 @@ function selectedVersion(state = initialState, action) {
 			nestedItems = flatToNested.convert(_.cloneDeep(action.response.classificationItems))
 			mappedItems = _.merge({}, action.response, {
 				"id": action.id,
+				"language" : action.requestParams.language,
 				"nestedItems": nestedItems.children
 			})
 
@@ -66,15 +67,19 @@ function selectedVersion(state = initialState, action) {
 			})
 
 		case types.CORRESPONDENCE_SUCCESS:
+			let mergedValues = _.merge({}, action.response, {
+				"language" : action.requestParams.language
+			});
 			return _.assign({}, state, {
 				isFetchingCorrespondence: false,
-				selectedCorrespondence: action.response
+				selectedCorrespondence: mergedValues
 			})
 
 		case types.VARIANT_SUCCESS:
 			nestedItems = flatToNested.convert(_.cloneDeep(action.response.classificationItems))
 			mappedItems = _.merge({}, action.response, {
 				"id": action.id,
+				"language" : action.requestParams.language,
 				"nestedItems": nestedItems.children
 			})
 

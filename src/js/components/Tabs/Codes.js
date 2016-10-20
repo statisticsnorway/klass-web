@@ -25,7 +25,9 @@ class Codes extends Component {
 
 	downloadCodes() {
 		const { version } = this.props
-		const csvURL = config.API_BASE_URL + '/versions/' + version.id + '.csv'
+		let language = version.language;
+		let languageArgument = language == null ?  "" : "?language=" + language;
+		const csvURL = config.API_BASE_URL + '/versions/' + version.id + '.csv' + languageArgument
 
 		var tempLink = document.createElement('a')
         document.body.appendChild(tempLink)

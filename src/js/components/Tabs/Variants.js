@@ -89,8 +89,10 @@ class Variants extends Component {
     }
 
     downloadCodes () {
-		const { params } = this.props
-		const csvURL = config.API_BASE_URL + '/variants/' + params.itemId + '.csv'
+		const { params ,selectedVersion} = this.props
+		let language = selectedVersion.selectedVariant.language;
+		let languageArgument = language == null ?  "" : "?language=" + language;
+		const csvURL = config.API_BASE_URL + '/variants/' + params.itemId + '.csv' + languageArgument
 
 		var tempLink = document.createElement('a')
         document.body.appendChild(tempLink)
