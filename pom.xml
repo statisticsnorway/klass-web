@@ -129,6 +129,7 @@
                                             <directory>${basedir}/src/env/config/prod/</directory>
                                         </resource>
                                     </resources>
+                                    <overwrite>true</overwrite>
                                 </configuration>
                             </execution>
                         </executions>
@@ -157,6 +158,7 @@
                                             <directory>${basedir}/src/env/config/test/</directory>
                                         </resource>
                                     </resources>
+                                    <overwrite>true</overwrite>
                                 </configuration>
                             </execution>
                         </executions>
@@ -185,6 +187,7 @@
                                             <directory>${basedir}/src/env/config/test_nocache/</directory>
                                         </resource>
                                     </resources>
+                                    <overwrite>true</overwrite>
                                 </configuration>
                             </execution>
                         </executions>
@@ -213,6 +216,7 @@
                                             <directory>${basedir}/src/env/config/local/</directory>
                                         </resource>
                                     </resources>
+                                    <overwrite>true</overwrite>
                                 </configuration>
                             </execution>
                         </executions>
