@@ -159,7 +159,7 @@ module.exports = {
 		'VERSIONS': {
 			'STILL_VALID': 'Still valid',
 			'VERSIONS': 'All versions',
-			'OTHER_VERSIONS_OF': 'Other versions of'
+			'OTHER_VERSIONS_OF': 'All versions of'
 		}
 	}
 };

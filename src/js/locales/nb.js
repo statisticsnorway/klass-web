@@ -160,7 +160,7 @@ module.exports = {
 		'VERSIONS': {
 			'STILL_VALID': 'Forstatt gyldig',
 			'VERSIONS': 'Alle versjoner',
-			'OTHER_VERSIONS_OF': 'Andre versjoner av'
+			'OTHER_VERSIONS_OF': 'Alle versjoner av'
 		}
 	}
 };
