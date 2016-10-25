@@ -128,7 +128,7 @@ module.exports = {
 		'CODES': {
 			'CODES': 'Koder',
 			'SEARCH_BY_CODE_OR_NAME': 'Filtrer etter koder eller navn',
-			'SHOW_SHORT_TITLES': 'Vis korte titler',
+			'SHOW_SHORT_TITLES': 'Vis kortnavn',
 			'CODES_NOT_FOUND': 'Fant ingen koder',
             'FILTERED_BY': 'Resultat filtrert på'
 		},

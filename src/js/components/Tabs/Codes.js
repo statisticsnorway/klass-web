@@ -90,6 +90,20 @@ class Codes extends Component {
         }
     }
 
+    renderShortnameBox() {
+		const {classification} = this.props
+		if (classification.includeShortName) {
+			return (
+				<div>
+					<input type="checkbox" id="includeCodelist" onChange={(ev) => this.handleChange(ev)}/>
+					<Translate component = "label" content = "TABS.CODES.SHOW_SHORT_TITLES" htmlFor = "includeCodelist" />
+				</div>
+			)
+		} else {
+			return "";
+		}
+	}
+
 	render () {
 		return (
 			<div>
@@ -109,8 +123,7 @@ class Codes extends Component {
     						<Translate component="button" content="SEARCH.RESET" onClick={(ev) => this.resetFilter(ev)} />
 						</div>
 					</div>
-					<input type="checkbox" id="includeCodelist" onChange={(ev) => this.handleChange(ev)}/>
-					<Translate component="label" content="TABS.CODES.SHOW_SHORT_TITLES" htmlFor="includeCodelist" />
+					{this.renderShortnameBox()}
 				</form>
 				<div className="button-heading">
                     <div className="flex-item">
@@ -132,6 +145,7 @@ class Codes extends Component {
 }
 
 Codes.propTypes = {
+	classification: PropTypes.object.isRequired,
 	version: PropTypes.object.isRequired,
 	params: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,

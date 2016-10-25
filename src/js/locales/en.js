@@ -127,7 +127,7 @@ module.exports = {
 		'CODES': {
 			'CODES': 'Codes',
 			'SEARCH_BY_CODE_OR_NAME': 'Filter by code or name',
-			'SHOW_SHORT_TITLES': 'Show short titles',
+			'SHOW_SHORT_TITLES': 'Show short names',
 			'CODES_NOT_FOUND': 'No codes found',
             'FILTERED_BY': 'Result filtered by'
 		},

@@ -65,7 +65,7 @@ class Tabs extends Component {
             {
                 title: counterpart.translate('TABS.CODES.CODES'),
                 id: 'koder',
-                content: (<Codes version={selectedVersion.version} params={params} actions={actions} modal={modal} />)
+                content: (<Codes classification={classification} version={selectedVersion.version} params={params} actions={actions} modal={modal} />)
             },
             {
                 title: counterpart.translate('TABS.ABOUT.ABOUT'),
