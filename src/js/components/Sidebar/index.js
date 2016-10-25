@@ -10,11 +10,15 @@ class Sidebar extends Component{
 
 	render () {
 		const { contactInfo, languages, onLanguageChange, actions, params } = this.props
+
+		function gotClassification() {
+			return params != undefined
+		}
 		return (
 			<div className="sidebar">
 				<LocaleSwitcher languages={languages} onLanguageChange={onLanguageChange} actions={actions} params={params} />
                 <Contact contactInfo={contactInfo} />
-                <Subscription actions={actions} params={params} />
+				{gotClassification() ?  <Subscription actions={actions} params={params} /> : ""}
 			</div>
 		)
 	}
