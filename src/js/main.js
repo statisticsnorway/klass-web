@@ -26,11 +26,23 @@ counterpart.registerTranslations('en', require('./locales/en'))
 counterpart.registerTranslations('nn', require('./locales/nn'))
 counterpart.registerTranslations('nb', require('./locales/nb'))
 
-if (sessionStorage.getItem('selectedLanguage')) {
+//if (sessionStorage.getItem('selectedLanguage')) {
     counterpart.setLocale(sessionStorage.getItem('selectedLanguage'));
-} else {
-    counterpart.setLocale('nb')
-}
+//} else {
+    if (document.URL.match("http(s?):\/\/.*?\/en\/")) {
+        sessionStorage.setItem('selectedLanguage', "en")
+        sessionStorage.setItem('selectedAPILanguage', "en")
+        counterpart.setLocale('en')
+    }else {
+        sessionStorage.setItem('selectedLanguage', "nb")
+        sessionStorage.setItem('selectedAPILanguage', "nb")
+        counterpart.setLocale('nb')
+    }
+//}
+
+
+
+
 
 let ComponentEl;
 
