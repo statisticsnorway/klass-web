@@ -4,7 +4,7 @@
 // changes should be done in the  /env/config/ files
 ////////////////////////////////////////////////////////////////////////////////////////////////
 const config = {
-	API_BASE_URL: 'http://beta-data.ssb.no/api/klass/v1/',
+	API_BASE_URL: '//beta-data.ssb.no/api/klass/v1/',
 	API_LOCAL_BASE_URL: 'http://localhost:3001',
 	API_LOCAL_STORAGE: false,
 	LANGUAGES: {
