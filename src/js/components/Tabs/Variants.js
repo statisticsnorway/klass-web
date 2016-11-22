@@ -135,7 +135,7 @@ class Variants extends Component {
 					<p>
                         <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson.name}<br/>
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {joinedLanguages}<br/>
-                        {selectedVariant.description}
+                        {selectedVariant.introduction}
                     </p>
 					<div className="button-heading">
                         <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
