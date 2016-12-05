@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.ssb.klas</groupId>
-    <artifactId>klass-web</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <groupId>no.ssb.klass.web</groupId>
+    <artifactId>klass-web-${klass.env.name}</artifactId>
+    <version>1.6.0-SNAPSHOT</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
@@ -100,28 +100,31 @@
                 </executions>
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.2</version>
-                    <configuration>
+        <!--<pluginManagement>-->
+            <!--<plugins>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.tomcat.maven</groupId>-->
+                    <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+                    <!--<version>2.2</version>-->
+                    <!--<configuration>-->
 
-                        <url>http://al-klass-app-u1.ssb.no:8080/manager/text</url>
-                        <path>/klass-ssb-no</path>
-                        <username>admin</username>
-                        <password>adminadmin</password>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+                        <!--<url>http://al-klass-app-u1.ssb.no:8080/manager/text</url>-->
+                        <!--<path>/klass-ssb-no</path>-->
+                        <!--<username>admin</username>-->
+                        <!--<password>adminadmin</password>-->
+                    <!--</configuration>-->
+                <!--</plugin>-->
+            <!--</plugins>-->
+        <!--</pluginManagement>-->
     </build>
 
 
     <profiles>
         <profile>
             <id>prod</id>
+            <properties>
+                <klass.env.name>prod</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -159,6 +162,9 @@
         </profile>
         <profile>
             <id>qa</id>
+            <properties>
+                <klass.env.name>qa</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -196,6 +202,9 @@
         </profile>
         <profile>
             <id>test</id>
+            <properties>
+                <klass.env.name>test</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -233,6 +242,9 @@
         </profile>
         <profile>
             <id>test-no-cache</id>
+            <properties>
+                <klass.env.name>test</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -270,6 +282,12 @@
         </profile>
         <profile>
             <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <klass.env.name>local</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
