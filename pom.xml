@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.ssb.klas</groupId>
-    <artifactId>klass.ssb.no</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>no.ssb.klass.web</groupId>
+    <artifactId>klass-web-${klass.env.name}</artifactId>
+    <version>1.6.0</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
     <packaging>war</packaging>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://kodehus.ssb.no/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://kodehus.ssb.no/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
 
 
     <build>
@@ -91,15 +101,20 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.2</version>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
                     <configuration>
-
-                        <url>http://al-klass-app-u1.ssb.no:8080/manager/text</url>
-                        <path>/klass-ssb-no</path>
-                        <username>admin</username>
-                        <password>adminadmin</password>
+                        <!-- see goals wiki page for configuration options -->
+                        <flowInitContext>
+                            <masterBranchName>master</masterBranchName>
+                            <developBranchName>develop</developBranchName>
+                            <featureBranchPrefix>feature/</featureBranchPrefix>
+                            <releaseBranchPrefix>release/</releaseBranchPrefix>
+                            <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+                            <versionTagPrefix>KlassWeb-</versionTagPrefix>
+                        </flowInitContext>
+                        <arguments>-Pdocumentation -Dmaven.javadoc.skip=true</arguments>
                     </configuration>
                 </plugin>
             </plugins>
@@ -109,7 +124,10 @@
 
     <profiles>
         <profile>
-            <id>Production</id>
+            <id>prod</id>
+            <properties>
+                <klass.env.name>prod</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -134,11 +152,62 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <classifier>prod</classifier>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
         <profile>
-            <id>Test</id>
+            <id>qa</id>
+            <properties>
+                <klass.env.name>qa</klass.env.name>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/js/config/</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/env/config/qa/</directory>
+                                        </resource>
+                                    </resources>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <classifier>qa</classifier>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <klass.env.name>test</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -163,11 +232,22 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <classifier>test</classifier>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
         <profile>
-            <id>Test-no-cache</id>
+            <id>test-no-cache</id>
+            <properties>
+                <klass.env.name>test</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -192,11 +272,25 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <classifier>test-no-cache</classifier>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
         <profile>
-            <id>Local</id>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <klass.env.name>local</klass.env.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -220,6 +314,14 @@
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <classifier>local</classifier>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
