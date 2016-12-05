@@ -152,14 +152,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>prod</classifier>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -191,14 +183,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>qa</classifier>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -232,14 +216,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>test</classifier>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -271,14 +247,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>test-no-cache</classifier>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -314,14 +282,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>local</classifier>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
