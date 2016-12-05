@@ -6,7 +6,7 @@
 
     <groupId>no.ssb.klass.web</groupId>
     <artifactId>klass-web-${klass.env.name}</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.0-SNAPSHOT</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
@@ -100,22 +100,27 @@
                 </executions>
             </plugin>
         </plugins>
-        <!--<pluginManagement>-->
-            <!--<plugins>-->
-                <!--<plugin>-->
-                    <!--<groupId>org.apache.tomcat.maven</groupId>-->
-                    <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
-                    <!--<version>2.2</version>-->
-                    <!--<configuration>-->
-
-                        <!--<url>http://al-klass-app-u1.ssb.no:8080/manager/text</url>-->
-                        <!--<path>/klass-ssb-no</path>-->
-                        <!--<username>admin</username>-->
-                        <!--<password>adminadmin</password>-->
-                    <!--</configuration>-->
-                <!--</plugin>-->
-            <!--</plugins>-->
-        <!--</pluginManagement>-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
+                    <configuration>
+                        <!-- see goals wiki page for configuration options -->
+                        <flowInitContext>
+                            <masterBranchName>master</masterBranchName>
+                            <developBranchName>develop</developBranchName>
+                            <featureBranchPrefix>feature/</featureBranchPrefix>
+                            <releaseBranchPrefix>release/</releaseBranchPrefix>
+                            <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+                            <versionTagPrefix>KlassWeb-</versionTagPrefix>
+                        </flowInitContext>
+                        <arguments>-Pdocumentation -Dmaven.javadoc.skip=true</arguments>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
 
