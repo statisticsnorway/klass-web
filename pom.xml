@@ -4,7 +4,7 @@
 
     <groupId>no.ssb.klass.web</groupId>
     <artifactId>klass-web-${klass.env.name}</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
@@ -152,14 +152,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>prod</classifier>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -191,14 +183,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>qa</classifier>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -232,14 +216,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>test</classifier>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -271,14 +247,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>test-no-cache</classifier>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -314,14 +282,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <classifier>local</classifier>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
