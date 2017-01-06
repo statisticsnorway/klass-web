@@ -49,15 +49,12 @@ module.exports = (function () {
       }
     }
 
-    if (roots.length === 1) {
-      nested = roots[0];
-    } else if (roots.length > 1) {
+
       nested = {};
-      nested[this.config.children] = roots;
-    } else {
-      nested = {};
-    }
-    return nested;
+      if (roots.length >= 1) {
+          nested[this.config.children] = roots;
+      }
+      return nested;
   };
 
   function initPush(arrayName, obj, toPush) {
