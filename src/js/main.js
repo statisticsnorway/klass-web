@@ -12,6 +12,8 @@ import SSBHeader from './SSBHeader'
 import SSBFooter from './SSBFooter'
 
 import routes from './routes';
+import ReactGA from "react-ga";
+import config from './config'
 
 const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 
@@ -43,25 +45,18 @@ counterpart.registerTranslations('nb', require('./locales/nb'))
 
 
 
+function gaTracking() {
+    ReactGA.pageview(window.location.pathname + window.location.hash);
+}
 
+ReactGA.initialize(config.GA_TRACKING_ID);
 let ComponentEl;
-
-// if (process.env.NODE_ENV !== 'production') {
-// 	const DevTools = require('./containers/DevTools').default;
-//
-// 	ComponentEl = (
-// 		<div>
-// 			<Router history={browserHistory} routes={routes}/>
-// 			<DevTools/>
-// 		</div>
-// 	);
-// } else {
 	ComponentEl = (
         <div>
             <SSBHeader />
             <div id="page">
                 <div className="sitewrapper">
-                    <Router history={appHistory} routes={routes}/>
+                    <Router history={appHistory} routes={routes} onUpdate={gaTracking}/>
                 </div>
             </div>
             <SSBFooter />
@@ -76,3 +71,4 @@ ReactDOM.render(
   	</Provider>,
   	rootElement
 );
+
