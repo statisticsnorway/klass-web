@@ -50,16 +50,8 @@ class Subscription extends Component {
     }
 
     handleChange (event) {
-        const email = ReactDOM.findDOMNode(this.refs.subscriptionEmail).value.trim()
-        ReactDOM.findDOMNode(this.refs.subscriptionError).style.display = 'none'
-        if (_.isEmpty(email)) {
             ReactDOM.findDOMNode(this.refs.invalidEmail).style.display = 'none'
-        }
-        else if (this.isInvalidEmail(email)) {
-            ReactDOM.findDOMNode(this.refs.invalidEmail).style.display = 'block'
-        } else {
-            ReactDOM.findDOMNode(this.refs.invalidEmail).style.display = 'none'
-        }
+            ReactDOM.findDOMNode(this.refs.subscriptionError).style.display = 'none'
     }
 
     renderSubscription () {

@@ -114,7 +114,6 @@
                             <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
                             <versionTagPrefix>KlassWeb-</versionTagPrefix>
                         </flowInitContext>
-                        <arguments>-Pdocumentation -Dmaven.javadoc.skip=true</arguments>
                     </configuration>
                 </plugin>
             </plugins>
