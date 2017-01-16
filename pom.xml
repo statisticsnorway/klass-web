@@ -4,7 +4,7 @@
 
     <groupId>no.ssb.klass.web</groupId>
     <artifactId>klass-web-${klass.env.name}</artifactId>
-    <version>1.6.2</version>
+    <version>1.6.3</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
@@ -114,7 +114,6 @@
                             <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
                             <versionTagPrefix>KlassWeb-</versionTagPrefix>
                         </flowInitContext>
-                        <arguments>-Pdocumentation -Dmaven.javadoc.skip=true</arguments>
                     </configuration>
                 </plugin>
             </plugins>

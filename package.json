@@ -98,6 +98,7 @@
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "simple-react-modal": "^0.4.9"
+    "simple-react-modal": "^0.4.9",
+    "react-ga":"2.1.2"
   }
 }

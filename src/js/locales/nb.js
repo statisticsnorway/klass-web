@@ -85,7 +85,7 @@ module.exports = {
         'SUBSCRIBE': 'Abonner',
         'SUBSCRIBED': 'Du vil motta en mail. Følg instruksjonene i mailen for å starte ditt abonnement.',
         'EMAIL_ERROR': '* Ugyldig e-post',
-        'GENERAL_ERROR': '* Noe gikk galt. Se loggen og prøv igjen senere.'
+        'GENERAL_ERROR': '* Noe gikk galt. Prøv igjen senere.'
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! Denne versjonen er ikke lenger gyldig',

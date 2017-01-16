@@ -84,7 +84,7 @@ module.exports = {
         'SUBSCRIBE': 'Subscribe',
         'SUBSCRIBED': 'You will receive an email. Follow the instructions email to start your subscription.',
         'EMAIL_ERROR': '* Invalid e-mail',
-        'GENERAL_ERROR': '* Something went wrong. Check the log and try again.'
+        'GENERAL_ERROR': '* Something went wrong. Please try again later.'
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! This version is no longer valid',
