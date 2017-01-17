@@ -91,7 +91,7 @@ var config = {
 	// 	}
 	// }
   },debug:true,
-  devtool: 'eval'
+  devtool: 'eval-source-map'
 };
 
 module.exports = config;

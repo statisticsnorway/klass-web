@@ -136,16 +136,31 @@ function selectedVersion(state = initialState, action) {
 			return _.assign({}, state, newState)
 
 		case types.SEARCH_CODE:
-			nestedItems = flatToNested.convert(_.cloneDeep(state.version.classificationItems)).children
-			if (action.query) {
-				nestedItems = filterTree(nestedItems, action.query)
-			}
+            switch (action.tab) {
+            	case 'code':
+                nestedItems = flatToNested.convert(_.cloneDeep(state.version.classificationItems)).children
+                    if (action.query) {
+                        nestedItems = filterTree(nestedItems, action.query)
+                    }
 
-			newState = _.merge({}, state)
-			_.set(newState, 'version.nestedItems', nestedItems)
-			_.set(newState, 'version.filterQuery', action.query)
+                    newState = _.merge({}, state)
+                    _.set(newState, 'version.nestedItems', nestedItems)
+                    _.set(newState, 'version.filterQuery', action.query)
 
-			return _.assign({}, state, newState)
+                    return _.assign({}, state, newState)
+                case 'variant':
+                    nestedItems = flatToNested.convert(_.cloneDeep(state.selectedVariant.classificationItems)).children
+                    if (action.query) {
+                        nestedItems = filterTree(nestedItems, action.query)
+                    }
+
+                    newState = _.merge({}, state)
+                    _.set(newState, 'selectedVariant.nestedItems', nestedItems)
+                    _.set(newState, 'selectedVariant.filterQuery', action.query)
+
+                    return _.assign({}, state, newState)
+            }
+
 
 		case types.CORRESPONDENCE_FAILURE:
             return _.merge({}, state, {

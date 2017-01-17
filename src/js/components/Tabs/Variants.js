@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 import _ from 'lodash'
@@ -12,6 +13,21 @@ const flatToNested = new FlatToNested({
 })
 
 class Variants extends Component {
+
+    handleSubmit (event) {
+        event.preventDefault()
+        const { actions } = this.props
+        const query = ReactDOM.findDOMNode(this.refs.query).value.trim()
+
+        actions.searchCode(query, "variant")
+    }
+
+    resetFilter (ev) {
+        ev.preventDefault()
+        const { actions } = this.props
+        ReactDOM.findDOMNode(this.refs.query).value = ''
+        actions.searchCode("", "variant")
+    }
 
 	componentDidMount() {
 		const { actions, params } = this.props
@@ -137,6 +153,23 @@ class Variants extends Component {
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {joinedLanguages}<br/>
                         {selectedVariant.introduction}
                     </p>
+					<form onSubmit={this.handleSubmit.bind(this)} className="search-box">
+						<div className="flex-container">
+							<div className="flex-item search-input-text">
+								<Translate
+									component="input"
+									aria-label={counterpart.translate('TABS.CODES.SEARCH_BY_CODE_OR_NAME')}
+									attributes={{ placeholder: 'TABS.CODES.SEARCH_BY_CODE_OR_NAME' }}
+									type="text" ref="query" name="kodeverk" />
+							</div>
+							<div className="flex-item search-button">
+								<Translate component="button" type="submit" content="SEARCH.FILTER" />
+							</div>
+							<div className="flex-item reset-button">
+								<Translate component="button" content="SEARCH.RESET" onClick={(ev) => this.resetFilter(ev)} />
+							</div>
+						</div>
+					</form>
 					<div className="button-heading">
                         <button ref="openCloseButton" className="expand-tree" value="true" onClick={(ev) => this.openHierarchy(ev)}>
                             <Translate content="COMMON.OPEN_HIERARCHY"/>
