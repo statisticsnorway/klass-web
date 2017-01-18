@@ -67,8 +67,10 @@ function selectedVersion(state = initialState, action) {
 			})
 
 		case types.CORRESPONDENCE_SUCCESS:
+            nestedItems = flatToNested.convert(_.cloneDeep(action.response.correspondenceMaps))
 			let mergedValues = _.merge({}, action.response, {
-				"language" : action.requestParams.language
+				"language" : action.requestParams.language,
+                "nestedItems": nestedItems.children
 			});
 			return _.assign({}, state, {
 				isFetchingCorrespondence: false,
@@ -140,7 +142,7 @@ function selectedVersion(state = initialState, action) {
             	case 'code':
                 nestedItems = flatToNested.convert(_.cloneDeep(state.version.classificationItems)).children
                     if (action.query) {
-                        nestedItems = filterTree(nestedItems, action.query)
+                        nestedItems = filterClassificationItemTree(nestedItems, action.query)
                     }
 
                     newState = _.merge({}, state)
@@ -151,12 +153,23 @@ function selectedVersion(state = initialState, action) {
                 case 'variant':
                     nestedItems = flatToNested.convert(_.cloneDeep(state.selectedVariant.classificationItems)).children
                     if (action.query) {
-                        nestedItems = filterTree(nestedItems, action.query)
+                        nestedItems = filterClassificationItemTree(nestedItems, action.query)
                     }
 
                     newState = _.merge({}, state)
                     _.set(newState, 'selectedVariant.nestedItems', nestedItems)
                     _.set(newState, 'selectedVariant.filterQuery', action.query)
+
+                    return _.assign({}, state, newState)
+                case 'correspondences':
+                    nestedItems = flatToNested.convert(_.cloneDeep(state.selectedCorrespondence.correspondenceMaps)).children
+                    if (action.query) {
+                        nestedItems = filterCorrespondencesTree(nestedItems, action.query)
+                    }
+
+                    newState = _.merge({}, state)
+                    _.set(newState, 'selectedCorrespondence.nestedItems', nestedItems)
+                    _.set(newState, 'selectedCorrespondence.filterQuery', action.query)
 
                     return _.assign({}, state, newState)
             }
@@ -238,12 +251,49 @@ function findNestedIndex(items, attrs) {
 
 }
 
-function filterTree(items, query) {
+function filterCorrespondencesTree(items, query) {
 	var retArray = []
 	_.each(items, function(item, key) {
 		var obj
 		if (_.isArray(item.children)) {
-			var childArray = filterTree(item.children, query)
+			var childArray = filterClassificationItemTree(item.children, query)
+			if (!_.isEmpty(childArray)) {
+				obj = _.omit(item, ['children'])
+				_.merge(obj, {
+					children: childArray,
+					active: true
+				})
+				retArray.push(obj)
+			} else if (
+						_.includes(item.sourceCode.toLowerCase(), query.toLowerCase()) ||
+						_.includes(item.sourceName.toLowerCase(), query.toLowerCase()) ||
+						_.includes(item.targetCode.toLowerCase(), query.toLowerCase()) ||
+						_.includes(item.targetName.toLowerCase(), query.toLowerCase()))
+            {
+				obj = _.omit(item, ['children'])
+				retArray.push(obj)
+			}
+		} else {
+			if (
+				_.includes(item.sourceCode.toLowerCase(), query.toLowerCase()) ||
+				_.includes(item.sourceName.toLowerCase(), query.toLowerCase()) ||
+				_.includes(item.targetCode.toLowerCase(), query.toLowerCase()) ||
+				_.includes(item.targetName.toLowerCase(), query.toLowerCase()))
+			{
+				retArray.push(item)
+			}
+
+		}
+	})
+
+	return retArray
+}
+function filterClassificationItemTree(items, query) {
+	var retArray = []
+	_.each(items, function(item, key) {
+		var obj
+		if (_.isArray(item.children)) {
+			var childArray = filterClassificationItemTree(item.children, query)
 			if (!_.isEmpty(childArray)) {
 				obj = _.omit(item, ['children'])
 				_.merge(obj, {
@@ -254,7 +304,8 @@ function filterTree(items, query) {
 			} else if (	_.includes(item.name.toLowerCase(), query.toLowerCase()) ||
                         _.includes(item.shortName.toLowerCase(), query.toLowerCase()) ||
                         _.includes(item.notes.toLowerCase(), query.toLowerCase()) ||
-						_.includes(item.code.toLowerCase(), query.toLowerCase())) {
+						_.includes(item.code.toLowerCase(), query.toLowerCase()))
+            {
 				obj = _.omit(item, ['children'])
 				retArray.push(obj)
 			}
@@ -262,7 +313,8 @@ function filterTree(items, query) {
 			if (_.includes(item.name.toLowerCase(), query.toLowerCase()) ||
                 _.includes(item.shortName.toLowerCase(), query.toLowerCase()) ||
                 _.includes(item.notes.toLowerCase(), query.toLowerCase()) ||
-				_.includes(item.code.toLowerCase(), query.toLowerCase())) {
+				_.includes(item.code.toLowerCase(), query.toLowerCase()))
+			{
 				retArray.push(item)
 			}
 

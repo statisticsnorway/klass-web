@@ -246,6 +246,22 @@
                 }
 			}
 		}
+		/*
+			correspondences
+		*/
+		#korrespondanser-panel {
+			.search-box {
+				width: 80%;
+				margin-bottom: 5em;
+			}
+			.results {
+				clear: both;
+
+                .shortName {
+                    display: none;
+                }
+			}
+		}
 
 		/*
 			About version

@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import ReactDOM from 'react-dom'
+import counterpart from 'counterpart'
 import Translate from 'react-translate-component'
 import _ from 'lodash'
 import config from '../../config'
@@ -22,6 +24,22 @@ class Correspondences extends Component {
         this.state = {
             invertedTable: true
         }
+    }
+
+
+    handleSubmit (event) {
+        event.preventDefault()
+        const { actions } = this.props
+        const query = ReactDOM.findDOMNode(this.refs.query).value.trim()
+
+        actions.searchCode(query, "correspondences")
+    }
+
+    resetFilter (ev) {
+        ev.preventDefault()
+        const { actions } = this.props
+        ReactDOM.findDOMNode(this.refs.query).value = ''
+        actions.searchCode("", "correspondences")
     }
 
 	componentDidMount() {
@@ -202,6 +220,23 @@ class Correspondences extends Component {
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {joinedLanguages}<br/>
     					{selectedCorrespondence.description}
                     </p>
+					<form onSubmit={this.handleSubmit.bind(this)} className="search-box">
+						<div className="flex-container">
+							<div className="flex-item search-input-text">
+								<Translate
+									component="input"
+									aria-label={counterpart.translate('TABS.CODES.SEARCH_BY_CODE_OR_NAME')}
+									attributes={{ placeholder: 'TABS.CODES.SEARCH_BY_CODE_OR_NAME' }}
+									type="text" ref="query" name="kodeverk" />
+							</div>
+							<div className="flex-item search-button">
+								<Translate component="button" type="submit" content="SEARCH.FILTER" />
+							</div>
+							<div className="flex-item reset-button">
+								<Translate component="button" content="SEARCH.RESET" onClick={(ev) => this.resetFilter(ev)} />
+							</div>
+						</div>
+					</form>
 					<div className="button-heading">
                         <Translate component="button" content="COMMON.INVERT_TABLE" className="expand-tree" onClick={this.invertTable.bind(this)} />
 						<Translate component="button" content="COMMON.DOWNLOAD_CSV" className="expand-tree" onClick={this.downloadCodes.bind(this)} />
@@ -215,7 +250,7 @@ class Correspondences extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							{this.renderCorrTableBody(selectedCorrespondence.correspondenceMaps)}
+							{this.renderCorrTableBody(selectedCorrespondence.nestedItems)}
 						</tbody>
 					</table>
 				</div>
