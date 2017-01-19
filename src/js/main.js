@@ -35,10 +35,12 @@ counterpart.registerTranslations('nb', require('./locales/nb'))
         sessionStorage.setItem('selectedLanguage', "en")
         sessionStorage.setItem('selectedAPILanguage', "en")
         counterpart.setLocale('en')
+        document.title = counterpart.translate("CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS");
     }else {
         sessionStorage.setItem('selectedLanguage', "nb")
         sessionStorage.setItem('selectedAPILanguage', "nb")
         counterpart.setLocale('nb')
+        document.title = counterpart.translate("CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS");
     }
 //}
 
