@@ -14,7 +14,7 @@ class SSBFooter extends Component {
                            <Translate content="SSB_FRAME.FOOTER.NEWSLETTER" component="a" href="http://www.ssb.no/mittssb/epost/?lang=no" />
                        </li>
                        <li>
-                           <Translate content="SSB_FRAME.FOOTER.SITEMAP" component="a" href="http://www.ssb.no/nettstedskart" accesskey="3" />
+                           <Translate content="SSB_FRAME.FOOTER.SITEMAP" component="a" href="http://www.ssb.no/nettstedskart" accessKey="3" />
                        </li>
                        <li className="last">
                            <Translate content="SSB_FRAME.FOOTER.COPYRIGHT" component="a" href="http://www.ssb.no/informasjon/copyright" />

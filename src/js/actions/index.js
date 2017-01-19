@@ -134,9 +134,10 @@ export function setSearchObject(search) {
     }
 }
 
-export function searchCode(query) {
+export function searchCode(query, tab) {
     return {
         type: types.SEARCH_CODE,
+        tab : tab,
         query: query
     }
 }
