@@ -13,14 +13,14 @@ class Codes extends Component {
 		const { actions } = this.props
 		const query = ReactDOM.findDOMNode(this.refs.query).value.trim()
 
-		actions.searchCode(query, "version")
+		actions.searchCode(query, "code")
 	}
 
     resetFilter (ev) {
         ev.preventDefault()
         const { actions } = this.props
         ReactDOM.findDOMNode(this.refs.query).value = ''
-		actions.searchCode("", "version")
+		actions.searchCode("", "code")
     }
 
 	downloadCodes() {
