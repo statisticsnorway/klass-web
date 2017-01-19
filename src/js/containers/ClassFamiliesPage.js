@@ -61,7 +61,7 @@ class ClassFamiliesPage extends Component {
                 </div>
                 <div className="main">
                     <Translate component="p" content="CLASSIFICATIONS.CLASS_DESCRIPTION"/>
-                    <p><a class="child-link" href={config.API_BASE_URL}> <Translate content="CLASSIFICATIONS.API_LINK_TEXT"/></a></p>
+                    <p><a className="child-link" href={config.API_BASE_URL}> <Translate content="CLASSIFICATIONS.API_LINK_TEXT"/></a></p>
                     <Search actions={actions} sections={ssbSections} search={search} location={location}/>
                     {this.renderContent()}
                 </div>
