@@ -1,4 +1,7 @@
 module.exports = {
+	'PAGE': {
+		'TITLE': 'Statistical Classifications and Codelists – Statistics Norway'
+	},
     'SSB_FRAME': {
         'HEADER': {
             'STATISTICS': 'Statistics',
