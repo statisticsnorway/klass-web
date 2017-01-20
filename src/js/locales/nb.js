@@ -1,4 +1,7 @@
 module.exports = {
+    'PAGE': {
+        'TITLE': 'Klassifikasjoner og kodelister'
+    },
     'SSB_FRAME': {
         'HEADER': {
             'STATISTICS': 'Statistikk',
