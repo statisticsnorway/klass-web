@@ -43,7 +43,8 @@
         }
 
         .flex-container {
-            margin-bottom: 1.2em;
+            margin-top: 1.0em;
+            margin-bottom: 0.5em;
             flex-direction: column;
 
             .label {
@@ -61,8 +62,8 @@
     .close-button {
         cursor: pointer;
         position: absolute;
-        right: 10px;
-        top: 5px;
+        right: 4px;
+        top: 2px;
         font-size: 2em;
         color: lighten($purple, 50%);
     }
