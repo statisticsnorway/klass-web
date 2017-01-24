@@ -60,7 +60,7 @@ module.exports = {
 			'ABOUT': 'Om versjonen',
 			'DESCRIPTION': 'Beskrivelse',
 			'OWNER': 'Ansvarlig',
-			'SECTION_FOR': 'seksjon for',
+			'SECTION_FOR': 'seksjon ',
 			'LASTMODIFIED': 'Sist oppdatert',
 			'PUBLISHED': 'Publisert på',
 			'DERIVEDFROM': 'Basert på',
@@ -95,7 +95,7 @@ module.exports = {
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'Ingen korrespondansetabell',
 			'BACK_TO_CORRESPONDENCES': 'Tilbake til alle korrespondanser',
 			'RESPONSIBLE': 'Ansvarlig',
-			'SECTION_FOR': 'seksjon for',
+			'SECTION_FOR': 'seksjon ',
 			'PUBLISHED': 'Publisert på'
 		},
 		'VARIANTS': {
@@ -105,7 +105,7 @@ module.exports = {
 			'OWNER': 'Eier',
 			'VARIANTS_NOT_FOUND': 'Fant ingen varianter',
 			'VARIANT_EMPTY': 'Varianten er tom',
-			'SECTION_FOR': 'seksjon for',
+			'SECTION_FOR': 'seksjon ',
 			'BACK_TO_VARIANTS': 'Tilbake til alle varianter'
 		},
 		'VERSIONS': {
