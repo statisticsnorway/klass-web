@@ -7,6 +7,7 @@ import * as ClassActions from '../actions'
 import Search from '../components/Search'
 import SearchResult from '../components/Search/SearchResult'
 import Sidebar from '../components/Sidebar'
+import counterpart from 'counterpart'
 
 class SearchPage extends Component {
 
@@ -21,7 +22,7 @@ class SearchPage extends Component {
 	render () {
 		const { isFetching, items, search, actions, ssbSections, location } = this.props
 		const searchObj = search.query ? search : location.query
-
+        document.title = counterpart.translate("PAGE.TITLE");
 		return (
 			<div className="content">
 				<div className="heading">
