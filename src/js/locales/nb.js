@@ -1,6 +1,7 @@
 module.exports = {
     'PAGE': {
-        'TITLE': 'Klassifikasjoner og kodelister'
+        'TITLE': 'Klassifikasjoner og kodelister',
+        'TITLE_POSTFIX': ''
     },
     'SSB_FRAME': {
         'HEADER': {

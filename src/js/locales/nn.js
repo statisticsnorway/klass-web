@@ -1,4 +1,8 @@
 module.exports = {
+    'PAGE': {
+        'TITLE': 'Klassifikasjoner og kodelister',
+        'TITLE_POSTFIX': ''
+    },
 	'COMMON': {
 		'OPEN_HIERARCHY': 'Åpne hierarkiet',
 		'DOWNLOAD_CSV': 'Last ned CSV',
