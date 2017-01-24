@@ -53,6 +53,7 @@ class ClassFamiliesPage extends Component {
     }
 
     render() {
+        document.title = counterpart.translate("PAGE.TITLE");
         const {actions, ssbSections, search, location} = this.props
         return (
             <div className="content">

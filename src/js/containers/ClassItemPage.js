@@ -8,6 +8,7 @@ import Tabs from "../components/Tabs";
 import * as ClassActions from "../actions";
 import _ from "lodash";
 import moment from "moment";
+import counterpart from 'counterpart'
 
 function loadData(props, selectedLanguage) {
     const {params, actions} = props
@@ -137,6 +138,7 @@ class ClassItemPage extends Component {
 
         if (breadcrumbStep.length > 0) {
             breadcrumbStep[breadcrumbStep.length - 1].textContent = classification.name
+            document.title = classification.name + counterpart.translate("PAGE.TITLE_POSTFIX");
         }
         return (
             <div className="content klass-item">
