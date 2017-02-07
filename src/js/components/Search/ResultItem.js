@@ -12,11 +12,9 @@ class ResultItem extends Component {
 		return (
 			<div className="result-item">
 				<h3>
-					<Link to={`/klassifikasjoner/${classId}`}>
-						{item.name}
-					</Link>
+					<Link to={`/klassifikasjoner/${classId}`} dangerouslySetInnerHTML={{__html: item.name}} />
 				</h3>
-				<p className="result-snippet">{item.snippet}</p>
+				<p className="result-snippet" dangerouslySetInnerHTML={{__html: item.snippet}}/>
 			</div>
 		)
 	}
