@@ -142,7 +142,6 @@ module.exports = {
 			'CORRESPONDENCES_FROM': 'Correspondences from',
 			'CORRESPONDENCES_TO': 'Correspondences to',
 			'OWNER': 'Owner',
-			'OWNING_SECTION': 'Division',
 			'LOADING_CORRESPONDENCE_TABLE': 'Loading correspondence table...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'No correspondence tables',
 			'BACK_TO_CORRESPONDENCES': 'Back to correspondence overview',

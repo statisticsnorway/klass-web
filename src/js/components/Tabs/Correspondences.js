@@ -95,7 +95,7 @@ class Correspondences extends Component {
                     <tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, correspondence)}>
                         <td>{correspondence.source}</td>
                         <td>{correspondence.target}</td>
-                        <td><Translate content="TABS.CORRESPONDENCES.OWNING_SECTION" /> {correspondence.owningSection}</td>
+                        <td>{correspondence.owningSection}</td>
                     </tr>
                 )
             }

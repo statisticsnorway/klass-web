@@ -143,7 +143,6 @@ module.exports = {
 			'CORRESPONDENCES_FROM': 'Korrespondanser fra',
 			'CORRESPONDENCES_TO': 'Korrespondanser til',
 			'OWNER': 'Eier',
-			'OWNING_SECTION': 'Ansvarlig seksjon',
 			'LOADING_CORRESPONDENCE_TABLE': 'Laster korrespondansetabell...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'Ingen korrespondansetabell',
 			'BACK_TO_CORRESPONDENCES': 'Tilbake til alle korrespondanser',
