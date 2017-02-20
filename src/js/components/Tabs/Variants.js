@@ -44,22 +44,9 @@ class Variants extends Component {
 		}
 	}
 
-	handleClick(event, variant) {
-		const { params } = this.props
-
-		const url = variant._links.self.href
-		const variantPath = '/' + url.substring(url.lastIndexOf("/") + 1, url.length)
-
-		const classPath = '/' + params.classId
-		const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
-		const tabPath = '/' + params.tab
-
-		const path = "/klassifikasjoner" + classPath + versionPath + tabPath + variantPath
-		this.context.router.push(path)
-	}
 
 	renderBody () {
-		const { selectedVersion } = this.props
+		const { selectedVersion, params} = this.props
 		const version = selectedVersion.version
 
 		if (version.classificationVariants.length < 1) {
@@ -70,11 +57,23 @@ class Variants extends Component {
 			)
 		}
 
+        function getVariantPath(params, variant) {
+
+            const url = variant._links.self.href
+            const variantPath = '/' + url.substring(url.lastIndexOf("/") + 1, url.length)
+
+            const classPath = '/' + params.classId
+            const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
+            const tabPath = '/' + params.tab
+
+            const path = "/klassifikasjoner" + classPath + versionPath + tabPath + variantPath
+            return path;
+        }
+
 		return version.classificationVariants.map(function(variant, key) {
 			return (
 				<tr key={key} >
-					{/*<td onClick={(ev) => this.handleClick(ev, variant)}>{variant.name}</td>*/}
-					<td><Link to={`${variant._links.self.href}`}>{variant.name}</Link></td>
+					<td><Link to={`${getVariantPath(params, variant)}`}>{variant.name}</Link></td>
 					<td>{variant.owningSection}</td>
 				</tr>
 			)
