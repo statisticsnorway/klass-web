@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import Translate from 'react-translate-component'
+import {Link} from "react-router";
 import counterpart from 'counterpart'
 import _ from 'lodash'
 import List from '../List'
@@ -43,22 +44,9 @@ class Variants extends Component {
 		}
 	}
 
-	handleClick(event, variant) {
-		const { params } = this.props
-
-		const url = variant._links.self.href
-		const variantPath = '/' + url.substring(url.lastIndexOf("/") + 1, url.length)
-
-		const classPath = '/' + params.classId
-		const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
-		const tabPath = '/' + params.tab
-
-		const path = "/klassifikasjoner" + classPath + versionPath + tabPath + variantPath
-		this.context.router.push(path)
-	}
 
 	renderBody () {
-		const { selectedVersion } = this.props
+		const { selectedVersion, params} = this.props
 		const version = selectedVersion.version
 
 		if (version.classificationVariants.length < 1) {
@@ -69,10 +57,24 @@ class Variants extends Component {
 			)
 		}
 
+        function getVariantPath(params, variant) {
+
+            const url = variant._links.self.href
+            const variantPath = '/' + url.substring(url.lastIndexOf("/") + 1, url.length)
+
+            const classPath = '/' + params.classId
+            const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
+            const tabPath = '/' + params.tab
+
+            const path = "/klassifikasjoner" + classPath + versionPath + tabPath + variantPath
+            return path;
+        }
+
 		return version.classificationVariants.map(function(variant, key) {
 			return (
-				<tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, variant)}>
-					<td>{variant.name}</td>
+				<tr key={key} >
+					<td><Link to={`${getVariantPath(params, variant)}`}>{variant.name}</Link></td>
+					<td>{variant.owningSection}</td>
 				</tr>
 			)
 		}.bind(this))
@@ -192,6 +194,7 @@ class Variants extends Component {
 					<thead>
 						<tr>
 							<Translate component="th" content="TABS.VARIANTS.VARIANT" />
+							<Translate component="th" content="TABS.VARIANTS.OWNER" />
 						</tr>
 					</thead>
 					<tbody>
