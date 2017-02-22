@@ -59,7 +59,8 @@ module.exports = {
 		'CHOOSE_CLASS_FAMILY': 'Navigate by subject area',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Statistical Classifications and Codelists',
 		'CLASS_DESCRIPTION': 'A statistical classification is “official”, and its elements are mutually exclusive and complete. Code lists are not "official" and may be fitted to one specific statistic. Code lists may be included in the search process by ticking off the box. Note that the amount of search results can be vast, including a lot of code lists adapted to specific Statistics Norway needs.',
-		'API_LINK_TEXT': 'API to retrieve classifications and codelists',
+		'API_LINK_TEXT': 'Klass API guide.',
+		'API_POST_LINK_TEXT': ' REST API with the formats JSON, XML and CSV',
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
@@ -89,6 +90,10 @@ module.exports = {
         'SUBSCRIBED': 'You will receive an email. Follow the instructions email to start your subscription.',
         'EMAIL_ERROR': '* Invalid e-mail',
         'GENERAL_ERROR': '* Something went wrong. Please try again later.'
+    },
+    'API': {
+		'API_HEADER' : 'More on ssb.no',
+		'API_LINK' : 'Klass API with JSON, XML and CSV'
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! This version is no longer valid',
@@ -142,7 +147,6 @@ module.exports = {
 			'CORRESPONDENCES_FROM': 'Correspondences from',
 			'CORRESPONDENCES_TO': 'Correspondences to',
 			'OWNER': 'Owner',
-			'OWNING_SECTION': 'Division',
 			'LOADING_CORRESPONDENCE_TABLE': 'Loading correspondence table...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'No correspondence tables',
 			'BACK_TO_CORRESPONDENCES': 'Back to correspondence overview',

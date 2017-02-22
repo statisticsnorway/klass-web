@@ -10,7 +10,8 @@ class App extends Component {
         return (
             <div id="navigation-path">
                 <h2 className="screen-reader-only"><Translate content="COMMON.YOU_ARE_HERE" />:</h2>
-                <span><a href="http://www.ssb.no/"><Translate content="COMMON.FRONTPAGE" /></a> > </span>
+                <span><a href="//www.ssb.no/"><Translate content="COMMON.FRONTPAGE" /></a> > </span>
+                <span><a href="//www.ssb.no/metadata/">Metadata</a> > </span>
                 <Breadcrumbs
                     routes={this.props.routes}
                     params={this.props.params}

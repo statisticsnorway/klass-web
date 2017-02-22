@@ -4,6 +4,7 @@ import counterpart from 'counterpart'
 import Translate from 'react-translate-component'
 import LocaleSwitcher from './LocaleSwitcher'
 import Contact from './Contact'
+import ApiLinks from './ApiLinks'
 import Subscription from './Subscription'
 
 class Sidebar extends Component{
@@ -19,6 +20,7 @@ class Sidebar extends Component{
 				<LocaleSwitcher languages={languages} onLanguageChange={onLanguageChange} actions={actions} params={params} />
                 <Contact contactInfo={contactInfo} />
 				{gotClassification() ?  <Subscription actions={actions} params={params} /> : ""}
+				<ApiLinks/>
 			</div>
 		)
 	}

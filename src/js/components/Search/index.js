@@ -120,7 +120,7 @@ class Search extends Component {
 		let options
 		if (ssbSections.length) {
 			ssbSections.sort(function(a,b){
-				return a.name - b.name
+                return a.name == b.name ? 0 : a.name < b.name ? -1 : 1;
 			})
 			options = ssbSections.map(function(section, key){
 				return (

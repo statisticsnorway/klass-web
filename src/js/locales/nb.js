@@ -60,7 +60,8 @@ module.exports = {
 		'CHOOSE_CLASS_FAMILY': 'Eller velg et område',
 		'CLASSIFICATIONS_AND_CODELISTS': 'Klassifikasjoner og kodelister',
 		'CLASS_DESCRIPTION': 'Klassifikasjoner er "offisielle" kodeverk der kategoriene skal være gjensidig utelukkende og uttømmende. Kodelister er ikke "offisielle", de kan være tilpasset en spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpasset spesielle behov i SSB.',
-		'API_LINK_TEXT': 'API mot klassifikasjoner og kodelister'
+		'API_LINK_TEXT': 'KLASS API guide.',
+		'API_POST_LINK_TEXT': ' REST-API med formatene XML, JSON og CSV.'
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
@@ -90,6 +91,10 @@ module.exports = {
         'SUBSCRIBED': 'Du vil motta en mail. Følg instruksjonene i mailen for å starte ditt abonnement.',
         'EMAIL_ERROR': '* Ugyldig e-post',
         'GENERAL_ERROR': '* Noe gikk galt. Prøv igjen senere.'
+    },
+    'API': {
+        'API_HEADER' : 'Mer på ssb.no',
+        'API_LINK' : 'Klass API med XLML, JSON og CSV'
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! Denne versjonen er ikke lenger gyldig',
@@ -143,7 +148,6 @@ module.exports = {
 			'CORRESPONDENCES_FROM': 'Korrespondanser fra',
 			'CORRESPONDENCES_TO': 'Korrespondanser til',
 			'OWNER': 'Eier',
-			'OWNING_SECTION': 'Ansvarlig seksjon',
 			'LOADING_CORRESPONDENCE_TABLE': 'Laster korrespondansetabell...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'Ingen korrespondansetabell',
 			'BACK_TO_CORRESPONDENCES': 'Tilbake til alle korrespondanser',
