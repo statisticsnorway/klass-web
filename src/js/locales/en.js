@@ -64,7 +64,8 @@ module.exports = {
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
-		'READ_MORE': 'READ MORE'
+		'READ_MORE': 'SHOW MORE',
+        'READ_LESS': 'SHOW LESS'
 	},
 	'LOADING': {
 		'CLASSIFICATIONS_AND_CODELISTS': 'Loading classifications and kodelister...',

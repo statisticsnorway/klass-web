@@ -107,6 +107,13 @@ class ClassItemPage extends Component {
     showFullDescription(ev) {
         ReactDOM.findDOMNode(this.refs.description).setAttribute('class', 'description')
         ReactDOM.findDOMNode(this.refs.descLink).setAttribute('class', 'hide')
+        ReactDOM.findDOMNode(this.refs.shortDescLink).setAttribute('class', 'clickable')
+    }
+
+    hideFullDescription(ev) {
+        ReactDOM.findDOMNode(this.refs.description).setAttribute('class', 'description short')
+        ReactDOM.findDOMNode(this.refs.descLink).setAttribute('class', 'clickable')
+        ReactDOM.findDOMNode(this.refs.shortDescLink).setAttribute('class', 'hide')
     }
 
     render() {
@@ -150,6 +157,8 @@ class ClassItemPage extends Component {
                         <p className="description short" ref="description">{classification.description}</p>
                         <p className="clickable" ref="descLink" onClick={(ev) => this.showFullDescription(ev)}>+
                             <Translate content="CLASS_ITEM.READ_MORE"/></p>
+                        <p className="hide" ref="shortDescLink" onClick={(ev) => this.hideFullDescription(ev)}>-
+                            <Translate content="CLASS_ITEM.READ_LESS"/></p>
                     </div>
                     {this.renderTabs()}
                 </div>

@@ -31,7 +31,8 @@ module.exports = {
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
-		'READ_MORE': 'LES MER'
+		'READ_MORE': 'VIS MEIR',
+		'READ_LESS': 'VIS MINDRE'
 	},
 	'LOADING': {
 		'CLASSIFICATIONS_AND_CODELISTS': 'Laster klassifikasjoner og kodelister...',

@@ -65,7 +65,8 @@ module.exports = {
 	},
 	'CLASS_ITEM': {
 		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
-		'READ_MORE': 'LES MER'
+		'READ_MORE': 'VIS MER',
+		'READ_LESS': 'VIS MINDRE'
 	},
 	'LOADING': {
 		'CLASSIFICATIONS_AND_CODELISTS': 'Laster klassifikasjoner og kodelister...',
@@ -94,7 +95,7 @@ module.exports = {
     },
     'API': {
         'API_HEADER' : 'Mer på ssb.no',
-        'API_LINK' : 'Klass API med XLML, JSON og CSV'
+        'API_LINK' : 'Klass API med XML, JSON og CSV'
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! Denne versjonen er ikke lenger gyldig',
