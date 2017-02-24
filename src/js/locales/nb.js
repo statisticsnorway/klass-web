@@ -94,7 +94,7 @@ module.exports = {
     },
     'API': {
         'API_HEADER' : 'Mer på ssb.no',
-        'API_LINK' : 'Klass API med XLML, JSON og CSV'
+        'API_LINK' : 'Klass API med XML, JSON og CSV'
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! Denne versjonen er ikke lenger gyldig',
