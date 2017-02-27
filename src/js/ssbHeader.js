@@ -33,12 +33,12 @@ class SSBHeader extends Component {
 
 
         // regex to make sure current url does not contain "en/" in its url and groups for easy insert of "en/"
-        // ex(http(s)://www.ssb.no/)(klass/)(#/)(klassifikasjoner/7)
-        const NORWEGIAN_URL_REGEX = /(http(s?):\/\/.*?\/)(?!en\/)([^#\/]*\/)?(#\/)?(.*)/;
+        // ex(http(s)://www.ssb.no/)(klass/)(#!/)(klassifikasjoner/7)
+        const NORWEGIAN_URL_REGEX = /(http(s?):\/\/.*?\/)(?!en\/)([^#!\/]*\/)?(#!\/)?(.*)/;
 
         // regex to make sure current url is an english one (contains "en/") and groups for easy removal of "en/"
-        // ex(http(s)://www.ssb.no/)(en/)(#/)(klassifikasjoner/7)
-        let ENGLISH_URL_REGEX = /(http(s?):\/\/.*?)(en\/)(#\/)?(.*)/;
+        // ex(http(s)://www.ssb.no/)(en/)(#!/)(klassifikasjoner/7)
+        let ENGLISH_URL_REGEX = /(http(s?):\/\/.*?)(en\/)(#!\/)?(.*)/;
 
         if (document.URL.match(ENGLISH_URL_REGEX) ) {
             //remove (en/) group and navigate to new url
@@ -46,7 +46,7 @@ class SSBHeader extends Component {
             window.location = location
         }else if (document.URL.match(NORWEGIAN_URL_REGEX) ){
             // insert "en/" in url
-            let location = document.URL.replace(NORWEGIAN_URL_REGEX, "$1en/$3#/$5");
+            let location = document.URL.replace(NORWEGIAN_URL_REGEX, "$1en/$3#!/$5");
             window.location = location
         } else {
             console.error("no regex url match")

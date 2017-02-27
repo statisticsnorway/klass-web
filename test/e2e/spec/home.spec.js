@@ -2,7 +2,7 @@ describe('Home page', () => {
     // before each 'it' of the following describe:
     beforeEach(() => {
         // go to page (if not yet)
-        goToUrl('/#/');
+        goToUrl('/#!/');
     });
 
     it('should have a correct title', () => {
