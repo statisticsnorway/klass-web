@@ -15,7 +15,7 @@ import routes from './routes';
 import ReactGA from "react-ga";
 import config from './config'
 
-const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false, hashType: 'hashbang' })
 
 const store = configureStore();
 const rootElement = document.getElementById('app');
