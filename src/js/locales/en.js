@@ -147,6 +147,8 @@ module.exports = {
 			'CORRESPONDENCE_NOT_FOUND': 'No correspondences found',
 			'CORRESPONDENCES_FROM': 'Correspondences from',
 			'CORRESPONDENCES_TO': 'Correspondences to',
+            'CORRESPONDENCES_LEVEL': 'Level',
+            'CORRESPONDENCES_LEVELS_ALL': 'All',
 			'OWNER': 'Owner',
 			'LOADING_CORRESPONDENCE_TABLE': 'Loading correspondence table...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'No correspondence tables',

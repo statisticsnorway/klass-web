@@ -94,7 +94,13 @@ class Correspondences extends Component {
                 return (
                     <tr key={key} className="clickable" onClick={(ev) => this.handleClick(ev, correspondence)}>
                         <td>{correspondence.source}</td>
+                        <td>{correspondence.sourceLevel == undefined
+							? counterpart.translate("TABS.CORRESPONDENCES.CORRESPONDENCES_LEVELS_ALL")
+							: correspondence.sourceLevel.levelName}</td>
                         <td>{correspondence.target}</td>
+						<td>{correspondence.targetLevel == undefined
+                            ? counterpart.translate("TABS.CORRESPONDENCES.CORRESPONDENCES_LEVELS_ALL")
+							: correspondence.targetLevel.levelName}</td>
                         <td>{correspondence.owningSection}</td>
                     </tr>
                 )
@@ -265,7 +271,9 @@ class Correspondences extends Component {
 					<thead>
 						<tr>
 							<Translate component="th" content="TABS.CORRESPONDENCES.CORRESPONDENCES_FROM" />
+							<Translate component="th" content="TABS.CORRESPONDENCES.CORRESPONDENCES_LEVEL" />
 							<Translate component="th" content="TABS.CORRESPONDENCES.CORRESPONDENCES_TO" />
+							<Translate component="th" content="TABS.CORRESPONDENCES.CORRESPONDENCES_LEVEL" />
 							<Translate component="th" content="TABS.CORRESPONDENCES.OWNER" />
 						</tr>
 					</thead>
