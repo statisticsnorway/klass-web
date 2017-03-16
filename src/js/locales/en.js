@@ -98,6 +98,7 @@ module.exports = {
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! This version is no longer valid',
+		'VARIANT_NO_LONGER_VALID': 'OBS! This variant is no longer valid',
 		'VERSION_EXPIRED': 'Expired version',
 		'CURRENT_VERSION': 'Current version',
         'PREVIOUS_VERSION': 'Previous version',
