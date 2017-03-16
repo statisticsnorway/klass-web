@@ -90,6 +90,8 @@ module.exports = {
 			'CORRESPONDENCE_NOT_FOUND': 'Fant ingen korrespondanser',
 			'CORRESPONDENCES_FROM': 'Korrespondanser fra',
 			'CORRESPONDENCES_TO': 'Korrespondanser til',
+            'CORRESPONDENCES_LEVEL': 'Nivå',
+            'CORRESPONDENCES_LEVELS_ALL': 'Alle',
 			'OWNER': 'Eier',
 			'LOADING_CORRESPONDENCE_TABLE': 'Laster korrespondansetabell...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'Ingen korrespondansetabell',
