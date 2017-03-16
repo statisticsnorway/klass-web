@@ -47,6 +47,16 @@ class About extends Component {
 
     }
 
+    addValidToIfPresent(validTo) {
+		if (validTo != null)
+		return (
+			<tr>
+				<td className="label"><Translate content="TABS.VALID_TO" />:</td>
+				<td>{moment(validTo).format("D MMMM YYYY")}</td>
+			</tr>
+		)
+    }
+
 	render () {
 		const { version, actions } = this.props
 
@@ -81,6 +91,7 @@ class About extends Component {
 							<td className="label"><Translate content="TABS.VALID_FROM" />:</td>
 							<td>{moment(version.validFrom).format("D MMMM YYYY")}</td>
 						</tr>
+						{this.addValidToIfPresent(version.validTo)}
 						<tr>
 							<td className="label"><Translate content="TABS.ABOUT.PUBLISHED" />:</td>
 							<td>{joinedLanguages}</td>

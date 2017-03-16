@@ -98,6 +98,7 @@ module.exports = {
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! This version is no longer valid',
+		'VARIANT_NO_LONGER_VALID': 'OBS! This variant is no longer valid',
 		'VERSION_EXPIRED': 'Expired version',
 		'CURRENT_VERSION': 'Current version',
         'PREVIOUS_VERSION': 'Previous version',
@@ -147,6 +148,8 @@ module.exports = {
 			'CORRESPONDENCE_NOT_FOUND': 'No correspondences found',
 			'CORRESPONDENCES_FROM': 'Correspondences from',
 			'CORRESPONDENCES_TO': 'Correspondences to',
+            'CORRESPONDENCES_LEVEL': 'Level',
+            'CORRESPONDENCES_LEVELS_ALL': 'All',
 			'OWNER': 'Owner',
 			'LOADING_CORRESPONDENCE_TABLE': 'Loading correspondence table...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'No correspondence tables',

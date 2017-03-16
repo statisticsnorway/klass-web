@@ -5,7 +5,7 @@ import moment from "moment";
 
 class Versions extends Component {
     renderTableBody() {
-        const {classification, actions} = this.props
+        const {classification} = this.props
         const url = classification._links.self.href;
         const classificationId = url.substring(url.lastIndexOf("/") + 1, url.length);
         const versions = classification.versions

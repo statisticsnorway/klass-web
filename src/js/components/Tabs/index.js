@@ -18,9 +18,10 @@ import 'moment/locale/nn.js'
 class Tabs extends Component {
 
 	renderVersionInfo () {
-		const { classification, selectedVersion } = this.props
+		const { selectedVersion } = this.props
 		const version = selectedVersion.version
-		if (!_.isEmpty(classification.versions) && version.id !== classification.versions[0].id) {
+        let validTo = version.validTo;
+        if (validTo != null || moment(validTo).isAfter(new Date())) {
 			return (
 				<div className="version-info">
 					<Translate component="p" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />

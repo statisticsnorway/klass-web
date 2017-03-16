@@ -99,6 +99,7 @@ module.exports = {
     },
 	'TABS': {
 		'VERSION_NO_LONGER_VALID': 'OBS! Denne versjonen er ikke lenger gyldig',
+		'VARIANT_NO_LONGER_VALID': 'OBS! Denne varianten er ikke lenger gyldig',
 		'VERSION_EXPIRED': 'Utgått versjon',
 		'CURRENT_VERSION': 'Gjeldende versjon',
         'PREVIOUS_VERSION': 'Forrige versjon',
@@ -148,6 +149,8 @@ module.exports = {
 			'CORRESPONDENCE_NOT_FOUND': 'Fant ingen korrespondanser',
 			'CORRESPONDENCES_FROM': 'Korrespondanser fra',
 			'CORRESPONDENCES_TO': 'Korrespondanser til',
+			'CORRESPONDENCES_LEVEL': 'Nivå',
+            'CORRESPONDENCES_LEVELS_ALL': 'Alle',
 			'OWNER': 'Eier',
 			'LOADING_CORRESPONDENCE_TABLE': 'Laster korrespondansetabell...',
 			'CORRESPONDENCE_TABLE_NOT_FOUND': 'Ingen korrespondansetabell',

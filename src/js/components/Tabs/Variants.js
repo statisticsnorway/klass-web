@@ -7,6 +7,7 @@ import _ from 'lodash'
 import List from '../List'
 import FlatToNested from '../../lib/flat-to-nested'
 import config from '../../config'
+import moment from 'moment'
 
 const flatToNested = new FlatToNested({
 	id: 'code',
@@ -119,6 +120,24 @@ class Variants extends Component {
 		tempLink.click()
     }
 
+
+    addValidToIfPresent(validTo) {
+        if (validTo != null)
+            return (
+				<div><b><Translate content="TABS.VALID_TO" />:</b>{moment(validTo).format("D MMMM YYYY")}<br/></div>
+            )
+    }
+
+    showWarningIfExpired(validTo) {
+        if (validTo != null || moment(validTo).isAfter(new Date())) {
+            return (
+				<div className="version-info">
+					<Translate component="p" content="TABS.VARIANT_NO_LONGER_VALID" className="red-box" />
+				</div>
+            )
+        }
+    }
+
 	render () {
 		const { selectedVersion, params } = this.props
 		const selectedVariant = selectedVersion.selectedVariant
@@ -149,10 +168,13 @@ class Variants extends Component {
 					<p className="back-link">
 						&lt;&lt; <Translate component="a" content="TABS.VARIANTS.BACK_TO_VARIANTS" href="javascript:history.back()" />
 					</p>
+					{this.showWarningIfExpired(selectedVariant.validTo)}
 					<h3>{selectedVariant.name}</h3>
 					<p>
                         <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson.name}<br/>
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {joinedLanguages}<br/>
+                        <b><Translate content="TABS.VALID_FROM" />:</b> {moment(selectedVariant.validFrom).format("D MMMM YYYY")}<br/>
+                        {this.addValidToIfPresent(selectedVariant.validTo)}
                         {selectedVariant.introduction}
                     </p>
 					<form onSubmit={this.handleSubmit.bind(this)} className="search-box">
