@@ -91,6 +91,7 @@ module.exports = {
         'SUBSCRIBE': 'Abonner',
         'SUBSCRIBED': 'Du vil motta en mail. Følg instruksjonene i mailen for å starte ditt abonnement.',
         'EMAIL_ERROR': '* Ugyldig e-post',
+        'EXISTS_ERROR': '* Du abonnerer allerede.',
         'GENERAL_ERROR': '* Noe gikk galt. Prøv igjen senere.'
     },
     'API': {
