@@ -1,9 +1,8 @@
-import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
-import _ from 'lodash'
-import {connect} from 'react-redux'
-import Translate from 'react-translate-component'
-import counterpart from 'counterpart'
+import React, {Component, PropTypes} from "react";
+import ReactDOM from "react-dom";
+import {connect} from "react-redux";
+import Translate from "react-translate-component";
+import counterpart from "counterpart";
 
 class Subscription extends Component {
 
@@ -14,13 +13,6 @@ class Subscription extends Component {
         }
     }
 
-	// componentWillReceiveProps (nextProps) {
-	// 	const { subscription } = this.props
-    //     if (!nextProps.subscription.isFetching && !_.isEqual(subscription, nextProps.subscription) && !_.isEmpty(nextProps.subscription.errorMsg)) {
-    //         ReactDOM.findDOMNode(this.refs.invalidEmail).style.display = 'none'
-    //         ReactDOM.findDOMNode(this.refs.subscriptionError).style.display = 'block'
-    //     }
-	// }
 
     isInvalidEmail (email) {
         if (!/^.+@.+\..+$/.test(email)) {
@@ -54,8 +46,17 @@ class Subscription extends Component {
             ReactDOM.findDOMNode(this.refs.subscriptionError).style.display = 'none'
     }
 
-    renderSubscription () {
-        const { subscription } = this.props
+    getErrorMessageTranslation() {
+        switch (this.props.errorCode) {
+            case "STATUS_EXISTS":
+                return "SUBSCRIPTION.EXISTS_ERROR";
+            default:
+                return "SUBSCRIPTION.GENERAL_ERROR";
+        }
+    }
+
+    renderSubscription() {
+        const {subscription} = this.props
         if (this.state.subscribed) {
             return (
                 <div className="side-content-wrapper">
@@ -73,9 +74,9 @@ class Subscription extends Component {
                     attributes={{ placeholder: 'CONTACT.EMAIL' }}
                     className="subscriptionEmail"
                     onChange={this.handleChange.bind(this)}
-                    type="text" ref="subscriptionEmail" name="suscriptionEmail" />
-                <Translate component="p" content="SUBSCRIPTION.EMAIL_ERROR" ref="invalidEmail" className="error" />
-                <Translate component="p" content="SUBSCRIPTION.GENERAL_ERROR" ref="subscriptionError" className="error" />
+                    type="text" ref="subscriptionEmail" name="suscriptionEmail"/>
+                <Translate component="p" content="SUBSCRIPTION.EMAIL_ERROR" ref="invalidEmail" className="error"/>
+                <p ref="subscriptionError" className="error">{counterpart.translate(this.getErrorMessageTranslation())}</p>
 
                 <button ref="subscribeBtn" value="true" onClick={(ev) => this.subscribe(ev)}>
                     <Translate content="SUBSCRIPTION.SUBSCRIBE"/>
@@ -104,7 +105,9 @@ Subscription.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	subscription: state.subscription
+    subscription: state.subscription,
+    errorMsg: state.subscription.errorMsg,
+    errorCode: state.subscription.errorCode
 })
 
 export default connect(

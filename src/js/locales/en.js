@@ -90,6 +90,7 @@ module.exports = {
         'SUBSCRIBE': 'Subscribe',
         'SUBSCRIBED': 'You will receive an email. Follow the instructions email to start your subscription.',
         'EMAIL_ERROR': '* Invalid e-mail',
+        'EXISTS_ERROR': '* You\'re Already Subscribed',
         'GENERAL_ERROR': '* Something went wrong. Please try again later.'
     },
     'API': {
