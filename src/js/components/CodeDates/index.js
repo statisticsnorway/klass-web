@@ -1,31 +1,30 @@
-import './Notes.scss'
 import React, { Component, PropTypes } from 'react'
 import _ from 'lodash'
 
-class Note extends Component {
+class CodeDate extends Component {
 	handleClick (e, actions, item) {
 		e.stopPropagation()
         e.preventDefault()
-		actions.displayModal(item, "notes");
+		actions.displayModal(item, "dates");
 	}
 
 	render () {
 		const { item, actions } = this.props
-		if (_.isEmpty(item.notes)) {
+		if (_.isEmpty(item.validFrom)) {
 			return null
 		}
 
 		return (
-			<button aria-label="info" className="icon-info float-right-icon" onClick={(ev) => this.handleClick(ev, actions, item)}>
-				<i className="fa fa-info-circle" aria-hidden="true"></i>
+			<button aria-label="dates" className="icon-info float-right-icon" onClick={(ev) => this.handleClick(ev, actions, item)}>
+    			<i className="fa fa-clock-o" aria-hidden="true"></i>
 			</button>
 		)
 	}
 }
 
-Note.propTypes = {
+CodeDate.propTypes = {
 	item: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired
 }
 
-export default Note
+export default CodeDate
