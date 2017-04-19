@@ -126,6 +126,18 @@ body {
     		}
     	}
 
+      .itemDate {
+        font-size: 1.6em;
+        text-align: center;
+        float:right;
+        color: #7d7d7d;
+      }
+      .float-right-icon {
+        float:right;
+        margin-top: -7px;
+        position: static;
+      }
+
     	h1 {
     		font-size: 3.6em;
     	}

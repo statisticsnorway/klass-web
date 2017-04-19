@@ -11,7 +11,7 @@ class List extends Component {
 				let name
 				switch (type) {
 					case 'code':
-                        name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span><span className="shortName" aria-hidden="true">{item.shortName}</span></span>
+                            name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span><span className="shortName" aria-hidden="true">{item.shortName}</span></span>
 						break;
 					case 'variant':
 						name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span></span>
