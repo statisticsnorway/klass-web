@@ -189,15 +189,16 @@ export function hideModal() {
     return toggleModal(false, null)
 }
 
-export function displayModal(item) {
-    return toggleModal(true, item)
+export function displayModal(item, contentType) {
+    return toggleModal(true, item, contentType)
 }
 
-function toggleModal(bool, item) {
+function toggleModal(bool, item, contentType) {
     return {
         type: types.TOGGLE_MODAL,
         display: bool,
-        item: item
+        item: item,
+        contentType: contentType
     }
 }
 

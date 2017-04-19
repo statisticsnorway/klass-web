@@ -8,14 +8,16 @@ import subscription from './subscription';
 
 const initialState = {
 	modalIsOpen: false,
-	item: {}
+	item: {},
+	contentType: "notes"
 }
 function modal(state = initialState, action) {
 	switch (action.type) {
 		case 'TOGGLE_MODAL':
 			return {
 				modalIsOpen: action.display,
-				item: action.item
+				item: action.item,
+                contentType: action.contentType
 			}
 		default:
 			return state
