@@ -1,4 +1,7 @@
 module.exports = {
+	'LOADING' : {
+		'CLASSIFICATIONS_AND_CODELISTS' : 'Retrieving subject areas...'
+	},
 	'PAGE': {
 		'TITLE': 'Statistical Classifications and Codelists – Statistics Norway',
         'TITLE_POSTFIX': ' - Statistics Norway'
