@@ -138,9 +138,9 @@ class Changes extends Component {
             )
         }
 
-        const validFrom = moment(selectedChanges.validFrom).format('D.MMMM YYYY')
-        const validTo = moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('D.MMMM YYYY') : 'Gjeldende versjon'
-        const previousVersionValidFrom = (previousVersion && moment(previousVersion.validFrom).isValid()) ? moment(previousVersion.validFrom).format('D.MMMM YYYY') : '-'
+        const validFrom = moment(selectedChanges.validFrom).format('MMMM YYYY')
+        const validTo = moment(selectedChanges.validTo).isValid() ? moment(selectedChanges.validTo).format('MMMM YYYY') : 'Gjeldende versjon'
+        const previousVersionValidFrom = (previousVersion && moment(previousVersion.validFrom).isValid()) ? moment(previousVersion.validFrom).format('MMMM YYYY') : '-'
         return (
             <div>
                 <h3>

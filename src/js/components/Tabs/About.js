@@ -52,7 +52,7 @@ class About extends Component {
 		return (
 			<tr>
 				<td className="label"><Translate content="TABS.VALID_TO" />:</td>
-				<td>{moment(validTo).format("D MMMM YYYY")}</td>
+				<td>{moment(validTo).format("MMMM YYYY")}</td>
 			</tr>
 		)
     }
@@ -89,7 +89,7 @@ class About extends Component {
 						</tr>
 						<tr>
 							<td className="label"><Translate content="TABS.VALID_FROM" />:</td>
-							<td>{moment(version.validFrom).format("D MMMM YYYY")}</td>
+							<td>{moment(version.validFrom).format("MMMM YYYY")}</td>
 						</tr>
 						{this.addValidToIfPresent(version.validTo)}
 						<tr>
