@@ -81,6 +81,17 @@ class ClassItemPage extends Component {
         }
     }
 
+    componentDidUpdate() {
+        const element = ReactDOM.findDOMNode(this.refs.description);
+        // Things involving accessing DOM properties on element
+        // In the case of what this question actually asks:
+        const hasOverflowingChildren = element.offsetHeight < element.scrollHeight ||
+            element.offsetWidth < element.scrollWidth;
+        if (!hasOverflowingChildren) {
+            ReactDOM.findDOMNode(this.refs.descLink).setAttribute('class', 'hide');
+        }
+    }
+
     renderTabs() {
         const {classification, selectedVersion, actions, isFetching, params, modal} = this.props
         if ((_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) && selectedVersion.isFetching) {
