@@ -124,7 +124,7 @@ class Variants extends Component {
     addValidToIfPresent(validTo) {
         if (validTo != null)
             return (
-				<div><b><Translate content="TABS.VALID_TO" />:</b>{moment(validTo).format("D MMMM YYYY")}<br/></div>
+				<div><b><Translate content="TABS.VALID_TO" />:</b>{moment(validTo).format("MMMM YYYY")}<br/></div>
             )
     }
 

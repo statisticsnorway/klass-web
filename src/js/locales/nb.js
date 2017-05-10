@@ -1,4 +1,7 @@
 module.exports = {
+    'LOADING' : {
+        'CLASSIFICATIONS_AND_CODELISTS' : 'Henter områdeliste...'
+    },
     'PAGE': {
         'TITLE': 'Klassifikasjoner og kodelister',
         'TITLE_POSTFIX': ''

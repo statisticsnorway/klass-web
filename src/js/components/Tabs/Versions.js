@@ -13,10 +13,10 @@ class Versions extends Component {
         return versions.map(function (version, key) {
             return (
                 <tr key={key}>
-                    <td>{moment(version.validFrom).format('D.MMMM YYYY')}</td>
+                    <td>{moment(version.validFrom).format('MMMM YYYY')}</td>
                     <td>{
                         version.validTo !== undefined && moment(version.validTo).isValid()
-                            ? moment(version.validTo).format('D.MMMM YYYY')
+                            ? moment(version.validTo).format('MMMM YYYY')
                             : <Translate content="TABS.VERSIONS.STILL_VALID"/>
                     }</td>
                     <td>
