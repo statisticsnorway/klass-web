@@ -3,7 +3,7 @@ import {Link} from "react-router";
 import {connect} from "react-redux";
 import Translate from "react-translate-component";
 import Notes from "../Notes";
-import CodeDates from "../CodeDates";
+import CodeDate from "../CodeDate";
 import Modal from "simple-react-modal";
 import _ from "lodash";
 import counterpart from "counterpart";
@@ -204,7 +204,7 @@ class ListItem extends Component {
 
                     {/*{item.validTo == null ?  <span className="itemDate">&nbsp;- fortsatt gyldig</span> : <span className="itemDate">&nbsp;- {item.validTo}</span>}*/}
                     {/*{item.validFrom == null ?  "" : <span className="itemDate">{item.validFrom}</span>}*/}
-                    <CodeDates item={item} actions={actions}/>
+                    <CodeDate item={item} actions={actions}/>
                     <Notes item={item} actions={actions}/>
                 </a>
                 {this.renderModal()}
