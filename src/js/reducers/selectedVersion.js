@@ -251,8 +251,14 @@ function findNestedIndex(items, attrs) {
 
 }
 
+function toLower(value) {
+    if (value === null) return null;
+    return value.toLowerCase()
+}
+
 function filterCorrespondencesTree(items, query) {
 	var retArray = []
+    let lowerQuery = toLower(query);
 	_.each(items, function(item, key) {
 		var obj
 		if (_.isArray(item.children)) {
@@ -265,20 +271,20 @@ function filterCorrespondencesTree(items, query) {
 				})
 				retArray.push(obj)
 			} else if (
-						_.includes(item.sourceCode.toLowerCase(), query.toLowerCase()) ||
-						_.includes(item.sourceName.toLowerCase(), query.toLowerCase()) ||
-						_.includes(item.targetCode.toLowerCase(), query.toLowerCase()) ||
-						_.includes(item.targetName.toLowerCase(), query.toLowerCase()))
+						_.includes(toLower(item.sourceCode), lowerQuery) ||
+						_.includes(toLower(item.sourceName), lowerQuery) ||
+						_.includes(toLower(item.targetCode), lowerQuery) ||
+						_.includes(toLower(item.targetName), lowerQuery))
             {
 				obj = _.omit(item, ['children'])
 				retArray.push(obj)
 			}
 		} else {
 			if (
-				_.includes(item.sourceCode.toLowerCase(), query.toLowerCase()) ||
-				_.includes(item.sourceName.toLowerCase(), query.toLowerCase()) ||
-				_.includes(item.targetCode.toLowerCase(), query.toLowerCase()) ||
-				_.includes(item.targetName.toLowerCase(), query.toLowerCase()))
+				_.includes(toLower(item.sourceCode), lowerQuery) ||
+				_.includes(toLower(item.sourceName), lowerQuery) ||
+				_.includes(toLower(item.targetCode), lowerQuery) ||
+				_.includes(toLower(item.targetName), lowerQuery))
 			{
 				retArray.push(item)
 			}
@@ -290,7 +296,8 @@ function filterCorrespondencesTree(items, query) {
 }
 function filterClassificationItemTree(items, query) {
 	var retArray = []
-	_.each(items, function(item, key) {
+    let lowerQuery = toLower(query);
+    _.each(items, function(item, key) {
 		var obj
 		if (_.isArray(item.children)) {
 			var childArray = filterClassificationItemTree(item.children, query)
@@ -301,19 +308,19 @@ function filterClassificationItemTree(items, query) {
 					active: true
 				})
 				retArray.push(obj)
-			} else if (	_.includes(item.name.toLowerCase(), query.toLowerCase()) ||
-                        _.includes(item.shortName.toLowerCase(), query.toLowerCase()) ||
-                        _.includes(item.notes.toLowerCase(), query.toLowerCase()) ||
-						_.includes(item.code.toLowerCase(), query.toLowerCase()))
+			} else if (	_.includes(toLower(item.name), lowerQuery) ||
+                        _.includes(toLower(item.shortName), lowerQuery) ||
+                        _.includes(toLower(item.notes), lowerQuery) ||
+						_.includes(toLower(item.code), lowerQuery))
             {
 				obj = _.omit(item, ['children'])
 				retArray.push(obj)
 			}
 		} else {
-			if (_.includes(item.name.toLowerCase(), query.toLowerCase()) ||
-                _.includes(item.shortName.toLowerCase(), query.toLowerCase()) ||
-                _.includes(item.notes.toLowerCase(), query.toLowerCase()) ||
-				_.includes(item.code.toLowerCase(), query.toLowerCase()))
+			if (_.includes(toLower(item.name), lowerQuery) ||
+                _.includes(toLower(item.shortName), lowerQuery) ||
+                _.includes(toLower(item.notes), lowerQuery) ||
+				_.includes(toLower(item.code), lowerQuery))
 			{
 				retArray.push(item)
 			}
