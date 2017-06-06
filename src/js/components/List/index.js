@@ -26,7 +26,7 @@ class List extends Component {
 				if (item.numberOfClassifications || item.code) {
 					return (
 						<ListItem
-							key={key}
+							key={type + key}
 							idx={key}
 							item={item}
 							displayName={name}

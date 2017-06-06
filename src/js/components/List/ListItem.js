@@ -9,14 +9,66 @@ import _ from "lodash";
 import counterpart from "counterpart";
 
 class ListItem extends Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+
+        // classFamilies = lazy loaded content, needs to be updated
+        if(_.isEqual(this.props.type, "classFamilies")){
+            // window.console.log("[DEBUG] redraw list item "+this.props.idx)
+            return true;
+        }
+
+        // if modal is this item and should be shown , update
+        if (_.isEqual(nextProps.modal.item  ,this.props.item)
+            && (this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen)) {
+            // window.console.log("[DEBUG] redraw list item "+this.props.idx)
+            return true;
+        }
+
+        // if modal was this item but should now be hidden
+        if (_.isEqual(this.props.modal.item  ,this.props.item)
+            && _.isEqual(nextProps.modal.item, null)) {
+            // window.console.log(" redraw list item "+this.props.idx)
+            return true;
+        }
+
+         let b = !(
+            _.isEqual(this.props.item, nextProps.item)
+            && _.isEqual(this.props.item.active, nextProps.item.active)
+            && _.isEqual(this.props.idx         ,nextProps.idx)
+            && _.isEqual(this.props.displayName ,nextProps.displayName)
+            && _.isEqual(this.props.type        ,nextProps.type)
+        );
+         // if(b)window.console.log("[DEBUG] redraw list item "+this.props.idx)
+         return b;
+
+    }
+
+    // getInitialState() {
+    //     return ({hidden: "hidden"});
+    // }
+    //
+    // componentWillMount() {
+    //     var that = this;
+    //     setTimeout(function () {that.show();}, that.props.idx * 2000);
+    // }
+    //
+    // show() {
+    //     this.setState({hidden: ""});
+    // }
+    //
+
+
     renderItemList() {
-        const {item, displayName, type, actions, modal} = this.props;
+        const {item, displayName, type, actions, modal, idx} = this.props;
 
         if (item.children && item.children.length > 0) {
+            // window.console.log("[DEBUG] renderItemList "+item.children.length)
             const listEl = item.children.map((childItem, key) => {
                     if (childItem._links) {
                         return (
-                            <li key={key} role="treeitem" tabIndex="-1">
+                            <li key={"li"+key} role="treeitem" tabIndex="-1">
                                 <Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
                                     <span>{childItem.name}&#160;&#160;»</span>
                                     <span className="link-type">{childItem.classificationType}</span>
@@ -41,7 +93,7 @@ class ListItem extends Component {
                         }
                         return (
                             <ListItem
-                                key={key}
+                                key={type + key}
                                 idx={key}
                                 item={childItem}
                                 displayName={name}
@@ -104,8 +156,10 @@ class ListItem extends Component {
         }
 
 
+        // window.console.log("[DEBUG] render modals "+item.idx)
         if (modal.contentType === "notes") {
             let noteBlock = modal.item.notes.split('\n')
+
 
             return (
                 <Modal
@@ -177,6 +231,7 @@ class ListItem extends Component {
     }
 
     render() {
+
         const {item, displayName, actions, idx} = this.props
         const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
         // const showHide = item.children ? <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" /> : ''
@@ -196,23 +251,41 @@ class ListItem extends Component {
         //     </div>
         // )
 
+        // window.console.log("[DEBUG] render list item "+item.idx)
         return (
-            <li className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
+            <li key={"li" +idx} className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
                 <a className="toggle-children clearfix" onClick={(ev) => this.toggle(ev)} role="link" href="#">
                     {showHide}
                     {displayName}
 
                     {/*{item.validTo == null ?  <span className="itemDate">&nbsp;- fortsatt gyldig</span> : <span className="itemDate">&nbsp;- {item.validTo}</span>}*/}
                     {/*{item.validFrom == null ?  "" : <span className="itemDate">{item.validFrom}</span>}*/}
-                    <CodeDate item={item} actions={actions}/>
-                    <Notes item={item} actions={actions}/>
+                    {/*<CodeDate item={item} actions={actions}/>*/}
+                    {_.isEmpty(item.validFrom) ? null:
+                        <button aria-label="dates" className="icon-info float-right-icon" onClick={(ev) => this.handleClick(ev, actions, item, "dates")}>
+                        <i className="fa fa-clock-o" aria-hidden="true"></i>
+                    </button>}
+                    {/*<Notes item={item} actions={actions}/>*/}
+                    {_.isEmpty(item.notes) ? null:
+                        <button aria-label="info" className="icon-info float-right-icon" onClick={(ev) => this.handleClick(ev, actions, item, "notes")}>
+                            <i className="fa fa-info-circle" aria-hidden="true"></i>
+                        </button>
+                    }
                 </a>
-                {this.renderModal()}
+                {/*{this.props.modal.modalIsOpen ? this.renderModal() : ""}*/}
+                { this.renderModal()}
                 {this.renderItemList()}
             </li>
         )
     }
+
+    handleClick (e, actions, item, type) {
+        e.stopPropagation()
+        e.preventDefault()
+        actions.displayModal(item, type);
+    }
 }
+
 
 
 ListItem.propTypes = {

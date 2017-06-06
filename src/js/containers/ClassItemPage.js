@@ -85,6 +85,7 @@ class ClassItemPage extends Component {
         const element = ReactDOM.findDOMNode(this.refs.description);
         // Things involving accessing DOM properties on element
         // In the case of what this question actually asks:
+        if (element == null) return;
         const hasOverflowingChildren = element.offsetHeight < element.scrollHeight ||
             element.offsetWidth < element.scrollWidth;
         if (!hasOverflowingChildren) {

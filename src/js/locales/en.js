@@ -1,6 +1,7 @@
 module.exports = {
 	'LOADING' : {
-		'CLASSIFICATIONS_AND_CODELISTS' : 'Retrieving subject areas...'
+		'CLASSIFICATIONS_AND_CODELISTS' : 'Retrieving subject areas...',
+        'LOADING_CONTENT': 'Loading content...'
 	},
 	'PAGE': {
 		'TITLE': 'Statistical Classifications and Codelists – Statistics Norway',
@@ -69,10 +70,6 @@ module.exports = {
 		'LOADING_CURRENT_VERSION': 'Loading current version...',
 		'READ_MORE': 'SHOW MORE',
         'READ_LESS': 'SHOW LESS'
-	},
-	'LOADING': {
-		'CLASSIFICATIONS_AND_CODELISTS': 'Loading classifications and kodelister...',
-		'LOADING_CONTENT': 'Loading content...'
 	},
 	'SEARCH': {
 		'SEARCH': 'Search',

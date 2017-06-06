@@ -14,7 +14,7 @@ class Note extends Component {
 		if (_.isEmpty(item.notes)) {
 			return null
 		}
-
+        // window.console.log("[DEBUG] render notes "+item.idx)
 		return (
 			<button aria-label="info" className="icon-info float-right-icon" onClick={(ev) => this.handleClick(ev, actions, item)}>
 				<i className="fa fa-info-circle" aria-hidden="true"></i>
