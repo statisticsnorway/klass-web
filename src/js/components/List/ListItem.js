@@ -128,7 +128,6 @@ class ListItem extends Component {
         }
 
 
-        // window.console.log("[DEBUG] render modals "+item.idx)
         if (modal.contentType === "notes") {
             let noteBlock = modal.item.notes.split('\n')
 
