@@ -7,6 +7,9 @@ export function loadSubjects(params) {
             frontpage: true,
             method: 'get',
             endpoint: '/classificationfamilies',
+            headers: {
+                    Accept: 'application/json'
+           },
             params: params,
             types: [types.SUBJECTS_REQUEST, types.SUBJECTS_SUCCESS, types.SUBJECTS_FAILURE]
         }
