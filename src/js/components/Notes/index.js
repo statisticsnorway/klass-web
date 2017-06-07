@@ -1,8 +1,8 @@
 import './Notes.scss'
-import React, { Component, PropTypes } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import _ from 'lodash'
 
-class Note extends Component {
+class Note extends PureComponent {
 	handleClick (e, actions, item) {
 		e.stopPropagation()
         e.preventDefault()
@@ -14,7 +14,6 @@ class Note extends Component {
 		if (_.isEmpty(item.notes)) {
 			return null
 		}
-        // window.console.log("[DEBUG] render notes "+item.idx)
 		return (
 			<button aria-label="info" className="icon-info float-right-icon" onClick={(ev) => this.handleClick(ev, actions, item)}>
 				<i className="fa fa-info-circle" aria-hidden="true"></i>

@@ -216,14 +216,13 @@ function findNestedIndex(items, attrs) {
 
   function match(value) {
     for (var key in attrs) {
-      if(!_.isUndefined(value)) {
-        if (attrs[key] !== value[key]) {
-          return false;
-        }
-      }
+      if(!_.isUndefined(value) && !_.isNull(value)) {
+          return (attrs[key] === value[key])
+      } else {
+      	return false;
+	  }
     }
-
-    return true;
+    return false;
   }
 
   function traverse(value) {
