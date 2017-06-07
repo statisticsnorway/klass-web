@@ -21,6 +21,9 @@ export function getClassification(id) {
         [CALL_API]: {
             method: 'get',
             endpoint: `/classifications/${id}`,
+            headers: {
+                Accept: 'application/json'
+            },
             id: id,
             types: [types.SELECTED_CLASS_REQUEST, types.SELECTED_CLASS_SUCCESS, types.SELECTED_CLASS_FAILURE]
         }
@@ -33,6 +36,9 @@ function fetchClassification(url, id, params) {
             frontpage: true,
             method: 'get',
             endpoint: `${url}`,
+            headers: {
+                Accept: 'application/json'
+            },
             params: params,
             id: id,
             types: [types.SUBJECTS_REQUEST, types.SUBJECTS_SUCCESS, types.SUBJECTS_FAILURE]
@@ -101,6 +107,9 @@ export function loadVersion(id, languageOverride) {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
+            headers: {
+                Accept: 'application/json'
+            },
             id: id,
             language: languageOverride,
             types: [types.SELECTED_VERSION_REQUEST, types.SELECTED_VERSION_SUCCESS, types.SELECTED_VERSION_FAILURE]
@@ -113,6 +122,9 @@ export function loadSSBSections() {
         [CALL_API]: {
             method: 'get',
             endpoint: `/ssbsections`,
+            headers: {
+                Accept: 'application/json'
+            },
             types: [types.SSB_SECTION_REQUEST, types.SSB_SECTION_SUCCESS, types.SSB_SECTION_FAILURE]
         }
     }
@@ -124,6 +136,9 @@ export function searchClassification(params) {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
+            headers: {
+                Accept: 'application/json'
+            },
             params: params,
             types: [types.SEARCH_REQUEST, types.SEARCH_SUCCESS, types.SEARCH_FAILURE]
         }
@@ -152,6 +167,9 @@ export function loadChanges(classificationId, params, languageOverride) {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
+            headers: {
+                Accept: 'application/json'
+            },
             params: params,
             language: languageOverride,
             headers: {
@@ -168,6 +186,9 @@ export function loadCorrespondence(itemId, languageOverride) {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
+            headers: {
+                Accept: 'application/json'
+            },
             id: itemId,
             language: languageOverride,
             types: [types.CORRESPONDENCE_REQUEST, types.CORRESPONDENCE_SUCCESS, types.CORRESPONDENCE_FAILURE]
@@ -181,6 +202,9 @@ export function loadVariant(itemId, languageOverride) {
         [CALL_API]: {
             method: 'get',
             endpoint: url,
+            headers: {
+                Accept: 'application/json'
+            },
             id: itemId,
             language: languageOverride,
             types: [types.VARIANT_REQUEST, types.VARIANT_SUCCESS, types.VARIANT_FAILURE]
@@ -212,6 +236,9 @@ export function subscribe(classId, email) {
         [CALL_API]: {
             method: 'post',
             endpoint: url,
+            headers: {
+                Accept: 'application/json'
+            },
             params: params,
             types: [types.SUBSCRIPTION_REQUEST, types.SUBSCRIPTION_SUCCESS, types.SUBSCRIPTION_FAILURE]
         }
