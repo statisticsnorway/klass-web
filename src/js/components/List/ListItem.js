@@ -9,14 +9,45 @@ import _ from "lodash";
 import counterpart from "counterpart";
 
 class ListItem extends Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+
+        // classFamilies = lazy loaded content, needs to be updated
+        if(_.isEqual(this.props.type, "classFamilies"))return true;
+
+        // if modal is this item and should be shown , update
+        if (_.isEqual(nextProps.modal.item  ,this.props.item)
+            && (this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen)) {
+            return true;
+        }
+
+        // if modal was this item but should now be hidden
+        if (_.isEqual(this.props.modal.item  ,this.props.item)
+            && _.isEqual(nextProps.modal.item, null)) {
+            return true;
+        }
+
+        // check if content has changed
+         return !(
+            _.isEqual(this.props.item, nextProps.item)
+            && _.isEqual(this.props.item.active, nextProps.item.active)
+            && _.isEqual(this.props.idx         ,nextProps.idx)
+            && _.isEqual(this.props.displayName ,nextProps.displayName)
+            && _.isEqual(this.props.type        ,nextProps.type)
+        );
+
+    }
+
+
     renderItemList() {
-        const {item, displayName, type, actions, modal} = this.props;
+        const {item, displayName, type, actions, modal, idx} = this.props;
 
         if (item.children && item.children.length > 0) {
             const listEl = item.children.map((childItem, key) => {
                     if (childItem._links) {
                         return (
-                            <li key={key} role="treeitem" tabIndex="-1">
+                            <li key={"item"+key} role="treeitem" tabIndex="-1">
                                 <Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
                                     <span>{childItem.name}&#160;&#160;»</span>
                                     <span className="link-type">{childItem.classificationType}</span>
@@ -41,7 +72,7 @@ class ListItem extends Component {
                         }
                         return (
                             <ListItem
-                                key={key}
+                                key={type + key}
                                 idx={key}
                                 item={childItem}
                                 displayName={name}
@@ -54,13 +85,6 @@ class ListItem extends Component {
             )
 
             const hidden = item.active ? 'false' : 'true'
-
-            // return (
-            //     <Panel collapsible expanded={item.active} role="tree" aria-hidden={hidden}>
-            //         {listEl}
-            //     </Panel>
-            // )
-
             return (
                 <ol className="delemne-children" role="tree" aria-hidden={hidden}>
                     {listEl}
@@ -107,6 +131,7 @@ class ListItem extends Component {
         if (modal.contentType === "notes") {
             let noteBlock = modal.item.notes.split('\n')
 
+
             return (
                 <Modal
                     className='modal-notes'
@@ -115,7 +140,7 @@ class ListItem extends Component {
                     onClose={this.closeModal.bind(this)}>
                     <div className="modal-content">
                         <a onClick={this.closeModal.bind(this)}>
-                            <i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
+                            <i className="fa fa-times-circle-o close-button" aria-hidden="true"/>
                         </a>
                         <h5>{modal.item.code} - {modal.item.name}</h5>
                         {this.renderNoteBlocks(noteBlock)}
@@ -123,25 +148,6 @@ class ListItem extends Component {
                 </Modal>
             )
         } else {
-
-            // return <Modal
-            //     className='modal-notes'
-            //     closeOnOuterClick={true}
-            //     show={modal.modalIsOpen}
-            //     onClose={this.closeModal.bind(this)}>
-            //     <div className="modal-content">
-            //         <a onClick={this.closeModal.bind(this)}>
-            //             <i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
-            //         </a>
-            //         {/*<h5>{modal.item.code} - {modal.item.name}</h5>*/}
-            //         <div className="content">
-            //             <Translate content="TABS.VALID_FROM"/>&nbsp;
-            //             {item.validFrom} - {!_.isEmpty(item.validTo)
-            //             ? counterpart.translate("TABS.VALID_TO")  + " " + item.validTo
-            //             : counterpart.translate("TABS.VERSIONS.STILL_VALID")}
-            //         </div>
-            //     </div>
-            // </Modal>
             return <Modal
                 className='modal-notes'
                 closeOnOuterClick={true}
@@ -149,7 +155,7 @@ class ListItem extends Component {
                 onClose={this.closeModal.bind(this)}>
                 <div className="modal-content">
                     <a onClick={this.closeModal.bind(this)}>
-                        <i className="fa fa-times-circle-o close-button" aria-hidden="true"></i>
+                        <i className="fa fa-times-circle-o close-button" aria-hidden="true"/>
                     </a>
                     {/*<h5>{modal.item.code} - {modal.item.name}</h5>*/}
                     <div className="content">
@@ -168,7 +174,7 @@ class ListItem extends Component {
         const {item, idx, actions, type, search} = this.props
 
         if (item.numberOfClassifications || item.children) {
-            if (type == 'code' || type == 'variant') {
+            if (type === 'code' || type === 'variant') {
                 actions.toggleCode(item.code, type)
             } else {
                 actions.toggleSubject(idx, search)
@@ -177,33 +183,16 @@ class ListItem extends Component {
     }
 
     render() {
+
         const {item, displayName, actions, idx} = this.props
         const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
-        // const showHide = item.children ? <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only" /> : ''
         const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only"/>
-        const toggleLink = (item.children || item.numberOfClassifications) ? 'toggle-children' : ''
-        const itemId = item.code ? (item.level + '_' + item.code) : idx
-
-        // return (
-        //     <div role="treeitem" aria-expanded={item.active === true} id={itemId}>
-        // 		<a className={toggleLink} onClick={(ev) => this.toggle(ev)} href="#">
-        //             {showHide}
-        // 			{displayName}
-        //             <Notes item={item} actions={actions} />
-        // 		</a>
-        //         {this.renderModal()}
-        // 		{this.renderItemList()}
-        //     </div>
-        // )
 
         return (
-            <li className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
+            <li key={"li" +idx} className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
                 <a className="toggle-children clearfix" onClick={(ev) => this.toggle(ev)} role="link" href="#">
                     {showHide}
                     {displayName}
-
-                    {/*{item.validTo == null ?  <span className="itemDate">&nbsp;- fortsatt gyldig</span> : <span className="itemDate">&nbsp;- {item.validTo}</span>}*/}
-                    {/*{item.validFrom == null ?  "" : <span className="itemDate">{item.validFrom}</span>}*/}
                     <CodeDate item={item} actions={actions}/>
                     <Notes item={item} actions={actions}/>
                 </a>
@@ -213,6 +202,7 @@ class ListItem extends Component {
         )
     }
 }
+
 
 
 ListItem.propTypes = {
