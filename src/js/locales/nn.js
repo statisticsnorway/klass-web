@@ -1,4 +1,8 @@
 module.exports = {
+    'LOADING': {
+        'CLASSIFICATIONS_AND_CODELISTS': 'Laster klassifikasjoner og kodelister...',
+        'LOADING_CONTENT': 'Laster innhold...'
+    },
     'PAGE': {
         'TITLE': 'Klassifikasjoner og kodelister',
         'TITLE_POSTFIX': ''
@@ -33,10 +37,6 @@ module.exports = {
 		'LOADING_CURRENT_VERSION': 'Laster gjeldende versjon...',
 		'READ_MORE': 'VIS MEIR',
 		'READ_LESS': 'VIS MINDRE'
-	},
-	'LOADING': {
-		'CLASSIFICATIONS_AND_CODELISTS': 'Laster klassifikasjoner og kodelister...',
-		'LOADING_CONTENT': 'Laster innhold...'
 	},
 	'SEARCH': {
 		'SEARCH': 'Søk',

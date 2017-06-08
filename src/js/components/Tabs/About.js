@@ -67,10 +67,10 @@ class About extends Component {
             publications = counterpart.translate('TABS.ABOUT.NOT_RELEVANT')
         }
 		let joinedLanguages = version.published.map(function(val){
-			let comma = (val == version.published[version.published.length-1]) ? "" : ",";
-			if (val == "nb")return <span><Translate content="LANGUAGE.NORWEGIAN" />{comma} </span>;
-			if (val == "nn")return <span><Translate content="LANGUAGE.NYNORSK" />{comma} </span>;
-			if (val == "en")return <span><Translate content="LANGUAGE.ENGLISH" />{comma} </span>;
+			let comma = (val === version.published[version.published.length-1]) ? "" : ",";
+			if (val === "nb")return <span key="nb"><Translate content="LANGUAGE.NORWEGIAN" />{comma} </span>;
+			if (val === "nn")return <span key="nn"><Translate content="LANGUAGE.NYNORSK" />{comma} </span>;
+			if (val === "en")return <span key="en"><Translate content="LANGUAGE.ENGLISH" />{comma} </span>;
 		})
 
 
