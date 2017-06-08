@@ -172,9 +172,6 @@ export function loadChanges(classificationId, params, languageOverride) {
             },
             params: params,
             language: languageOverride,
-            headers: {
-                'Accept': 'application/json'
-            },
             types: [types.CHANGES_REQUEST, types.CHANGES_SUCCESS, types.CHANGES_FAILURE]
         }
     }
