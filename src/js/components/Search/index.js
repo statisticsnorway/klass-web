@@ -77,8 +77,8 @@ class Search extends Component {
     displayModal () {
         const { actions } = this.props
         const item = {
-            "title": counterpart.translate('SEARCH.WHAT_IS_CODELIST_HEADER'),
-            "body": counterpart.translate('SEARCH.WHAT_IS_CODELIST_BODY')
+            "title"		: counterpart.translate('SEARCH.WHAT_IS_CODELIST_HEADER'),
+            "body"		: counterpart.translate('SEARCH.WHAT_IS_CODELIST_BODY')
         }
 
 		actions.displayModal(item);

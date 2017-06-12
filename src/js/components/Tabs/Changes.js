@@ -7,6 +7,11 @@ import commonUtils from '../../lib/common-utils'
 
 class Changes extends Component {
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return !_.isEqual( this.props.classification, nextProps.classification)
+            || !_.isEqual( this.props.selectedVersion, nextProps.selectedVersion)
+    }
+
     constructor() {
         super()
         this.state = {

@@ -1,30 +1,22 @@
 import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
-import {connect} from "react-redux";
-import Translate from "react-translate-component";
 import Notes from "../Notes";
 import CodeDate from "../CodeDate";
 import Modal from "simple-react-modal";
 import _ from "lodash";
-import counterpart from "counterpart";
 
-class ListItem extends Component {
+class StaticListItem extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
 
 
-        // classFamilies = lazy loaded content, needs to be updated
-        if(_.isEqual(this.props.type, "classFamilies"))return true;
+        let visibleChanged = this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen;
+        let visible = nextProps.modal.modalIsOpen;
+        let modalWasThisItem = _.isEqual(this.props.modal.item, this.props.item);
+        let modalIsThisItem = _.isEqual(nextProps.modal.item, nextProps.item);
 
-        // if modal is this item and should be shown , update
-        if (_.isEqual(nextProps.modal.item  ,this.props.item)
-            && (this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen)) {
-            return true;
-        }
-
-        // if modal was this item but should now be hidden
-        if (_.isEqual(this.props.modal.item  ,this.props.item)
-            && _.isEqual(nextProps.modal.item, null)) {
+        // check if info box require update
+        if (( visibleChanged || visible)&& (modalWasThisItem || modalIsThisItem)) {
             return true;
         }
 
@@ -43,6 +35,7 @@ class ListItem extends Component {
     renderItemList() {
         const {item, displayName, type, actions, modal, idx} = this.props;
 
+
         if (item.children && item.children.length > 0) {
             const listEl = item.children.map((childItem, key) => {
                     if (childItem._links) {
@@ -55,14 +48,13 @@ class ListItem extends Component {
                             </li>
                         )
                     } else {
-                        const toggleIcon = childItem.active ? 'hovedemne collapse' : 'hovedemne expand';
                         let name
                         switch (type) {
                             case 'code':
                             case 'variant':
-                                name = <span className="itemName"><b>{childItem.code}</b> - <span
-                                    className="longName">{childItem.name}</span><span className="shortName"
-                                                                                      aria-hidden="true">{childItem.shortName}</span></span>
+                                name = <span className="itemName"><b>{childItem.code}</b> - <span className="longName">{childItem.name}</span>
+                                    <span className="shortName" aria-hidden="true">{childItem.shortName}</span>
+                                </span>
                                 break;
                             case 'classFamilies':
                                 name = <span>{childItem.name} ({childItem.numberOfClassifications})</span>
@@ -71,7 +63,7 @@ class ListItem extends Component {
                                 name = <span>{childItem.name}</span>
                         }
                         return (
-                            <ListItem
+                            <StaticListItem
                                 key={type + key}
                                 idx={key}
                                 item={childItem}
@@ -120,7 +112,7 @@ class ListItem extends Component {
     }
 
     renderModal() {
-        const {modal, item} = this.props
+        const {modal, item, translations} = this.props
 
 
         if (!modal.modalIsOpen || !_.isEqual(modal.item, item)) {
@@ -159,9 +151,9 @@ class ListItem extends Component {
                     </a>
                     {/*<h5>{modal.item.code} - {modal.item.name}</h5>*/}
                     <div className="content">
-                        <Translate content="TABS.VALID_FROM"/>&nbsp;{item.validFrom} <br/> {!_.isEmpty(item.validTo)
-                        ? counterpart.translate("TABS.VALID_TO")  + " " + item.validTo
-                        : counterpart.translate("TABS.VERSIONS.STILL_VALID")}
+                        {translations.validFromText}&nbsp;{item.validFrom} <br/> {!_.isEmpty(item.validTo)
+                        ? translations.validToText  + " " + item.validTo
+                        : translations.stillValidText}
                     </div>
                 </div>
             </Modal>
@@ -184,9 +176,10 @@ class ListItem extends Component {
 
     render() {
 
-        const {item, displayName, actions, idx} = this.props
+        const {item, displayName, actions, idx, translations} = this.props
         const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
-        const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only"/>
+        const showHide = <span className="screen-reader-only">{translations.screenReaderShowHide}</span>
+        // const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only"/>
 
         return (
             <li key={"li" +idx} className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
@@ -205,17 +198,18 @@ class ListItem extends Component {
 
 
 
-ListItem.propTypes = {
+StaticListItem.propTypes = {
     item: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
     displayName: PropTypes.element.isRequired,
     type: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired,
-    modal: PropTypes.object.isRequired
+    modal: PropTypes.object.isRequired,
+    translations: PropTypes.object
 }
 
 const mapStateToProps = (state, ownProps) => ({
     search: state.searchResult.search
 })
 
-export default connect(mapStateToProps)(ListItem)
+export default StaticListItem

@@ -1,19 +1,26 @@
 import './List.scss'
 import React, {Component, PropTypes} from 'react'
-import ListItem from './ListItem'
+import ReduxListItem from './ReduxListItem'
+import StaticListItem from './StaticListItem'
 import counterpart from 'counterpart'
 
+
 class List extends Component {
+
 	renderList() {
-		const { items, type, actions, modal } = this.props
+        // Perf.start()
+		const { items, type, actions, modal, translations } = this.props
 		if (items) {
 			return items.map(function(item, key){
 				let name
+                let dynamicItems = true;
 				switch (type) {
 					case 'code':
-                            name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span><span className="shortName" aria-hidden="true">{item.shortName}</span></span>
+                        dynamicItems = false;
+                        name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span><span className="shortName" aria-hidden="true">{item.shortName}</span></span>
 						break;
 					case 'variant':
+                        dynamicItems = false;
 						name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span></span>
 						break;
 					case 'classFamilies':
@@ -24,17 +31,31 @@ class List extends Component {
 				}
 
 				if (item.numberOfClassifications || item.code) {
-					return (
-						<ListItem
-							key={type + key}
-							idx={key}
-							item={item}
-							displayName={name}
-							type={type}
-							actions={actions}
-                            modal={modal} />
-					)
-				}
+					if (dynamicItems) {
+						return (
+							<ReduxListItem
+								key={type + key}
+								idx={key}
+								item={item}
+								displayName={name}
+								type={type}
+								actions={actions}
+								modal={modal} />
+						)
+					}  else {
+                        return (
+							<StaticListItem
+								key={type + key}
+								idx={key}
+								item={item}
+								displayName={name}
+								type={type}
+								actions={actions}
+								modal={modal}
+								translations={translations} />
+                        )
+					}
+                }
 			})
 		}
 	}
@@ -70,7 +91,8 @@ List.propTypes = {
 	actions: PropTypes.object.isRequired,
 	items: PropTypes.array.isRequired,
 	isFetching: PropTypes.bool.isRequired,
-	type: PropTypes.string.isRequired
+	type: PropTypes.string.isRequired,
+	translations: PropTypes.object
 }
 
 List.defaultProps = {

@@ -36,6 +36,7 @@ class ClassFamiliesPage extends Component {
 
     renderContent() {
         const {items, isFetching, actions, modal} = this.props
+        const translations = {"screenReaderShowHide"   : counterpart.translate("COMMON.SHOW_HIDE")}
 
         return (
             <div>
@@ -46,7 +47,7 @@ class ClassFamiliesPage extends Component {
                     <Translate component="h3" content="CLASSIFICATIONS.CHOOSE_CLASS_FAMILY"/>
                 </div>
                 <div className="results class-list" id="expandcollapse">
-                    <List items={items} isFetching={isFetching} type="classFamilies" actions={actions} modal={modal}/>
+                    <List items={items} isFetching={isFetching} type="classFamilies" actions={actions} modal={modal} translations={translations}/>
                 </div>
             </div>
         )

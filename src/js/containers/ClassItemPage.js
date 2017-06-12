@@ -82,13 +82,15 @@ class ClassItemPage extends Component {
     }
 
     componentDidUpdate() {
+        // NOTE this might slow down the page / decrease performance
         const element = ReactDOM.findDOMNode(this.refs.description);
         // Things involving accessing DOM properties on element
         // In the case of what this question actually asks:
-        if (element == null) return;
-        const hasOverflowingChildren = element.offsetHeight < element.scrollHeight ||
-            element.offsetWidth < element.scrollWidth;
-        if (!hasOverflowingChildren) {
+        if (element === null) return;
+        const hasOverflowingChildren = element.offsetHeight < element.scrollHeight
+                                    || element.offsetWidth < element.scrollWidth;
+        if (!hasOverflowingChildren
+            && ReactDOM.findDOMNode(this.refs.descLink).getAttribute("class") !== 'hide') {
             ReactDOM.findDOMNode(this.refs.descLink).setAttribute('class', 'hide');
         }
     }

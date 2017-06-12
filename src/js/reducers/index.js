@@ -5,6 +5,7 @@ import selectedVersion from './selectedVersion';
 import searchResult from './searchResult';
 import ssbSections from './ssbSections';
 import subscription from './subscription';
+import merge from 'lodash/merge'
 
 const initialState = {
 	modalIsOpen: false,
@@ -14,11 +15,11 @@ const initialState = {
 function modal(state = initialState, action) {
 	switch (action.type) {
 		case 'TOGGLE_MODAL':
-			return {
+			return merge({}, state, {
 				modalIsOpen: action.display,
 				item: action.item,
                 contentType: action.contentType
-			}
+			})
 		default:
 			return state
 
