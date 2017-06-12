@@ -13,10 +13,11 @@ class StaticListItem extends Component {
         let visibleChanged = this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen;
         let visible = nextProps.modal.modalIsOpen;
         let modalWasThisItem = _.isEqual(this.props.modal.item, this.props.item);
-        let modalIsThisItem = _.isEqual(nextProps.modal.item, nextProps.item);
+        let modalIsThisItem = _.isEqual(nextProps.modal.item, this.props.item)
+            || _.isEqual(nextProps.modal.item, nextProps.item);
 
         // check if info box require update
-        if (( visibleChanged || visible)&& (modalWasThisItem || modalIsThisItem)) {
+        if (( visibleChanged || visible) && (modalWasThisItem || modalIsThisItem)) {
             return true;
         }
 
