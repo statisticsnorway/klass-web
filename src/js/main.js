@@ -1,3 +1,6 @@
+import PerfProfiler from './components/PerfProfiler';
+
+
 import '../styles/main.scss'
 
 import React from 'react'
@@ -51,6 +54,7 @@ ReactGA.initialize(config.GA_TRACKING_ID);
 let ComponentEl;
 	ComponentEl = (
         <div>
+            {/*<PerfProfiler />*/}
             <SSBHeader />
             <div id="page">
                 <div className="sitewrapper">

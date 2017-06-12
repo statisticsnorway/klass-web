@@ -5,6 +5,11 @@ import _ from 'lodash'
 import moment from 'moment'
 
 class About extends Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return !_.isEqual( this.props.version, nextProps.version)
+    }
+
 	renderLevels (levels) {
 		return levels.map(function(level, key){
 			return (

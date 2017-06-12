@@ -66,32 +66,32 @@ class Tabs extends Component {
             {
                 title: counterpart.translate('TABS.CODES.CODES'),
                 id: 'koder',
-                content: (<Codes classification={classification} version={selectedVersion.version} params={params} actions={actions} modal={modal} />)
+                content: (<Codes key="Codes" classification={classification} version={selectedVersion.version} params={params} actions={actions} modal={modal} />)
             },
             {
                 title: counterpart.translate('TABS.ABOUT.ABOUT'),
                 id: 'om',
-                content: (<About actions={actions} version={selectedVersion.version} />)
+                content: (<About key="About" actions={actions} version={selectedVersion.version} />)
             },
             {
                 title: counterpart.translate('TABS.CHANGES.CHANGES'),
                 id: 'endringer',
-                content: (<Changes actions={actions} classification={classification} selectedVersion={selectedVersion} params={params} />)
+                content: (<Changes key="Changes" actions={actions} classification={classification} selectedVersion={selectedVersion} params={params} />)
             },
             {
                 title: counterpart.translate('TABS.VERSIONS.VERSIONS'),
                 id: 'versjoner',
-                content: (<Versions actions={actions} classification={classification} />)
+                content: (<Versions key="Versions" actions={actions} classification={classification} />)
             },
             {
                 title: counterpart.translate('TABS.CORRESPONDENCES.CORRESPONDENCES'),
                 id: 'korrespondanser',
-                content: (<Correspondences actions={actions} selectedVersion={selectedVersion} params={params} />)
+                content: (<Correspondences key="Correspondences" actions={actions} selectedVersion={selectedVersion} params={params} />)
             },
             {
                 title: counterpart.translate('TABS.VARIANTS.VARIANTS'),
                 id: 'varianter',
-                content: (<Variants actions={actions} selectedVersion={selectedVersion} params={params} modal={modal} />)
+                content: (<Variants key="Variants" actions={actions} selectedVersion={selectedVersion} params={params} modal={modal} />)
             }
         ]
 

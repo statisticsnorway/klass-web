@@ -8,6 +8,21 @@ import moment from 'moment'
 import config from '../../config'
 
 class Codes extends Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+        let dataChanged = !_.isEqual( this.props.classification, nextProps.classification)
+            ||  !_.isEqual( this.props.version, nextProps.version)
+            ||  !_.isEqual( this.props.modal.modalIsOpen, nextProps.modal.modalIsOpen)
+            ||  !_.isEqual( this.props.modal.item, nextProps.modal.item)
+
+		let tabChange = (!_.isEqual( this.props.params.tab, nextProps.params.tab)
+            && _.isEqual( nextProps.params.tab, "endringer"))
+
+		return dataChanged || tabChange;
+    }
+
+
 	handleSubmit (event) {
 		event.preventDefault()
 		const { actions } = this.props
@@ -54,8 +69,15 @@ class Codes extends Component {
 				<p><i><Translate content="TABS.CODES.CODES_NOT_FOUND" /></i></p>
 			)
 		}
-		return (
-            <List items={version.nestedItems} type="code" actions={actions} modal={modal}/>
+        const translations = {
+            "validFromText" : counterpart.translate('TABS.VALID_FROM'),
+            "validToText" 	:   counterpart.translate("TABS.VALID_TO"),
+            "stillValidText"   : counterpart.translate("TABS.VERSIONS.STILL_VALID"),
+            "screenReaderShowHide"   : counterpart.translate("COMMON.SHOW_HIDE")
+        }
+
+        return (
+            <List items={version.nestedItems} type="code" actions={actions} modal={modal} translations={translations}/>
 		)
 	}
 
