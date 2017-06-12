@@ -4,6 +4,7 @@ import Notes from "../Notes";
 import CodeDate from "../CodeDate";
 import Modal from "simple-react-modal";
 import _ from "lodash";
+import Translate from 'react-translate-component'
 
 class StaticListItem extends Component {
 
@@ -13,10 +14,11 @@ class StaticListItem extends Component {
         let visibleChanged = this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen;
         let visible = nextProps.modal.modalIsOpen;
         let modalWasThisItem = _.isEqual(this.props.modal.item, this.props.item);
-        let modalIsThisItem = _.isEqual(nextProps.modal.item, nextProps.item);
+        let modalIsThisItem = _.isEqual(nextProps.modal.item, this.props.item)
+            || _.isEqual(nextProps.modal.item, nextProps.item);
 
         // check if info box require update
-        if (( visibleChanged || visible)&& (modalWasThisItem || modalIsThisItem)) {
+        if (( visibleChanged || visible) && (modalWasThisItem || modalIsThisItem)) {
             return true;
         }
 
@@ -33,7 +35,7 @@ class StaticListItem extends Component {
 
 
     renderItemList() {
-        const {item, displayName, type, actions, modal, idx} = this.props;
+        const {item, displayName, type, actions, modal, idx, translations} = this.props;
 
 
         if (item.children && item.children.length > 0) {
@@ -70,6 +72,7 @@ class StaticListItem extends Component {
                                 displayName={name}
                                 type={type}
                                 actions={actions}
+                                translations={translations}
                                 modal={modal}/>
                         )
                     }
@@ -178,8 +181,7 @@ class StaticListItem extends Component {
 
         const {item, displayName, actions, idx, translations} = this.props
         const toggleIcon = (item.children || item.numberOfClassifications) ? (item.active ? 'hovedemne collapse' : 'hovedemne expand') : 'last-item'
-        const showHide = <span className="screen-reader-only">{translations.screenReaderShowHide}</span>
-        // const showHide = <Translate content="COMMON.SHOW_HIDE" component="span" className="screen-reader-only"/>
+        let showHide = <span className="screen-reader-only">{translations.screenReaderShowHide}</span>
 
         return (
             <li key={"li" +idx} className={toggleIcon} role="treeitem" aria-expanded={item.active === true}>
