@@ -89,8 +89,9 @@ class Variants extends Component {
 				<p><Translate component="i" content="TABS.VARIANTS.VARIANTS_NOT_FOUND" /></p>
 			)
 		}
+        const translations = {"screenReaderShowHide"   : counterpart.translate("COMMON.SHOW_HIDE")}
 		return (
-			<List items={items} displayName="code" type="variant" actions={actions} modal={modal}/>
+			<List items={items} displayName="code" type="variant" actions={actions} modal={modal} translations={translations}/>
 		)
 	}
 
