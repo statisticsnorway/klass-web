@@ -4,7 +4,6 @@ import Notes from "../Notes";
 import CodeDate from "../CodeDate";
 import Modal from "simple-react-modal";
 import _ from "lodash";
-import Translate from 'react-translate-component'
 
 class StaticListItem extends Component {
 
@@ -17,8 +16,37 @@ class StaticListItem extends Component {
         let modalIsThisItem = _.isEqual(nextProps.modal.item, this.props.item)
             || _.isEqual(nextProps.modal.item, nextProps.item);
 
+        // let modalWasChild = false;
+        // let propsModal = this.props.modal;
+        // if (this.props.item.children !== undefined) {
+        //      _.forEach(this.props.item.children, function (item) {
+        //          let match = _.isEqual(propsModal.item, item);
+        //         if (match) {
+        //             modalWasChild = match;
+        //             return false;
+        //         }
+        //     })
+        // }
+        // let modalIsChild = false;
+        // if (nextProps.item.children !== undefined) {
+        //      _.forEach(nextProps.item.children, function (item) {
+        //          let match = _.isEqual(nextProps.modal.item, item);
+        //         if (match) {
+        //             modalIsChild = match;
+        //             return false;
+        //         }
+        //     })
+        // }
         // check if info box require update
-        if (( visibleChanged || visible) && (modalWasThisItem || modalIsThisItem)) {
+
+
+        // traversing all children to find one child that needs updating seems to be much work so unless
+        // we get complaints about performance we just update everything with children as nested
+        // lists are usually faster than flat ones (unless you expand all of course)
+        let hasChildren = this.props.item.children !== undefined || nextProps.item.children !== undefined;
+
+        if (( visibleChanged || visible)
+            && (modalWasThisItem || modalIsThisItem || hasChildren)) {
             return true;
         }
 
@@ -32,6 +60,10 @@ class StaticListItem extends Component {
         );
 
     }
+
+
+
+
 
 
     renderItemList() {
