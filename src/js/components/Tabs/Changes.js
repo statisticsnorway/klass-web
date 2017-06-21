@@ -10,6 +10,7 @@ class Changes extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return !_.isEqual( this.props.classification, nextProps.classification)
             || !_.isEqual( this.props.selectedVersion, nextProps.selectedVersion)
+            || !_.isEqual( this.state.invertedTable, nextState.invertedTable)
     }
 
     constructor() {
