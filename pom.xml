@@ -84,11 +84,7 @@
                             <directory>src</directory>
                             <includes>
                                 <include>index.html</include>
-                            </includes>
-                        </resource>
-                        <resource>
-                            <directory>src</directory>
-                            <includes>
+                                <include>images/**/*</include>
                                 <include>static/**/*</include>
                             </includes>
                         </resource>
