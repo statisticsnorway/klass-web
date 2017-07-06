@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import configureStore  from './store/configureStore'
 import { Router, browserHistory, useRouterHistory  } from 'react-router'
 import { createHashHistory } from 'history'
+import createHistory from 'history/lib/createHistory'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import counterpart from 'counterpart'
 import SSBHeader from './SSBHeader'
@@ -18,7 +19,10 @@ import routes from './routes';
 import ReactGA from "react-ga";
 import config from './config'
 
-const appHistory = useRouterHistory(createHashHistory)({ queryKey: false, hashType: 'hashbang' })
+// const appHistory = useRouterHistory(createHistory)({baseNames: "rw"})
+//TODO replace RW with info from config
+const appHistory = useRouterHistory(createBrowserHistory)({basename: "/rw"})
+// const appHistory = useRouterHistory(createHashHistory)({ queryKey: false, hashType: 'hashbang' })
 
 const store = configureStore();
 const rootElement = document.getElementById('app');

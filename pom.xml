@@ -22,6 +22,24 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.tuckey</groupId>
+            <artifactId>urlrewritefilter</artifactId>
+            <version>4.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
@@ -86,6 +104,12 @@
                                 <include>index.html</include>
                                 <include>images/**/*</include>
                                 <include>static/**/*</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>/</directory>
+                            <includes>
+                                <include>WEB-INF/*</include>
                             </includes>
                         </resource>
                     </webResources>
