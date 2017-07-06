@@ -1,50 +1,25 @@
-import './List.scss'
-import React, {Component, PropTypes} from 'react'
-import ReduxListItem from './ReduxListItem'
-import StaticListItem from './StaticListItem'
-import counterpart from 'counterpart'
+import "./List.scss";
+import React, {Component, PropTypes} from "react";
+import ReduxListItem from "./items/ReduxListItem";
+import CodeListItem from "./items/CodeListItem";
+import counterpart from "counterpart";
 
 
 class List extends Component {
 
 	renderList() {
-        // Perf.start()
 		const { items, type, actions, modal, translations } = this.props
 		if (items) {
 			return items.map(function(item, key){
 				let name
-                let dynamicItems = true;
 				switch (type) {
-					case 'code':
-                        dynamicItems = false;
-                        name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span><span className="shortName" aria-hidden="true">{item.shortName}</span></span>
-						break;
-					case 'variant':
-                        dynamicItems = false;
-						name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span></span>
-						break;
-					case 'classFamilies':
-						name = <span>{item.name} ({item.numberOfClassifications})</span>
-						break;
-					default:
-						name = <span>{item.name}</span>
-				}
-
-				if (item.numberOfClassifications || item.code) {
-					if (dynamicItems) {
-						return (
-							<ReduxListItem
-								key={type + key}
-								idx={key}
-								item={item}
-								displayName={name}
-								type={type}
-								actions={actions}
-								modal={modal} />
-						)
-					}  else {
+                    case 'code':
+                        name = <span className="itemName">
+							<b>{item.code}</b> - <span className="longName">{item.name}</span>
+							<span className="shortName" aria-hidden="true">{item.shortName}</span>
+						</span>
                         return (
-							<StaticListItem
+							<CodeListItem
 								key={type + key}
 								idx={key}
 								item={item}
@@ -52,9 +27,39 @@ class List extends Component {
 								type={type}
 								actions={actions}
 								modal={modal}
-								translations={translations} />
+								translations={translations}/>
                         )
-					}
+					case 'variant':
+						name = <span className="itemName"><b>{item.code}</b> - <span className="longName">{item.name}</span></span>
+                        return (
+							<CodeListItem
+								key={type + key}
+								idx={key}
+								item={item}
+								displayName={name}
+								type={type}
+								actions={actions}
+								modal={modal}
+								translations={translations}/>
+						)
+					case 'classFamilies':
+						name = <span>{item.name} ({item.numberOfClassifications})</span>
+						break;
+					default:
+						name = <span>{item.name}</span>
+				}
+
+                if (item.numberOfClassifications || item.code) {
+                    return (
+						<ReduxListItem
+							key={type + key}
+							idx={key}
+							item={item}
+							displayName={name}
+							type={type}
+							actions={actions}
+							modal={modal}/>
+                    )
                 }
 			})
 		}

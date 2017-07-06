@@ -1,80 +1,23 @@
 import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
-import Notes from "../Notes";
-import CodeDate from "../CodeDate";
+import Notes from "../../Notes";
+import CodeDate from "../../CodeDate";
 import Modal from "simple-react-modal";
 import _ from "lodash";
+import CodeListItem from "./CodeListItem";
 
 class StaticListItem extends Component {
-
-    shouldComponentUpdate(nextProps, nextState) {
-
-
-        let visibleChanged = this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen;
-        let visible = nextProps.modal.modalIsOpen;
-        let modalWasThisItem = _.isEqual(this.props.modal.item, this.props.item);
-        let modalIsThisItem = _.isEqual(nextProps.modal.item, this.props.item)
-            || _.isEqual(nextProps.modal.item, nextProps.item);
-
-        // let modalWasChild = false;
-        // let propsModal = this.props.modal;
-        // if (this.props.item.children !== undefined) {
-        //      _.forEach(this.props.item.children, function (item) {
-        //          let match = _.isEqual(propsModal.item, item);
-        //         if (match) {
-        //             modalWasChild = match;
-        //             return false;
-        //         }
-        //     })
-        // }
-        // let modalIsChild = false;
-        // if (nextProps.item.children !== undefined) {
-        //      _.forEach(nextProps.item.children, function (item) {
-        //          let match = _.isEqual(nextProps.modal.item, item);
-        //         if (match) {
-        //             modalIsChild = match;
-        //             return false;
-        //         }
-        //     })
-        // }
-        // check if info box require update
-
-
-        // traversing all children to find one child that needs updating seems to be much work so unless
-        // we get complaints about performance we just update everything with children as nested
-        // lists are usually faster than flat ones (unless you expand all of course)
-        let hasChildren = this.props.item.children !== undefined || nextProps.item.children !== undefined;
-
-        if (( visibleChanged || visible)
-            && (modalWasThisItem || modalIsThisItem || hasChildren)) {
-            return true;
-        }
-
-        // check if content has changed
-         return !(
-            _.isEqual(this.props.item, nextProps.item)
-            && _.isEqual(this.props.item.active, nextProps.item.active)
-            && _.isEqual(this.props.idx         ,nextProps.idx)
-            && _.isEqual(this.props.displayName ,nextProps.displayName)
-            && _.isEqual(this.props.type        ,nextProps.type)
-        );
-
-    }
-
-
-
 
 
 
     renderItemList() {
-        const {item, displayName, type, actions, modal, idx, translations} = this.props;
-
+        const {item, type, actions, modal, translations} = this.props;
 
         if (item.children && item.children.length > 0) {
             const listEl = item.children.map((childItem, key) => {
                     if (childItem._links) {
                         return (
-                            <li key={"item"+key} role="treeitem" tabIndex="-1">
+                            <li key={"item" + key} role="treeitem" tabIndex="-1">
                                 <Link to={`/klassifikasjoner/${childItem.id}`} className="child-link">
                                     <span>{childItem.name}&#160;&#160;»</span>
                                     <span className="link-type">{childItem.classificationType}</span>
@@ -86,10 +29,19 @@ class StaticListItem extends Component {
                         switch (type) {
                             case 'code':
                             case 'variant':
-                                name = <span className="itemName"><b>{childItem.code}</b> - <span className="longName">{childItem.name}</span>
+                                name = <span className="itemName"><b>{childItem.code}</b> - <span
+                                    className="longName">{childItem.name}</span>
                                     <span className="shortName" aria-hidden="true">{childItem.shortName}</span>
                                 </span>
-                                break;
+                                return ( <CodeListItem
+                                    key={type + key}
+                                    idx={key}
+                                    item={childItem}
+                                    displayName={name}
+                                    type={type}
+                                    actions={actions}
+                                    translations={translations}
+                                    modal={modal}/>)
                             case 'classFamilies':
                                 name = <span>{childItem.name} ({childItem.numberOfClassifications})</span>
                                 break;
@@ -150,7 +102,7 @@ class StaticListItem extends Component {
         const {modal, item, translations} = this.props
 
 
-        if (!modal.modalIsOpen || !_.isEqual(modal.item, item)) {
+        if (!modal.modalIsOpen || !_.isEqual(modal.item.code, item.code)) {
             return null
         }
 
