@@ -2,13 +2,13 @@ import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
 import {connect} from "react-redux";
 import Translate from "react-translate-component";
-import Notes from "../Notes";
-import CodeDate from "../CodeDate";
+import Notes from "../../Notes";
+import CodeDate from "../../CodeDate";
 import Modal from "simple-react-modal";
 import _ from "lodash";
 import counterpart from "counterpart";
 
-class ReduxListItem extends Component {
+class StandardListItem extends Component {
 
     renderItemList() {
         const {item, displayName, type, actions, modal, idx} = this.props;
@@ -41,7 +41,7 @@ class ReduxListItem extends Component {
                                 name = <span>{childItem.name}</span>
                         }
                         return (
-                            <ReduxListItem
+                            <StandardListItem
                                 key={type + key}
                                 idx={key}
                                 item={childItem}
@@ -175,7 +175,7 @@ class ReduxListItem extends Component {
 
 
 
-ReduxListItem.propTypes = {
+StandardListItem.propTypes = {
     item: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
     displayName: PropTypes.element.isRequired,
@@ -188,4 +188,4 @@ const mapStateToProps = (state, ownProps) => ({
     search: state.searchResult.search
 })
 
-export default connect(mapStateToProps)(ReduxListItem)
+export default connect(mapStateToProps)(StandardListItem)

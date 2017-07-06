@@ -4,14 +4,28 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 // App files location
 const PATHS = {
-  app: path.resolve(__dirname, '../src/js'),
-  styles: path.resolve(__dirname, '../src/styles'),
-  build: path.resolve(__dirname, '../build')
+    app: path.resolve(__dirname, '../src/js'),
+    styles: path.resolve(__dirname, '../src/styles'),
+    images: path.resolve(__dirname, '../src/images'),
+    static: path.resolve(__dirname, '../src/static'),
+    build: path.resolve(__dirname, '../build')
 };
 
 const plugins = [
+    new CopyWebpackPlugin([
+        {
+            from: PATHS.images,
+            to: 'images'
+        },
+        {
+            from: PATHS.static,
+            to: 'static'
+        }
+    ]),
   // Shared code
   new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
   // Avoid publishing files when compilation fails
