@@ -15,6 +15,31 @@ import ReactGA from "react-ga";
 import config from "./config";
 
 
+// this is required to disable counterpart's warning
+// about a missing pluralization algorithm for German
+counterpart.registerTranslations('de', require('counterpart/locales/de'));
+
+counterpart.registerTranslations('en', require('./locales/en'))
+counterpart.registerTranslations('nn', require('./locales/nn'))
+counterpart.registerTranslations('nb', require('./locales/nb'))
+
+let englishUrl = false;
+counterpart.setLocale(sessionStorage.getItem('selectedLanguage'));
+if (document.URL.match("http(s?):\/\/.*?\/en\/")) {
+    sessionStorage.setItem('selectedLanguage', "en")
+    sessionStorage.setItem('selectedAPILanguage', "en")
+    counterpart.setLocale('en')
+    englishUrl = true;
+} else {
+    sessionStorage.setItem('selectedLanguage', "nb")
+    sessionStorage.setItem('selectedAPILanguage', "nb")
+    counterpart.setLocale('nb')
+    englishUrl = false;
+}
+document.title = counterpart.translate("PAGE.TITLE");
+
+
+// rewrite rules and URL handling after switching away from HashBang (#!)
 let baseName;
 if (document.URL.match("\/klass-ssb-no\/")) {
     baseName = "/klass-ssb-no";
@@ -23,10 +48,9 @@ if (document.URL.match("\/klass-ssb-no\/")) {
 }else {
     baseName ="/klass";
 }
-
-const appHistory = useRouterHistory(createBrowserHistory)({basename: baseName})
-const store = configureStore();
-const rootElement = document.getElementById('app');
+if (englishUrl) {
+    baseName = "/en" + baseName
+}
 
 const hashBangRegex = new RegExp("(.*)(" + baseName + ")\/(#!\/)(.*)");
 const hashRegex     = new RegExp("(.*)(" + baseName + ")\/(#\/)(.*)");
@@ -39,28 +63,11 @@ if (document.URL.match(hashBangRegex)) {
     window.location = location
 }
 
-// this is required to disable counterpart's warning
-// about a missing pluralization algorithm for German
-counterpart.registerTranslations('de', require('counterpart/locales/de'));
-
-counterpart.registerTranslations('en', require('./locales/en'))
-counterpart.registerTranslations('nn', require('./locales/nn'))
-counterpart.registerTranslations('nb', require('./locales/nb'))
-
-counterpart.setLocale(sessionStorage.getItem('selectedLanguage'));
-if (document.URL.match("http(s?):\/\/.*?\/en\/")) {
-    sessionStorage.setItem('selectedLanguage', "en")
-    sessionStorage.setItem('selectedAPILanguage', "en")
-    counterpart.setLocale('en')
-} else {
-    sessionStorage.setItem('selectedLanguage', "nb")
-    sessionStorage.setItem('selectedAPILanguage', "nb")
-    counterpart.setLocale('nb')
-}
-document.title = counterpart.translate("PAGE.TITLE");
 
 
-
+const appHistory = useRouterHistory(createBrowserHistory)({basename: baseName})
+const store = configureStore();
+const rootElement = document.getElementById('app');
 
 function gaTracking() {
     ReactGA.pageview(window.location.pathname + window.location.hash);

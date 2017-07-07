@@ -46,7 +46,7 @@ class SSBHeader extends Component {
             window.location = location
         }else if (document.URL.match(NORWEGIAN_URL_REGEX) ){
             // insert "en/" in url
-            let location = document.URL.replace(NORWEGIAN_URL_REGEX, "$1en/$3#!/$5");
+            let location = document.URL.replace(NORWEGIAN_URL_REGEX, "$1en/$3$5");
             window.location = location
         } else {
             console.error("no regex url match")
