@@ -1,31 +1,43 @@
-import PerfProfiler from './components/PerfProfiler';
+import "../styles/main.scss";
 
+import React from "react";
+import ReactDOM from "react-dom";
+import {Provider} from "react-redux";
+import configureStore from "./store/configureStore";
+import {Router, useRouterHistory} from "react-router";
+import createBrowserHistory from "history/lib/createBrowserHistory";
+import counterpart from "counterpart";
+import SSBHeader from "./SSBHeader";
+import SSBFooter from "./SSBFooter";
 
-import '../styles/main.scss'
-
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import configureStore  from './store/configureStore'
-import { Router, browserHistory, useRouterHistory  } from 'react-router'
-import { createHashHistory } from 'history'
-import createHistory from 'history/lib/createHistory'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
-import counterpart from 'counterpart'
-import SSBHeader from './SSBHeader'
-import SSBFooter from './SSBFooter'
-
-import routes from './routes';
+import routes from "./routes";
 import ReactGA from "react-ga";
-import config from './config'
+import config from "./config";
 
-// const appHistory = useRouterHistory(createHistory)({baseNames: "rw"})
-//TODO replace RW with info from config
-const appHistory = useRouterHistory(createBrowserHistory)({basename: "/rw"})
-// const appHistory = useRouterHistory(createHashHistory)({ queryKey: false, hashType: 'hashbang' })
 
+let baseName;
+if (document.URL.match("\/klass-ssb-no\/")) {
+    baseName = "/klass-ssb-no";
+}else if (document.URL.match("\/klass.ssb.no\/")) {
+    baseName = "/klass.ssb.no";
+}else {
+    baseName ="/klass";
+}
+
+const appHistory = useRouterHistory(createBrowserHistory)({basename: baseName})
 const store = configureStore();
 const rootElement = document.getElementById('app');
+
+const hashBangRegex = new RegExp("(.*)(" + baseName + ")\/(#!\/)(.*)");
+const hashRegex     = new RegExp("(.*)(" + baseName + ")\/(#\/)(.*)");
+
+if (document.URL.match(hashBangRegex)) {
+    let location = document.URL.replace(hashBangRegex, "$1$2/$4");
+    window.location = location
+}else if (document.URL.match(hashRegex)) {
+    let location = document.URL.replace(hashRegex, "$1$2/$4");
+    window.location = location
+}
 
 // this is required to disable counterpart's warning
 // about a missing pluralization algorithm for German
