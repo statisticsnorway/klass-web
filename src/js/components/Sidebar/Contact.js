@@ -37,7 +37,7 @@ Contact.defaultProps = {
     contactInfo: {
         name: 'Anne Gro Hustoft',
         email: 'anne.gro.hustoft@ssb.no',
-        phone: '62 88 55 48'
+        phone: '40 90 25 52'
     }
 }
 
