@@ -35,6 +35,11 @@
         <to>/index.html</to>
     </rule>
 
+    <rule>
+        <from>sok(\?.*)?$</from>
+        <to>/index.html</to>
+    </rule>
+
 
 </urlrewrite>
 
