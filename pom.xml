@@ -4,7 +4,7 @@
 
     <groupId>no.ssb.klass.web</groupId>
     <artifactId>klass-web-${klass.env.name}</artifactId>
-    <version>1.11.15-SNAPSHOT</version>
+    <version>1.11.16-SNAPSHOT</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
