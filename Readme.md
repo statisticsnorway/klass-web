@@ -95,6 +95,29 @@ e2e tester ligger følgende mappe: `/test/e2e/spec`.
 
 
 ### Unit test
-
+TODO
 
 ## Bygg og deploy
+
+###  Windows
+Scriptet som kjøres ved bygg bruker linux kommandoer, blandt annet `rm`. For å bygge på Windows må en derfor enten bruke Cygwin (eller andre lignende linux løsninger), eller installere `GNU core utilities` 
+http://www.gnu.org/software/coreutils/
+
+Kjør `mvn clean deploy -P[MiljøNavn]` for å bygge war fil.
+  
+### Linux/Mac 
+Sørg for at du har riktige versjoner av Node og NPM så skal  `mvn clean deploy -P[MiljøNavn]` være tilstrekkelig for å bygge en war fil. 
+
+###  Generelt
+Klass Web bygges til en War fil og i tillegg til de statiske filene JS/html filene så inkluderes det en Java servlet som tar for seg omskriving av url (urlrewritefilter) slik at vi slipper `#!` eller andre parameter i urlen
+Klass Web bygges per miljø, dersom en skal lage en release kan `build-and-deploy-all.sh` script benyttes.
+
+## Feilsøking
+Har du problemer med å bygge kan det være at du har for ny versjon av node eller NPM. Eldre versjoner kan lastes ned fra nodejs sine sider.
+https://nodejs.org/dist/ 
+Alternativt kan en bruke NVM (Node Version Manager) til å bytte versjon
+
+[NVM for Windows](https://github.com/coreybutler/nvm-windows)
+
+[NVM for Mac/Linux](https://github.com/creationix/nvm)
+
