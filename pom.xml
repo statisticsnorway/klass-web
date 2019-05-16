@@ -128,6 +128,8 @@
                             <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
                             <versionTagPrefix>KlassWeb-</versionTagPrefix>
                         </flowInitContext>
+                        <pushReleases>true</pushReleases>
+                        <scmCommentPrefix>[RELEASE]-</scmCommentPrefix>
                     </configuration>
                 </plugin>
             </plugins>
