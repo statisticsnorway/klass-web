@@ -7,8 +7,8 @@ import configureStore from "./store/configureStore";
 import {Router, useRouterHistory} from "react-router";
 import createBrowserHistory from "history/lib/createBrowserHistory";
 import counterpart from "counterpart";
-import SSBHeader from "./SSBHeader";
-import SSBFooter from "./SSBFooter";
+import SSBHeader from "./ssbHeader";
+import SSBFooter from "./ssbFooter";
 
 import routes from "./routes";
 import ReactGA from "react-ga";
