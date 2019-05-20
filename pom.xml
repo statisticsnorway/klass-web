@@ -129,6 +129,7 @@
                             <versionTagPrefix>KlassWeb-</versionTagPrefix>
                         </flowInitContext>
                         <pushReleases>true</pushReleases>
+                        <noDeploy>true</noDeploy>
                         <scmCommentPrefix>[RELEASE]-</scmCommentPrefix>
                     </configuration>
                 </plugin>
