@@ -341,6 +341,70 @@
             </build>
         </profile>
         <profile>
+            <id>utv</id>
+            <properties>
+                <klass.env.name>utv</klass.env.name>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/js/config/</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/env/config/utv/</directory>
+                                        </resource>
+                                    </resources>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>utv-no-cache</id>
+            <properties>
+                <klass.env.name>utv</klass.env.name>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/js/config/</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/env/config/utv_nocache/</directory>
+                                        </resource>
+                                    </resources>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
