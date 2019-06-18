@@ -24,6 +24,9 @@ export function getClassification(id) {
             headers: {
                 Accept: 'application/json'
             },
+            params: {
+                includeFuture: 'true'
+            },
             id: id,
             types: [types.SELECTED_CLASS_REQUEST, types.SELECTED_CLASS_SUCCESS, types.SELECTED_CLASS_FAILURE]
         }
