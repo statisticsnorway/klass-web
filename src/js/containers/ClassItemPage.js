@@ -1,8 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Translate from "react-translate-component";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import Sidebar from "../components/Sidebar";
 import Tabs from "../components/Tabs";
 import * as ClassActions from "../actions";
@@ -11,7 +11,7 @@ import moment from "moment";
 import counterpart from 'counterpart'
 
 function loadData(props, selectedLanguage) {
-    const {params, actions} = props
+    const { params, actions } = props
     if (selectedLanguage) {
         sessionStorage.setItem('selectedAPILanguage', selectedLanguage)
     }
@@ -23,7 +23,7 @@ function loadData(props, selectedLanguage) {
             if (v.published.indexOf(selectedLang) == -1) {
                 // sessionStorage.setItem('selectedAPILanguage', classification.primaryLanguage)
                 return classification.primaryLanguage;
-            }else {
+            } else {
                 // sessionStorage.setItem('selectedAPILanguage', selectedLang)
                 return selectedLang;
             }
@@ -35,13 +35,16 @@ function loadData(props, selectedLanguage) {
         const classification = res.response
         if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
             let selectedVersion = classification.versions[0];
+            
+            // Find the right version to use
+            let versionId = params.versionId;
+            let currentValidVersion = classification.versions.filter((v) => moment(new Date()).isBetween(v.validFrom, v.validTo, 'day', []));
+            if (!versionId && !_.isEmpty(currentValidVersion)) {
+                versionId = _.head(currentValidVersion).id
+            }
+
             // if desired language is not published fetch primary instead
             let overrideLanguage = checkPublishStatus(selectedVersion, classification);
-            let versionId = params.versionId;
-            if (!versionId) {
-                const url = classification.versions[0]._links.self.href
-                versionId = url.substring(url.lastIndexOf('/') + 1, url.length)
-            }
             _.forEach(classification.versions, function (v) {
                 if (v.id == versionId) {
                     overrideLanguage = checkPublishStatus(v, classification);
@@ -88,7 +91,7 @@ class ClassItemPage extends Component {
         // In the case of what this question actually asks:
         if (element === null) return;
         const hasOverflowingChildren = element.offsetHeight < element.scrollHeight
-                                    || element.offsetWidth < element.scrollWidth;
+            || element.offsetWidth < element.scrollWidth;
         if (!hasOverflowingChildren
             && ReactDOM.findDOMNode(this.refs.descLink).getAttribute("class") !== 'hide') {
             ReactDOM.findDOMNode(this.refs.descLink).setAttribute('class', 'hide');
@@ -96,7 +99,7 @@ class ClassItemPage extends Component {
     }
 
     renderTabs() {
-        const {classification, selectedVersion, actions, isFetching, params, modal} = this.props
+        const { classification, selectedVersion, actions, isFetching, params, modal } = this.props
         if ((_.isEmpty(selectedVersion.version) || (params.versionId && selectedVersion.version.id !== params.versionId)) && selectedVersion.isFetching) {
             return (
                 <div className="spinner">
@@ -114,7 +117,7 @@ class ClassItemPage extends Component {
                 actions={actions}
                 isFetchingClass={isFetching}
                 params={params}
-                modal={modal}/>
+                modal={modal} />
         )
     }
 
@@ -131,7 +134,7 @@ class ClassItemPage extends Component {
     }
 
     render() {
-        const {classification, selectedVersion, isFetching, actions, params} = this.props
+        const { classification, selectedVersion, isFetching, actions, params } = this.props
 
         let breadcrumbStep = document.getElementsByClassName('step')
 
@@ -140,7 +143,7 @@ class ClassItemPage extends Component {
                 breadcrumbStep[breadcrumbStep.length - 1].textContent = ""
             }
             return (
-                <Translate component="p" content="CLASSIFICATIONS.NO_CLASS_FOUND"/>
+                <Translate component="p" content="CLASSIFICATIONS.NO_CLASS_FOUND" />
             )
         }
 
@@ -165,14 +168,14 @@ class ClassItemPage extends Component {
             <div className="content klass-item">
                 <div className="main">
                     <div className="heading">
-                        <p><Translate content="CLASSIFICATIONS.STATISTICAL_UNIT"/>:{' '}
+                        <p><Translate content="CLASSIFICATIONS.STATISTICAL_UNIT" />:{' '}
                             <b>{classification.statisticalUnits[0]}</b></p>
                         <h1>{classification.name}</h1>
                         <p className="description short" ref="description">{classification.description}</p>
                         <p className="clickable" ref="descLink" onClick={(ev) => this.showFullDescription(ev)}>+
-                            <Translate content="CLASS_ITEM.READ_MORE"/></p>
+                            <Translate content="CLASS_ITEM.READ_MORE" /></p>
                         <p className="hide" ref="shortDescLink" onClick={(ev) => this.hideFullDescription(ev)}>-
-                            <Translate content="CLASS_ITEM.READ_LESS"/></p>
+                            <Translate content="CLASS_ITEM.READ_LESS" /></p>
                     </div>
                     {this.renderTabs()}
                 </div>
@@ -181,8 +184,8 @@ class ClassItemPage extends Component {
                     languages={selectedVersion.version.published}
                     onLanguageChange={loadData}
                     actions={actions}
-                    params={params}/>
-                <div className="clear-fix"/>
+                    params={params} />
+                <div className="clear-fix" />
             </div>
         )
     }
