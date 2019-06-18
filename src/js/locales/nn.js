@@ -118,7 +118,8 @@ module.exports = {
       BACK_TO_VARIANTS: 'Tilbake til alle varianter'
     },
     VERSIONS: {
-      STILL_VALID: 'Forstatt gyldig',
+      STILL_VALID: 'Fortsatt gyldig',
+      VERSION_FUTURE: 'Fremtidig versjon',
       VERSIONS: 'Andre versjoner',
       OTHER_VERSIONS_OF: 'Alle versjoner av'
     }

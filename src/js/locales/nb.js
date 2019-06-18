@@ -182,6 +182,7 @@ module.exports = {
     },
     VERSIONS: {
       STILL_VALID: 'Fortsatt gyldig',
+      VERSION_FUTURE: 'Fremtidig versjon',
       VERSIONS: 'Alle versjoner',
       OTHER_VERSIONS_OF: 'Alle versjoner av'
     }
