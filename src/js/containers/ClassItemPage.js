@@ -33,9 +33,9 @@ function loadData(props, selectedLanguage) {
 
     actions.getClassification(params.classId).then(function (res) {
         const classification = res.response
-        if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
-            let selectedVersion = classification.versions[0];
-            
+      if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
+        let selectedVersion = classification.versions[0];
+
             // Find the right version to use
             let versionId = params.versionId;
             let currentValidVersion = classification.versions.filter((v) => moment(new Date()).isBetween(v.validFrom, v.validTo, 'day', []));
@@ -43,8 +43,8 @@ function loadData(props, selectedLanguage) {
                 versionId = _.head(currentValidVersion).id
             }
 
-            // if desired language is not published fetch primary instead
-            let overrideLanguage = checkPublishStatus(selectedVersion, classification);
+        // if desired language is not published fetch primary instead
+        let overrideLanguage = checkPublishStatus(selectedVersion, classification);
             _.forEach(classification.versions, function (v) {
                 if (v.id == versionId) {
                     overrideLanguage = checkPublishStatus(v, classification);
@@ -55,10 +55,16 @@ function loadData(props, selectedLanguage) {
             // if desired language is not published fetch primary instead
             actions.loadVersion(versionId, overrideLanguage)
 
+            var toDate = '';
+            if(selectedVersion.validTo != undefined){
+              toDate = moment(selectedVersion.validTo).isValid() ? moment(selectedVersion.validTo).format('YYYY-MM-DD') : '';
+            }
+
             if (!_.isEmpty(selectedVersion)) {
                 const query = {
                     from: moment(selectedVersion.validFrom).subtract(1, 'days').format('YYYY-MM-DD'),
-                    to: moment(selectedVersion.validTo).isValid() ? moment(selectedVersion.validTo).format('YYYY-MM-DD') : ''
+                    to: toDate,
+                    includeFuture: true
                 }
                 actions.loadChanges(params.classId, query, overrideLanguage)
             }
