@@ -1,16 +1,17 @@
-import React, {Component, PropTypes} from "react";
+import React, { Component, PropTypes } from "react";
 import Translate from "react-translate-component";
-import {Link} from "react-router";
+import { Link } from "react-router";
 import moment from "moment";
+import _ from 'lodash'
 
 class Versions extends Component {
   renderTableBody() {
-    const {classification} = this.props
+    const { classification } = this.props
     const url = classification._links.self.href;
     const classificationId = url.substring(url.lastIndexOf("/") + 1, url.length);
     const versions = classification.versions
 
-    return versions.sort((a, b) => b.id - a.id).map(function (version, key) {
+    return _.orderBy(versions, ['validFrom'], ['desc']).map(function (version, key) {
       return (
         <tr key={key}>
           <td>{moment(version.validFrom).format('MMMM YYYY')}</td>
@@ -26,21 +27,21 @@ class Versions extends Component {
   }
 
   render() {
-    const {classification} = this.props
+    const { classification } = this.props
 
     return (
       <div>
-        <h3><Translate content="TABS.VERSIONS.OTHER_VERSIONS_OF"/> {classification.name}</h3>
+        <h3><Translate content="TABS.VERSIONS.OTHER_VERSIONS_OF" /> {classification.name}</h3>
         <table className="versions-table alternate">
           <thead>
-          <tr>
-            <Translate component="th" content="TABS.VALID_FROM"/>
-            <Translate component="th" content="TABS.VALID_TO"/>
-            <Translate component="th" content="COMMON.NAME"/>
-          </tr>
+            <tr>
+              <Translate component="th" content="TABS.VALID_FROM" />
+              <Translate component="th" content="TABS.VALID_TO" />
+              <Translate component="th" content="COMMON.NAME" />
+            </tr>
           </thead>
           <tbody>
-          {this.renderTableBody()}
+            {this.renderTableBody()}
           </tbody>
         </table>
       </div>
@@ -51,13 +52,13 @@ class Versions extends Component {
 }
 
 function ValidToText(validFrom, validTo) {
-  let versionState = getVersionState(validFrom,validTo);
+  let versionState = getVersionState(validFrom, validTo);
 
   switch (versionState) {
     case 'future':
-      return <Translate content="TABS.VERSIONS.VERSION_FUTURE"/>
+      return <Translate content="TABS.VERSIONS.VERSION_FUTURE" />
     case 'current':
-      return <Translate content="TABS.VERSIONS.STILL_VALID"/>
+      return <Translate content="TABS.VERSIONS.STILL_VALID" />
     case 'expired':
       return moment(validTo).format('MMMM YYYY')
   }
@@ -69,18 +70,18 @@ function getVersionState(validFrom, validTo) {
   let versionState = null;
 
   if (validTo == null) {
-    if(moment(validFrom).isAfter(new Date())){
+    if (moment(validFrom).isAfter(new Date())) {
       versionState = "future"
-    } else{
+    } else {
       versionState = "current"
     }
-  }else{
-    if(moment(validFrom).isAfter(new Date())){
+  } else {
+    if (moment(validFrom).isAfter(new Date())) {
       versionState = "future"
-    }else{
-      if(moment(validTo).isBefore(new Date())){
+    } else {
+      if (moment(validTo).isBefore(new Date())) {
         versionState = "expired"
-      } else{
+      } else {
         versionState = "current"
       }
     }
