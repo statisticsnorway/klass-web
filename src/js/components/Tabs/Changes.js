@@ -119,9 +119,10 @@ class Changes extends Component {
     }
 
 	render () {
-		const { classification, params } = this.props
-        let selectedChanges = classification.versions[0]
-        let previousVersion = classification.versions[1]
+		const { classification, params, selectedVersion } = this.props
+    let selectedVersionIndex = classification.versions.findIndex(obj => obj.id == selectedVersion.version.id)
+    let selectedChanges = classification.versions[selectedVersionIndex]
+    let previousVersion = classification.versions[selectedVersionIndex + 1]
 
 		if (params.versionId) {
             _.forEach(classification.versions, function(v, i) {
