@@ -27,16 +27,16 @@ class Tabs extends Component {
             return (
                 <div className="version-info">
                     <Translate component="p" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />
-                    <div><Translate component="span" content="TABS.VERSION_EXPIRED" />: <b>({moment(version.validFrom).format("MMMM YYYY")} - {moment(version.validTo).format("MMMM YYYY")})</b></div>
+                    <p><Translate component="span" content="TABS.VERSION_EXPIRED" />: <b>({moment(version.validFrom).format("MMMM YYYY")} - {moment(version.validTo).format("MMMM YYYY")})</b></p>
                 </div>
             )
         }
         if (validFrom != null && moment(validFrom).isAfter(new Date())) {
             return (
-                <div className="version-info">
-                    <Translate component="p" content="TABS.VERSION_NOT_YET_VALID" className="green-box" />
-                    <div><Translate component="span" content="TABS.VERSION_FUTURE" />: <b>({moment(validFrom).format("MMMM YYYY")} - {moment(validTo).format("MMMM YYYY")})</b></div>
-                </div>
+              <div className="version-info">
+                <Translate component="p" content="TABS.VERSION_NOT_YET_VALID" className="green-box" />
+                <p><Translate component="span" content="TABS.VERSION_FUTURE" />: <b>(<Translate content="TABS.VALID_FROM" /> {moment(version.validFrom).format("MMMM YYYY")})</b></p>
+              </div>
             )
         }
         else {
