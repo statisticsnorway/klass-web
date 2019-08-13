@@ -17,50 +17,61 @@ import 'moment/locale/nn.js'
 
 class Tabs extends Component {
 
-	renderVersionInfo () {
-		const { selectedVersion } = this.props
-		const version = selectedVersion.version
+    renderVersionInfo() {
+        const { selectedVersion } = this.props
+        const version = selectedVersion.version
         let validTo = version.validTo;
-        if (validTo != null || moment(validTo).isAfter(new Date())) {
-			return (
-				<div className="version-info">
-					<Translate component="p" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />
-					<div><Translate component="span" content="TABS.VERSION_EXPIRED" />: <b>({moment(version.validFrom).format("MMMM YYYY")} - {moment(version.validTo).format("MMMM YYYY")})</b></div>
-				</div>
-			)
-		} else {
-			return (
-				<p className="version-info">
-					<Translate component="span" content="TABS.CURRENT_VERSION" />: <b>(<Translate content="TABS.VALID_FROM" /> {moment(version.validFrom).format("MMMM YYYY")})</b>
-				</p>
-			)
-		}
-	}
+        let validFrom = version.validFrom;
 
-	onActivate (tabIndex) {
-		const { params } = this.props
-		const classPath = '/' + params.classId
-		const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
-		const tabPath = '/' + tabIndex
-		const path = "/klassifikasjoner" + classPath + versionPath + tabPath
+        if (validTo != null && moment(validTo).isBefore(new Date())) {
+            return (
+                <div className="version-info">
+                    <Translate component="p" content="TABS.VERSION_NO_LONGER_VALID" className="red-box" />
+                    <p><Translate component="span" content="TABS.VERSION_EXPIRED" />: <b>({moment(version.validFrom).format("MMMM YYYY")} - {moment(version.validTo).format("MMMM YYYY")})</b></p>
+                </div>
+            )
+        }
+        if (validFrom != null && moment(validFrom).isAfter(new Date())) {
+            return (
+              <div className="version-info">
+                <Translate component="p" content="TABS.VERSION_NOT_YET_VALID" className="green-box" />
+                <p><Translate component="span" content="TABS.VERSION_FUTURE" />: <b>(<Translate content="TABS.VALID_FROM" /> {moment(version.validFrom).format("MMMM YYYY")})</b></p>
+              </div>
+            )
+        }
+        else {
+            return (
+                <p className="version-info">
+                    <Translate component="span" content="TABS.CURRENT_VERSION" />: <b>(<Translate content="TABS.VALID_FROM" /> {moment(version.validFrom).format("MMMM YYYY")})</b>
+                </p>
+            )
+        }
+    }
 
-		this.context.router.push(path)
-	}
+    onActivate(tabIndex) {
+        const { params } = this.props
+        const classPath = '/' + params.classId
+        const versionPath = params.versionId ? '/versjon/' + params.versionId : ''
+        const tabPath = '/' + tabIndex
+        const path = "/klassifikasjoner" + classPath + versionPath + tabPath
 
-	render () {
+        this.context.router.push(path)
+    }
+
+    render() {
         if (sessionStorage.getItem('selectedLanguage')) {
             moment.locale(sessionStorage.getItem('selectedLanguage'))
         } else {
             moment.locale('nb')
         }
 
-		const { classification, selectedVersion, actions, isFetchingClass, params, modal } = this.props
+        const { classification, selectedVersion, actions, isFetchingClass, params, modal } = this.props
 
-		if (isFetchingClass) {
-			return <Translate component="div" content="TABS.LOADING_CURRENT_VERSION" />
-		} else if (_.isEmpty(selectedVersion.version)){
-			return <Translate content="TABS.VERSIONS_NOT_FOUND" component="p" />
-		}
+        if (isFetchingClass) {
+            return <Translate component="div" content="TABS.LOADING_CURRENT_VERSION" />
+        } else if (_.isEmpty(selectedVersion.version)) {
+            return <Translate content="TABS.VERSIONS_NOT_FOUND" component="p" />
+        }
 
         const tabDescriptions = [
             {
@@ -119,10 +130,10 @@ class Tabs extends Component {
 
         return (
             <div className="tabs">
-				{this.renderVersionInfo()}
-				<h2>{selectedVersion.version.name}</h2>
+                {this.renderVersionInfo()}
+                <h2>{selectedVersion.version.name}</h2>
 
-				<div className="tab-content">
+                <div className="tab-content">
                     <Wrapper onChange={this.onActivate.bind(this)} activeTabId={tabIndex}>
                         <TabList>
                             <ul>
@@ -137,20 +148,20 @@ class Tabs extends Component {
             </div>
         )
 
-	}
+    }
 }
 
 Tabs.propTypes = {
-	selectedVersion: PropTypes.object.isRequired,
-	classification: PropTypes.object.isRequired,
-	params: PropTypes.object.isRequired,
-	actions: PropTypes.object.isRequired,
-	modal: PropTypes.object.isRequired,
-	isFetchingClass: PropTypes.bool.isRequired
+    selectedVersion: PropTypes.object.isRequired,
+    classification: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
+    modal: PropTypes.object.isRequired,
+    isFetchingClass: PropTypes.bool.isRequired
 }
 
 Tabs.contextTypes = {
-	router: PropTypes.object
+    router: PropTypes.object
 }
 
 export default Tabs

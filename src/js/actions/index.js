@@ -8,8 +8,8 @@ export function loadSubjects(params) {
             method: 'get',
             endpoint: '/classificationfamilies',
             headers: {
-                    Accept: 'application/json'
-           },
+                Accept: 'application/json'
+            },
             params: params,
             types: [types.SUBJECTS_REQUEST, types.SUBJECTS_SUCCESS, types.SUBJECTS_FAILURE]
         }
@@ -23,6 +23,9 @@ export function getClassification(id) {
             endpoint: `/classifications/${id}`,
             headers: {
                 Accept: 'application/json'
+            },
+            params: {
+                includeFuture: 'true'
             },
             id: id,
             types: [types.SELECTED_CLASS_REQUEST, types.SELECTED_CLASS_SUCCESS, types.SELECTED_CLASS_FAILURE]
@@ -39,7 +42,10 @@ function fetchClassification(url, id, params) {
             headers: {
                 Accept: 'application/json'
             },
-            params: params,
+            params: {
+                params,
+                includeFuture: 'true'
+            },
             id: id,
             types: [types.SUBJECTS_REQUEST, types.SUBJECTS_SUCCESS, types.SUBJECTS_FAILURE]
         }
@@ -110,6 +116,9 @@ export function loadVersion(id, languageOverride) {
             headers: {
                 Accept: 'application/json'
             },
+            params: {
+                includeFuture: 'true'
+            },
             id: id,
             language: languageOverride,
             types: [types.SELECTED_VERSION_REQUEST, types.SELECTED_VERSION_SUCCESS, types.SELECTED_VERSION_FAILURE]
@@ -155,7 +164,7 @@ export function setSearchObject(search) {
 export function searchCode(query, tab) {
     return {
         type: types.SEARCH_CODE,
-        tab : tab,
+        tab: tab,
         query: query
     }
 }
@@ -227,7 +236,7 @@ function toggleModal(bool, item, contentType) {
 }
 
 export function subscribe(classId, email) {
-    const params = {email: email}
+    const params = { email: email }
     let url = '/classifications/' + classId + '/trackChanges'
     return {
         [CALL_API]: {
