@@ -1,60 +1,98 @@
-import React, {Component, PropTypes} from "react";
+import React, { Component, PropTypes } from "react";
 import Translate from "react-translate-component";
-import {Link} from "react-router";
+import { Link } from "react-router";
 import moment from "moment";
+import _ from 'lodash'
 
 class Versions extends Component {
-    renderTableBody() {
-        const {classification} = this.props
-        const url = classification._links.self.href;
-        const classificationId = url.substring(url.lastIndexOf("/") + 1, url.length);
-        const versions = classification.versions
+  renderTableBody() {
+    const { classification } = this.props
+    const url = classification._links.self.href;
+    const classificationId = url.substring(url.lastIndexOf("/") + 1, url.length);
+    const versions = classification.versions
 
-        return versions.map(function (version, key) {
-            return (
-                <tr key={key}>
-                    <td>{moment(version.validFrom).format('MMMM YYYY')}</td>
-                    <td>{
-                        version.validTo !== undefined && moment(version.validTo).isValid()
-                            ? moment(version.validTo).format('MMMM YYYY')
-                            : <Translate content="TABS.VERSIONS.STILL_VALID"/>
-                    }</td>
-                    <td>
-                        <Link to={`/klassifikasjoner/${classificationId}/versjon/${version.id}`}>
-                            {version.name}
-                        </Link>
-                    </td>
-                </tr>
-            )
-        })
+    return _.orderBy(versions, ['validFrom'], ['desc']).map(function (version, key) {
+      return (
+        <tr key={key}>
+          <td>{moment(version.validFrom).format('MMMM YYYY')}</td>
+          <td>{ValidToText(version.validFrom, version.validTo)}</td>
+          <td>
+            <Link to={`/klassifikasjoner/${classificationId}/versjon/${version.id}`}>
+              {version.name}
+            </Link>
+          </td>
+        </tr>
+      )
+    })
+  }
+
+  render() {
+    const { classification } = this.props
+
+    return (
+      <div>
+        <h3><Translate content="TABS.VERSIONS.OTHER_VERSIONS_OF" /> {classification.name}</h3>
+        <table className="versions-table alternate">
+          <thead>
+            <tr>
+              <Translate component="th" content="TABS.VALID_FROM" />
+              <Translate component="th" content="TABS.VALID_TO" />
+              <Translate component="th" content="COMMON.NAME" />
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderTableBody()}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
+
+}
+
+function ValidToText(validFrom, validTo) {
+  let versionState = getVersionState(validFrom, validTo);
+
+  switch (versionState) {
+    case 'future':
+      return <Translate content="TABS.VERSIONS.VERSION_FUTURE" />
+    case 'current':
+      return <Translate content="TABS.VERSIONS.STILL_VALID" />
+    case 'expired':
+      return moment(validTo).format('MMMM YYYY')
+  }
+
+}
+
+function getVersionState(validFrom, validTo) {
+
+  let versionState = null;
+
+  if (validTo == null) {
+    if (moment(validFrom).isAfter(new Date())) {
+      versionState = "future"
+    } else {
+      versionState = "current"
     }
-
-    render() {
-        const {classification} = this.props
-
-        return (
-            <div>
-                <h3><Translate content="TABS.VERSIONS.OTHER_VERSIONS_OF"/> {classification.name}</h3>
-                <table className="versions-table alternate">
-                    <thead>
-                    <tr>
-                        <Translate component="th" content="TABS.VALID_FROM"/>
-                        <Translate component="th" content="TABS.VALID_TO"/>
-                        <Translate component="th" content="COMMON.NAME"/>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.renderTableBody()}
-                    </tbody>
-                </table>
-            </div>
-        )
+  } else {
+    if (moment(validFrom).isAfter(new Date())) {
+      versionState = "future"
+    } else {
+      if (moment(validTo).isBefore(new Date())) {
+        versionState = "expired"
+      } else {
+        versionState = "current"
+      }
     }
+  }
+
+  return versionState;
 }
 
 Versions.propTypes = {
-    classification: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+  classification: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 }
 
 export default Versions

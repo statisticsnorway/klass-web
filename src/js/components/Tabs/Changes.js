@@ -119,15 +119,17 @@ class Changes extends Component {
     }
 
 	render () {
-		const { classification, params } = this.props
-        let selectedChanges = classification.versions[0]
-        let previousVersion = classification.versions[1]
+		const { classification, params, selectedVersion } = this.props
+    const versionsSorted = classification.versions.sort((a, b) => (a.validFrom < b.validFrom) ? 1 : -1)
+    let selectedVersionIndex = versionsSorted.findIndex(obj => obj.id == selectedVersion.version.id)
+    let selectedChanges = versionsSorted[selectedVersionIndex]
+    let previousVersion = versionsSorted[selectedVersionIndex + 1]
 
 		if (params.versionId) {
-            _.forEach(classification.versions, function(v, i) {
+            _.forEach(versionsSorted, function(v, i) {
                 if (v.id == params.versionId) {
                     selectedChanges = v
-                    previousVersion = classification.versions[i+1]
+                    previousVersion = versionsSorted[i+1]
                     return false
                 }
             })

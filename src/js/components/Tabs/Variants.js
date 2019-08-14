@@ -129,15 +129,23 @@ class Variants extends Component {
             )
     }
 
-    showWarningIfExpired(validTo) {
-        if (validTo != null || moment(validTo).isAfter(new Date())) {
-            return (
-				<div className="version-info">
-					<Translate component="p" content="TABS.VARIANT_NO_LONGER_VALID" className="red-box" />
-				</div>
-            )
-        }
-    }
+		showWarning(validFrom, validTo) {
+      if (validTo != null && moment(validTo).isBefore(new Date())) {
+				return (
+					<div className="version-info">
+						<Translate component="p" content="TABS.VARIANT_NO_LONGER_VALID" className="red-box" />
+					</div>
+				)
+			}
+
+      if (validFrom != null && moment(validFrom).isAfter(new Date())) {
+        return (
+          <div className="version-info">
+            <Translate component="p" content="TABS.VARIANT_NOT_YET_VALID" className="green-box" />
+          </div>
+        )
+      }
+		}
 
 	render () {
 		const { selectedVersion, params } = this.props
@@ -169,7 +177,7 @@ class Variants extends Component {
 					<p className="back-link">
 						&lt;&lt; <Translate component="a" content="TABS.VARIANTS.BACK_TO_VARIANTS" href="javascript:history.back()" />
 					</p>
-					{this.showWarningIfExpired(selectedVariant.validTo)}
+          {this.showWarning(selectedVariant.validFrom ,selectedVariant.validTo)}
 					<h3>{selectedVariant.name}</h3>
 					<p>
                         <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedVariant.contactPerson.name}<br/>
