@@ -43,7 +43,7 @@ function fetchClassification(url, id, params) {
                 Accept: 'application/json'
             },
             params: {
-                params,
+                ...params,
                 includeFuture: 'true'
             },
             id: id,
