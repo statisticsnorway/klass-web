@@ -9,8 +9,7 @@ const API_LOCAL_ROOT = config.API_LOCAL_BASE_URL;
 
 function callApi(endpoint, method, headers, params, frontpage) {
 	const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-
-
+	
     // only set language if we have not defined a language (allows us to override)
     if (typeof params["language"] === "undefined") {
 		if (sessionStorage.getItem('selectedLanguage')) {
@@ -21,13 +20,9 @@ function callApi(endpoint, method, headers, params, frontpage) {
 		}
 	}
 
-	let apiParams = '';
-	if (!_.isEmpty(params)) {
-		apiParams = '?';
-		apiParams += Object.keys(params).map(function(key){
-			return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
-		}).join('&');
-	}
+	let apiParams = _.isEmpty(params) ? ''
+		: '?' + Object.keys(params).filter(key => params[key]).map(key =>
+			`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join('&');
 
 	return fetch(fullUrl + apiParams, {
             method: method,
