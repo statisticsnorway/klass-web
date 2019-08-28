@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.ssb.klass</groupId>
     <artifactId>klass-web-${klass.env.name}</artifactId>
-    <version>1.13.2</version>
+    <version>1.13.3-SNAPSHOT</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
