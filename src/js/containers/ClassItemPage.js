@@ -33,15 +33,18 @@ function loadData(props, selectedLanguage) {
 
     actions.getClassification(params.classId).then(function (res) {
         const classification = res.response
-      if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
+        if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
         let selectedVersion = classification.versions[0];
 
-            // Find the right version to use
-            let versionId = params.versionId;
-            let currentValidVersion = classification.versions.filter((v) => moment(new Date()).isBetween(v.validFrom, v.validTo, 'day', []));
-            if (!versionId && !_.isEmpty(currentValidVersion)) {
-                versionId = _.head(currentValidVersion).id
-            }
+        // Find a valid version to use, if none the first in the versions list remains
+            // TODO: 1. separate as a function to utils, 2. choose the latest (valid or not), 3. test
+        let versionId = params.versionId;
+        if (!versionId) {
+              let currentValidVersion = classification.versions.filter((v) => moment(new Date()).isBetween(v.validFrom, v.validTo, 'day', []));
+              versionId = !_.isEmpty(currentValidVersion)
+                  ? _.head(currentValidVersion).id
+                  : selectedVersion.id;
+        }
 
         // if desired language is not published fetch primary instead
         let overrideLanguage = checkPublishStatus(selectedVersion, classification);
