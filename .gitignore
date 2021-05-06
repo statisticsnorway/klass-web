@@ -10,3 +10,6 @@ src/styles/ssb/*.scss
 src/styles/ssb/*.css.map
 target/
 node/
+.classpath
+.project
+.settings/
