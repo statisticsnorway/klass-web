@@ -26,7 +26,7 @@ module.exports = {
     FOOTER: {
       NEWSLETTER: 'News via e-mail',
       SITEMAP: 'site map',
-      COPYRIGHT: '2016 © Statistics Norway'
+      COPYRIGHT: '2021 © Statistics Norway'
     }
   },
   COMMON: {
