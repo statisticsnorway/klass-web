@@ -65,7 +65,8 @@ module.exports = {
     CLASS_DESCRIPTION:
       'A statistical classification is “official”, and its elements are mutually exclusive and complete. Code lists are not "official" and may be fitted to one specific statistic. Code lists may be included in the search process by ticking off the box. Note that the amount of search results can be vast, including a lot of code lists adapted to specific Statistics Norway needs.',
     API_LINK_TEXT: 'Klass API guide.',
-    API_POST_LINK_TEXT: ' REST API with the formats JSON, XML and CSV'
+    API_POST_LINK_TEXT: ' REST API with the formats JSON, XML and CSV',
+    OM_KLASS_LINK_TEXT: 'More about our system for classifications and code lists'
   },
   CLASS_ITEM: {
     LOADING_CURRENT_VERSION: 'Loading current version...',

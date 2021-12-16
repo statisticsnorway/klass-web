@@ -66,7 +66,8 @@ module.exports = {
     CLASS_DESCRIPTION:
       'Klassifikasjoner er "offisielle" kodeverk der kategoriene skal være gjensidig utelukkende og uttømmende. Kodelister er ikke "offisielle", de kan være tilpasset en spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpasset spesielle behov i SSB.',
     API_LINK_TEXT: 'KLASS API guide.',
-    API_POST_LINK_TEXT: ' REST-API med formatene XML, JSON og CSV.'
+    API_POST_LINK_TEXT: ' REST-API med formatene XML, JSON og CSV.',
+    OM_KLASS_LINK_TEXT: 'Mer om SSBs system for klassifikasjoner og kodelister'
   },
   CLASS_ITEM: {
     LOADING_CURRENT_VERSION: 'Laster gjeldende versjon...',
