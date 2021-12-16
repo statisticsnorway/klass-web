@@ -32,7 +32,8 @@ module.exports = {
     CHOOSE_CLASS_FAMILY: 'Eller velg et område',
     CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister',
     CLASS_DESCRIPTION:
-      'Lorem ipsum, her må det skrives en bedre tekst. I denne databasen kan du velge statistiske standarder og få informasjon om bruksområdet. Standardene kan også lastes ned til lokal bruk i et antall formater.'
+      'Klassifikasjoner er "offisielle" kodeverk der kategoriane skal være gjensidig utelukkande og uttømmande. Kodelister er ikkje "offisielle", dei kan være tilpasset ein spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpassa spesielle behov i SSB.',
+    OM_KLASS_LINK_TEXT: 'Mer om SSBs system for klassifikasjoner og kodelister'
   },
   CLASS_ITEM: {
     LOADING_CURRENT_VERSION: 'Laster gjeldende versjon...',
