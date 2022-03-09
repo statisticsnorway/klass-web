@@ -61,7 +61,6 @@
     "jsdom": "8.2.0",
     "minimist": "^1.2.0",
     "mocha": "2.4.5",
-    "node-sass": "3.4.2",
     "nodemon": "^1.9.1",
     "postcss-loader": "0.8.2",
     "protractor": "^4.0.3",
@@ -86,11 +85,14 @@
     "lodash": "4.6.1",
     "moment": "^2.13.0",
     "normalizr": "^2.0.1",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-addons-perf": "15.4.2",
     "react-aria-tabpanel": "^4.2.2",
     "react-bootstrap": "^0.30.2",
     "react-breadcrumbs": "^1.6.6",
     "react-dom": "^15.5.4",
+    "react-ga": "2.1.2",
     "react-interpolate-component": "^0.9.0",
     "react-redux": "^4.4.0",
     "react-router": "^3.0.0",
@@ -98,9 +100,6 @@
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "simple-react-modal": "^0.4.9",
-    "react-ga": "2.1.2",
-    "react-addons-perf": "15.4.2",
-    "prop-types": "^15.5.10"
+    "simple-react-modal": "^0.4.9"
   }
 }
