@@ -28,7 +28,7 @@
     "test-e2e": "./node_modules/.bin/protractor protractor.config.js"
   },
   "devDependencies": {
-    "babel-core": "6.5.2",
+    "babel-core": "^6.26.3",
     "babel-es6-polyfill": "^1.0.1",
     "babel-eslint": "4.1.8",
     "babel-loader": "6.2.3",
