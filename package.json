@@ -45,7 +45,7 @@
     "chai": "3.5.0",
     "chai-jquery": "2.0.0",
     "cheerio": "0.20.0",
-    "colors": "1.1.2",
+    "colors": "1.4.0",
     "compression": "^1.6.1",
     "copy-webpack-plugin": "4.0.1",
     "cors": "^2.7.1",
