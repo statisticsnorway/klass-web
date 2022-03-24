@@ -59,7 +59,7 @@
     "jquery": "2.2.2",
     "jscs": "2.10.1",
     "jsdom": "8.2.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "mocha": "2.4.5",
     "nodemon": "^1.9.1",
     "postcss-loader": "0.8.2",
