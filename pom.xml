@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.ssb.klass</groupId>
     <artifactId>klass-web-${klass.env.name}</artifactId>
-    <version>1.13.5</version>
+    <version>1.13.6-SNAPSHOT</version>
     <properties>
         <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
     </properties>
@@ -50,8 +50,8 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v4.4.5</nodeVersion>
-                            <npmVersion>5.0.4</npmVersion>
+                            <nodeVersion>v16.14.0</nodeVersion>
+                            <npmVersion>8.3.1</npmVersion>
                         </configuration>
                     </execution>
                     <execution>
