@@ -1,5 +1,5 @@
 {
-  "name": "klass-app",
+  "name": "klass-web",
   "description": "Klassifikasjoner og kodelister",
   "version": "1.0.0",
   "author": "Vu Mai",
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://git-adm.ssb.no/scm/klas/klass.ssb.no.git"
+    "url": "https://github.com/statisticsnorway/klass-web.git"
   },
   "scripts": {
     "clean:build": "rm -rf build && mkdir build",
