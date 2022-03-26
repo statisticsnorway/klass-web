@@ -27,7 +27,7 @@ const plugins = [
     }
   ]),
   // Shared code
-  new webpack.optimize.CommonsChunkPlugin( {name:"vendor", filename:"js/vendor.bundle.js"}),
+  new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'js/vendor.bundle.js' }),
   // Avoid publishing files when compilation fails
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin({
@@ -77,7 +77,7 @@ module.exports = {
           fallback: 'style-loader',
           use: [
             {
-              loader: 'css-loader',
+              loader: 'css-loader'
             },
             {
               loader: 'postcss-loader'

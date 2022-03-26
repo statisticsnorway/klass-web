@@ -11,7 +11,7 @@
     "goToUrl": true,
     "waitUntilIsElementPresent": true,
     "sinon": true,
-    define: true
+    "define": true
   },
 
   "env": {
