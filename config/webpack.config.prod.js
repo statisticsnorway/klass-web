@@ -2,7 +2,6 @@ require('babel-polyfill');
 
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -28,28 +27,21 @@ const plugins = [
     }
   ]),
   // Shared code
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
+  new webpack.optimize.CommonsChunkPlugin( {name:"vendor", filename:"js/vendor.bundle.js"}),
   // Avoid publishing files when compilation fails
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production'),
     __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
   }),
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
+    sourceMap: true,
     compress: {
       warnings: false
     }
   }),
   // This plugin moves all the CSS into a separate stylesheet
   new ExtractTextPlugin('css/app.css', { allChunks: true })
-];
-
-const sassLoaders = [
-  'css-loader?sourceMap',
-  'postcss-loader',
-  'sass-loader?outputStyle=compressed'
 ];
 
 module.exports = {
@@ -64,28 +56,54 @@ module.exports = {
     publicPath: '/klass-ssb-no/'
   },
   stats: {
-    colors: true
+    colors: true,
+    reasons: true
   },
   resolve: {
     // We can now require('file') instead of require('file.jsx')
-    extensions: ['', '.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx', '.scss']
   },
   module: {
     noParse: /\.min\.js$/,
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
+        loaders: ['react-hot-loader', 'babel-loader'],
         include: PATHS.app
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'postcss-loader'
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                outputStyle: 'compressed'
+              }
+            }
+          ]
+        })
       },
       {
         test: /\.css$/,
-        // include: PATHS.styles,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader'
+            }
+          ]
+        })
       },
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
@@ -99,10 +117,5 @@ module.exports = {
     ]
   },
   plugins: plugins,
-  postcss: function () {
-    return [autoprefixer({
-      browsers: ['last 2 versions']
-    })];
-  },
   devtool: 'source-map'
 };
