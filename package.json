@@ -61,7 +61,7 @@
     "jsdom": "^8.5.0",
     "minimist": "^1.2.6",
     "mocha": "^2.5.3",
-    "nodemon": "^1.19.4",
+    "nodemon": "^2.0.15",
     "postcss-loader": "~0.13.0",
     "protractor": "^4.0.14",
     "react-addons-test-utils": "^15.6.2",
