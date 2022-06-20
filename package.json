@@ -82,7 +82,7 @@
     "counterpart": "~0.17.9",
     "history": "^3.3.0",
     "humps": "^1.1.0",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
     "normalizr": "^2.3.1",
