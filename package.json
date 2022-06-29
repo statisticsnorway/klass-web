@@ -56,7 +56,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "~0.11.2",
     "jasmine-spec-reporter": "^2.7.0",
-    "jquery": "^2.2.4",
+    "jquery": "^3.6.0",
     "jscs": "^2.10.1",
     "jsdom": "^8.5.0",
     "minimist": "^1.2.6",
