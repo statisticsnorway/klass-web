@@ -3,7 +3,7 @@ require('babel-polyfill');
 const path = require('path');
 const webpack = require('webpack');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // App files location
@@ -26,22 +26,11 @@ const plugins = [
       to: 'static'
     }
   ]),
-  // Shared code
-  new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'js/vendor.bundle.js' }),
-  // Avoid publishing files when compilation fails
-  new webpack.NoEmitOnErrorsPlugin(),
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('production'),
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    sourceMap: true,
-    compress: {
-      warnings: false
-    }
-  }),
+
   // This plugin moves all the CSS into a separate stylesheet
-  new ExtractTextPlugin('css/app.css', { allChunks: true })
+  new MiniCssExtractPlugin({
+    filename: "css/[name].css"
+  }),
 ];
 
 module.exports = {
@@ -49,10 +38,10 @@ module.exports = {
     app: path.resolve(PATHS.app, 'main.js'),
     vendor: ['babel-polyfill', 'react']
   },
+  mode: "production",
   output: {
     path: PATHS.build,
     filename: 'js/[name].js',
-    sourceMapFilename: 'js/[name].js.map',
     publicPath: '/klass-ssb-no/'
   },
   stats: {
@@ -73,37 +62,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader'
-            },
-            {
-              loader: 'postcss-loader'
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                outputStyle: 'compressed'
-              }
-            }
-          ]
-        })
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader'
-            },
-            {
-              loader: 'postcss-loader'
-            }
-          ]
-        })
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
@@ -117,5 +80,6 @@ module.exports = {
     ]
   },
   plugins: plugins,
+  optimization: {},
   devtool: 'source-map'
 };

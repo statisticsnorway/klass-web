@@ -3,6 +3,7 @@ require('babel-polyfill');
 const path = require('path');
 const webpack = require('webpack');
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // App files location
@@ -25,17 +26,11 @@ const plugins = [
       to: 'static'
     }
   ]),
-  // Shared code
-  new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'js/vendor.bundle.js' }),
-  // Avoid publishing files when compilation fails
-  new webpack.NoEmitOnErrorsPlugin(),
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('development'),
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+
+  // This plugin moves all the CSS into a separate stylesheet
+  new MiniCssExtractPlugin({
+    filename: "css/[name].css"
   }),
-  new webpack.LoaderOptionsPlugin({
-    debug: true
-  })
 ];
 
 module.exports = {
@@ -43,6 +38,7 @@ module.exports = {
     app: path.resolve(PATHS.app, 'main.js'),
     vendor: ['babel-polyfill', 'react']
   },
+  mode: "development",
   output: {
     path: PATHS.build,
     filename: 'js/[name].js',
@@ -65,34 +61,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded'
-            }
-          }
-        ]
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader'
-          }
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
@@ -102,19 +75,20 @@ module.exports = {
     ]
   },
   plugins: plugins,
+  optimization: {},
   devtool: 'eval-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, '../src'),
     historyApiFallback: true,
     port: 3000
-	// proxy: {
-	// 	'/api/*': {
-	// 		// secure: false,
-	// 		// target: 'http://localhost:3001',
-	//     	rewrite: function(req) {
-	//       		req.url = req.url.replace(/^\/api/, '');
-	//     	}
-	// 	}
-	// }
+    // proxy: {
+    // 	'/api/*': {
+    // 		// secure: false,
+    // 		// target: 'http://localhost:3001',
+    //     	rewrite: function(req) {
+    //       		req.url = req.url.replace(/^\/api/, '');
+    //     	}
+    // 	}
+    // }
   }
 };
