@@ -84,7 +84,7 @@
     "humps": "^1.1.0",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
-    "moment": "^2.29.3",
+    "moment": "^2.29.4",
     "normalizr": "^2.3.1",
     "prop-types": "^15.8.1",
     "react": "^15.7.0",
