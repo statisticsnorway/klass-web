@@ -23,7 +23,6 @@
     "start": "webpack-dev-server --config ./config/webpack.config.dev.js --hot --progress",
     "prebuild": "npm run clean:build && npm run build:html",
     "build": "SET NODE_ENV=production& NODE_ENV=production& webpack --config ./config/webpack.config.prod.js --progress",
-    "jscs": "jscs src/js/",
     "lint": "eslint --ext .js --ext .jsx src test config",
     "test-e2e": "./node_modules/.bin/protractor protractor.config.js"
   },
@@ -52,7 +51,6 @@
     "express": "^4.18.1",
     "jasmine-spec-reporter": "^2.7.0",
     "jquery": "^2.2.4",
-    "jscs": "^2.10.1",
     "jsdom": "^8.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "minimist": "^1.2.6",
