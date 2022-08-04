@@ -1,10 +1,7 @@
-require('babel-polyfill');
-
 const path = require('path');
-const webpack = require('webpack');
-
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 // App files location
 const PATHS = {
@@ -16,28 +13,28 @@ const PATHS = {
 };
 
 const plugins = [
-  new CopyWebpackPlugin([
-    {
-      from: PATHS.images,
-      to: 'images'
-    },
-    {
-      from: PATHS.static,
-      to: 'static'
-    }
-  ]),
+  new CopyWebpackPlugin({
+    patterns: [
+      { from: PATHS.images, to: "images" },
+      { from: PATHS.static, to: "static" },
+    ],
+  }),
 
   // This plugin moves all the CSS into a separate stylesheet
   new MiniCssExtractPlugin({
     filename: "css/[name].css"
   }),
+
+  // Needed by counterpart
+  new NodePolyfillPlugin()
+
 ];
 
 module.exports = {
   entry: {
     app: path.resolve(PATHS.app, 'main.js'),
-    vendor: ['babel-polyfill', 'react']
-  },
+    vendor: ['react']
+    },
   mode: "development",
   output: {
     path: PATHS.build,
@@ -46,22 +43,24 @@ module.exports = {
   },
   stats: {
     colors: true,
-    reasons: true
+    reasons: true,
+    orphanModules: false,
   },
   resolve: {
     // We can now require('file') instead of require('file.jsx')
-    extensions: ['.js', '.jsx', '.scss']
-  },
+    extensions: ['.js', '.jsx', '.scss'],
+    },
   module: {
+    noParse: /\.min\.js$/,
     rules: [
       {
         test: /\.jsx?$/,
-        loaders: ['react-hot-loader', 'babel-loader'],
+        use: ['babel-loader'],
         include: PATHS.app
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.css$/,
@@ -69,8 +68,12 @@ module.exports = {
       },
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: 'url-loader?limit=8192'
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        type: 'asset'
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        type: 'asset'
       }
     ]
   },
@@ -78,7 +81,9 @@ module.exports = {
   optimization: {},
   devtool: 'eval-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, '../src'),
+    static: {
+      directory: path.resolve(__dirname, '../src'),
+    },
     historyApiFallback: true,
     port: 3000
     // proxy: {
