@@ -1,5 +1,6 @@
 import './Notes.scss'
-import React, { PureComponent, PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import _ from 'lodash'
 
 class Note extends PureComponent {
