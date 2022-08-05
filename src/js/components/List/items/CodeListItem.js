@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React from "react";
+import React, {PropTypes} from "react";
 import _ from "lodash";
 import Notes from "../../Notes";
 import CodeDate from "../../CodeDate";

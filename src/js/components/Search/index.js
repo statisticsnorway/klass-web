@@ -1,6 +1,5 @@
 import './Search.scss'
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import Translate from 'react-translate-component'

@@ -1,6 +1,5 @@
 import "./List.scss";
-import PropTypes from 'prop-types';
-import React, { Component } from "react";
+import React, {Component, PropTypes} from "react";
 import ReduxListItem from "./items/ReduxListItem";
 import CodeListItem from "./items/CodeListItem";
 import counterpart from "counterpart";

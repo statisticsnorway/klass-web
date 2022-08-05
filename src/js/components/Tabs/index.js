@@ -1,6 +1,5 @@
 import './Tabs.scss'
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react'
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 import { Wrapper, TabList, Tab, TabPanel } from 'react-aria-tabpanel' //https://github.com/davidtheclark/react-aria-tabpanel
