@@ -26,7 +26,7 @@ module.exports = {
     FOOTER: {
       NEWSLETTER: 'Nyhetsbrev',
       SITEMAP: 'Nettstedskart',
-      COPYRIGHT: '2021 © Statistisk sentralbyrå'
+      COPYRIGHT: '2022 © Statistisk sentralbyrå'
     }
   },
   COMMON: {

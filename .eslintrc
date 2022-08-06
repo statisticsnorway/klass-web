@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
 
   "extends": "eslint:recommended",
 
@@ -23,22 +23,6 @@
     "protractor": true
   },
 
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "destructuring": true,
-    "jsx": true,
-    "modules": true,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "restParams": true,
-    "spread": true,
-    "superInFunctions": true,
-    "templateStrings": true
-  },
-
   "rules": {
     "strict": [2, "global"],
     "no-unused-vars": 0,
@@ -53,8 +37,8 @@
     "react/jsx-no-undef": 2,
     "react/no-is-mounted": 2,
     "react/wrap-multilines": 2,
-    "react/display-name": [ 1, {"acceptTranspilerName": true }],
-    "react/forbid-prop-types": [1, {"forbid": "any"}],
+    //"react/display-name": [ 1, {"acceptTranspilerName": true }],
+    "react/forbid-prop-types": [1, {"forbid": ["any"]}],
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-curly-spacing": 1,
     "react/jsx-indent-props": 0,

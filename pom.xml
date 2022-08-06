@@ -82,7 +82,7 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <arguments>-p --config ./config/webpack.config.prod.js --progress</arguments>
+                            <arguments>--config ./config/webpack.config.prod.js --progress</arguments>
                         </configuration>
                     </execution>
                 </executions>
