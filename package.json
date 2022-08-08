@@ -60,7 +60,6 @@
     "postcss": "^8.4.16",
     "postcss-loader": "^7.0.1",
     "protractor": "^7.0.0",
-    "react-addons-test-utils": "^15.6.2",
     "redux-devtools": "^3.7.0",
     "redux-devtools-dock-monitor": "~1.1.4",
     "redux-devtools-log-monitor": "~1.4.0",
