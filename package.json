@@ -83,7 +83,7 @@
     "prop-types": "^15.8.1",
     "react": "^15.7.0",
     "react-aria-tabpanel": "^4.4.0",
-    "react-bootstrap": "~0.30.10",
+    "react-bootstrap": "~0.32.4",
     "react-breadcrumbs": "^1.6.6",
     "react-dom": "^15.7.0",
     "react-ga": "^2.7.0",
