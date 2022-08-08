@@ -77,7 +77,6 @@ ReactGA.initialize(config.GA_TRACKING_ID);
 let ComponentEl;
 	ComponentEl = (
         <div>
-            {/*<PerfProfiler />*/}
             <SSBHeader />
             <div id="page">
                 <div className="sitewrapper">
