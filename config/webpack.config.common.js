@@ -6,7 +6,6 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 module.exports = {
   entry: {
     app: path.resolve(path.resolve(__dirname, '../src/js'), 'main.js'),
-    vendor: ['react']
   },
   output: {
     path: path.resolve(__dirname, '../build'),
@@ -64,5 +63,17 @@ module.exports = {
     new NodePolyfillPlugin()
 
   ],
-  optimization: {},
+  optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },
 };
