@@ -22,7 +22,6 @@ module.exports = {
     extensions: ['.js', '.jsx', '.scss'],
   },
   module: {
-    noParse: /\.min\.js$/,
     rules: [
       {
         test: /\.jsx?$/,
