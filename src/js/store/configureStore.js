@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import api from '../middleware/api';
 import rootReducer from '../reducers';
 import { createLogger } from 'redux-logger';
-import { persistState } from 'redux-devtools';
+import { persistState } from '@redux-devtools/core';
 
 export default function configureStore(initialState) {
 
