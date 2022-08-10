@@ -17,7 +17,7 @@ function loadData(props) {
 }
 
 class ClassFamiliesPage extends Component {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         loadData(this.props)
     }
 

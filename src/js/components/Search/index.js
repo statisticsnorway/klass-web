@@ -10,7 +10,7 @@ import _ from 'lodash'
 
 class Search extends Component {
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const { actions } = this.props
 		actions.loadSSBSections()
 	}

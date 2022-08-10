@@ -39,7 +39,7 @@ class Variants extends Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		const { actions } = this.props
 		if (nextProps.params.itemId && (nextProps.params.itemId !== this.props.params.itemId)) {
 			actions.loadVariant(nextProps.params.itemId)

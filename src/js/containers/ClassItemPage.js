@@ -83,7 +83,7 @@ class ClassItemPage extends Component {
         loadData(this.props)
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.params.versionId !== this.props.params.versionId) {
             // nextProps.actions.loadVersion(nextProps.params.versionId)
             loadData(nextProps) // TODO Mads : find better solution for changes reload
