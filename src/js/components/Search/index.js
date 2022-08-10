@@ -1,5 +1,6 @@
 import './Search.scss'
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import Translate from 'react-translate-component'
@@ -9,7 +10,7 @@ import _ from 'lodash'
 
 class Search extends Component {
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const { actions } = this.props
 		actions.loadSSBSections()
 	}

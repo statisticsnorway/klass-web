@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import counterpart from 'counterpart'
 import Translate from 'react-translate-component'
@@ -49,7 +50,7 @@ class Correspondences extends Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		const { actions } = this.props
 		if (nextProps.params.itemId && (nextProps.params.itemId !== this.props.params.itemId)) {
 			actions.loadCorrespondence(nextProps.params.itemId)

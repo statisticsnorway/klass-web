@@ -11,7 +11,7 @@ import counterpart from 'counterpart'
 
 class SearchPage extends Component {
 
-	componentWillMount () {
+	UNSAFE_componentWillMount () {
 		const { search, actions, location } = this.props
 
 		if (!search.query) {
