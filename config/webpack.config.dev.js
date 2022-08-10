@@ -13,6 +13,7 @@ module.exports = merge(common, {
       directory: path.resolve(__dirname, '../src'),
     },
     historyApiFallback: true,
+    open: true,
     port: 3000
     // proxy: {
     // 	'/api/*': {
