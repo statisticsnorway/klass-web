@@ -27,7 +27,7 @@
     "test-e2e": "./node_modules/.bin/protractor protractor.config.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
+    "@babel/core": "^7.18.13",
     "@babel/eslint-parser": "^7.18.9",
     "@babel/preset-env": "^7.18.10",
     "@babel/preset-react": "^7.18.6",
