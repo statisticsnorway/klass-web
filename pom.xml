@@ -6,7 +6,7 @@
     <version>1.13.9-SNAPSHOT</version>
     <properties>
         <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
-        <maven-release-plugin.version>3.0.0-M6</maven-release-plugin.version>
+        <maven-release-plugin.version>3.0.0-M7</maven-release-plugin.version>
         <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
