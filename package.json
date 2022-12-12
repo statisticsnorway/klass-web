@@ -54,7 +54,7 @@
     "express": "^4.18.2",
     "jasmine-spec-reporter": "^7.0.0",
     "jquery": "^3.6.1",
-    "jsdom": "^20.0.2",
+    "jsdom": "^20.0.3",
     "mini-css-extract-plugin": "^2.7.0",
     "minimist": "^1.2.7",
     "mocha": "^10.1.0",
