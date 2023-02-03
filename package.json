@@ -90,7 +90,7 @@
     "react-redux": "^8.0.5",
     "react-router": "^3.2.6",
     "react-translate-component": "~0.15.1",
-    "redux": "^4.2.0",
+    "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
     "simple-react-modal": "~0.5.1"
