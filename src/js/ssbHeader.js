@@ -61,19 +61,16 @@ class SSBHeader extends Component {
             <div id="main-menu" role="navigation">
                 <ul id="main-menu-top" className={'nav '+counterpart.translate('LANGUAGE.CHOSEN_LANG_SHORT')} role="menu">
                     <li className="top-level statistikk" role="menuitem">
-                        <a id="statistics-menu-toggle" href="http://www.ssb.no/"><Translate content="SSB_FRAME.HEADER.STATISTICS" /></a>
+                        <a id="statistics-menu-toggle" href="https://www.ssb.no/"><Translate content="SSB_FRAME.HEADER.STATISTICS" /></a>
                     </li>
                     <li className="top-level forskning" role="menuitem">
-                        <a id="forskning-menu-toggle" href="http://www.ssb.no/forskning"><Translate content="SSB_FRAME.HEADER.RESEARCH" /></a>
+                        <a id="forskning-menu-toggle" href="https://www.ssb.no/forskning"><Translate content="SSB_FRAME.HEADER.RESEARCH" /></a>
                     </li>
                     <li className="top-level innrapportering" role="menuitem">
-                        <a href="http://www.ssb.no/innrapportering" title="Innrapportering"><Translate content="SSB_FRAME.HEADER.DATA_COLLECTION" /></a>
+                        <a href="https://www.ssb.no/innrapportering" title="Innrapportering"><Translate content="SSB_FRAME.HEADER.DATA_COLLECTION" /></a>
                     </li>
                     <li className="top-level omssb" role="menuitem">
-                        <a id="omssb-menu-toggle" href="http://www.ssb.no/omssb"><Translate content="SSB_FRAME.HEADER.ABOUT_SSB" /></a>
-                    </li>
-                    <li className="top-level mittssb" role="menuitem">
-                        <a href="http://www.ssb.no/mittssb/profil" title="Mitt SSB "><Translate content="SSB_FRAME.HEADER.MY_PAGE" /> </a>
+                        <a id="omssb-menu-toggle" href="https://www.ssb.no/omssb/ssbs-virksomhet"><Translate content="SSB_FRAME.HEADER.ABOUT_SSB" /></a>
                     </li>
                 </ul>
             </div>
@@ -102,7 +99,7 @@ class SSBHeader extends Component {
                 <span className="menuBtn" onClick={(ev) => this.toggleMenu()} />
                 <span className="searchBtn" onClick={(ev) => this.toggleSearch()} />
                 <div className="sitewrapper">
-                    <a id="logo" href="http://www.ssb.no/" title="Gå til forsiden">
+                    <a id="logo" href="https://www.ssb.no/" title="Gå til forsiden">
                         <img src="./images/SSB_logo.png" alt="SSB logo (Gå til forsiden)" />
                     </a>
                     <div id="global-tools">
@@ -113,13 +110,12 @@ class SSBHeader extends Component {
                                 <a id="change-language" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')} href={'#'+counterpart.translate('LANGUAGE.TOGGLE_SHORT')} onClick={(ev) => this.toggleLanguage(ev)}><Translate content="LANGUAGE.TOGGLE" /></a>
                             </li>
                             <li id="global-cookies" className="shortcut keywords">
-                                <Translate content="SSB_FRAME.HEADER.COOKIES" component="a" id="cookies" href="http://www.ssb.no/omssb/personvern/" />
+                                <Translate content="SSB_FRAME.HEADER.COOKIES" component="a" id="cookies" href="https://www.ssb.no/diverse/cookies-og-analyseverktoy-for-webstatistikk" />
                             </li>
-                            <li className="shortcut keywords"><a href="http://www.ssb.no/a-aa" title="Stikkord A-Å"><Translate content="SSB_FRAME.HEADER.KEYWORDS" /></a></li>
-                            <li id="global-contact" className="shortcut last"><a href="http://www.ssb.no/omssb/kontakt-oss" accessKey="7"><Translate content="SSB_FRAME.HEADER.CONTACT_US" /></a></li>
+                            <li id="global-contact" className="shortcut last"><a href="https://www.ssb.no/omssb/kontakt-oss" accessKey="7"><Translate content="SSB_FRAME.HEADER.CONTACT_US" /></a></li>
                         </ul>
                     </div>
-                    <form id="search" action="http://www.ssb.no/en/sok" method="get" role="search">
+                    <form id="search" action="https://www.ssb.no/en/sok" method="get" role="search">
                        <fieldset>
                           <legend className="screen-reader-only"><Translate content="SSB_FRAME.HEADER.SITE_SEARCH" /></legend>
                           <label htmlFor="sok" className="screen-reader-only">ø
