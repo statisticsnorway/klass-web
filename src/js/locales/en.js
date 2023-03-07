@@ -13,9 +13,7 @@ module.exports = {
       RESEARCH: 'Research',
       DATA_COLLECTION: 'Data collection',
       ABOUT_SSB: 'About statistics Norway',
-      MY_PAGE: 'My page',
       COOKIES: 'Cookies and privacy',
-      KEYWORDS: 'Keywords A-Z',
       CONTACT_US: 'Contact us',
       CHOOSE_LETTER_SIZE: 'Choose text size',
       LETTER_REGULAR: 'Regular',
@@ -24,9 +22,7 @@ module.exports = {
       SITE_SEARCH: 'Site search'
     },
     FOOTER: {
-      NEWSLETTER: 'News via e-mail',
-      SITEMAP: 'site map',
-      COPYRIGHT: '2022 © Statistics Norway'
+      COPYRIGHT: '© Statistics Norway'
     }
   },
   COMMON: {

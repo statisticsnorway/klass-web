@@ -8,21 +8,15 @@ class SSBFooter extends Component {
                 <div className="sitewrapper">
                     <ul className="global-links nav below">
                        <li className="first">
-                           <Translate content="SSB_FRAME.HEADER.CONTACT_US" component="a" href="http://www.ssb.no/omssb/kontakt-oss" />
-                       </li>
-                       <li>
-                           <Translate content="SSB_FRAME.FOOTER.NEWSLETTER" component="a" href="http://www.ssb.no/mittssb/epost/?lang=no" />
-                       </li>
-                       <li>
-                           <Translate content="SSB_FRAME.FOOTER.SITEMAP" component="a" href="http://www.ssb.no/nettstedskart" accessKey="3" />
+                           <Translate content="SSB_FRAME.HEADER.CONTACT_US" component="a" href="https://www.ssb.no/omssb/kontakt-oss" />
                        </li>
                        <li className="last">
-                           <Translate content="SSB_FRAME.FOOTER.COPYRIGHT" component="a" href="http://www.ssb.no/informasjon/copyright" />
+                           <Translate content="SSB_FRAME.FOOTER.COPYRIGHT" component="a" href="https://www.ssb.no/diverse/lisens" />
                        </li>
                     </ul>
                     <ul className="social-links">
                        <li><a title="Twitter" href="https://twitter.com/ssbnytt"><img alt="Twitter" src="./images/twitter_ssb.png" /></a></li>
-                       <li><a title="RSS" href="http://www.ssb.no/informasjon/rss"><img alt="RSS" src="./images/icon-rss-footer.png" /></a></li>
+                       <li><a title="RSS" href="https://www.ssb.no/diverse/rss"><img alt="RSS" src="./images/icon-rss-footer.png" /></a></li>
                     </ul>
                 </div>
             </div>
