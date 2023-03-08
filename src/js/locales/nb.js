@@ -55,7 +55,7 @@ module.exports = {
   },
   CLASSIFICATIONS: {
     CLASSIFICATION: 'Klassifikasjon',
-    STATISTICAL_UNIT: 'Statistisk enhet',
+    STATISTICAL_UNIT: 'Enhetstype',
     NO_CLASS_FOUND: 'Ingen klassifikasjoner funnet',
     CHOOSE_CLASS_FAMILY: 'Eller velg et område',
     CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister',

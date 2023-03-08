@@ -87,7 +87,7 @@ module.exports = {
   },
   SUBSCRIPTION: {
     HEADER: 'Subscription',
-    DESCRIPTION: 'Subscribe for changes in codelist',
+    DESCRIPTION: 'Subscribe for changes in standard classification/codelist',
     SUBSCRIBE: 'Subscribe',
     SUBSCRIBED:
       'You will receive an email. Follow the instructions email to start your subscription.',

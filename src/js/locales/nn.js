@@ -28,6 +28,7 @@ module.exports = {
   },
   CLASSIFICATIONS: {
     CLASSIFICATION: 'Klassifikasjon',
+    STATISTICAL_UNIT: 'Enhetstype',
     DISPLAY_HIDE: 'Vis/skjul:',
     CHOOSE_CLASS_FAMILY: 'Eller velg et område',
     CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister',
