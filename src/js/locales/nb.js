@@ -101,8 +101,8 @@ module.exports = {
     API_LINK: 'Klass API med XML, JSON og CSV'
   },
   TABS: {
-    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen er ikke lenger gyldig',
-    VARIANT_NO_LONGER_VALID: 'OBS! Denne varianten er ikke lenger gyldig',
+    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen viser ikke gjeldende status for kodeverket',
+    VARIANT_NO_LONGER_VALID: 'OBS! Denne varianten viser ikke gjeldende status for kodeverket',
     VERSION_NOT_YET_VALID: 'OBS! Denne versjonen er ikke gyldig ennå!',
     VARIANT_NOT_YET_VALID: 'OBS! Denne varianten er ikke gyldig ennå!',
     VERSION_EXPIRED: 'Utgått versjon',
