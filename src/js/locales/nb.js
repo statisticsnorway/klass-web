@@ -58,7 +58,7 @@ module.exports = {
     STATISTICAL_UNIT: 'Enhetstype',
     NO_CLASS_FOUND: 'Ingen klassifikasjoner funnet',
     CHOOSE_CLASS_FAMILY: 'Eller velg et område',
-    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister',
+    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister (Klass)',
     CLASS_DESCRIPTION:
       'Klassifikasjoner er "offisielle" kodeverk der kategoriene skal være gjensidig utelukkende og uttømmende. Kodelister er ikke "offisielle", de kan være tilpasset en spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpasset spesielle behov i SSB.',
     API_LINK_TEXT: 'KLASS API guide.',

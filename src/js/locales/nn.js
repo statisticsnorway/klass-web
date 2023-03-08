@@ -31,7 +31,7 @@ module.exports = {
     STATISTICAL_UNIT: 'Enhetstype',
     DISPLAY_HIDE: 'Vis/skjul:',
     CHOOSE_CLASS_FAMILY: 'Eller velg et område',
-    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister',
+    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister (Klass)',
     CLASS_DESCRIPTION:
       'Klassifikasjoner er "offisielle" kodeverk der kategoriane skal være gjensidig utelukkande og uttømmande. Kodelister er ikkje "offisielle", dei kan være tilpasset ein spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpassa spesielle behov i SSB.',
     OM_KLASS_LINK_TEXT: 'Mer om SSBs system for klassifikasjoner og kodelister'
