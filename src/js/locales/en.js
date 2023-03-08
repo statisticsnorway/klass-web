@@ -57,7 +57,7 @@ module.exports = {
     CLASSIFICATION: 'Classification',
     STATISTICAL_UNIT: 'Statistical unit',
     CHOOSE_CLASS_FAMILY: 'Navigate by subject area',
-    CLASSIFICATIONS_AND_CODELISTS: 'Statistical Classifications and Codelists',
+    CLASSIFICATIONS_AND_CODELISTS: 'Statistical Classifications and Codelists (Klass)',
     CLASS_DESCRIPTION:
       'A statistical classification is “official”, and its elements are mutually exclusive and complete. Code lists are not "official" and may be fitted to one specific statistic. Code lists may be included in the search process by ticking off the box. Note that the amount of search results can be vast, including a lot of code lists adapted to specific Statistics Norway needs.',
     API_LINK_TEXT: 'Klass API guide.',
@@ -87,7 +87,7 @@ module.exports = {
   },
   SUBSCRIPTION: {
     HEADER: 'Subscription',
-    DESCRIPTION: 'Subscribe for changes in codelist',
+    DESCRIPTION: 'Subscribe for changes in standard classification/codelist',
     SUBSCRIBE: 'Subscribe',
     SUBSCRIBED:
       'You will receive an email. Follow the instructions email to start your subscription.',

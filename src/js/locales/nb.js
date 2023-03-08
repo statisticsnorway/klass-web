@@ -55,10 +55,10 @@ module.exports = {
   },
   CLASSIFICATIONS: {
     CLASSIFICATION: 'Klassifikasjon',
-    STATISTICAL_UNIT: 'Statistisk enhet',
+    STATISTICAL_UNIT: 'Enhetstype',
     NO_CLASS_FOUND: 'Ingen klassifikasjoner funnet',
     CHOOSE_CLASS_FAMILY: 'Eller velg et område',
-    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister',
+    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister (Klass)',
     CLASS_DESCRIPTION:
       'Klassifikasjoner er "offisielle" kodeverk der kategoriene skal være gjensidig utelukkende og uttømmende. Kodelister er ikke "offisielle", de kan være tilpasset en spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpasset spesielle behov i SSB.',
     API_LINK_TEXT: 'KLASS API guide.',
@@ -101,8 +101,8 @@ module.exports = {
     API_LINK: 'Klass API med XML, JSON og CSV'
   },
   TABS: {
-    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen er ikke lenger gyldig',
-    VARIANT_NO_LONGER_VALID: 'OBS! Denne varianten er ikke lenger gyldig',
+    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen viser ikke gjeldende status for kodeverket',
+    VARIANT_NO_LONGER_VALID: 'OBS! Denne varianten viser ikke gjeldende status for kodeverket',
     VERSION_NOT_YET_VALID: 'OBS! Denne versjonen er ikke gyldig ennå!',
     VARIANT_NOT_YET_VALID: 'OBS! Denne varianten er ikke gyldig ennå!',
     VERSION_EXPIRED: 'Utgått versjon',

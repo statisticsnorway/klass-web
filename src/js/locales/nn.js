@@ -28,9 +28,10 @@ module.exports = {
   },
   CLASSIFICATIONS: {
     CLASSIFICATION: 'Klassifikasjon',
+    STATISTICAL_UNIT: 'Enhetstype',
     DISPLAY_HIDE: 'Vis/skjul:',
     CHOOSE_CLASS_FAMILY: 'Eller velg et område',
-    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister',
+    CLASSIFICATIONS_AND_CODELISTS: 'Klassifikasjoner og kodelister (Klass)',
     CLASS_DESCRIPTION:
       'Klassifikasjoner er "offisielle" kodeverk der kategoriane skal være gjensidig utelukkande og uttømmande. Kodelister er ikkje "offisielle", dei kan være tilpasset ein spesiell statistikk. Du kan inkludere søk i kodelister ved å hake av i boksen. Vær oppmerksom på at du da kan få veldig mange treff, inkludert kodelister som er tilpassa spesielle behov i SSB.',
     OM_KLASS_LINK_TEXT: 'Mer om SSBs system for klassifikasjoner og kodelister'
@@ -54,7 +55,8 @@ module.exports = {
     INCLUDE_FUTURES: 'Inkluder versjoner frå framtida'
   },
   TABS: {
-    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen er ikke lenger gyldig',
+    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen viser ikke gjeldende status for kodeverket',
+    VARIANT_NO_LONGER_VALID: 'OBS! Denne varianten viser ikke gjeldende status for kodeverket',
     VERSION_NOT_YET_VALID: 'OBS! Denne versjonen er ikkje gyldig ennå!',
     VARIANT_NOT_YET_VALID: 'OBS! Denne varianten er ikkje gyldig ennå!',
     VERSION_EXPIRED: 'Utgått versjon',
