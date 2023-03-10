@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: {
@@ -60,7 +61,10 @@ module.exports = {
     }),
 
     // Needed by counterpart
-    new NodePolyfillPlugin()
+    new NodePolyfillPlugin(),
+
+    // https://github.com/webpack-contrib/webpack-bundle-analyzer/blob/master/README.md
+    new BundleAnalyzerPlugin({ analyzerMode: 'disabled' }) // default is 'server'
 
   ],
   optimization: {
