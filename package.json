@@ -63,7 +63,7 @@
     "postcss": "^8.4.21",
     "postcss-loader": "^7.1.0",
     "protractor": "^7.0.0",
-    "sass": "^1.59.3",
+    "sass": "^1.60.0",
     "sass-loader": "^13.2.1",
     "webpack": "^5.76.3",
     "webpack-bundle-analyzer": "^4.8.0",
