@@ -4,7 +4,7 @@
 // changes should be done in the  /env/config/ files
 ////////////////////////////////////////////////////////////////////////////////////////////////
 const config = {
-	API_BASE_URL: 'http://ul-ssb-app-ekstern-test01.ssb.no:8080/api/klass/v1/',
+	API_BASE_URL: 'http://ul-ssb-app-ekstern-test01.ssb.no:8080/api/klass/v1',
 	API_LOCAL_BASE_URL: 'http://localhost:3001',
 	API_LOCAL_STORAGE: false,
 	OM_KLASS_URL: 'https://www.ssb.no/metadata/om-klass',
