@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.ssb.klass</groupId>
     <artifactId>klass-web-${klass.env.name}</artifactId>
-    <version>1.13.10-SNAPSHOT</version>
+    <version>1.13.10</version>
     <properties>
         <frontend-maven-plugin.version>1.13.4</frontend-maven-plugin.version>
         <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
@@ -15,7 +15,7 @@
     <scm>
         <connection>scm:git:git@github.com:statisticsnorway/klass-web.git</connection>
         <developerConnection>scm:git:git@github.com:statisticsnorway/klass-web.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.13.10</tag>
         <url>https://github.com/statisticsnorway/klass-web</url>
     </scm>
     <distributionManagement>
