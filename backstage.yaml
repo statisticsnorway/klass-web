@@ -1,0 +1,22 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Klass Web
+  title: klass-web
+  description:
+    A website hosted via ssb.no that allows listing, filtering, viewing and subscribing to classifications and code lists.
+  tags:
+    - dapla
+    - metadata
+    - classification
+    - codelist
+  annotations:
+    github.com/project-slug: statisticsnorway/klass-web
+spec:
+  type: website
+  owner: dapla-metadata-developers
+  lifecycle: production
+  system: metadata
+  consumesApis:
+    - api:klass-api
