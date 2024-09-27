@@ -2,8 +2,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Klass Web
-  title: klass-web
+  title: Klass Web
+  name: klass-web
   description:
     A website hosted via ssb.no that allows listing, filtering, viewing and subscribing to classifications and code lists.
   tags:
