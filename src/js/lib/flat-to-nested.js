@@ -1,5 +1,4 @@
-module.exports = (function () {
-
+export default (function () {
   /**
    * Create a new FlatToNested object.
    *
@@ -8,9 +7,9 @@ module.exports = (function () {
    */
   function FlatToNested(config) {
     this.config = config = config || {};
-    this.config.id = config.id || 'id';
-    this.config.parent = config.parent || 'parent';
-    this.config.children = config.children || 'children';
+    this.config.id = config.id || "id";
+    this.config.parent = config.parent || "parent";
+    this.config.children = config.children || "children";
   }
 
   /**
@@ -49,12 +48,11 @@ module.exports = (function () {
       }
     }
 
-
-      nested = {};
-      if (roots.length >= 1) {
-          nested[this.config.children] = roots;
-      }
-      return nested;
+    nested = {};
+    if (roots.length >= 1) {
+      nested[this.config.children] = roots;
+    }
+    return nested;
   };
 
   function initPush(arrayName, obj, toPush) {
