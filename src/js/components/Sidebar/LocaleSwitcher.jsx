@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import config from "../../config";
+import { TranslateComponent } from "../../lib/languageUtils";
 
 function getLocale() {
   if (sessionStorage.getItem("selectedAPILanguage")) {

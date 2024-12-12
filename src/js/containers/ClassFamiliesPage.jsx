@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Translate from "react-translate-component";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -8,7 +7,7 @@ import Search from "../components/Search";
 import List from "../components/List";
 import Contact from "../components/Sidebar/Contact";
 import config from "../config";
-import { translate } from "../lib/languageUtils";
+import { translate, TranslateComponent } from "../lib/languageUtils";
 
 function loadData(props) {
   const { actions } = props;
@@ -49,9 +48,9 @@ class ClassFamiliesPage extends Component {
             value="true"
             onClick={(ev) => this.openHierarchy(ev)}
           >
-            <Translate content="COMMON.OPEN_HIERARCHY" />
+            <TranslateComponent content="COMMON.OPEN_HIERARCHY" />
           </button>
-          <Translate
+          <TranslateComponent
             component="h3"
             content="CLASSIFICATIONS.CHOOSE_CLASS_FAMILY"
           />
@@ -76,28 +75,28 @@ class ClassFamiliesPage extends Component {
     return (
       <div className="content">
         <div className="heading">
-          <Translate
+          <TranslateComponent
             component="h1"
             content="CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS"
           />
         </div>
         <div className="main">
-          <Translate
+          <TranslateComponent
             component="p"
             content="CLASSIFICATIONS.CLASS_DESCRIPTION"
           />
           <p>
             <a className="child-link" href={config.OM_KLASS_URL}>
               {" "}
-              <Translate content="CLASSIFICATIONS.OM_KLASS_LINK_TEXT" />
+              <TranslateComponent content="CLASSIFICATIONS.OM_KLASS_LINK_TEXT" />
             </a>
           </p>
           <p>
             <a className="child-link" href={config.API_BASE_URL + "/"}>
               {" "}
-              <Translate content="CLASSIFICATIONS.API_LINK_TEXT" />
+              <TranslateComponent content="CLASSIFICATIONS.API_LINK_TEXT" />
             </a>
-            <Translate content="CLASSIFICATIONS.API_POST_LINK_TEXT" />
+            <TranslateComponent content="CLASSIFICATIONS.API_POST_LINK_TEXT" />
           </p>
           <Search
             actions={actions}
