@@ -18,6 +18,7 @@ import deLocale from "counterpart/locales/de";
 import enLocale from "./locales/en";
 import nnLocale from "./locales/nn";
 import nbLocale from "./locales/nb";
+import { translate } from "./lib/languageUtils";
 
 // Register translations
 counterpart.registerTranslations("de", deLocale);
@@ -41,7 +42,7 @@ if (document.URL.match(/https?:\/\/.*?\/en\//)) {
   englishUrl = false;
 }
 
-document.title = counterpart.translate("PAGE.TITLE");
+document.title = translate("PAGE.TITLE");
 
 // Handle base name for routing
 let baseName = "/klass";

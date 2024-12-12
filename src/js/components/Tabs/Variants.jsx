@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Translate from "react-translate-component";
 import { Link } from "react-router";
-import counterpart from "counterpart";
 import _ from "lodash";
 import List from "../List";
 import config from "../../config";
 import moment from "moment";
+import { translate, TranslateComponent } from "../../lib/languageUtils";
 
 class Variants extends Component {
   handleSubmit(event) {
@@ -49,7 +48,7 @@ class Variants extends Component {
     if (version.classificationVariants.length < 1) {
       return (
         <tr>
-          <Translate
+          <TranslateComponent
             component="td"
             content="TABS.VARIANTS.VARIANTS_NOT_FOUND"
             colSpan="2"
@@ -96,12 +95,15 @@ class Variants extends Component {
     if (_.isEmpty(items)) {
       return (
         <p>
-          <Translate component="i" content="TABS.VARIANTS.VARIANTS_NOT_FOUND" />
+          <TranslateComponent
+            component="i"
+            content="TABS.VARIANTS.VARIANTS_NOT_FOUND"
+          />
         </p>
       );
     }
     const translations = {
-      screenReaderShowHide: counterpart.translate("COMMON.SHOW_HIDE"),
+      screenReaderShowHide: translate("COMMON.SHOW_HIDE"),
     };
     return (
       <List
@@ -118,11 +120,11 @@ class Variants extends Component {
   openHierarchy(ev) {
     const { version, actions } = this.props;
     if (ev.currentTarget.value == "true") {
-      ev.target.innerHTML = counterpart.translate("COMMON.CLOSE_HIERARCHY");
+      ev.target.innerHTML = translate("COMMON.CLOSE_HIERARCHY");
       ev.currentTarget.value = "false";
       actions.toggleAll(true, "variant");
     } else {
-      ev.target.innerHTML = counterpart.translate("COMMON.OPEN_HIERARCHY");
+      ev.target.innerHTML = translate("COMMON.OPEN_HIERARCHY");
       ev.currentTarget.value = "true";
       actions.toggleAll(false, "variant");
     }
@@ -151,7 +153,7 @@ class Variants extends Component {
       return (
         <div>
           <b>
-            <Translate content="TABS.VALID_TO" />:
+            <TranslateComponent content="TABS.VALID_TO" />:
           </b>
           {moment(validTo).format("MMMM YYYY")}
           <br />
@@ -163,7 +165,7 @@ class Variants extends Component {
     if (validTo != null && moment(validTo).isBefore(new Date())) {
       return (
         <div className="version-info">
-          <Translate
+          <TranslateComponent
             component="p"
             content="TABS.VARIANT_NO_LONGER_VALID"
             className="red-box"
@@ -175,7 +177,7 @@ class Variants extends Component {
     if (validFrom != null && moment(validFrom).isAfter(new Date())) {
       return (
         <div className="version-info">
-          <Translate
+          <TranslateComponent
             component="p"
             content="TABS.VARIANT_NOT_YET_VALID"
             className="green-box"
@@ -201,7 +203,10 @@ class Variants extends Component {
       }
       if (_.isEmpty(selectedVariant)) {
         return (
-          <Translate component="div" content="TABS.VARIANTS.VARIANT_EMPTY" />
+          <TranslateComponent
+            component="div"
+            content="TABS.VARIANTS.VARIANT_EMPTY"
+          />
         );
       }
       let joinedLanguages = selectedVariant.published.map(function (val) {
@@ -212,21 +217,21 @@ class Variants extends Component {
         if (val == "nb")
           return (
             <span>
-              <Translate content="LANGUAGE.NORWEGIAN" />
+              <TranslateComponent content="LANGUAGE.NORWEGIAN" />
               {comma}{" "}
             </span>
           );
         if (val == "nn")
           return (
             <span>
-              <Translate content="LANGUAGE.NYNORSK" />
+              <TranslateComponent content="LANGUAGE.NYNORSK" />
               {comma}{" "}
             </span>
           );
         if (val == "en")
           return (
             <span>
-              <Translate content="LANGUAGE.ENGLISH" />
+              <TranslateComponent content="LANGUAGE.ENGLISH" />
               {comma}{" "}
             </span>
           );
@@ -235,7 +240,7 @@ class Variants extends Component {
         <div>
           <p className="back-link">
             &lt;&lt;{" "}
-            <Translate
+            <TranslateComponent
               component="a"
               content="TABS.VARIANTS.BACK_TO_VARIANTS"
               href="javascript:history.back()"
@@ -245,17 +250,17 @@ class Variants extends Component {
           <h3>{selectedVariant.name}</h3>
           <p>
             <b>
-              <Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:
+              <TranslateComponent content="TABS.CORRESPONDENCES.RESPONSIBLE" />:
             </b>{" "}
             {selectedVariant.contactPerson.name}
             <br />
             <b>
-              <Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:
+              <TranslateComponent content="TABS.CORRESPONDENCES.PUBLISHED" />:
             </b>{" "}
             {joinedLanguages}
             <br />
             <b>
-              <Translate content="TABS.VALID_FROM" />:
+              <TranslateComponent content="TABS.VALID_FROM" />:
             </b>{" "}
             {moment(selectedVariant.validFrom).format("D MMMM YYYY")}
             <br />
@@ -265,11 +270,9 @@ class Variants extends Component {
           <form onSubmit={this.handleSubmit.bind(this)} className="search-box">
             <div className="flex-container">
               <div className="flex-item search-input-text">
-                <Translate
+                <TranslateComponent
                   component="input"
-                  aria-label={counterpart.translate(
-                    "TABS.CODES.SEARCH_BY_CODE_OR_NAME"
-                  )}
+                  aria-label={translate("TABS.CODES.SEARCH_BY_CODE_OR_NAME")}
                   attributes={{
                     placeholder: "TABS.CODES.SEARCH_BY_CODE_OR_NAME",
                   }}
@@ -279,14 +282,14 @@ class Variants extends Component {
                 />
               </div>
               <div className="flex-item search-button">
-                <Translate
+                <TranslateComponent
                   component="button"
                   type="submit"
                   content="SEARCH.FILTER"
                 />
               </div>
               <div className="flex-item reset-button">
-                <Translate
+                <TranslateComponent
                   component="button"
                   content="SEARCH.RESET"
                   onClick={(ev) => this.resetFilter(ev)}
@@ -301,9 +304,9 @@ class Variants extends Component {
               value="true"
               onClick={(ev) => this.openHierarchy(ev)}
             >
-              <Translate content="COMMON.OPEN_HIERARCHY" />
+              <TranslateComponent content="COMMON.OPEN_HIERARCHY" />
             </button>
-            <Translate
+            <TranslateComponent
               component="button"
               content="COMMON.DOWNLOAD_CSV"
               className="expand-tree"
@@ -320,13 +323,19 @@ class Variants extends Component {
 
     return (
       <div>
-        <Translate component="h3" content="TABS.VARIANTS.VARIANTS" />
-        <Translate component="p" content="TABS.VARIANTS.DESCRIPTION" />
+        <TranslateComponent component="h3" content="TABS.VARIANTS.VARIANTS" />
+        <TranslateComponent component="p" content="TABS.VARIANTS.DESCRIPTION" />
         <table className="table-correspondences alternate">
           <thead>
             <tr>
-              <Translate component="th" content="TABS.VARIANTS.VARIANT" />
-              <Translate component="th" content="TABS.VARIANTS.OWNER" />
+              <TranslateComponent
+                component="th"
+                content="TABS.VARIANTS.VARIANT"
+              />
+              <TranslateComponent
+                component="th"
+                content="TABS.VARIANTS.OWNER"
+              />
             </tr>
           </thead>
           <tbody>{this.renderBody()}</tbody>

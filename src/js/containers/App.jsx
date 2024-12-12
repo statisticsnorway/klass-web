@@ -1,16 +1,16 @@
 import React from "react";
 import Breadcrumbs from "react-breadcrumbs";
-import Translate from "react-translate-component";
+import { TranslateComponent } from "../lib/languageUtils";
 
 const App = ({ routes, params, children }) => {
   const renderBreadcrumbs = () => (
     <div id="navigation-path">
       <h2 className="screen-reader-only">
-        <Translate content="COMMON.YOU_ARE_HERE" />:
+        <TranslateComponent content="COMMON.YOU_ARE_HERE" />:
       </h2>
       <span>
         <a href="//www.ssb.no/">
-          <Translate content="COMMON.FRONTPAGE" />
+          <TranslateComponent content="COMMON.FRONTPAGE" />
         </a>{" "}
         &gt;{" "}
       </span>

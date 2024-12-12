@@ -1,45 +1,50 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import Translate from 'react-translate-component'
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { TranslateComponent } from "../../lib/languageUtils";
 
 class Contact extends Component {
+  render() {
+    const { contactInfo } = this.props;
 
-	render() {
-        const { contactInfo } = this.props
-
-        return (
-            <div id="contacts">
-                <h2>
-                    <span className="icon-contact">
-                        <Translate content="CONTACT.HEADER" />
-                    </span>
-                </h2>
-                <div className="side-content-wrapper">
-                    <p className="name">{contactInfo.name}</p>
-                    <p className="e-mail">
-                        <span className="key"><Translate content="CONTACT.EMAIL" />: </span>
-                        <a className="value" href={"mailto:" + contactInfo.email}>{contactInfo.email}</a>
-                    </p>
-                    <p className="phone">
-                        <span className="key"><Translate content="CONTACT.PHONE" />: </span>
-                        <span className="value">{contactInfo.phone}</span>
-                    </p>
-                </div>
-            </div>
-        )
-	}
+    return (
+      <div id="contacts">
+        <h2>
+          <span className="icon-contact">
+            <TranslateComponent content="CONTACT.HEADER" />
+          </span>
+        </h2>
+        <div className="side-content-wrapper">
+          <p className="name">{contactInfo.name}</p>
+          <p className="e-mail">
+            <span className="key">
+              <TranslateComponent content="CONTACT.EMAIL" />:{" "}
+            </span>
+            <a className="value" href={"mailto:" + contactInfo.email}>
+              {contactInfo.email}
+            </a>
+          </p>
+          <p className="phone">
+            <span className="key">
+              <TranslateComponent content="CONTACT.PHONE" />:{" "}
+            </span>
+            <span className="value">{contactInfo.phone}</span>
+          </p>
+        </div>
+      </div>
+    );
+  }
 }
 
 Contact.propTypes = {
-	contactInfo: PropTypes.object.isRequired
-}
+  contactInfo: PropTypes.object.isRequired,
+};
 
 Contact.defaultProps = {
-    contactInfo: {
-        name: 'Anne Gro Hustoft',
-        email: 'anne.gro.hustoft@ssb.no',
-        phone: '40 90 25 52'
-    }
-}
+  contactInfo: {
+    name: "Anne Gro Hustoft",
+    email: "anne.gro.hustoft@ssb.no",
+    phone: "40 90 25 52",
+  },
+};
 
-export default Contact
+export default Contact;

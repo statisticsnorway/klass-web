@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState, useRef } from "react";
-import Translate from "react-translate-component";
-import counterpart from "counterpart";
+import { translate, TranslateComponent } from "../../lib/languageUtils";
 
 const Subscription = ({ actions, params, errorCode }) => {
   const [subscribed, setSubscribed] = useState(false);
@@ -48,17 +47,17 @@ const Subscription = ({ actions, params, errorCode }) => {
     if (subscribed) {
       return (
         <div className="side-content-wrapper">
-          <Translate content="SUBSCRIPTION.SUBSCRIBED" component="p" />
+          <TranslateComponent content="SUBSCRIPTION.SUBSCRIBED" component="p" />
         </div>
       );
     }
 
     return (
       <div className="side-content-wrapper">
-        <Translate content="SUBSCRIPTION.DESCRIPTION" component="p" />
-        <Translate
+        <TranslateComponent content="SUBSCRIPTION.DESCRIPTION" component="p" />
+        <TranslateComponent
           component="input"
-          aria-label={counterpart.translate("CONTACT.EMAIL")}
+          aria-label={translate("CONTACT.EMAIL")}
           attributes={{ placeholder: "CONTACT.EMAIL" }}
           className="subscriptionEmail"
           onChange={handleChange}
@@ -66,7 +65,7 @@ const Subscription = ({ actions, params, errorCode }) => {
           ref={subscriptionEmailRef}
           name="subscriptionEmail"
         />
-        <Translate
+        <TranslateComponent
           component="p"
           content="SUBSCRIPTION.EMAIL_ERROR"
           ref={invalidEmailRef}
@@ -78,11 +77,11 @@ const Subscription = ({ actions, params, errorCode }) => {
           className="error"
           style={{ display: "none" }}
         >
-          {counterpart.translate(getErrorMessageTranslation())}
+          {translate(getErrorMessageTranslation())}
         </p>
 
         <button onClick={subscribe}>
-          <Translate content="SUBSCRIPTION.SUBSCRIBE" />
+          <TranslateComponent content="SUBSCRIPTION.SUBSCRIBE" />
         </button>
       </div>
     );
@@ -92,7 +91,7 @@ const Subscription = ({ actions, params, errorCode }) => {
     <div id="subscription">
       <h2>
         <span className="icon-subscription">
-          <Translate content="SUBSCRIPTION.HEADER" />
+          <TranslateComponent content="SUBSCRIPTION.HEADER" />
         </span>
       </h2>
       {renderSubscription()}
