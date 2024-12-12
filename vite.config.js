@@ -1,44 +1,34 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import commonjs from "@rollup/plugin-commonjs";
-import nodeResolve from "@rollup/plugin-node-resolve";
-import nodePolyfills from "rollup-plugin-polyfill-node";
+import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
+import polyfillNode from "rollup-plugin-polyfill-node";
 
 export default defineConfig({
-  root: "src",
+  root: "src", // Specify the root directory
   plugins: [react()],
-  resolve: {
-    alias: {
-      events: "events", // ensure `events` is resolved for 'counterpart'
+  build: {
+    outDir: "../dist", // Specify the output directory relative to root
+    emptyOutDir: true, // Ensure the output directory is cleaned before building
+    rollupOptions: {
+      plugins: [polyfillNode()], // Add Node.js polyfills during build
     },
+  },
+  server: {
+    open: true, // Automatically open the app in the browser on start
   },
   define: {
-    "process.env.NODE_ENV": JSON.stringify(
-      process.env.NODE_ENV || "development"
-    ),
-    global: "globalThis",
-  },
-  build: {
-    outDir: "../dist",
-    emptyOutDir: true,
-    rollupOptions: {
-      plugins: [
-        nodeResolve({
-          browser: true,
-          preferBuiltins: false,
-        }),
-        commonjs({
-          include: /node_modules/, // Explicitly include node_modules for CommonJS
-          transformMixedEsModules: true, // Handle modules with both ESM and CommonJS
-        }),
-        nodePolyfills(),
-      ],
+    global: "globalThis", // Define global to use globalThis
+    process: {
+      env: {
+        NODE_ENV: process.env.NODE_ENV || "development", // Use environment variables
+      },
     },
   },
-  optimizeDeps: {
-    include: ["react", "react-dom", "react-redux", "events"],
-    esbuildOptions: {
-      define: { global: "globalThis" },
+  resolve: {
+    alias: {
+      util: "util", // Polyfill for Node.js `util` module
+      process: "process/browser", // Polyfill for `process`
     },
   },
 });
