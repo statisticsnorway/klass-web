@@ -1,5 +1,4 @@
 import React from "react";
-import Breadcrumbs from "react-breadcrumbs";
 import { TranslateComponent } from "../lib/languageUtils";
 
 const App = ({ routes, params, children }) => {
@@ -17,12 +16,12 @@ const App = ({ routes, params, children }) => {
       <span>
         <a href="//www.ssb.no/metadata/">Metadata</a> &gt;{" "}
       </span>
-      <Breadcrumbs
+      {/*       <Breadcrumbs
         routes={routes}
         params={params}
         itemClass="step"
         excludes={["exclude"]}
-      />
+      /> */}
     </div>
   );
 
