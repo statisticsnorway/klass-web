@@ -8,6 +8,7 @@ export default defineConfig({
   build: {
     outDir: "../dist", // Specify the output directory relative to root
     emptyOutDir: true, // Ensure the output directory is cleaned before building
+    chunkSizeWarningLimit: 1000, // Increase the limit to 1MB (1000 KB)
     rollupOptions: {
       plugins: [polyfillNode()], // Add Node.js polyfills during build
     },

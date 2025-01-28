@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import "../../../styles/_variables.scss";
 
 .klass{
@@ -16,7 +17,7 @@
             right: 10px;
             top: 5px;
             font-size: 2em;
-            color: lighten($purple, 50%);
+            color: color.scale($purple, $lightness: 50%);
         }
 
         .modal-content, .modal-content p {

@@ -1,4 +1,6 @@
+@use 'sass:color';
 @import "../../../styles/_variables.scss";
+
 
 .list-heading {
 	.expand-tree {
@@ -60,7 +62,7 @@
     //             line-height: 1.5em;
     //
     // 			&:hover {
-    // 				background-color: lighten($black, 70%) !important;
+    // 				background-color: color.scale($black, $lightness: 70%) !important;
     // 			}
     //
     // 			.link-type {
@@ -159,7 +161,7 @@
             position: relative;
 
 			&:hover {
-				background-color: lighten($black, 70%) !important;
+				background-color: color.scale($black, $lightness: 70%) !important;
 			}
 		}
 

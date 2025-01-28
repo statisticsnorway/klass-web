@@ -14,7 +14,7 @@ scriptSrcs = [
   "http://localhost:3000/js/dev.js",
   "http://localhost:3000/js/app.js",
 ];
-styleSrc = "/main.css";
+styleSrc = "/main.scss";
 
 server.use(cors());
 
