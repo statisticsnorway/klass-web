@@ -1,5 +1,5 @@
 @use 'sass:color';
-@import "../../../styles/_variables.scss";
+@use "../../../styles/_variables.scss";
 
 
 .klass-item {
@@ -30,7 +30,7 @@
 
 	.tabs {
 		// font-size: 125%;
-		line-height: $body-line-height;
+		line-height: variables.$body-line-height;
 
 		.version-info {
 			font-weight: bold;
@@ -173,7 +173,7 @@
 			.react-tab-panel__tab-title-inner {
 	            padding: 0.75em 0.7em 0.66em 0.7em;
 	            text-align: center;
-                font-size: $body-font-size;
+                font-size: variables.$body-font-size;
 			}
 
 			.react-tab-panel__tab-title:not(.react-tab-panel__tab-title--active) {
@@ -276,7 +276,7 @@
 			About version
 		*/
 		#om-panel {
-			line-height: $body-line-height;
+			line-height: variables.$body-line-height;
 
 			.align-right {
 				text-align: right;
