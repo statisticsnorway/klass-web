@@ -40,8 +40,6 @@
     "babylon": "^6.18.0",
     "bluebird": "^3.7.2",
     "body-parser": "^1.20.3",
-    "chai": "^4.3.10",
-    "chai-jquery": "^2.1.0",
     "cheerio": "1.0.0-rc.12",
     "colors": "^1.4.0",
     "compression": "^1.7.4",
@@ -92,7 +90,6 @@
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
-    "sass-migrator": "^2.3.1",
     "simple-react-modal": "~0.5.1"
   }
 }
