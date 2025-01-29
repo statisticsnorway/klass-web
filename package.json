@@ -92,6 +92,7 @@
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
+    "sass-migrator": "^2.3.1",
     "simple-react-modal": "~0.5.1"
   }
 }

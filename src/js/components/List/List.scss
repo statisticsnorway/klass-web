@@ -1,5 +1,5 @@
 @use 'sass:color';
-@import "../../../styles/_variables.scss";
+@use "../../../styles/_variables.scss";
 
 
 .list-heading {
@@ -39,8 +39,8 @@
 			display: block;
 			margin: 0;
 			padding: 0.9em 1.5em 0.8em 1.5em;
-			font-size: $list-font-size;
-            line-height: $body-line-height;
+			font-size: variables.$list-font-size;
+            line-height: variables.$body-line-height;
 
 			.link-type {
 				float: right;
@@ -62,7 +62,7 @@
             position: relative;
 
 			&:hover {
-				background-color: color.scale($black, $lightness: 70%) !important;
+				background-color: color.scale(variables.$black, $lightness: 70%) !important;
 			}
 		}
 
