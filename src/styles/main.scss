@@ -159,7 +159,7 @@ body {
 
 
     	.alternate tbody tr:hover, .alternate tbody tr.odd:hover {
-    		background-color: lighten($black, 70%) !important;
+    		background-color: color.scale($black, $lightness: 70%) !important;
     	}
 
     	.clickable {
