@@ -5,7 +5,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master, feat/update-klass-web-collab-mimir ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
