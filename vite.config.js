@@ -6,7 +6,7 @@ export default defineConfig({
   root: "src",
   plugins: [
     react({
-      jsxRuntime: "automatic", // Ensures React JSX syntax is handled automatically
+      jsxRuntime: 'automatic',  // Ensures React JSX syntax is handled automatically
     }),
   ],
   build: {
