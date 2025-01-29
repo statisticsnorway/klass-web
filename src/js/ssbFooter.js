@@ -15,7 +15,6 @@ class SSBFooter extends Component {
                        </li>
                     </ul>
                     <ul className="social-links">
-                       <li><a title="Twitter" href="https://twitter.com/ssbnytt"><img alt="Twitter" src="./images/twitter_ssb.png" /></a></li>
                        <li><a title="RSS" href="https://www.ssb.no/diverse/rss"><img alt="RSS" src="./images/icon-rss-footer.png" /></a></li>
                     </ul>
                 </div>
