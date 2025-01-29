@@ -61,7 +61,9 @@ module.exports = {
     }),
 
     // Needed by counterpart
-    new NodePolyfillPlugin(),
+    new NodePolyfillPlugin({
+        additionalAliases: ['process'],
+    }), 
 
     // https://github.com/webpack-contrib/webpack-bundle-analyzer/blob/master/README.md
     new BundleAnalyzerPlugin({ analyzerMode: 'disabled' }) // default is 'server'
