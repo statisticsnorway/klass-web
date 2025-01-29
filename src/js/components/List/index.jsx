@@ -1,15 +1,22 @@
 import "./List.scss";
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React from "react";
 import ReduxListItem from "./items/ReduxListItem";
 import CodeListItem from "./items/CodeListItem";
 import { translate } from "../../lib/languageUtils";
 
-class List extends Component {
-  renderList() {
-    const { items, type, actions, modal, translations } = this.props;
+const List = ({
+  items,
+  type,
+  actions,
+  modal,
+  translations,
+  isFetching,
+  loadingLabel,
+}) => {
+  const renderList = () => {
     if (items) {
-      return items.map(function (item, key) {
+      return items.map((item, key) => {
         let name;
         switch (type) {
           case "code":
@@ -79,33 +86,24 @@ class List extends Component {
         }
       });
     }
-  }
+  };
 
-  render() {
-    const { items, loadingLabel, isFetching } = this.props;
-    const isEmpty = items.length === 0;
+  const isEmpty = items.length === 0;
 
-    if (isEmpty && isFetching) {
-      return (
-        <p>
-          <i>{loadingLabel}</i>
-        </p>
-      );
-    }
-
-    // return (
-    //     <div role="tree">
-    //         {this.renderList()}
-    //     </div>
-    // )
-
+  if (isEmpty && isFetching) {
     return (
-      <ol className="expandcollapse" role="tree">
-        {this.renderList()}
-      </ol>
+      <p>
+        <i>{loadingLabel}</i>
+      </p>
     );
   }
-}
+
+  return (
+    <ol className="expandcollapse" role="tree">
+      {renderList()}
+    </ol>
+  );
+};
 
 List.propTypes = {
   modal: PropTypes.object.isRequired,
@@ -114,6 +112,7 @@ List.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
   translations: PropTypes.object,
+  loadingLabel: PropTypes.string,
 };
 
 List.defaultProps = {

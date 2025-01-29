@@ -1,6 +1,6 @@
 import "./Tabs.scss";
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import Codes from "./Codes";
 import About from "./About";
 import Changes from "./Changes";
@@ -14,11 +14,28 @@ import moment from "moment";
 import "moment/locale/nb.js";
 import "moment/locale/nn.js";
 import { translate, TranslateComponent } from "../../lib/languageUtils";
+import { useNavigate } from "react-router-dom";
 
-class TabsComponent extends Component {
-  renderVersionInfo() {
-    const { selectedVersion } = this.props;
-    const version = selectedVersion.version;
+const TabsComponent = ({
+  classification,
+  selectedVersion,
+  actions,
+  isFetchingClass,
+  params,
+  modal,
+}) => {
+  const navigate = useNavigate(); // Replace useHistory with useNavigate
+
+  useEffect(() => {
+    if (sessionStorage.getItem("selectedLanguage")) {
+      moment.locale(sessionStorage.getItem("selectedLanguage"));
+    } else {
+      moment.locale("nb");
+    }
+  }, []);
+
+  const renderVersionInfo = () => {
+    const { version } = selectedVersion;
     let validTo = version.validTo;
     let validFrom = version.validFrom;
 
@@ -77,143 +94,124 @@ class TabsComponent extends Component {
         </p>
       );
     }
-  }
+  };
 
-  handleTabClick = (path) => {
-    const { params } = this.props;
+  const handleTabClick = (path) => {
     const classPath = "/" + params.classId;
     const versionPath = params.versionId ? "/versjon/" + params.versionId : "";
     const pathWithTab =
       "/klassifikasjoner" + classPath + versionPath + "/" + path;
-
-    this.context.router.push(pathWithTab);
+    navigate(pathWithTab); // Use navigate instead of history.push
   };
 
-  render() {
-    if (sessionStorage.getItem("selectedLanguage")) {
-      moment.locale(sessionStorage.getItem("selectedLanguage"));
-    } else {
-      moment.locale("nb");
-    }
-
-    const {
-      classification,
-      selectedVersion,
-      actions,
-      isFetchingClass,
-      params,
-      modal,
-    } = this.props;
-
-    if (isFetchingClass) {
-      return (
-        <TranslateComponent
-          component="div"
-          content="TABS.LOADING_CURRENT_VERSION"
-        />
-      );
-    } else if (_.isEmpty(selectedVersion.version)) {
-      return (
-        <TranslateComponent content="TABS.VERSIONS_NOT_FOUND" component="p" />
-      );
-    }
-
-    const tabItems = [
-      {
-        title: translate("TABS.CODES.CODES"),
-        path: "koder",
-        content: (
-          <Codes
-            key="Codes"
-            classification={classification}
-            version={selectedVersion.version}
-            params={params}
-            actions={actions}
-            modal={modal}
-          />
-        ),
-      },
-      {
-        title: translate("TABS.ABOUT.ABOUT"),
-        path: "om",
-        content: (
-          <About
-            key="About"
-            actions={actions}
-            version={selectedVersion.version}
-          />
-        ),
-      },
-      {
-        title: translate("TABS.CHANGES.CHANGES"),
-        path: "endringer",
-        content: (
-          <Changes
-            key="Changes"
-            actions={actions}
-            classification={classification}
-            selectedVersion={selectedVersion}
-            params={params}
-          />
-        ),
-      },
-      {
-        title: translate("TABS.VERSIONS.VERSIONS"),
-        path: "versjoner",
-        content: (
-          <Versions
-            key="Versions"
-            actions={actions}
-            classification={classification}
-          />
-        ),
-      },
-      {
-        title: translate("TABS.CORRESPONDENCES.CORRESPONDENCES"),
-        path: "korrespondanser",
-        content: (
-          <Correspondences
-            key="Correspondences"
-            actions={actions}
-            selectedVersion={selectedVersion}
-            params={params}
-          />
-        ),
-      },
-      {
-        title: translate("TABS.VARIANTS.VARIANTS"),
-        path: "varianter",
-        content: (
-          <Variants
-            key="Variants"
-            actions={actions}
-            selectedVersion={selectedVersion}
-            params={params}
-            modal={modal}
-          />
-        ),
-      },
-    ];
-
-    const activeTab = params.tab ? params.tab : "koder";
-
+  if (isFetchingClass) {
     return (
-      <div className="tabs">
-        {this.renderVersionInfo()}
-        <h2>{selectedVersion.version.name}</h2>
-
-        <Tabs
-          activeOnInit={activeTab}
-          items={tabItems.map((tab) => ({ title: tab.title, path: tab.path }))}
-          onClick={this.handleTabClick}
-        />
-        <div className="tab-content">
-          {tabItems.find((tab) => tab.path === activeTab)?.content}
-        </div>
-      </div>
+      <TranslateComponent
+        component="div"
+        content="TABS.LOADING_CURRENT_VERSION"
+      />
+    );
+  } else if (_.isEmpty(selectedVersion.version)) {
+    return (
+      <TranslateComponent content="TABS.VERSIONS_NOT_FOUND" component="p" />
     );
   }
-}
+
+  const tabItems = [
+    {
+      title: translate("TABS.CODES.CODES"),
+      path: "koder",
+      content: (
+        <Codes
+          key="Codes"
+          classification={classification}
+          version={selectedVersion.version}
+          params={params}
+          actions={actions}
+          modal={modal}
+        />
+      ),
+    },
+    {
+      title: translate("TABS.ABOUT.ABOUT"),
+      path: "om",
+      content: (
+        <About
+          key="About"
+          actions={actions}
+          version={selectedVersion.version}
+        />
+      ),
+    },
+    {
+      title: translate("TABS.CHANGES.CHANGES"),
+      path: "endringer",
+      content: (
+        <Changes
+          key="Changes"
+          actions={actions}
+          classification={classification}
+          selectedVersion={selectedVersion}
+          params={params}
+        />
+      ),
+    },
+    {
+      title: translate("TABS.VERSIONS.VERSIONS"),
+      path: "versjoner",
+      content: (
+        <Versions
+          key="Versions"
+          actions={actions}
+          classification={classification}
+        />
+      ),
+    },
+    {
+      title: translate("TABS.CORRESPONDENCES.CORRESPONDENCES"),
+      path: "korrespondanser",
+      content: (
+        <Correspondences
+          key="Correspondences"
+          actions={actions}
+          selectedVersion={selectedVersion}
+          params={params}
+        />
+      ),
+    },
+    {
+      title: translate("TABS.VARIANTS.VARIANTS"),
+      path: "varianter",
+      content: (
+        <Variants
+          key="Variants"
+          actions={actions}
+          selectedVersion={selectedVersion}
+          params={params}
+          modal={modal}
+        />
+      ),
+    },
+  ];
+
+  const activeTab = params.tab ? params.tab : "koder";
+
+  return (
+    <div className="tabs">
+      {renderVersionInfo()}
+      <h2>{selectedVersion.version.name}</h2>
+
+      <Tabs
+        activeOnInit={activeTab}
+        items={tabItems.map((tab) => ({ title: tab.title, path: tab.path }))}
+        onClick={handleTabClick}
+      />
+      <div className="tab-content">
+        {tabItems.find((tab) => tab.path === activeTab)?.content}
+      </div>
+    </div>
+  );
+};
 
 TabsComponent.propTypes = {
   selectedVersion: PropTypes.object.isRequired,
@@ -222,10 +220,6 @@ TabsComponent.propTypes = {
   actions: PropTypes.object.isRequired,
   modal: PropTypes.object.isRequired,
   isFetchingClass: PropTypes.bool.isRequired,
-};
-
-TabsComponent.contextTypes = {
-  router: PropTypes.object,
 };
 
 export default TabsComponent;

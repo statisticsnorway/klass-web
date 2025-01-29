@@ -1,14 +1,18 @@
-@use 'sass:color';
+// Variables
+$body-font-size: 1.3em;
+$list-font-size: 1.4em;
+$body-line-height: 1.5em;
 
-@import url(//www.ssb.no/_public/skins/advanced/ssb.no/styles/styles.css); // Should be included somehow to avoid CORS issue
-@import url(//www.ssb.no/_public/skins/advanced/ssb.no/styles/responsive.css); // Should be included somehow to avoid CORS issue
+$link-color: #3e8601;
+$black: #333333;
+$red: #a72b1c;
+$purple: #6a0788;
+$green: #3e8601;
+$yellow: #ebb41f;
+$blue: #0774d0;
 
-@import "_variables.scss";
-
-@import "_reset.scss";
-
-
-
+@import url('https://www.ssb.no/_public/skins/advanced/ssb.no/styles/styles.css');
+@import url('https://www.ssb.no/_public/skins/advanced/ssb.no/styles/responsive.css');
 
 body {
   min-width: 980px;
@@ -170,7 +174,7 @@ body {
 
     .alternate tbody tr:hover,
     .alternate tbody tr.odd:hover {
-    background-color: color.scale($black, $lightness: 70%) !important;
+      background-color: rgba(51, 51, 51, 0.7) !important;
     }
 
     .clickable {
@@ -230,50 +234,5 @@ body {
         content: "en";
       }
     }
-
-    // .menuBtn, .searchBtn {
-    //     position: absolute;
-    //     top: 11px;
-    //     padding: 14px;
-    //     background-repeat: no-repeat;
-    //     background-position: center;
-    //     background-size: auto 18px;
-    //     z-index: 1;
-    //     cursor: pointer;
-    //     border: 1px solid #aaa;
-    //     border-radius: 4px;
-    //     font-size: 10px;
-    // }
-    //
-    // .menuBtn {
-    //     background-image: url(../images/burger.svg);
-    //     background-position: 5px center;
-    //     padding-right: 50px;
-    //     right: 90px;
-    //
-    //     &:after {
-    //         content: "MENY";
-    //         position: absolute;
-    //         right: 7px;
-    //         top: 9px;
-    //     }
-    // }
-    //
-    // #header {
-    //     background: #d4d4d4 !important;
-    //     border-bottom: 1px solid #bbb !important;
-    //     padding: 10px 0 30px;
-    //     margin-bottom: 10px;
-    //     position: relative;
-    //     height: auto;
-    //     min-height: 0;
-    // }
-    //
-    // .sitewrapper {
-    //     padding: 0 10px;
-    //     width: auto;
-    //     max-width: 100%;
-    //     min-width: 0;
-    // }
   }
 }

@@ -1,5 +1,4 @@
-@use 'sass:color';
-@import "../../../styles/_variables.scss";
+@use "../../../styles/_variables" as vars;
 
 
 .list-heading {
@@ -45,7 +44,7 @@
     //     }
     //
     //     div[role=treeitem] {
-	// 		border-bottom: 1px solid #bbb;
+    // 		border-bottom: 1px solid #bbb;
     //
     //         a {
     // 			background-repeat: no-repeat;
@@ -62,7 +61,7 @@
     //             line-height: 1.5em;
     //
     // 			&:hover {
-    // 				background-color: color.scale($black, $lightness: 70%) !important;
+    // 				background-color: rgba(51, 51, 51, 0.7) !important;
     // 			}
     //
     // 			.link-type {
@@ -105,9 +104,6 @@
     //     }
     // }
 
-
-
-
 	.expandcollapse {
 	    margin: 2em 0 4em 0;
         font-size: 1em;
@@ -138,8 +134,8 @@
 			display: block;
 			margin: 0;
 			padding: 0.9em 1.5em 0.8em 1.5em;
-			font-size: $list-font-size;
-            line-height: $body-line-height;
+			font-size: vars.$list-font-size;
+            line-height: vars.$body-line-height;
 
 			.link-type {
 				float: right;
@@ -161,7 +157,7 @@
             position: relative;
 
 			&:hover {
-				background-color: color.scale($black, $lightness: 70%) !important;
+				background-color: rgba(51, 51, 51, 0.7) !important;
 			}
 		}
 

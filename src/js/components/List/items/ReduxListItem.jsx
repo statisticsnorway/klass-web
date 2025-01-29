@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 import Notes from "../../Notes";
@@ -8,10 +8,16 @@ import Modal from "simple-react-modal";
 import _ from "lodash";
 import { TranslateComponent } from "../../../lib/languageUtils";
 
-class StandardListItem extends Component {
-  renderItemList() {
-    const { item, displayName, type, actions, modal, idx } = this.props;
-
+const StandardListItem = ({
+  item,
+  displayName,
+  type,
+  actions,
+  modal,
+  idx,
+  search,
+}) => {
+  const renderItemList = () => {
     if (item.children && item.children.length > 0) {
       const listEl = item.children.map((childItem, key) => {
         if (childItem._links) {
@@ -77,16 +83,15 @@ class StandardListItem extends Component {
         </ol>
       );
     }
-  }
+  };
 
-  closeModal() {
-    const { actions } = this.props;
+  const closeModal = useCallback(() => {
     actions.hideModal();
-  }
+  }, [actions]);
 
-  renderNoteBlocks(arr) {
-    return arr.map(function (item, key) {
-      var splitted = item.split(/:(.+)?/);
+  const renderNoteBlocks = (arr) => {
+    return arr.map((item, key) => {
+      const splitted = item.split(/:(.+)?/);
       if (splitted.length > 1) {
         return (
           <div className="flex-container" key={key}>
@@ -102,11 +107,9 @@ class StandardListItem extends Component {
         );
       }
     });
-  }
+  };
 
-  renderModal() {
-    const { modal, item } = this.props;
-
+  const renderModal = () => {
     if (!modal.modalIsOpen || !_.isEqual(modal.item, item)) {
       return null;
     }
@@ -119,10 +122,10 @@ class StandardListItem extends Component {
           className="modal-notes"
           closeOnOuterClick={true}
           show={modal.modalIsOpen}
-          onClose={this.closeModal.bind(this)}
+          onClose={closeModal}
         >
           <div className="modal-content">
-            <a onClick={this.closeModal.bind(this)}>
+            <a onClick={closeModal}>
               <i
                 className="fa fa-times-circle-o close-button"
                 aria-hidden="true"
@@ -131,7 +134,7 @@ class StandardListItem extends Component {
             <h5>
               {modal.item.code} - {modal.item.name}
             </h5>
-            {this.renderNoteBlocks(noteBlock)}
+            {renderNoteBlocks(noteBlock)}
           </div>
         </Modal>
       );
@@ -141,19 +144,18 @@ class StandardListItem extends Component {
           className="modal-notes"
           closeOnOuterClick={true}
           show={modal.modalIsOpen}
-          onClose={this.closeModal.bind(this)}
+          onClose={closeModal}
         >
           <div className="modal-content">
-            <a onClick={this.closeModal.bind(this)}>
+            <a onClick={closeModal}>
               <i
                 className="fa fa-times-circle-o close-button"
                 aria-hidden="true"
               />
             </a>
-            {/*<h5>{modal.item.code} - {modal.item.name}</h5>*/}
             <div className="content">
               <TranslateComponent content="TABS.VALID_FROM" />
-              &nbsp;{item.validFrom} <br />{" "}
+              &nbsp;{item.validFrom} <br />
               {!_.isEmpty(item.validTo)
                 ? translate("TABS.VALID_TO") + " " + item.validTo
                 : translate("TABS.VERSIONS.STILL_VALID")}
@@ -162,11 +164,10 @@ class StandardListItem extends Component {
         </Modal>
       );
     }
-  }
+  };
 
-  toggle(e) {
+  const toggle = (e) => {
     e.preventDefault();
-    const { item, idx, actions, type, search } = this.props;
 
     if (item.numberOfClassifications || item.children) {
       if (type === "code" || type === "variant") {
@@ -175,48 +176,45 @@ class StandardListItem extends Component {
         actions.toggleSubject(idx, search);
       }
     }
-  }
+  };
 
-  render() {
-    const { item, displayName, actions, idx } = this.props;
-    const toggleIcon =
-      item.children || item.numberOfClassifications
-        ? item.active
-          ? "hovedemne collapse"
-          : "hovedemne expand"
-        : "last-item";
-    const showHide = (
-      <TranslateComponent
-        content="COMMON.SHOW_HIDE"
-        component="span"
-        className="screen-reader-only"
-      />
-    );
+  const toggleIcon =
+    item.children || item.numberOfClassifications
+      ? item.active
+        ? "hovedemne collapse"
+        : "hovedemne expand"
+      : "last-item";
+  const showHide = (
+    <TranslateComponent
+      content="COMMON.SHOW_HIDE"
+      component="span"
+      className="screen-reader-only"
+    />
+  );
 
-    return (
-      <li
-        key={"li" + idx}
-        className={toggleIcon}
-        role="treeitem"
-        aria-expanded={item.active === true}
+  return (
+    <li
+      key={"li" + idx}
+      className={toggleIcon}
+      role="treeitem"
+      aria-expanded={item.active === true}
+    >
+      <a
+        className="toggle-children clearfix"
+        onClick={toggle}
+        role="link"
+        href="#"
       >
-        <a
-          className="toggle-children clearfix"
-          onClick={(ev) => this.toggle(ev)}
-          role="link"
-          href="#"
-        >
-          {showHide}
-          {displayName}
-          <CodeDate item={item} actions={actions} />
-          <Notes item={item} actions={actions} />
-        </a>
-        {this.renderModal()}
-        {this.renderItemList()}
-      </li>
-    );
-  }
-}
+        {showHide}
+        {displayName}
+        <CodeDate item={item} actions={actions} />
+        <Notes item={item} actions={actions} />
+      </a>
+      {renderModal()}
+      {renderItemList()}
+    </li>
+  );
+};
 
 StandardListItem.propTypes = {
   item: PropTypes.object.isRequired,
@@ -225,9 +223,10 @@ StandardListItem.propTypes = {
   type: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
   modal: PropTypes.object.isRequired,
+  search: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   search: state.searchResult.search,
 });
 

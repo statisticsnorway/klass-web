@@ -1,43 +1,31 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useEffect, useRef } from "react";
 import _ from "lodash";
 import List from "../List";
 import config from "../../config";
 import { translate, TranslateComponent } from "../../lib/languageUtils";
 
-class Codes extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    let dataChanged =
-      !_.isEqual(this.props.classification, nextProps.classification) ||
-      !_.isEqual(this.props.version, nextProps.version) ||
-      !_.isEqual(this.props.modal.modalIsOpen, nextProps.modal.modalIsOpen) ||
-      !_.isEqual(this.props.modal.item, nextProps.modal.item);
+const Codes = ({ classification, version, params, actions, modal }) => {
+  const [hierarchyOpen, setHierarchyOpen] = useState(true);
+  const queryRef = useRef();
 
-    let tabChange =
-      !_.isEqual(this.props.params.tab, nextProps.params.tab) &&
-      _.isEqual(nextProps.params.tab, "endringer");
+  useEffect(() => {
+    // Handle tab change or prop change logic if necessary
+  }, [params.tab, version, classification, modal]);
 
-    return dataChanged || tabChange;
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const { actions } = this.props;
-    const query = ReactDOM.findDOMNode(this.refs.query).value.trim();
-
+    const query = queryRef.current.value.trim();
     actions.searchCode(query, "code");
-  }
+  };
 
-  resetFilter(ev) {
+  const resetFilter = (ev) => {
     ev.preventDefault();
-    const { actions } = this.props;
-    ReactDOM.findDOMNode(this.refs.query).value = "";
+    queryRef.current.value = "";
     actions.searchCode("", "code");
-  }
+  };
 
-  downloadCodes() {
-    const { version } = this.props;
+  const downloadCodes = () => {
     let language = version.language;
     let languageArgument = language == null ? "" : "?language=" + language;
     const csvURL =
@@ -52,10 +40,9 @@ class Codes extends Component {
     tempLink.href = csvURL;
     tempLink.setAttribute("download", "code");
     tempLink.click();
-  }
+  };
 
-  filterText() {
-    const { version } = this.props;
+  const filterText = () => {
     if (!_.isEmpty(version.filterQuery)) {
       return (
         <h3>
@@ -64,10 +51,9 @@ class Codes extends Component {
         </h3>
       );
     }
-  }
+  };
 
-  renderList() {
-    const { version, actions, modal } = this.props;
+  const renderList = () => {
     if (_.isEmpty(version.nestedItems)) {
       return (
         <p>
@@ -93,22 +79,19 @@ class Codes extends Component {
         translations={translations}
       />
     );
-  }
+  };
 
-  openHierarchy(ev) {
-    const { version, actions } = this.props;
-    if (ev.currentTarget.value == "true") {
-      ev.target.innerHTML = translate("COMMON.CLOSE_HIERARCHY");
-      ev.currentTarget.value = "false";
+  const openHierarchy = () => {
+    if (hierarchyOpen) {
+      setHierarchyOpen(false);
       actions.toggleAll(true, "code");
     } else {
-      ev.target.innerHTML = translate("COMMON.OPEN_HIERARCHY");
-      ev.currentTarget.value = "true";
+      setHierarchyOpen(true);
       actions.toggleAll(false, "code");
     }
-  }
+  };
 
-  handleChange(e) {
+  const handleChange = (e) => {
     if (e.target.checked) {
       _.forEach(document.getElementsByClassName("itemName"), function (el) {
         el.getElementsByClassName("longName")[0].style.display = "none";
@@ -136,18 +119,13 @@ class Codes extends Component {
         );
       });
     }
-  }
+  };
 
-  renderShortnameBox() {
-    const { classification } = this.props;
+  const renderShortnameBox = () => {
     if (classification.includeShortName) {
       return (
         <div>
-          <input
-            type="checkbox"
-            id="includeCodelist"
-            onChange={(ev) => this.handleChange(ev)}
-          />
+          <input type="checkbox" id="includeCodelist" onChange={handleChange} />
           <TranslateComponent
             component="label"
             content="TABS.CODES.SHOW_SHORT_TITLES"
@@ -158,68 +136,71 @@ class Codes extends Component {
     } else {
       return "";
     }
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit.bind(this)} className="search-box">
-          <div className="flex-container">
-            <div className="flex-item search-input-text">
-              <TranslateComponent
-                component="input"
-                aria-label={translate("TABS.CODES.SEARCH_BY_CODE_OR_NAME")}
-                attributes={{
-                  placeholder: "TABS.CODES.SEARCH_BY_CODE_OR_NAME",
-                }}
-                type="text"
-                ref="query"
-                name="kodeverk"
-              />
-            </div>
-            <div className="flex-item search-button">
-              <TranslateComponent
-                component="button"
-                type="submit"
-                content="SEARCH.FILTER"
-              />
-            </div>
-            <div className="flex-item reset-button">
-              <TranslateComponent
-                component="button"
-                content="SEARCH.RESET"
-                onClick={(ev) => this.resetFilter(ev)}
-              />
-            </div>
+  return (
+    <div>
+      <form onSubmit={handleSubmit} className="search-box">
+        <div className="flex-container">
+          <div className="flex-item search-input-text">
+            <TranslateComponent
+              component="input"
+              aria-label={translate("TABS.CODES.SEARCH_BY_CODE_OR_NAME")}
+              attributes={{
+                placeholder: "TABS.CODES.SEARCH_BY_CODE_OR_NAME",
+              }}
+              type="text"
+              ref={queryRef}
+              name="kodeverk"
+            />
           </div>
-          {this.renderShortnameBox()}
-        </form>
-        <div className="button-heading">
-          <div className="flex-item">
-            <button
-              ref="openCloseButton"
-              value="true"
-              onClick={(ev) => this.openHierarchy(ev)}
-            >
-              <TranslateComponent content="COMMON.OPEN_HIERARCHY" />
-            </button>
-          </div>
-          <div className="flex-item">
+          <div className="flex-item search-button">
             <TranslateComponent
               component="button"
-              content="COMMON.DOWNLOAD_CSV"
-              onClick={this.downloadCodes.bind(this)}
+              type="submit"
+              content="SEARCH.FILTER"
+            />
+          </div>
+          <div className="flex-item reset-button">
+            <TranslateComponent
+              component="button"
+              content="SEARCH.RESET"
+              onClick={resetFilter}
             />
           </div>
         </div>
-        <div className="results class-list" id="expandcollapse">
-          {this.filterText()}
-          {this.renderList()}
+        {renderShortnameBox()}
+      </form>
+      <div className="button-heading">
+        <div className="flex-item">
+          <button
+            value={hierarchyOpen ? "true" : "false"}
+            onClick={openHierarchy}
+          >
+            <TranslateComponent
+              content={
+                hierarchyOpen
+                  ? "COMMON.CLOSE_HIERARCHY"
+                  : "COMMON.OPEN_HIERARCHY"
+              }
+            />
+          </button>
+        </div>
+        <div className="flex-item">
+          <TranslateComponent
+            component="button"
+            content="COMMON.DOWNLOAD_CSV"
+            onClick={downloadCodes}
+          />
         </div>
       </div>
-    );
-  }
-}
+      <div className="results class-list" id="expandcollapse">
+        {filterText()}
+        {renderList()}
+      </div>
+    </div>
+  );
+};
 
 Codes.propTypes = {
   classification: PropTypes.object.isRequired,

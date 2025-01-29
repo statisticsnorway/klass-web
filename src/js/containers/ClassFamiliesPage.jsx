@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -9,20 +9,26 @@ import Contact from "../components/Sidebar/Contact";
 import config from "../config";
 import { translate, TranslateComponent } from "../lib/languageUtils";
 
-function loadData(props) {
-  const { actions } = props;
+const loadData = (actions) => {
   actions.loadSubjects();
   actions.hideModal();
-}
+};
 
-class ClassFamiliesPage extends Component {
-  UNSAFE_componentWillMount() {
-    loadData(this.props);
-  }
+const ClassFamiliesPage = ({
+  items,
+  isFetching,
+  actions,
+  modal,
+  ssbSections,
+  search,
+  location,
+}) => {
+  useEffect(() => {
+    loadData(actions);
+  }, [actions]);
 
-  openHierarchy(ev) {
-    const { items, actions } = this.props;
-    if (ev.currentTarget.value == "true") {
+  const openHierarchy = (ev) => {
+    if (ev.currentTarget.value === "true") {
       ev.target.innerHTML = translate("COMMON.CLOSE_HIERARCHY");
       ev.currentTarget.value = "false";
       actions.toggleAllSubjects(true);
@@ -31,10 +37,9 @@ class ClassFamiliesPage extends Component {
       ev.currentTarget.value = "true";
       actions.toggleAllSubjects(false);
     }
-  }
+  };
 
-  renderContent() {
-    const { items, isFetching, actions, modal } = this.props;
+  const renderContent = () => {
     const translations = {
       screenReaderShowHide: translate("COMMON.SHOW_HIDE"),
     };
@@ -42,12 +47,7 @@ class ClassFamiliesPage extends Component {
     return (
       <div>
         <div className="list-heading">
-          <button
-            ref="openCloseButton"
-            className="expand-tree"
-            value="true"
-            onClick={(ev) => this.openHierarchy(ev)}
-          >
+          <button className="expand-tree" value="true" onClick={openHierarchy}>
             <TranslateComponent content="COMMON.OPEN_HIERARCHY" />
           </button>
           <TranslateComponent
@@ -67,55 +67,51 @@ class ClassFamiliesPage extends Component {
         </div>
       </div>
     );
-  }
+  };
 
-  render() {
-    document.title = translate("PAGE.TITLE");
-    const { actions, ssbSections, search, location } = this.props;
-    return (
-      <div className="content">
-        <div className="heading">
-          <TranslateComponent
-            component="h1"
-            content="CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS"
-          />
-        </div>
-        <div className="main">
-          <TranslateComponent
-            component="p"
-            content="CLASSIFICATIONS.CLASS_DESCRIPTION"
-          />
-          <p>
-            <a className="child-link" href={config.OM_KLASS_URL}>
-              {" "}
-              <TranslateComponent content="CLASSIFICATIONS.OM_KLASS_LINK_TEXT" />
-            </a>
-          </p>
-          <p>
-            <a className="child-link" href={config.API_BASE_URL + "/"}>
-              {" "}
-              <TranslateComponent content="CLASSIFICATIONS.API_LINK_TEXT" />
-            </a>
-            <TranslateComponent content="CLASSIFICATIONS.API_POST_LINK_TEXT" />
-          </p>
-          <Search
-            actions={actions}
-            sections={ssbSections}
-            search={search}
-            location={location}
-          />
-          {this.renderContent()}
-        </div>
-        <div className="sidebar">
-          <Contact />
-        </div>
-        <div className="clear-fix" />
+  document.title = translate("PAGE.TITLE");
+
+  return (
+    <div className="content">
+      <div className="heading">
+        <TranslateComponent
+          component="h1"
+          content="CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS"
+        />
       </div>
-    );
-  }
-}
+      <div className="main">
+        <TranslateComponent
+          component="p"
+          content="CLASSIFICATIONS.CLASS_DESCRIPTION"
+        />
+        <p>
+          <a className="child-link" href={config.OM_KLASS_URL}>
+            <TranslateComponent content="CLASSIFICATIONS.OM_KLASS_LINK_TEXT" />
+          </a>
+        </p>
+        <p>
+          <a className="child-link" href={`${config.API_BASE_URL}/`}>
+            <TranslateComponent content="CLASSIFICATIONS.API_LINK_TEXT" />
+          </a>
+          <TranslateComponent content="CLASSIFICATIONS.API_POST_LINK_TEXT" />
+        </p>
+        <Search
+          actions={actions}
+          sections={ssbSections}
+          search={search}
+          location={location}
+        />
+        {renderContent()}
+      </div>
+      <div className="sidebar">
+        <Contact />
+      </div>
+      <div className="clear-fix" />
+    </div>
+  );
+};
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   items: state.classFamilies.items,
   isFetching: state.classFamilies.isFetching,
   ssbSections: state.ssbSections,
@@ -125,10 +121,8 @@ const mapStateToProps = (state, ownProps) => ({
   modal: state.modal,
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ClassActions, dispatch),
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(ClassActions, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClassFamiliesPage);

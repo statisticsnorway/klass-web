@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, IndexRoute, Redirect } from "react-router";
+import { Route, Routes, Navigate } from "react-router-dom";
 import App from "./containers/App";
 import ClassFamiliesPage from "./containers/ClassFamiliesPage";
 import ClassItemPage from "./containers/ClassItemPage";
@@ -11,17 +11,21 @@ const classCode = (
   <TranslateComponent content="CLASSIFICATIONS.CLASSIFICATIONS_AND_CODELISTS" />
 );
 
-export default (
-  <Route path="/" name={classCode} component={App}>
-    <IndexRoute component={ClassFamiliesPage} />
-    <Route path="klassifikasjoner" component={ClassItemPage} name="exclude">
-      <Route
-        path=":classId(/versjon/:versionId)(/:tab)(/:itemId)"
-        component={ClassItemPage}
-      />
-    </Route>
-    <Route path="sok" name="Søkeresultat" component={SearchPage} />
-    <Route path="404" name="404: Fant ingen sider" component={NotFoundView} />
-    <Redirect from="*" to="404" />
-  </Route>
-);
+export default function RoutesConfig() {
+  return (
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<ClassFamiliesPage />} />
+        <Route path="klassifikasjoner" element={<ClassItemPage />}>
+          <Route
+            path=":classId(/versjon/:versionId)(/:tab)(/:itemId)"
+            element={<ClassItemPage />}
+          />
+        </Route>
+        <Route path="sok" element={<SearchPage />} />
+        <Route path="404" element={<NotFoundView />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+      </Route>
+    </Routes>
+  );
+}

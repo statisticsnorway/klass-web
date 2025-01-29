@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import _ from "lodash";
 import config from "../../config";
@@ -17,58 +17,45 @@ function groupBy(array, f) {
   });
 }
 
-class Correspondences extends Component {
-  constructor() {
-    super();
-    this.state = {
-      invertedTable: true,
-    };
-  }
+const Correspondences = ({ actions, params, selectedVersion }) => {
+  const [invertedTable, setInvertedTable] = useState(true);
+  const queryRef = useRef();
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const { actions } = this.props;
-    const query = ReactDOM.findDOMNode(this.refs.query).value.trim();
-
-    actions.searchCode(query, "correspondences");
-  }
-
-  resetFilter(ev) {
-    ev.preventDefault();
-    const { actions } = this.props;
-    ReactDOM.findDOMNode(this.refs.query).value = "";
-    actions.searchCode("", "correspondences");
-  }
-
-  componentDidMount() {
-    const { actions, params } = this.props;
+  useEffect(() => {
     if (params.itemId) {
       actions.loadCorrespondence(params.itemId);
     }
-  }
+  }, [params.itemId, actions]);
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { actions } = this.props;
+  useEffect(() => {
     if (
-      nextProps.params.itemId &&
-      nextProps.params.itemId !== this.props.params.itemId
+      params.itemId &&
+      params.itemId !== selectedVersion.selectedCorrespondence.id
     ) {
-      actions.loadCorrespondence(nextProps.params.itemId);
+      actions.loadCorrespondence(params.itemId);
     }
-  }
+  }, [params.itemId, actions, selectedVersion.selectedCorrespondence]);
 
-  invertTable() {
-    this.setState({
-      invertedTable: !this.state.invertedTable,
-    });
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const query = queryRef.current.value.trim();
+    actions.searchCode(query, "correspondences");
+  };
 
-  handleClick(event, correspondence) {
-    const { params } = this.props;
+  const resetFilter = (ev) => {
+    ev.preventDefault();
+    queryRef.current.value = "";
+    actions.searchCode("", "correspondences");
+  };
 
+  const invertTable = () => {
+    setInvertedTable(!invertedTable);
+  };
+
+  const handleClick = (event, correspondence) => {
+    const { params } = event.target;
     const url = correspondence._links.self.href;
     const corrPath = "/" + url.substring(url.lastIndexOf("/") + 1, url.length);
-
     const classPath = "/" + params.classId;
     const versionPath = params.versionId ? "/versjon/" + params.versionId : "";
     const tabPath = "/" + params.tab;
@@ -76,15 +63,15 @@ class Correspondences extends Component {
     const path =
       "/klassifikasjoner" + classPath + versionPath + tabPath + corrPath;
     this.context.router.push(path);
-  }
+  };
 
-  renderBody() {
-    const { selectedVersion } = this.props;
+  const renderBody = () => {
+    const { selectedVersion } = selectedVersion;
     const version = selectedVersion.version;
 
     if (
       version.correspondenceTables.length < 1 ||
-      (version.correspondenceTables.length == 1 &&
+      (version.correspondenceTables.length === 1 &&
         version.correspondenceTables[0].changeTable)
     ) {
       return (
@@ -98,41 +85,39 @@ class Correspondences extends Component {
       );
     }
 
-    return version.correspondenceTables.map(
-      function (correspondence, key) {
-        if (!correspondence.changeTable) {
-          return (
-            <tr
-              key={key}
-              className="clickable"
-              onClick={(ev) => this.handleClick(ev, correspondence)}
-            >
-              <td>{correspondence.source}</td>
-              <td>
-                {correspondence.sourceLevel == undefined
-                  ? translate("TABS.CORRESPONDENCES.CORRESPONDENCES_LEVELS_ALL")
-                  : correspondence.sourceLevel.levelName}
-              </td>
-              <td>{correspondence.target}</td>
-              <td>
-                {correspondence.targetLevel == undefined
-                  ? translate("TABS.CORRESPONDENCES.CORRESPONDENCES_LEVELS_ALL")
-                  : correspondence.targetLevel.levelName}
-              </td>
-              <td>{correspondence.owningSection}</td>
-            </tr>
-          );
-        }
-      }.bind(this)
-    );
-  }
+    return version.correspondenceTables.map((correspondence, key) => {
+      if (!correspondence.changeTable) {
+        return (
+          <tr
+            key={key}
+            className="clickable"
+            onClick={(ev) => handleClick(ev, correspondence)}
+          >
+            <td>{correspondence.source}</td>
+            <td>
+              {correspondence.sourceLevel == undefined
+                ? translate("TABS.CORRESPONDENCES.CORRESPONDENCES_LEVELS_ALL")
+                : correspondence.sourceLevel.levelName}
+            </td>
+            <td>{correspondence.target}</td>
+            <td>
+              {correspondence.targetLevel == undefined
+                ? translate("TABS.CORRESPONDENCES.CORRESPONDENCES_LEVELS_ALL")
+                : correspondence.targetLevel.levelName}
+            </td>
+            <td>{correspondence.owningSection}</td>
+          </tr>
+        );
+      }
+    });
+  };
 
-  renderCorrTableBody(corrArr) {
+  const renderCorrTableBody = (corrArr) => {
     let groupedArray;
 
-    switch (this.state.invertedTable) {
+    switch (invertedTable) {
       case false:
-        corrArr.sort(function (a, b) {
+        corrArr.sort((a, b) => {
           if (a.targetCode.toLowerCase() > b.targetCode.toLowerCase()) {
             return 1;
           }
@@ -146,12 +131,12 @@ class Correspondences extends Component {
           return [item.targetCode];
         });
 
-        return groupedArray.map(function (item, key) {
+        return groupedArray.map((item, key) => {
           let targetList = item
-            .sort(function (a, b) {
+            .sort((a, b) => {
               return a.sourceCode - b.sourceCode;
             })
-            .map(function (subItem, key) {
+            .map((subItem, key) => {
               return (
                 <li key={key}>
                   <b>{subItem.sourceCode}</b> - {subItem.sourceName}
@@ -171,7 +156,7 @@ class Correspondences extends Component {
           );
         });
       case true:
-        corrArr.sort(function (a, b) {
+        corrArr.sort((a, b) => {
           if (a.sourceCode.toLowerCase() > b.sourceCode.toLowerCase()) {
             return 1;
           }
@@ -185,12 +170,12 @@ class Correspondences extends Component {
           return [item.sourceCode];
         });
 
-        return groupedArray.map(function (item, key) {
+        return groupedArray.map((item, key) => {
           let targetList = item
-            .sort(function (a, b) {
+            .sort((a, b) => {
               return a.targetCode - b.targetCode;
             })
-            .map(function (subItem, key) {
+            .map((subItem, key) => {
               return (
                 <li key={key}>
                   <b>{subItem.targetCode}</b> - {subItem.targetName}
@@ -210,10 +195,10 @@ class Correspondences extends Component {
           );
         });
     }
-  }
+  };
 
-  downloadCodes() {
-    const { params, selectedVersion } = this.props;
+  const downloadCodes = () => {
+    const { params, selectedVersion } = params;
     let language = selectedVersion.selectedCorrespondence.language;
     let languageArgument = language == null ? "" : "?language=" + language;
     const csvURL =
@@ -228,206 +213,172 @@ class Correspondences extends Component {
     tempLink.href = csvURL;
     tempLink.setAttribute("download", "correspondencetable");
     tempLink.click();
-  }
+  };
 
-  render() {
-    const { params, selectedVersion } = this.props;
-    const selectedCorrespondence = selectedVersion.selectedCorrespondence;
-
-    if (params.itemId) {
-      if (selectedVersion.isFetchingCorrespondence) {
-        return (
-          <div className="spinner">
-            <div className="bounce1"></div>
-            <div className="bounce2"></div>
-            <div className="bounce3"></div>
-          </div>
-        );
-      }
-      if (_.isEmpty(selectedCorrespondence)) {
-        return (
-          <TranslateComponent
-            component="div"
-            content="TABS.CORRESPONDENCES.CORRESPONDENCE_TABLE_NOT_FOUND"
-          />
-        );
-      }
-      let joinedLanguages = selectedCorrespondence.published.map(function (
-        val
-      ) {
+  if (params.itemId) {
+    if (selectedVersion.isFetchingCorrespondence) {
+      return (
+        <div className="spinner">
+          <div className="bounce1"></div>
+          <div className="bounce2"></div>
+          <div className="bounce3"></div>
+        </div>
+      );
+    }
+    if (_.isEmpty(selectedVersion.selectedCorrespondence)) {
+      return (
+        <TranslateComponent
+          component="div"
+          content="TABS.CORRESPONDENCES.CORRESPONDENCE_TABLE_NOT_FOUND"
+        />
+      );
+    }
+    let joinedLanguages = selectedVersion.selectedCorrespondence.published.map(
+      function (val) {
         let comma =
-          val ==
-          selectedCorrespondence.published[
-            selectedCorrespondence.published.length - 1
+          val ===
+          selectedVersion.selectedCorrespondence.published[
+            selectedVersion.selectedCorrespondence.published.length - 1
           ]
             ? ""
             : ",";
-        if (val == "nb")
+        if (val === "nb")
           return (
             <span>
               <TranslateComponent content="LANGUAGE.NORWEGIAN" />
               {comma}{" "}
             </span>
           );
-        if (val == "nn")
+        if (val === "nn")
           return (
             <span>
               <TranslateComponent content="LANGUAGE.NYNORSK" />
               {comma}{" "}
             </span>
           );
-        if (val == "en")
+        if (val === "en")
           return (
             <span>
               <TranslateComponent content="LANGUAGE.ENGLISH" />
               {comma}{" "}
             </span>
           );
-      });
-      return (
-        <div>
-          <p className="back-link">
-            &lt;&lt;{" "}
-            <TranslateComponent
-              component="a"
-              content="TABS.CORRESPONDENCES.BACK_TO_CORRESPONDENCES"
-              href="javascript:history.back()"
-            />
-          </p>
-          <h3>{selectedCorrespondence.name}</h3>
-          <p>
-            <b>
-              <TranslateComponent content="TABS.CORRESPONDENCES.RESPONSIBLE" />:
-            </b>{" "}
-            {selectedCorrespondence.contactPerson.name},{" "}
-            <TranslateComponent content="TABS.CORRESPONDENCES.SECTION_FOR" />{" "}
-            {selectedCorrespondence.owningSection}
-            <br />
-            <b>
-              <TranslateComponent content="TABS.CORRESPONDENCES.PUBLISHED" />:
-            </b>{" "}
-            {joinedLanguages}
-            <br />
-            {selectedCorrespondence.description}
-          </p>
-          <form onSubmit={this.handleSubmit.bind(this)} className="search-box">
-            <div className="flex-container">
-              <div className="flex-item search-input-text">
-                <TranslateComponent
-                  component="input"
-                  aria-label={translate("TABS.CODES.SEARCH_BY_CODE_OR_NAME")}
-                  attributes={{
-                    placeholder: "TABS.CODES.SEARCH_BY_CODE_OR_NAME",
-                  }}
-                  type="text"
-                  ref="query"
-                  name="kodeverk"
-                />
-              </div>
-              <div className="flex-item search-button">
-                <TranslateComponent
-                  component="button"
-                  type="submit"
-                  content="SEARCH.FILTER"
-                />
-              </div>
-              <div className="flex-item reset-button">
-                <TranslateComponent
-                  component="button"
-                  content="SEARCH.RESET"
-                  onClick={(ev) => this.resetFilter(ev)}
-                />
-              </div>
-            </div>
-          </form>
-          <div className="button-heading">
-            <TranslateComponent
-              component="button"
-              content="COMMON.INVERT_TABLE"
-              className="expand-tree"
-              onClick={this.invertTable.bind(this)}
-            />
-            <TranslateComponent
-              component="button"
-              content="COMMON.DOWNLOAD_CSV"
-              className="expand-tree"
-              onClick={this.downloadCodes.bind(this)}
-            />
-          </div>
-
-          <table className="table-correspondenceTable alternate">
-            <thead>
-              <tr>
-                <th>
-                  {this.state.invertedTable
-                    ? selectedCorrespondence.source
-                    : selectedCorrespondence.target}
-                </th>
-                <th>
-                  {this.state.invertedTable
-                    ? selectedCorrespondence.target
-                    : selectedCorrespondence.source}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderCorrTableBody(selectedCorrespondence.nestedItems)}
-            </tbody>
-          </table>
-        </div>
-      );
-    }
-
+      }
+    );
     return (
       <div>
-        <TranslateComponent
-          component="h3"
-          content="TABS.CORRESPONDENCES.CORRESPONDENCES"
-        />
-        <TranslateComponent
-          component="p"
-          content="TABS.CORRESPONDENCES.DESCRIPTION"
-        />
-        <table className="table-correspondences alternate">
+        <p className="back-link">
+          &lt;&lt;{" "}
+          <TranslateComponent
+            component="a"
+            content="TABS.CORRESPONDENCES.BACK_TO_CORRESPONDENCES"
+            href="javascript:history.back()"
+          />
+        </p>
+        <h3>{selectedVersion.selectedCorrespondence.name}</h3>
+        <p>
+          <b>
+            <TranslateComponent content="TABS.CORRESPONDENCES.RESPONSIBLE" />:
+          </b>{" "}
+          {selectedVersion.selectedCorrespondence.contactPerson.name},{" "}
+          <TranslateComponent content="TABS.CORRESPONDENCES.SECTION_FOR" />{" "}
+          {selectedVersion.selectedCorrespondence.owningSection}
+          <br />
+          <b>
+            <TranslateComponent content="TABS.CORRESPONDENCES.PUBLISHED" />:
+          </b>{" "}
+          {joinedLanguages}
+          <br />
+          {selectedVersion.selectedCorrespondence.description}
+        </p>
+        <form onSubmit={handleSubmit} className="search-box">
+          <div className="flex-container">
+            <div className="flex-item search-input-text">
+              <TranslateComponent
+                component="input"
+                aria-label={translate("TABS.CODES.SEARCH_BY_CODE_OR_NAME")}
+                attributes={{
+                  placeholder: "TABS.CODES.SEARCH_BY_CODE_OR_NAME",
+                }}
+                type="text"
+                ref={queryRef}
+                name="kodeverk"
+              />
+            </div>
+            <div className="flex-item search-button">
+              <TranslateComponent
+                component="button"
+                type="submit"
+                content="SEARCH.FILTER"
+              />
+            </div>
+            <div className="flex-item reset-button">
+              <TranslateComponent
+                component="button"
+                type="button"
+                content="SEARCH.RESET"
+                onClick={resetFilter}
+              />
+            </div>
+          </div>
+        </form>
+        <button onClick={invertTable} className="corr-toggle">
+          <TranslateComponent content="TABS.CORRESPONDENCES.SWITCH_TABLE" />
+        </button>
+        <table className="table table-hover table-striped">
           <thead>
             <tr>
-              <TranslateComponent
-                component="th"
-                content="TABS.CORRESPONDENCES.CORRESPONDENCES_FROM"
-              />
-              <TranslateComponent
-                component="th"
-                content="TABS.CORRESPONDENCES.CORRESPONDENCES_LEVEL"
-              />
-              <TranslateComponent
-                component="th"
-                content="TABS.CORRESPONDENCES.CORRESPONDENCES_TO"
-              />
-              <TranslateComponent
-                component="th"
-                content="TABS.CORRESPONDENCES.CORRESPONDENCES_LEVEL"
-              />
-              <TranslateComponent
-                component="th"
-                content="TABS.CORRESPONDENCES.OWNER"
-              />
+              <th>
+                <TranslateComponent content="TABS.CORRESPONDENCES.SOURCE" />
+              </th>
+              <th>
+                <TranslateComponent content="TABS.CORRESPONDENCES.LEVEL" />
+              </th>
+              <th>
+                <TranslateComponent content="TABS.CORRESPONDENCES.TARGET" />
+              </th>
+              <th>
+                <TranslateComponent content="TABS.CORRESPONDENCES.LEVEL" />
+              </th>
+              <th>
+                <TranslateComponent content="TABS.CORRESPONDENCES.OWNING_SECTION" />
+              </th>
             </tr>
           </thead>
-          <tbody>{this.renderBody()}</tbody>
+          <tbody>{renderBody()}</tbody>
+        </table>
+        <h4>
+          <TranslateComponent content="TABS.CORRESPONDENCES.CORRESPONDENCES" />
+        </h4>
+        <button onClick={downloadCodes} className="download-button">
+          <TranslateComponent content="TABS.CORRESPONDENCES.DOWNLOAD" />
+        </button>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                <TranslateComponent content="TABS.CORRESPONDENCES.CODE" />
+              </th>
+              <th>
+                <TranslateComponent content="TABS.CORRESPONDENCES.LINKED_CODES" />
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {renderCorrTableBody(selectedVersion.selectedCorrespondence.codes)}
+          </tbody>
         </table>
       </div>
     );
+  } else {
+    return <p>No correspondence found.</p>;
   }
-}
-
-Correspondences.propTypes = {
-  selectedVersion: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
-  params: PropTypes.object.isRequired,
 };
 
-Correspondences.contextTypes = {
-  router: PropTypes.object,
+Correspondences.propTypes = {
+  actions: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
+  selectedVersion: PropTypes.object.isRequired,
 };
 
 export default Correspondences;

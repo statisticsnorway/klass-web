@@ -1,5 +1,4 @@
-@use 'sass:color';
-@import "../../../styles/_variables.scss";
+@use "../../../styles/_variables" as vars;
 
 .klass{
 	.search-box {
@@ -17,7 +16,7 @@
             right: 10px;
             top: 5px;
             font-size: 2em;
-            color: color.scale($purple, $lightness: 50%);
+						color: rgba(vars.$purple, 0.5);
         }
 
         .modal-content, .modal-content p {
@@ -58,16 +57,12 @@
 			width: 1.5em;
 			height: 1.5em;
 			vertical-align: bottom;
-
-			+ label {
-				// font-size: $body-font-size;
-			}
 		}
 		a {
-			// font-size: $body-font-size;
+			// font-size: vars.$body-font-size;
 			text-decoration: underline;
 			margin-left: 1em;
-			color: $link-color;
+			color: vars.$link-color;
 		}
 	}
 

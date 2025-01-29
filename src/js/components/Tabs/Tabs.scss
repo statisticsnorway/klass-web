@@ -1,5 +1,5 @@
-@use 'sass:color';
-@import "../../../styles/_variables.scss";
+@use "../../../styles/_variables" as vars;
+
 
 .klass-item {
 	.heading {
@@ -29,7 +29,7 @@
 
 	.tabs {
 		// font-size: 125%;
-		line-height: $body-line-height;
+		line-height: vars.$body-line-height;
 
 		.version-info {
 			font-weight: bold;
@@ -123,7 +123,7 @@
     			thead th {
     				background-color: #e5e5e5;
     				font-weight: bold;
-    				color: color.scale(#000, $lightness: 50%);
+    				color: rgba(0, 0, 0, 0.5);
     			}
     			.alternate tbody tr:nth-child(2n) {
     				background-color: #f5f5f5;
@@ -172,7 +172,7 @@
 			.react-tab-panel__tab-title-inner {
 	            padding: 0.75em 0.7em 0.66em 0.7em;
 	            text-align: center;
-                font-size: $body-font-size;
+                font-size: vars.$body-font-size;
 			}
 
 			.react-tab-panel__tab-title:not(.react-tab-panel__tab-title--active) {
@@ -204,7 +204,7 @@
 			thead th {
 				background-color: #e5e5e5;
 				font-weight: bold;
-				color: color.scale(#000, $lightness: 50%);
+				color: rgba(0, 0, 0, 0.5);
 			}
 			.alternate tbody tr:nth-child(2n) {
 				background-color: #f5f5f5;
@@ -275,7 +275,7 @@
 			About version
 		*/
 		#om-panel {
-			line-height: $body-line-height;
+			line-height: vars.$body-line-height;
 
 			.align-right {
 				text-align: right;

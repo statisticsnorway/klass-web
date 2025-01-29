@@ -1,85 +1,100 @@
-import PropTypes from 'prop-types';
-import React from "react";
+import PropTypes from "prop-types";
+import React, { useCallback } from "react";
 import _ from "lodash";
-import Notes from "../../Notes";
-import CodeDate from "../../CodeDate";
-import StaticListItem from "./StaticListItem";
+import StaticListItem from "./StaticListItem"; // Make sure this import is correct
 
-class CodeListItem extends StaticListItem {
+const CodeListItem = ({
+  item,
+  idx,
+  displayName,
+  type,
+  actions,
+  modal,
+  translations,
+}) => {
+  const shouldComponentUpdate = useCallback(
+    (nextProps) => {
+      // Ensure that the shouldComponentUpdate logic is correct
+      let visibleChanged = modal.modalIsOpen !== nextProps.modal.modalIsOpen;
+      let modalItemChanged = modal.item !== nextProps.modal.item;
 
+      let visible = nextProps.modal.modalIsOpen;
 
+      let modalWasThisItem = false;
+      if (modal.item !== null)
+        modalWasThisItem = _.isEqual(modal.item.code, item.code);
 
-    shouldComponentUpdate(nextProps, nextState) {
-
-
-        let visibleChanged = this.props.modal.modalIsOpen !== nextProps.modal.modalIsOpen;
-        let modalItemChanged = this.props.modal.item !== nextProps.modal.item;
-
-        let visible = nextProps.modal.modalIsOpen;
-
-        let modalWasThisItem = false;
-        if (this.props.modal.item  !== null) modalWasThisItem =_.isEqual(this.props.modal.item.code, this.props.item.code);
-
-        let modalIsThisItem = false;
-        if (nextProps.modal.item  !== null)  modalIsThisItem=   _.isEqual(nextProps.modal.item.code, nextProps.item.code);
-
-        let modalWasChildOfThisItem = this.searchForChildren(this.props.item, this.props.modal.item);
-        let modalIsChildOfThisItem = this.searchForChildren(nextProps.item, nextProps.modal.item);
-
-        if (( visibleChanged || visible || modalItemChanged)
-            && (modalWasThisItem || modalWasChildOfThisItem || modalIsThisItem || modalIsChildOfThisItem)) {
-            return true;
-        }
-
-        // check if content has changed
-        return !(
-            _.isEqual(this.props.item, nextProps.item)
-            && _.isEqual(this.props.item.active, nextProps.item.active)
-            && _.isEqual(this.props.idx, nextProps.idx)
-            && _.isEqual(this.props.displayName, nextProps.displayName)
-            && _.isEqual(this.props.type, nextProps.type)
+      let modalIsThisItem = false;
+      if (nextProps.modal.item !== null)
+        modalIsThisItem = _.isEqual(
+          nextProps.modal.item.code,
+          nextProps.item.code
         );
 
+      let modalWasChildOfThisItem = searchForChildren(item, modal.item);
+      let modalIsChildOfThisItem = searchForChildren(
+        nextProps.item,
+        nextProps.modal.item
+      );
+
+      if (
+        (visibleChanged || visible || modalItemChanged) &&
+        (modalWasThisItem ||
+          modalWasChildOfThisItem ||
+          modalIsThisItem ||
+          modalIsChildOfThisItem)
+      ) {
+        return true;
+      }
+
+      return !(
+        _.isEqual(item, nextProps.item) &&
+        _.isEqual(item.active, nextProps.item.active) &&
+        _.isEqual(idx, nextProps.idx) &&
+        _.isEqual(displayName, nextProps.displayName) &&
+        _.isEqual(type, nextProps.type)
+      );
+    },
+    [modal, item, idx, displayName, type]
+  );
+
+  const searchForChildren = (itemTree, target) => {
+    if (target === null) return false;
+    if (itemTree.children !== undefined) {
+      for (let child of itemTree.children) {
+        let match = _.isEqual(target.code, child.code);
+        if (match) return true;
+        let subChildFound = searchForChildren(child, target);
+        if (subChildFound) return true;
+      }
     }
+    return false;
+  };
 
-    searchForChildren(itemTree, target) {
-        if (target === null) return false;
-        if (itemTree.children !== undefined) {
-            // Object.keys(itemTree.children).forEach(function (itemId) {
-            // _.forEach(itemTree.children, function (item) {
-            for (let item of itemTree.children) {
-                let match = _.isEqual(target.code, item.code);
-                if (match) {
-                    return true;
-                } else {
-                    let subChildFound = this.searchForChildren(item, target);
-                    if (subChildFound) {
-                        return true;
-                    }
-                }
-            }
-        }
-        // window.console.log("search result:" + found)
-        return false;
-    }
-
-
-
-}
-
+  // Returning JSX using React.createElement for more explicit syntax
+  return React.createElement(StaticListItem, {
+    item: item,
+    idx: idx,
+    displayName: displayName,
+    type: type,
+    actions: actions,
+    modal: modal,
+    translations: translations,
+  });
+};
 
 CodeListItem.propTypes = {
-    item: PropTypes.object.isRequired,
-    idx: PropTypes.number.isRequired,
-    displayName: PropTypes.element.isRequired,
-    type: PropTypes.string.isRequired,
-    actions: PropTypes.object.isRequired,
-    modal: PropTypes.object.isRequired,
-    translations: PropTypes.object
-}
+  item: PropTypes.object.isRequired,
+  idx: PropTypes.number.isRequired,
+  displayName: PropTypes.element.isRequired,
+  type: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired,
+  modal: PropTypes.object.isRequired,
+  translations: PropTypes.object,
+};
 
-const mapStateToProps = (state, ownProps) => ({
-    search: state.searchResult.search
-})
+const mapStateToProps = (state) => ({
+  search: state.searchResult.search,
+});
 
-export default CodeListItem
+export default CodeListItem;

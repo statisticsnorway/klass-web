@@ -1,4 +1,4 @@
-@import "../../../styles/_variables.scss";
+@use "../../../styles/_variables" as vars;
 
 .sidebar {
 	width: 25em;

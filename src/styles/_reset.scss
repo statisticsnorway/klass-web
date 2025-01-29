@@ -1,11 +1,6 @@
-@import "./_variables.scss";
 
 tbody tr:hover, tbody tr.odd:hover {
 	background-color: inherit !important;
-}
-
-p {
-	// font-size: $body-font-size;
 }
 
 label {

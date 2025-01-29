@@ -1,100 +1,95 @@
 import "./Search.scss";
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect, useRef, useCallback } from "react";
 import { connect } from "react-redux";
 import Modal from "simple-react-modal";
 import _ from "lodash";
 import { TranslateComponent, translate } from "../../lib/languageUtils";
 
-class Search extends Component {
-  UNSAFE_componentWillMount() {
-    const { actions } = this.props;
+const Search = ({ actions, sections, search, modal, location }) => {
+  const queryRef = useRef(null);
+  const ssbSectionRef = useRef(null);
+  const includeCodelistsRef = useRef(null);
+  const errorRef = useRef(null);
+
+  useEffect(() => {
     actions.loadSSBSections();
-  }
+    return () => resetSearch();
+  }, [actions]);
 
-  componentWillUnmount() {
-    this.resetSearch();
-  }
+  const resetSearch = () => {
+    actions.setSearchObject({});
+  };
 
-  resetSearch() {
-    const { actions } = this.props;
-    const searchObj = {};
+  const handleSubmit = useCallback(
+    (event) => {
+      if (event) event.preventDefault();
+      const query = queryRef.current.value.trim();
+
+      if (_.isEmpty(query)) {
+        errorRef.current.style.display = "block";
+      } else {
+        const searchObj = {
+          query: queryRef.current.value.trim(),
+          ssbSection: ssbSectionRef.current.value,
+          includeCodelists: includeCodelistsRef.current.checked,
+        };
+
+        actions.searchClassification(searchObj);
+
+        const path =
+          "/sok?query=" +
+          searchObj.query +
+          "&includeCodelists=" +
+          searchObj.includeCodelists +
+          "&ssbSection=" +
+          searchObj.ssbSection;
+        actions.push(path); // Assumed `this.context.router.push` should be replaced with `actions.push`
+      }
+    },
+    [actions]
+  );
+
+  const handleChange = useCallback(() => {
+    const searchObj = {
+      query: queryRef.current.value,
+      ssbSection: ssbSectionRef.current.value,
+      includeCodelists: includeCodelistsRef.current.checked,
+    };
     actions.setSearchObject(searchObj);
-  }
+  }, [actions]);
 
-  handleSubmit(event) {
-    const { actions, location } = this.props;
-    if (event) {
-      event.preventDefault();
-    }
-    const query = ReactDOM.findDOMNode(this.refs.query).value.trim();
-
-    if (_.isEmpty(query)) {
-      ReactDOM.findDOMNode(this.refs.error).style.display = "block";
-    } else {
-      const searchObj = {
-        query: ReactDOM.findDOMNode(this.refs.query).value.trim(),
-        ssbSection: ReactDOM.findDOMNode(this.refs.ssbSection).value,
-        includeCodelists: this.refs.includeCodelists.checked,
+  const filterParams = useCallback(
+    (event) => {
+      handleChange();
+      let searchObj = {
+        ssbSection: ssbSectionRef.current.value,
+        includeCodelists: includeCodelistsRef.current.checked,
       };
 
-      actions.searchClassification(searchObj);
+      if (location.pathname.indexOf("sok") > -1) {
+        handleSubmit();
+      } else {
+        actions.loadSubjects(searchObj);
+      }
+    },
+    [handleChange, handleSubmit, actions, location]
+  );
 
-      const path =
-        "/sok?query=" +
-        searchObj.query +
-        "&includeCodelists=" +
-        searchObj.includeCodelists +
-        "&ssbSection=" +
-        searchObj.ssbSection;
-      this.context.router.push(path);
-    }
-  }
-
-  handleChange(event) {
-    const { actions } = this.props;
-    const searchObj = {
-      query: this.refs.query.value,
-      ssbSection: this.refs.ssbSection.value,
-      includeCodelists: this.refs.includeCodelists.checked,
-    };
-    actions.setSearchObject(searchObj);
-  }
-
-  filterParams(event) {
-    const { actions, location } = this.props;
-    this.handleChange(event);
-    let searchObj = {
-      ssbSection: this.refs.ssbSection.value,
-      includeCodelists: this.refs.includeCodelists.checked,
-    };
-
-    if (location.pathname.indexOf("sok") > -1) {
-      this.handleSubmit();
-    } else {
-      actions.loadSubjects(searchObj);
-    }
-  }
-
-  displayModal() {
-    const { actions } = this.props;
+  const displayModal = () => {
     const item = {
       title: translate("SEARCH.WHAT_IS_CODELIST_HEADER"),
       body: translate("SEARCH.WHAT_IS_CODELIST_BODY"),
     };
 
     actions.displayModal(item);
-  }
+  };
 
-  closeModal() {
-    const { actions } = this.props;
+  const closeModal = () => {
     actions.hideModal();
-  }
+  };
 
-  renderModal() {
-    const { modal } = this.props;
-
+  const renderModal = () => {
     if (modal && !_.isEmpty(modal.item)) {
       return (
         <Modal
@@ -102,10 +97,10 @@ class Search extends Component {
           style={{ background: "rgba(0, 0, 0, 0.2)" }}
           containerStyle={{ background: "#666666" }}
           show={modal.modalIsOpen}
-          onClose={this.closeModal.bind(this)}
+          onClose={closeModal}
         >
           <div className="modal-content">
-            <a onClick={this.closeModal.bind(this)}>
+            <a onClick={closeModal}>
               <i
                 className="fa fa-times-circle-o close-button"
                 aria-hidden="true"
@@ -120,124 +115,116 @@ class Search extends Component {
       );
     }
     return null;
+  };
+
+  const ssbSections = sections.ssbSections;
+
+  let options;
+  if (ssbSections.length) {
+    ssbSections.sort((a, b) =>
+      a.name === b.name ? 0 : a.name < b.name ? -1 : 1
+    );
+    options = ssbSections.map((section, key) => (
+      <option key={key} value={section.name}>
+        {section.name}
+      </option>
+    ));
   }
 
-  render() {
-    const { sections, search } = this.props;
-    const ssbSections = sections.ssbSections;
+  const dropdown = (
+    <select
+      name="seksjon"
+      ref={ssbSectionRef}
+      defaultValue={search.ssbSection}
+      onChange={filterParams}
+    >
+      <TranslateComponent
+        component="option"
+        value=""
+        content="SEARCH.ALL_SECTIONS"
+      />
+      {options}
+    </select>
+  );
 
-    let options;
-    if (ssbSections.length) {
-      ssbSections.sort(function (a, b) {
-        return a.name == b.name ? 0 : a.name < b.name ? -1 : 1;
-      });
-      options = ssbSections.map(function (section, key) {
-        return (
-          <option key={key} value={section.name}>
-            {section.name}
-          </option>
-        );
-      });
-    }
-    const dropdown = (
-      <select
-        name="seksjon"
-        ref="ssbSection"
-        defaultValue={search.ssbSection}
-        onChange={this.filterParams.bind(this)}
-      >
-        <TranslateComponent
-          component="option"
-          value=""
-          content="SEARCH.ALL_SECTIONS"
-        />
-        {options}
-      </select>
-    );
-    return (
-      <form onSubmit={this.handleSubmit.bind(this)} className="search-box">
-        <div className="flex-container">
-          <div className="flex-item search-input-text">
-            <TranslateComponent
-              component="label"
-              content="SEARCH.SEARCH_KODEVERK"
-            />
-            <TranslateComponent
-              component="input"
-              type="text"
-              ref="query"
-              defaultValue={search.query}
-              onChange={this.handleChange.bind(this)}
-              aria-label={translate("SEARCH.SEARCH")}
-              attributes={{ placeholder: "SEARCH.SEARCH" }}
-            />
-          </div>
-          <div className="flex-item search-button">
-            <TranslateComponent
-              component="button"
-              type="submit"
-              content="SEARCH.SEARCH"
-            />
-          </div>
+  return (
+    <form onSubmit={handleSubmit} className="search-box">
+      <div className="flex-container">
+        <div className="flex-item search-input-text">
+          <TranslateComponent
+            component="label"
+            content="SEARCH.SEARCH_KODEVERK"
+          />
+          <TranslateComponent
+            component="input"
+            type="text"
+            ref={queryRef}
+            defaultValue={search.query}
+            onChange={handleChange}
+            aria-label={translate("SEARCH.SEARCH")}
+            attributes={{ placeholder: "SEARCH.SEARCH" }}
+          />
         </div>
-        <TranslateComponent
-          component="p"
-          content="SEARCH.SEARCH_ERROR"
-          ref="error"
-          className="error"
-        />
-
-        <div className="flex-container filter">
-          <label>
-            <TranslateComponent content="SEARCH.FILTER" />:
-          </label>
-          <div>
-            <input
-              type="checkbox"
-              id="includeCodelists"
-              ref="includeCodelists"
-              onChange={this.filterParams.bind(this)}
-              defaultChecked={search.includeCodelists === true}
-            />
-            <TranslateComponent
-              component="label"
-              htmlFor="includeCodelists"
-              content="SEARCH.INCLUDE_CODELISTS"
-            />
-            <i
-              className="fa fa-info-circle"
-              aria-hidden="true"
-              onClick={() => this.displayModal()}
-            ></i>
-          </div>
-          <div className="search-dropdown-section">
-            <TranslateComponent
-              component="label"
-              content="SEARCH.OWNING_SECTION"
-            />
-            {dropdown}
-          </div>
+        <div className="flex-item search-button">
+          <TranslateComponent
+            component="button"
+            type="submit"
+            content="SEARCH.SEARCH"
+          />
         </div>
-
-        {this.renderModal()}
-      </form>
-    );
-  }
-}
+      </div>
+      <TranslateComponent
+        component="p"
+        content="SEARCH.SEARCH_ERROR"
+        ref={errorRef}
+        className="error"
+      />
+      <div className="flex-container filter">
+        <label>
+          <TranslateComponent content="SEARCH.FILTER" />:
+        </label>
+        <div>
+          <input
+            type="checkbox"
+            id="includeCodelists"
+            ref={includeCodelistsRef}
+            onChange={filterParams}
+            defaultChecked={search.includeCodelists === true}
+          />
+          <TranslateComponent
+            component="label"
+            htmlFor="includeCodelists"
+            content="SEARCH.INCLUDE_CODELISTS"
+          />
+          <i
+            className="fa fa-info-circle"
+            aria-hidden="true"
+            onClick={displayModal}
+          ></i>
+        </div>
+        <div className="search-dropdown-section">
+          <TranslateComponent
+            component="label"
+            content="SEARCH.OWNING_SECTION"
+          />
+          {dropdown}
+        </div>
+      </div>
+      {renderModal()}
+    </form>
+  );
+};
 
 Search.propTypes = {
   actions: PropTypes.object.isRequired,
   sections: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   search: PropTypes.object.isRequired,
+  modal: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   modal: state.modal,
 });
-
-Search.contextTypes = {
-  router: PropTypes.object,
-};
 
 export default connect(mapStateToProps)(Search);
