@@ -59,7 +59,7 @@
     "mocha": "^10.2.0",
     "node-polyfill-webpack-plugin": "^4.1.0",
     "nodemon": "^3.1.9",
-    "postcss": "^8.4.31",
+    "postcss": "^8.5.0",
     "postcss-loader": "^7.3.2",
     "sass": "^1.79.0",
     "sass-loader": "^16.0.4",
