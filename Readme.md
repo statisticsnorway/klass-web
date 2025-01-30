@@ -13,7 +13,6 @@ Denne applikasjonen bruker følgende teknologier:
 ## Installasjon
 ```
 Last ned Node.js
-Fungerende versjon: Node (v4.2.2) og npm (v2.14.7) 
 $ git clone https://git-adm.ssb.no/scm/klas/klass.ssb.no.git app-name
 $ cd app-name
 $ npm install
