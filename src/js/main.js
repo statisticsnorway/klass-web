@@ -11,8 +11,6 @@ import SSBHeader from "./ssbHeader";
 import SSBFooter from "./ssbFooter";
 
 import routes from "./routes";
-import ReactGA from "react-ga";
-import config from "./config";
 
 
 // this is required to disable counterpart's warning
@@ -69,30 +67,24 @@ const appHistory = useRouterHistory(createBrowserHistory)({basename: baseName})
 const store = configureStore();
 const rootElement = document.getElementById('app');
 
-function gaTracking() {
-    ReactGA.pageview(window.location.pathname + window.location.hash);
-}
-
-ReactGA.initialize(config.GA_TRACKING_ID);
 let ComponentEl;
 	ComponentEl = (
         <div>
             <SSBHeader />
             <div id="page">
                 <div className="sitewrapper">
-                    <Router history={appHistory} routes={routes} onUpdate={gaTracking}/>
+                    <Router history={appHistory} routes={routes}/>
                 </div>
             </div>
             <SSBFooter />
         </div>
 	);
-// }
 
 // Render the React application to the DOM
 ReactDOM.render(
-  	<Provider store={store}>
-    	{ComponentEl}
-  	</Provider>,
-  	rootElement
+    <Provider store={store}>
+        {ComponentEl}
+    </Provider>,
+    rootElement
 );
 

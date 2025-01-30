@@ -1,7 +1,5 @@
-import { combineReducers } from 'redux'
 import * as types from '../constants/ActionTypes'
 import _ from 'lodash'
-import { loadVersion } from '../actions'
 import FlatToNested from '../lib/flat-to-nested'
 
 const initialState = {

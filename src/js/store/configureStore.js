@@ -9,9 +9,9 @@ export default function configureStore(initialState) {
 
   let enhancer;
   const logger = createLogger({
-	  level: 'info',
-	  collapsed: false,
-	  logger: console
+    level: 'info',
+    collapsed: false,
+    logger: console
   })
 
   if (process.env.NODE_ENV !== 'production') {

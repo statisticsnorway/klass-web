@@ -1,6 +1,4 @@
-import { combineReducers } from 'redux'
 import * as types from '../constants/ActionTypes'
-import { loadVersion } from '../actions'
 import _ from 'lodash'
 import moment from 'moment'
 

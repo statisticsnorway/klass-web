@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router'
 import Breadcrumbs from 'react-breadcrumbs'
 import {connect} from 'react-redux'
 import Translate from 'react-translate-component'

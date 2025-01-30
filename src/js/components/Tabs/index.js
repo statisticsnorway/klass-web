@@ -34,10 +34,10 @@ class Tabs extends Component {
         }
         if (validFrom != null && moment(validFrom).isAfter(new Date())) {
             return (
-              <div className="version-info">
-                <Translate component="p" content="TABS.VERSION_NOT_YET_VALID" className="green-box" />
-                <p><Translate component="span" content="TABS.VERSION_FUTURE" />: <b>(<Translate content="TABS.VALID_FROM" /> {moment(version.validFrom).format("MMMM YYYY")})</b></p>
-              </div>
+                <div className="version-info">
+                    <Translate component="p" content="TABS.VERSION_NOT_YET_VALID" className="green-box" />
+                    <p><Translate component="span" content="TABS.VERSION_FUTURE" />: <b>(<Translate content="TABS.VALID_FROM" /> {moment(version.validFrom).format("MMMM YYYY")})</b></p>
+                </div>
             )
         }
         else {

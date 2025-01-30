@@ -1,5 +1,3 @@
-import { Schema, arrayOf, normalize } from 'normalizr'
-import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
 import config from '../config'
 import _ from 'lodash'
@@ -40,11 +38,6 @@ function callApi(endpoint, method, headers, params, frontpage) {
 				return Promise.reject(json)
 			}
 
-			// const camelizedJson = camelizeKeys(json)
-			//
-			// return Object.assign({},
-			// 	normalize(camelizedJson)
-			// )
 			return json
 		})
 

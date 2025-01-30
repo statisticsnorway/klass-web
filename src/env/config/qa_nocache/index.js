@@ -14,7 +14,6 @@ const config = {
 		NYNORSK: 'nn',
 		ENGLISH: 'en'
 	},
-    GA_TRACKING_ID:'UA-26520516-2'
 }
 
 export default config;

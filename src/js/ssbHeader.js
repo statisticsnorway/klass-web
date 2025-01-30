@@ -52,7 +52,7 @@ class SSBHeader extends Component {
             console.error("no regex url match")
             sessionStorage.clear('selectedAPILanguage')
             sessionStorage.setItem('selectedLanguage', lang)
-             window.location.reload()
+            window.location.reload()
         }
     }
 
@@ -116,14 +116,14 @@ class SSBHeader extends Component {
                         </ul>
                     </div>
                     <form id="search" action="https://www.ssb.no/en/sok" method="get" role="search">
-                       <fieldset>
-                          <legend className="screen-reader-only"><Translate content="SSB_FRAME.HEADER.SITE_SEARCH" /></legend>
-                          <label htmlFor="sok" className="screen-reader-only">ø
-                              <Translate content="SEARCH.SEARCH" />
-                          </label>
-                          <input id="sok" name="sok" type="text" accessKey="4" tabIndex="-1" />
-                          <input type="submit" value={counterpart.translate('SEARCH.SEARCH')} className="submit" tabIndex="-1" />
-                      </fieldset>
+                        <fieldset>
+                            <legend className="screen-reader-only"><Translate content="SSB_FRAME.HEADER.SITE_SEARCH" /></legend>
+                            <label htmlFor="sok" className="screen-reader-only">ø
+                                <Translate content="SEARCH.SEARCH" />
+                            </label>
+                            <input id="sok" name="sok" type="text" accessKey="4" tabIndex="-1" />
+                            <input type="submit" value={counterpart.translate('SEARCH.SEARCH')} className="submit" tabIndex="-1" />
+                        </fieldset>
                     </form>
                     {this.renderMainMenu()}
                 </div>

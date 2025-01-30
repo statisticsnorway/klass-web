@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Translate from 'react-translate-component'
-import counterpart from 'counterpart'
 import _ from 'lodash'
 import moment from 'moment'
 import commonUtils from '../../lib/common-utils'
