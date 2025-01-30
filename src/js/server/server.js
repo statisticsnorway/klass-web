@@ -1,6 +1,7 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import path from 'path';
 
 let server = new Express();
 let port = process.env.PORT || 3001;
@@ -20,12 +21,12 @@ server.use(cors());
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
-// mock apis
+const MOCK_DATA_ROOT = path.resolve(__dirname, './mock_data');
 
+// mock apis
 server.post('/classifications/:id/trackChanges', (req, res) => {
     var email = req.body.email
     console.log(email + " subscribed on classId " + req.params.id)
-    // res.status(500).send("Something went wrong")
     res.end("Subscription added successfully")
 })
 
@@ -37,7 +38,11 @@ server.get('/classifications/:id/codes.csv', (req, res) => {
 server.get('/classifications/:id/changes', (req, res) => {
 	let mockData;
 	try {
-		mockData = require('./mock_data/changes/' + req.params.id);
+		let filePath = path.resolve(MOCK_DATA_ROOT, 'changes', req.params.id);
+		if (!filePath.startsWith(MOCK_DATA_ROOT)) {
+			throw new Error('Invalid path');
+		}
+		mockData = require(filePath);
 	} catch (ex) {
 		mockData = require('./mock_data/changes');
 	}
@@ -47,7 +52,11 @@ server.get('/classifications/:id/changes', (req, res) => {
 server.get('/classifications/search', (req, res) => {
 	let mockData;
 	try {
-		mockData = require('./mock_data/search/search_' + req.params('query'));
+		let filePath = path.resolve(MOCK_DATA_ROOT, 'search', 'search_' + req.params('query'));
+		if (!filePath.startsWith(MOCK_DATA_ROOT)) {
+			throw new Error('Invalid path');
+		}
+		mockData = require(filePath);
 	} catch (ex) {
 		mockData = require('./mock_data/search');
 	}
@@ -90,7 +99,6 @@ server.get('/classifications/:id', (req, res) => {
 });
 
 server.get('/versions/:id', (req, res) => {
-  // let mockData = require('./mock_data/versions');
 	let mockData;
 	try {
 		mockData = require('./mock_data/versions/version_' + req.params.id);
@@ -101,7 +109,6 @@ server.get('/versions/:id', (req, res) => {
 });
 
 server.get('/correspondencetables/:id', (req, res) => {
-  // let mockData = require('./mock_data/versions');
 	let mockData;
 	try {
 		mockData = require('./mock_data/correspondences/correspondence_' + req.params.id);
@@ -112,7 +119,6 @@ server.get('/correspondencetables/:id', (req, res) => {
 });
 
 server.get('/variants/:id', (req, res) => {
-  // let mockData = require('./mock_data/variants');
 	let mockData;
 	try {
 		mockData = require('./mock_data/variants/variant_' + req.params.id);
