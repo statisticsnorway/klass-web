@@ -115,13 +115,13 @@ class Correspondences extends Component {
         switch (this.state.invertedTable) {
             case false:
                 corrArr.sort(function(a,b) {
-    				if (a.targetCode.toLowerCase() > b.targetCode.toLowerCase()) {
-    					return 1
-    				}
-    				if (a.targetCode.toLowerCase() < b.targetCode.toLowerCase()) {
-    					return -1
-    				}
-    				return 0
+					if (a.targetCode.toLowerCase() > b.targetCode.toLowerCase()) {
+						return 1
+					}
+					if (a.targetCode.toLowerCase() < b.targetCode.toLowerCase()) {
+						return -1
+					}
+					return 0
                 })
 
                 groupedArray = groupBy(corrArr, function(item) {
@@ -146,13 +146,13 @@ class Correspondences extends Component {
                 })
             case true:
                 corrArr.sort(function(a,b) {
-    				if (a.sourceCode.toLowerCase() > b.sourceCode.toLowerCase()) {
-    					return 1
-    				}
-    				if (a.sourceCode.toLowerCase() < b.sourceCode.toLowerCase()) {
-    					return -1
-    				}
-    				return 0
+					if (a.sourceCode.toLowerCase() > b.sourceCode.toLowerCase()) {
+						return 1
+					}
+					if (a.sourceCode.toLowerCase() < b.sourceCode.toLowerCase()) {
+						return -1
+					}
+					return 0
                 })
 
                 groupedArray = groupBy(corrArr, function(item) {
@@ -225,7 +225,7 @@ class Correspondences extends Component {
 					<p>
                         <b><Translate content="TABS.CORRESPONDENCES.RESPONSIBLE" />:</b> {selectedCorrespondence.contactPerson.name}, <Translate content="TABS.CORRESPONDENCES.SECTION_FOR" /> {selectedCorrespondence.owningSection}<br/>
                         <b><Translate content="TABS.CORRESPONDENCES.PUBLISHED" />:</b> {joinedLanguages}<br/>
-    					{selectedCorrespondence.description}
+						{selectedCorrespondence.description}
                     </p>
 					<form onSubmit={this.handleSubmit.bind(this)} className="search-box">
 						<div className="flex-container">

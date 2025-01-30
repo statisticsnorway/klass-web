@@ -82,9 +82,9 @@ let ComponentEl;
 
 // Render the React application to the DOM
 ReactDOM.render(
-  	<Provider store={store}>
-    	{ComponentEl}
-  	</Provider>,
-  	rootElement
+    <Provider store={store}>
+        {ComponentEl}
+    </Provider>,
+    rootElement
 );
 

@@ -1,8 +1,6 @@
 import './Sidebar.scss'
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import counterpart from 'counterpart'
-import Translate from 'react-translate-component'
 import LocaleSwitcher from './LocaleSwitcher'
 import Contact from './Contact'
 import ApiLinks from './ApiLinks'
