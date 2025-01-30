@@ -14,7 +14,7 @@ const classCode = (
 export default function RoutesConfig() {
   return (
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path="/" name={classCode} element={<App />}>
         <Route index element={<ClassFamiliesPage />} />
         <Route path="klassifikasjoner" element={<ClassItemPage />}>
           <Route

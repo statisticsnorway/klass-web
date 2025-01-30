@@ -48,16 +48,6 @@ if (document.URL.match(/https?:\/\/.*?\/en\//)) {
 
 document.title = translate("PAGE.TITLE");
 
-let baseName = "/klass";
-if (document.URL.includes("/klass-ssb-no/")) {
-  baseName = "/klass-ssb-no";
-} else if (document.URL.includes("/klass.ssb.no/")) {
-  baseName = "/klass.ssb.no";
-}
-if (englishUrl) {
-  baseName = `/en${baseName}`;
-}
-
 ReactGA.initialize(config.GA_TRACKING_ID);
 function gaTracking() {
   ReactGA.pageview(window.location.pathname + window.location.hash);
@@ -71,7 +61,7 @@ const ComponentEl = (
     <SSBHeader />
     <div id="page">
       <div className="sitewrapper">
-        <Router basename={baseName}>
+        <Router>
           <RoutesConfig />
         </Router>
       </div>

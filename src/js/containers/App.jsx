@@ -1,7 +1,8 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { TranslateComponent } from "../lib/languageUtils";
 
-const App = ({ children }) => {
+const App = () => {
   const renderBreadcrumbs = () => (
     <div id="navigation-path">
       <h2 className="screen-reader-only">
@@ -22,7 +23,7 @@ const App = ({ children }) => {
   return (
     <div>
       {renderBreadcrumbs()}
-      {children}
+      <Outlet />
     </div>
   );
 };
