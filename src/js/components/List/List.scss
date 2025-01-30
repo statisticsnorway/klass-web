@@ -1,4 +1,6 @@
-@import "../../../styles/_variables.scss";
+@use 'sass:color';
+@use "../../../styles/_variables.scss";
+
 
 .list-heading {
 	.expand-tree {
@@ -7,105 +9,6 @@
 }
 
 .class-list {
-
-    // .collapse {
-    //     display: none;
-    // }
-    //
-    // .collapse.in {
-    //     display: block;
-    // }
-    //
-    // .collapsing {
-    //     position: relative;
-    //     height: 0;
-    //     overflow: hidden;
-    //     -webkit-transition-property: height, visibility;
-    //     -o-transition-property: height, visibility;
-    //     transition-property: height, visibility;
-    //     -webkit-transition-duration: 0.35s;
-    //     -o-transition-duration: 0.35s;
-    //     transition-duration: 0.35s;
-    //     -webkit-transition-timing-function: ease;
-    //     -o-transition-timing-function: ease;
-    //     transition-timing-function: ease;
-    // }
-    //
-    // > div[role=tree] {
-    //     margin: 2em 0 4em;
-    //
-    //     > div {
-    //         position: relative;
-    //
-    //         &:first-child {
-    //             border-top: 1px solid #bbb;
-    //         }
-    //     }
-    //
-    //     div[role=treeitem] {
-	// 		border-bottom: 1px solid #bbb;
-    //
-    //         a {
-    // 			background-repeat: no-repeat;
-    // 			cursor: pointer;
-    // 			color: #333;
-    // 			text-decoration: none;
-    // 			background-position: 0.3em 1.4em;
-    //             position: relative;
-    //
-    //             display: block;
-    //             margin: 0;
-    //             padding: .9em 1.5em .8em;
-    //             font-size: 1.4em;
-    //             line-height: 1.5em;
-    //
-    // 			&:hover {
-    // 				background-color: lighten($black, 70%) !important;
-    // 			}
-    //
-    // 			.link-type {
-    // 				float: right;
-    // 				color: #bbb;
-    // 			}
-    //
-    // 			&:hover .link-type {
-    // 				color: #000;
-    //                 text-decoration: none;
-    // 			}
-    //
-    //             &.child-link:hover {
-    //     			background-color: inherit !important;
-    //                 text-decoration: underline;
-    //             }
-    //         }
-    //
-    //         div[role=tree] {
-    //             margin-left: 2em;
-    //         }
-    //
-    //         div[role=treeitem] {
-    // 			border-bottom: 0 !important;
-    // 		    border-top: 1px solid #e7e7e7 !important;
-    //
-	// 			&:first-child {
-	// 				border-top: 0 !important;
-	// 			}
-    //         }
-    //     }
-    //
-    //     div[aria-expanded=false]>.toggle-children {
-    //         background-image: url("../../../images/plus-gray-9x8px.png");
-    //     }
-    //
-    //     div[aria-expanded=true]>.toggle-children {
-    //         background-image: url("../../../images/minus-gray-9x8px.png");
-    //         background-color: #eee;
-    //     }
-    // }
-
-
-
-
 	.expandcollapse {
 	    margin: 2em 0 4em 0;
         font-size: 1em;
@@ -136,8 +39,8 @@
 			display: block;
 			margin: 0;
 			padding: 0.9em 1.5em 0.8em 1.5em;
-			font-size: $list-font-size;
-            line-height: $body-line-height;
+			font-size: variables.$list-font-size;
+            line-height: variables.$body-line-height;
 
 			.link-type {
 				float: right;
@@ -159,7 +62,7 @@
             position: relative;
 
 			&:hover {
-				background-color: lighten($black, 70%) !important;
+				background-color: color.scale(variables.$black, $lightness: 70%) !important;
 			}
 		}
 
