@@ -7,17 +7,22 @@ import { TranslateComponent } from "../../lib/languageUtils";
 const SearchResult = ({ items, isFetching, search, actions }) => {
   const isEmpty = !items || items.length === 0; // Ensure items is not null or undefined
 
-  const renderList = () => {
-    if (items) {
-      const sortedItems = [...items].sort(
-        (a, b) => b.searchScore - a.searchScore
-      );
+const renderList = () => {
+  if (items) {
+    const sortedItems = [...items].sort(
+      (a, b) => b.searchScore - a.searchScore
+    );
 
-      return sortedItems.map((item) => (
-        <ResultItem key={item.id || item.code} item={item} actions={actions} />
-      ));
-    }
-  };
+    return sortedItems.map((item, index) => (
+      <ResultItem
+        key={`${item.id || item.code || "fallback"}-${index}`}
+        item={item}
+        actions={actions}
+      />
+    ));
+  }
+};
+
 
   if (isEmpty && isFetching) {
     return (

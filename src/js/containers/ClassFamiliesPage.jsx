@@ -8,6 +8,8 @@ import List from "../components/List";
 import Contact from "../components/Sidebar/Contact";
 import config from "../config";
 import { translate, TranslateComponent } from "../lib/languageUtils";
+import { useLocation } from "react-router-dom";  // Import useLocation
+
 
 const loadData = (actions) => {
   actions.loadSubjects();
@@ -21,8 +23,9 @@ const ClassFamiliesPage = ({
   modal,
   ssbSections,
   search,
-  location,
 }) => {
+  const location = useLocation();  // Get location via useLocation hook
+
   useEffect(() => {
     loadData(actions);
   }, [actions]);
@@ -99,7 +102,7 @@ const ClassFamiliesPage = ({
           actions={actions}
           sections={ssbSections}
           search={search}
-          location={location}
+          location={location}  // Pass location from useLocation here
         />
         {renderContent()}
       </div>

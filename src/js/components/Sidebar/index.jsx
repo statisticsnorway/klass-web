@@ -7,14 +7,12 @@ import ApiLinks from "./ApiLinks";
 import Subscription from "./Subscription";
 
 const Sidebar = ({
-  contactInfo,
-  languages,
-  onLanguageChange,
-  actions,
-  params,
+  contactInfo = null,
+  languages = [],
+  onLanguageChange = () => {},
+  actions = {},
+  params = null,
 }) => {
-  const gotClassification = () => params !== undefined;
-
   return (
     <div className="sidebar">
       <LocaleSwitcher
@@ -24,20 +22,18 @@ const Sidebar = ({
         params={params}
       />
       <Contact contactInfo={contactInfo} />
-      {gotClassification() && (
-        <Subscription actions={actions} params={params} />
-      )}
+      {params && <Subscription actions={actions} params={params} />}
       <ApiLinks />
     </div>
   );
 };
 
 Sidebar.propTypes = {
-  contactInfo: PropTypes.object.isRequired,
-  languages: PropTypes.array.isRequired,
-  onLanguageChange: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
+  contactInfo: PropTypes.object,
+  languages: PropTypes.array,
+  onLanguageChange: PropTypes.func,
+  params: PropTypes.object,
+  actions: PropTypes.object,
 };
 
 export default Sidebar;

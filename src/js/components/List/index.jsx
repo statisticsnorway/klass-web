@@ -6,16 +6,16 @@ import CodeListItem from "./items/CodeListItem";
 import { translate } from "../../lib/languageUtils";
 
 const List = ({
-  items,
+  items = [],
   type,
   actions,
   modal,
   translations,
-  isFetching,
-  loadingLabel,
+  isFetching = true,
+  loadingLabel = translate("LOADING.CLASSIFICATIONS_AND_CODELISTS"),
 }) => {
   const renderList = () => {
-    if (items) {
+    if (items.length) {
       return items.map((item, key) => {
         let name;
         switch (type) {
@@ -88,9 +88,7 @@ const List = ({
     }
   };
 
-  const isEmpty = items.length === 0;
-
-  if (isEmpty && isFetching) {
+  if (!items.length && isFetching) {
     return (
       <p>
         <i>{loadingLabel}</i>
@@ -108,17 +106,11 @@ const List = ({
 List.propTypes = {
   modal: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  items: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  items: PropTypes.array,
+  isFetching: PropTypes.bool,
   type: PropTypes.string.isRequired,
   translations: PropTypes.object,
   loadingLabel: PropTypes.string,
-};
-
-List.defaultProps = {
-  items: [],
-  isFetching: true,
-  loadingLabel: translate("LOADING.CLASSIFICATIONS_AND_CODELISTS"),
 };
 
 export default List;

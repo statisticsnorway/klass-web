@@ -31,7 +31,7 @@ export default function configureStore(initialState) {
 
     enhancer = compose(
       // Middleware we want to use in development
-      applyMiddleware(thunk, api, logger),
+      applyMiddleware(thunk, api ),
       window.devToolsExtension
         ? window.devToolsExtension()
         : (DevTools && DevTools.instrument()) || compose,
