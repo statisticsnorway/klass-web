@@ -1,12 +1,10 @@
 import globals from "globals";
 import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import tseslintParser from "@typescript-eslint/parser";
 import prettier from "eslint-plugin-prettier";
 
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,ts}"],
+    files: ["**/*.{js,mjs,cjs}"], // Only JavaScript files
     ignores: ["dist/*", "node_modules/*"],
     plugins: {
       prettier,
@@ -16,11 +14,10 @@ export default [
         ...globals.browser, // Keep browser globals
         ...globals.node, // Optionally include Node.js globals if needed
       },
-      parser: tseslintParser,
+      // No need for a TypeScript parser since you're not using TypeScript
     },
     rules: {
-      ...eslint.configs.recommended.rules,
-      ...tseslint.configs.recommended.rules,
+      ...eslint.configs.recommended.rules, // Recommended ESLint rules for JavaScript
       // Prettier rule to treat code formatting as errors
       "prettier/prettier": ["error"], // Change to "error" for stricter enforcement
       // Additional stricter rules

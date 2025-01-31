@@ -7,9 +7,16 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/styles/main.scss" />
+    <!-- Dynamically Set the Base Path -->
+    <script>
+      const basePath = window.location.hostname === 'localhost' ? '/' : '/klass/';
+      const baseTag = document.createElement('base');
+      baseTag.href = basePath;
+      document.head.appendChild(baseTag);
+    </script>
   </head>
   <body>
     <div id="app" class="klass"></div>
-    <script type="module" src="/js/main.jsx"></script>
+    <script type="module" src="/js/AppRouter.jsx"></script>
   </body>
 </html>
