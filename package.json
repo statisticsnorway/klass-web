@@ -47,7 +47,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "cors": "^2.8.5",
     "css-loader": "^6.9.0",
-    "eslint": "^8.48.0",
+    "eslint": "^9.19.0",
     "eslint-plugin-react": "^7.37.4",
     "express": "^4.20.0",
     "jasmine-spec-reporter": "^7.0.0",
