@@ -60,7 +60,7 @@
     "nodemon": "^3.1.9",
     "postcss": "^8.5.0",
     "postcss-loader": "^8.1.1",
-    "sass": "^1.79.0",
+    "sass": "^1.83.4",
     "sass-loader": "^16.0.4",
     "webpack": "^5.94.0",
     "webpack-bundle-analyzer": "^4.10.2",
