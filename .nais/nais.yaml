@@ -4,22 +4,19 @@ kind: Application
 metadata:
   name: klass-web
   namespace: dapla-metadata
-  labels:
-    team: dapla-metadata
+
 spec:
-  image: "{{ image }}"  # Injected from the GitHub Action
-  port: 8080
 
   ingresses:
     - https://klass-web.test.ssb.no
+  image: "{{ image }}"  # Injected from the GitHub Action
 
-
-  liveness:
-    path: /
-    port: 8080
-  readiness:
-    path: /
-    port: 8080
-  startup:
-    path: /
-    port: 8080
+  port: 8080
+  ttl: 3h
+  replicas:
+    max: 1
+    min: 1
+  resources:
+    requests:
+      cpu: 50m
+      memory: 32Mi
