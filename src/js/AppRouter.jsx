@@ -59,17 +59,14 @@ if (document.URL.match(/https?:\/\/.*?\/en\//)) {
 // 3️⃣ Set page title
 document.title = translate("PAGE.TITLE");
 
-// 4️⃣ Initialize Google Analytics
+
 ReactGA.initialize(config.GA_TRACKING_ID);
 function gaTracking() {
   ReactGA.pageview(window.location.pathname + window.location.hash);
 }
 
-// 5️⃣ Create Redux store & root element
 const store = configureStore();
 const rootElement = document.getElementById("app");
-
-// 6️⃣ Set the base name for routing (e.g., /klass)
 const baseName = process.env.REACT_APP_BASE_NAME || "/klass";
 
 const ComponentEl = (
@@ -79,25 +76,8 @@ const ComponentEl = (
       <div className="sitewrapper">
         <Router basename={baseName}>
           <Routes>
-            {/* 
-              Outer route: path="/" => <App />
-              This acts like your top-level layout from v3 
-            */}
             <Route path="/" element={<App />}>
-              {/* 
-                index => ClassFamiliesPage
-                Replaces <IndexRoute component={ClassFamiliesPage} /> 
-              */}
               <Route index element={<ClassFamiliesPage />} />
-
-              {/* 
-                Next we replicate your old optional segments. 
-                1) /klassifikasjoner/:classId
-                2) /klassifikasjoner/:classId/:tab  <-- new route so /koder, /varianter, /om, etc. works
-                3) /klassifikasjoner/:classId/versjon/:versionId
-                4) /klassifikasjoner/:classId/versjon/:versionId/:tab
-                5) /klassifikasjoner/:classId/versjon/:versionId/:tab/:itemId
-              */}
               <Route
                 path="klassifikasjoner/:classId"
                 element={<ClassItemPage />}
@@ -119,13 +99,10 @@ const ComponentEl = (
                 element={<ClassItemPage />}
               />
 
-              {/* /sok => <SearchPage /> */}
               <Route path="sok" element={<SearchPage />} />
 
-              {/* /404 => NotFoundView */}
               <Route path="404" element={<NotFoundView />} />
 
-              {/* Fallback => Navigate to /404 */}
               <Route path="*" element={<Navigate to="/404" />} />
             </Route>
           </Routes>
