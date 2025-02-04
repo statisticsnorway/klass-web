@@ -8,7 +8,7 @@ metadata:
 spec:
 
   ingresses:
-    - https://klass-web.test.ssb.no
+    - https://klass-web.intern.test.ssb.no
   image: "{{ image }}"  # Injected from the GitHub Action
 
   port: 8080
