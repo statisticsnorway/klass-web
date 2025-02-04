@@ -7,5 +7,5 @@ module.exports = merge(common, {
     publicPath: '/klass-ssb-no/'
   },
   devtool: 'source-map',
-  public: 'klass-web.intern.test.ssb.no'
+  allowedHosts: 'all'
 });

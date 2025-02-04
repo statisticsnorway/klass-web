@@ -14,7 +14,8 @@ module.exports = merge(common, {
     },
     historyApiFallback: true,
     open: true,
-    port: 3000
+    port: 3000,
+    allowedHosts: 'all'
     // proxy: {
     // 	'/api/*': {
     // 		// secure: false,
