@@ -15,11 +15,11 @@ spec:
 
 
   liveness:
-    path: /health
+    path: /
     port: 8080
   readiness:
-    path: /health
+    path: /
     port: 8080
   startup:
-    path: /health
+    path: /
     port: 8080
