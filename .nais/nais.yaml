@@ -1,0 +1,25 @@
+# Deploy config for the test cluster
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: klass-web-{{ pr-number }}
+  namespace: dapla-metadata
+  labels:
+    team: dapla-metadata
+spec:
+  image: "{{ image }}"  # Injected from the GitHub Action
+  port: 8080
+
+  ingresses:
+    - https://klass-web-{{ pr-number }}.test.ssb.no
+
+
+  liveness:
+    path: /health
+    port: 8080
+  readiness:
+    path: /health
+    port: 8080
+  startup:
+    path: /health
+    port: 8080
