@@ -1,17 +1,18 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import _ from "lodash";
 import List from "../List";
 import config from "../../config";
 import { translate, TranslateComponent } from "../../lib/languageUtils";
 
-const Codes = ({ classification, version, params, actions, modal }) => {
+function Codes({ classification, version, actions, modal }) {
+  const { tab = "koder" } = useParams();
   const [hierarchyOpen, setHierarchyOpen] = useState(true);
   const queryRef = useRef();
 
   useEffect(() => {
-    // Handle tab change or prop change logic if necessary
-  }, [params.tab, version, classification, modal]);
+  }, [tab, version, classification, modal]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,16 +27,11 @@ const Codes = ({ classification, version, params, actions, modal }) => {
   };
 
   const downloadCodes = () => {
-    let language = version.language;
-    let languageArgument = language == null ? "" : "?language=" + language;
-    const csvURL =
-      config.API_BASE_URL +
-      "/versions/" +
-      version.id +
-      ".csv" +
-      languageArgument;
+    const language = version?.language || "";
+    const languageArgument = language ? `?language=${language}` : "";
+    const csvURL = `${config.API_BASE_URL}/versions/${version?.id}.csv${languageArgument}`;
 
-    var tempLink = document.createElement("a");
+    const tempLink = document.createElement("a");
     document.body.appendChild(tempLink);
     tempLink.href = csvURL;
     tempLink.setAttribute("download", "code");
@@ -43,7 +39,7 @@ const Codes = ({ classification, version, params, actions, modal }) => {
   };
 
   const filterText = () => {
-    if (!_.isEmpty(version.filterQuery)) {
+    if (!_.isEmpty(version?.filterQuery)) {
       return (
         <h3>
           <TranslateComponent content="TABS.CODES.FILTERED_BY" /> "
@@ -54,7 +50,7 @@ const Codes = ({ classification, version, params, actions, modal }) => {
   };
 
   const renderList = () => {
-    if (_.isEmpty(version.nestedItems)) {
+    if (_.isEmpty(version?.nestedItems)) {
       return (
         <p>
           <i>
@@ -63,6 +59,7 @@ const Codes = ({ classification, version, params, actions, modal }) => {
         </p>
       );
     }
+
     const translations = {
       validFromText: translate("TABS.VALID_FROM"),
       validToText: translate("TABS.VALID_TO"),
@@ -93,7 +90,7 @@ const Codes = ({ classification, version, params, actions, modal }) => {
 
   const handleChange = (e) => {
     if (e.target.checked) {
-      _.forEach(document.getElementsByClassName("itemName"), function (el) {
+      _.forEach(document.getElementsByClassName("itemName"), (el) => {
         el.getElementsByClassName("longName")[0].style.display = "none";
         el.getElementsByClassName("longName")[0].setAttribute(
           "aria-hidden",
@@ -106,7 +103,7 @@ const Codes = ({ classification, version, params, actions, modal }) => {
         );
       });
     } else {
-      _.forEach(document.getElementsByClassName("itemName"), function (el) {
+      _.forEach(document.getElementsByClassName("itemName"), (el) => {
         el.getElementsByClassName("longName")[0].style.display = "inline";
         el.getElementsByClassName("longName")[0].setAttribute(
           "aria-hidden",
@@ -133,9 +130,8 @@ const Codes = ({ classification, version, params, actions, modal }) => {
           />
         </div>
       );
-    } else {
-      return "";
     }
+    return null;
   };
 
   return (
@@ -143,12 +139,9 @@ const Codes = ({ classification, version, params, actions, modal }) => {
       <form onSubmit={handleSubmit} className="search-box">
         <div className="flex-container">
           <div className="flex-item search-input-text">
-            <TranslateComponent
-              component="input"
+            <input
               aria-label={translate("TABS.CODES.SEARCH_BY_CODE_OR_NAME")}
-              attributes={{
-                placeholder: "TABS.CODES.SEARCH_BY_CODE_OR_NAME",
-              }}
+              placeholder={translate("TABS.CODES.SEARCH_BY_CODE_OR_NAME")}
               type="text"
               ref={queryRef}
               name="kodeverk"
@@ -171,6 +164,7 @@ const Codes = ({ classification, version, params, actions, modal }) => {
         </div>
         {renderShortnameBox()}
       </form>
+
       <div className="button-heading">
         <div className="flex-item">
           <button
@@ -194,18 +188,18 @@ const Codes = ({ classification, version, params, actions, modal }) => {
           />
         </div>
       </div>
+
       <div className="results class-list" id="expandcollapse">
         {filterText()}
         {renderList()}
       </div>
     </div>
   );
-};
+}
 
 Codes.propTypes = {
   classification: PropTypes.object.isRequired,
   version: PropTypes.object.isRequired,
-  params: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   modal: PropTypes.object.isRequired,
 };

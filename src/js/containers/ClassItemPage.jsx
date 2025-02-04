@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import ReactDOM from "react-dom";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Sidebar from "../components/Sidebar";
@@ -9,148 +9,136 @@ import _ from "lodash";
 import moment from "moment";
 import { translate, TranslateComponent } from "../lib/languageUtils";
 
-const loadData = (props, selectedLanguage) => {
-  const { params, actions } = props;
-  if (selectedLanguage) {
-    sessionStorage.setItem("selectedAPILanguage", selectedLanguage);
+function checkPublishStatus(version, classification) {
+  const apiLang = sessionStorage.getItem("selectedAPILanguage");
+  if (!version?.published?.includes(apiLang)) {
+    const selectedLang = sessionStorage.getItem("selectedLanguage") || "nb";
+    return version?.published?.includes(selectedLang)
+      ? selectedLang
+      : classification.primaryLanguage;
   }
+  return null;
+}
 
-  function checkPublishStatus(v, classification) {
-    const apiLang = sessionStorage.getItem("selectedAPILanguage");
-    if (v.published.indexOf(apiLang) === -1) {
-      const selectedLang = sessionStorage.getItem("selectedLanguage");
-      if (v.published.indexOf(selectedLang) === -1) {
-        return classification.primaryLanguage;
-      } else {
-        return selectedLang;
-      }
-    }
-    return null;
-  }
-
-  actions.getClassification(params.classId).then(function (res) {
+// Helper to load data for a given classId/versionId
+function loadData(classId, versionId, actions) {
+  actions.getClassification(classId).then((res) => {
     const classification = res.response;
-    if (!_.isEmpty(classification) && !_.isEmpty(classification.versions)) {
-      let selectedVersion = classification.versions[0];
-      let versionId = params.versionId;
-      if (!versionId) {
-        let currentValidVersion = classification.versions.filter((v) =>
-          moment(new Date()).isBetween(v.validFrom, v.validTo, "day", [])
-        );
-        versionId = !_.isEmpty(currentValidVersion)
-          ? _.head(currentValidVersion).id
-          : selectedVersion.id;
-      }
+    if (_.isEmpty(classification) || _.isEmpty(classification.versions)) {
+      return;
+    }
 
-      let overrideLanguage = checkPublishStatus(
-        selectedVersion,
-        classification
+    // Fallback to first version if no versionId specified
+    let selectedVersion = classification.versions[0];
+    if (!versionId) {
+      const currentValidVersion = classification.versions.filter((v) =>
+        moment(new Date()).isBetween(v.validFrom, v.validTo, "day", [])
       );
-      _.forEach(classification.versions, function (v) {
-        if (v.id === versionId) {
-          overrideLanguage = checkPublishStatus(v, classification);
-          selectedVersion = v;
-          return false;
-        }
-      });
-      actions.loadVersion(versionId, overrideLanguage);
+      versionId = !_.isEmpty(currentValidVersion)
+        ? _.head(currentValidVersion).id
+        : selectedVersion.id;
+    }
 
-      let toDate = "";
-      if (selectedVersion.validTo !== undefined) {
-        toDate = moment(selectedVersion.validTo).isValid()
-          ? moment(selectedVersion.validTo).format("YYYY-MM-DD")
-          : "";
-      }
+    let overrideLanguage = checkPublishStatus(selectedVersion, classification);
 
-      if (!_.isEmpty(selectedVersion)) {
-        const query = {
-          from: moment(selectedVersion.validFrom)
-            .subtract(1, "days")
-            .format("YYYY-MM-DD"),
-          to: toDate,
-          includeFuture: true,
-        };
-        actions.loadChanges(params.classId, query, overrideLanguage);
+    // Find the matching version
+    classification.versions.forEach((v) => {
+      if (v.id === versionId) {
+        overrideLanguage = checkPublishStatus(v, classification);
+        selectedVersion = v;
       }
+    });
+
+    // Load version
+    actions.loadVersion(versionId, overrideLanguage);
+
+    // Optionally load changes
+    if (!_.isEmpty(selectedVersion)) {
+      const toDate = moment(selectedVersion.validTo).isValid()
+        ? moment(selectedVersion.validTo).format("YYYY-MM-DD")
+        : "";
+      const query = {
+        from: moment(selectedVersion.validFrom)
+          .subtract(1, "days")
+          .format("YYYY-MM-DD"),
+        to: toDate,
+        includeFuture: true,
+      };
+      actions.loadChanges(classId, query, overrideLanguage);
     }
   });
-};
+}
 
-const ClassItemPage = ({
+function ClassItemPage({
   classification,
   selectedVersion,
   isFetching,
   actions,
-  params,
   modal,
-}) => {
+}) {
+  // React Router v6: read params with `useParams()`
+  const { classId, versionId } = useParams();
+
   const descriptionRef = useRef(null);
   const descLinkRef = useRef(null);
   const shortDescLinkRef = useRef(null);
 
+  // Load data whenever classId/versionId changes
   useEffect(() => {
-    loadData({ params, actions });
-  }, [params, actions]);
-
-  useEffect(() => {
-    if (params.versionId !== selectedVersion.version.id) {
-      loadData({ params, actions });
+    if (classId) {
+      loadData(classId, versionId, actions);
     }
-  }, [params.versionId, selectedVersion.version.id, actions]);
+  }, [classId, versionId, actions]);
 
+  // Hide 'Read more' link if content fits
   useEffect(() => {
     const element = descriptionRef.current;
-    if (element === null) return;
+    if (!element) return;
     const hasOverflowingChildren =
       element.offsetHeight < element.scrollHeight ||
       element.offsetWidth < element.scrollWidth;
+
     if (
       !hasOverflowingChildren &&
-      descLinkRef.current.getAttribute("class") !== "hide"
+      descLinkRef.current?.getAttribute("class") !== "hide"
     ) {
       descLinkRef.current.setAttribute("class", "hide");
     }
-  }, [selectedVersion]);
+  }, [classification, selectedVersion]);
 
-  const renderTabs = () => {
-    if (
-      (_.isEmpty(selectedVersion.version) ||
-        (params.versionId &&
-          selectedVersion.version.id !== params.versionId)) &&
-      selectedVersion.isFetching
-    ) {
+  function showFullDescription() {
+    descriptionRef.current.setAttribute("class", "description");
+    descLinkRef.current.setAttribute("class", "hide");
+    shortDescLinkRef.current.setAttribute("class", "clickable");
+  }
+
+  function hideFullDescription() {
+    descriptionRef.current.setAttribute("class", "description short");
+    descLinkRef.current.setAttribute("class", "clickable");
+    shortDescLinkRef.current.setAttribute("class", "hide");
+  }
+
+  // Conditionally render the tabs
+  function renderTabs() {
+    if (_.isEmpty(selectedVersion?.version) && selectedVersion?.isFetching) {
       return (
         <div className="spinner">
-          <div className="bounce1"></div>
-          <div className="bounce2"></div>
-          <div className="bounce3"></div>
+          <div className="bounce1" />
+          <div className="bounce2" />
+          <div className="bounce3" />
         </div>
       );
     }
-
     return (
       <Tabs
         classification={classification}
         selectedVersion={selectedVersion}
         actions={actions}
         isFetchingClass={isFetching}
-        params={params}
         modal={modal}
       />
     );
-  };
-
-  const showFullDescription = (ev) => {
-    descriptionRef.current.setAttribute("class", "description");
-    descLinkRef.current.setAttribute("class", "hide");
-    shortDescLinkRef.current.setAttribute("class", "clickable");
-  };
-
-  const hideFullDescription = (ev) => {
-    descriptionRef.current.setAttribute("class", "description short");
-    descLinkRef.current.setAttribute("class", "clickable");
-    shortDescLinkRef.current.setAttribute("class", "hide");
-  };
+  }
 
   if (_.isEmpty(classification)) {
     return (
@@ -161,12 +149,12 @@ const ClassItemPage = ({
     );
   }
 
-  if (_.isEmpty(classification) || isFetching) {
+  if (isFetching || _.isEmpty(classification)) {
     return (
       <div className="spinner">
-        <div className="bounce1"></div>
-        <div className="bounce2"></div>
-        <div className="bounce3"></div>
+        <div className="bounce1" />
+        <div className="bounce2" />
+        <div className="bounce3" />
       </div>
     );
   }
@@ -179,7 +167,7 @@ const ClassItemPage = ({
         <div className="heading">
           <p>
             <TranslateComponent content="CLASSIFICATIONS.STATISTICAL_UNIT" />:{" "}
-            <b>{classification.statisticalUnits[0]}</b>
+            <b>{classification.statisticalUnits?.[0]}</b>
           </p>
           <h1>{classification.name}</h1>
           <p className="description short" ref={descriptionRef}>
@@ -190,37 +178,36 @@ const ClassItemPage = ({
             ref={descLinkRef}
             onClick={showFullDescription}
           >
-            +
-            <TranslateComponent content="CLASS_ITEM.READ_MORE" />
+            +<TranslateComponent content="CLASS_ITEM.READ_MORE" />
           </p>
           <p
             className="hide"
             ref={shortDescLinkRef}
             onClick={hideFullDescription}
           >
-            -
-            <TranslateComponent content="CLASS_ITEM.READ_LESS" />
+            -<TranslateComponent content="CLASS_ITEM.READ_LESS" />
           </p>
         </div>
         {renderTabs()}
       </div>
+
       <Sidebar
         contactInfo={classification.contactPerson}
-        languages={selectedVersion.version.published}
-        onLanguageChange={loadData}
+        languages={selectedVersion?.version?.published}
+        onLanguageChange={() => loadData(classId, versionId, actions)}
         actions={actions}
-        params={params}
       />
+
       <div className="clear-fix" />
     </div>
   );
-};
+}
 
 const mapStateToProps = (state) => ({
-  classification: state.selectedClass.classification,
-  selectedVersion: state.selectedVersion,
-  isFetching: state.selectedClass.isFetching,
-  modal: state.modal,
+  classification: state.selectedClass?.classification || {},
+  selectedVersion: state.selectedVersion || { version: {} },
+  isFetching: state.selectedClass?.isFetching ?? false,
+  modal: state.modal || {},
 });
 
 const mapDispatchToProps = (dispatch) => ({

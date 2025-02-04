@@ -7,12 +7,12 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/styles/main.scss" />
-    <!-- Dynamically Set the Base Path -->
+
     <script>
-      const basePath = window.location.hostname === 'localhost' ? '/' : '/klass/';
-      const baseTag = document.createElement('base');
-      baseTag.href = basePath;
-      document.head.appendChild(baseTag);
+      // If user hits root path, redirect them to /klass
+      if (window.location.pathname === '/') {
+        window.location.replace('/klass');
+      }
     </script>
   </head>
   <body>

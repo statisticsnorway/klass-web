@@ -6,7 +6,7 @@ import CodeDate from "../../CodeDate";
 import Modal from "simple-react-modal";
 import _ from "lodash";
 import CodeListItem from "./CodeListItem";
-import { connect } from "react-redux"; // <-- Add this import
+import { connect } from "react-redux"; 
 
 const StaticListItem = ({
   item,
@@ -230,15 +230,17 @@ const StaticListItem = ({
 StaticListItem.propTypes = {
   item: PropTypes.object.isRequired,
   idx: PropTypes.number.isRequired,
-  displayName: PropTypes.element.isRequired,
+  displayName: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   type: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
   modal: PropTypes.object.isRequired,
-  translations: PropTypes.object,
+  search: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
-  search: state.searchResult.search,
+  search: state.searchResult?.search || {},
 });
+
 
 export default connect(mapStateToProps)(StaticListItem);

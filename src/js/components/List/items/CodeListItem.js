@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useCallback } from "react";
 import _ from "lodash";
-import StaticListItem from "./StaticListItem"; // Make sure this import is correct
+import StaticListItem from "./StaticListItem"; 
 
 const CodeListItem = ({
   item,
@@ -14,7 +14,7 @@ const CodeListItem = ({
 }) => {
   const shouldComponentUpdate = useCallback(
     (nextProps) => {
-      // Ensure that the shouldComponentUpdate logic is correct
+      
       let visibleChanged = modal.modalIsOpen !== nextProps.modal.modalIsOpen;
       let modalItemChanged = modal.item !== nextProps.modal.item;
 
@@ -71,7 +71,7 @@ const CodeListItem = ({
     return false;
   };
 
-  // Returning JSX using React.createElement for more explicit syntax
+  
   return React.createElement(StaticListItem, {
     item: item,
     idx: idx,
@@ -83,18 +83,20 @@ const CodeListItem = ({
   });
 };
 
-CodeListItem.propTypes = {
+StaticListItem.propTypes = {
   item: PropTypes.object.isRequired,
   idx: PropTypes.number.isRequired,
-  displayName: PropTypes.element.isRequired,
+  displayName: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   type: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
   modal: PropTypes.object.isRequired,
-  translations: PropTypes.object,
+  search: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
-  search: state.searchResult.search,
+  search: state.searchResult?.search || {},
 });
+
 
 export default CodeListItem;

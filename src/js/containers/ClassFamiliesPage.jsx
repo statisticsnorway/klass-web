@@ -8,7 +8,7 @@ import List from "../components/List";
 import Contact from "../components/Sidebar/Contact";
 import config from "../config";
 import { translate, TranslateComponent } from "../lib/languageUtils";
-import { useLocation } from "react-router-dom";  // Import useLocation
+import { useLocation } from "react-router-dom";
 
 
 const loadData = (actions) => {
@@ -24,7 +24,7 @@ const ClassFamiliesPage = ({
   ssbSections,
   search,
 }) => {
-  const location = useLocation();  // Get location via useLocation hook
+  const location = useLocation(); 
 
   useEffect(() => {
     loadData(actions);
@@ -102,7 +102,7 @@ const ClassFamiliesPage = ({
           actions={actions}
           sections={ssbSections}
           search={search}
-          location={location}  // Pass location from useLocation here
+          location={location}  
         />
         {renderContent()}
       </div>
@@ -115,13 +115,16 @@ const ClassFamiliesPage = ({
 };
 
 const mapStateToProps = (state) => ({
-  items: state.classFamilies.items,
-  isFetching: state.classFamilies.isFetching,
-  ssbSections: state.ssbSections,
-  search: state.searchResult.search,
-  searchResult: state.searchResult.items,
-  searchIsFetching: state.searchResult.isFetching,
-  modal: state.modal,
+  items: state.classFamilies?.items || [],
+  isFetching: state.classFamilies?.isFetching || false,
+  ssbSections: Array.isArray(state.ssbSections?.ssbSections)
+    ? state.ssbSections.ssbSections
+    : [],
+
+  search: state.searchResult?.search || {},
+  searchResult: state.searchResult?.items || [],
+  searchIsFetching: state.searchResult?.isFetching || false,
+  modal: state.modal || {},
 });
 
 const mapDispatchToProps = (dispatch) => ({

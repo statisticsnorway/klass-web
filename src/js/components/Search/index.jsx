@@ -156,8 +156,12 @@ Search.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  search: state.searchResult.search,
-  ssbSections: state.ssbSections.ssbSections || [],
+  items: state.searchResult?.items || [],
+  search: state.searchResult?.search || {},
+  isFetching: state.searchResult?.isFetching || false,
+  ssbSections: Array.isArray(state.ssbSections?.ssbSections)
+    ? state.ssbSections.ssbSections
+    : [],
 });
 
 export default connect(mapStateToProps)(Search);

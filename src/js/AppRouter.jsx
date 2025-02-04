@@ -1,12 +1,11 @@
 import "../styles/main.scss";
-import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 import {
   BrowserRouter as Router,
-  Route,
   Routes,
+  Route,
   Navigate,
 } from "react-router-dom";
 import i18next from "i18next";
@@ -21,14 +20,13 @@ import ClassFamiliesPage from "./containers/ClassFamiliesPage";
 import ClassItemPage from "./containers/ClassItemPage";
 import SearchPage from "./containers/SearchPage";
 import NotFoundView from "./views/NotFoundView";
-import { TranslateComponent } from "./lib/languageUtils";
 import { translate } from "./lib/languageUtils";
 
 import enTranslations from "./locales/en.js";
 import nnTranslations from "./locales/nn.js";
 import nbTranslations from "./locales/nb.js";
 
-// Initialize i18next for language support
+// 1️⃣ Initialize i18next for language support
 i18next.use(initReactI18next).init({
   resources: {
     en: { translation: enTranslations },
@@ -45,6 +43,7 @@ i18next.use(initReactI18next).init({
 let englishUrl = false;
 const selectedLanguage = sessionStorage.getItem("selectedLanguage") || "nb";
 
+// 2️⃣ Detect if user is on an /en/ URL to set language
 if (document.URL.match(/https?:\/\/.*?\/en\//)) {
   sessionStorage.setItem("selectedLanguage", "en");
   sessionStorage.setItem("selectedAPILanguage", "en");
@@ -57,19 +56,21 @@ if (document.URL.match(/https?:\/\/.*?\/en\//)) {
   englishUrl = false;
 }
 
+// 3️⃣ Set page title
 document.title = translate("PAGE.TITLE");
 
-// Initialize Google Analytics
+// 4️⃣ Initialize Google Analytics
 ReactGA.initialize(config.GA_TRACKING_ID);
 function gaTracking() {
   ReactGA.pageview(window.location.pathname + window.location.hash);
 }
 
+// 5️⃣ Create Redux store & root element
 const store = configureStore();
 const rootElement = document.getElementById("app");
 
-// Setting the base name for routing (e.g., /klass)
-const baseName = process.env.REACT_APP_BASE_NAME || "/klass"; // Can be dynamically set based on env variables
+// 6️⃣ Set the base name for routing (e.g., /klass)
+const baseName = process.env.REACT_APP_BASE_NAME || "/klass";
 
 const ComponentEl = (
   <div>
@@ -77,18 +78,54 @@ const ComponentEl = (
     <div id="page">
       <div className="sitewrapper">
         <Router basename={baseName}>
-          {" "}
           <Routes>
+            {/* 
+              Outer route: path="/" => <App />
+              This acts like your top-level layout from v3 
+            */}
             <Route path="/" element={<App />}>
+              {/* 
+                index => ClassFamiliesPage
+                Replaces <IndexRoute component={ClassFamiliesPage} /> 
+              */}
               <Route index element={<ClassFamiliesPage />} />
-              <Route path="klassifikasjoner" element={<ClassItemPage />}>
-                <Route
-                  path=":classId(/versjon/:versionId)(/:tab)(/:itemId)"
-                  element={<ClassItemPage />}
-                />
-              </Route>
+
+              {/* 
+                Next we replicate your old optional segments. 
+                1) /klassifikasjoner/:classId
+                2) /klassifikasjoner/:classId/:tab  <-- new route so /koder, /varianter, /om, etc. works
+                3) /klassifikasjoner/:classId/versjon/:versionId
+                4) /klassifikasjoner/:classId/versjon/:versionId/:tab
+                5) /klassifikasjoner/:classId/versjon/:versionId/:tab/:itemId
+              */}
+              <Route
+                path="klassifikasjoner/:classId"
+                element={<ClassItemPage />}
+              />
+              <Route
+                path="klassifikasjoner/:classId/:tab"
+                element={<ClassItemPage />}
+              />
+              <Route
+                path="klassifikasjoner/:classId/versjon/:versionId"
+                element={<ClassItemPage />}
+              />
+              <Route
+                path="klassifikasjoner/:classId/versjon/:versionId/:tab"
+                element={<ClassItemPage />}
+              />
+              <Route
+                path="klassifikasjoner/:classId/versjon/:versionId/:tab/:itemId"
+                element={<ClassItemPage />}
+              />
+
+              {/* /sok => <SearchPage /> */}
               <Route path="sok" element={<SearchPage />} />
+
+              {/* /404 => NotFoundView */}
               <Route path="404" element={<NotFoundView />} />
+
+              {/* Fallback => Navigate to /404 */}
               <Route path="*" element={<Navigate to="/404" />} />
             </Route>
           </Routes>

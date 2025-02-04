@@ -1,125 +1,113 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import _ from "lodash";
 import moment from "moment";
 import commonUtils from "../../lib/common-utils";
 import { TranslateComponent } from "../../lib/languageUtils";
 
-const Changes = ({ classification, selectedVersion, params, actions }) => {
+const Changes = ({ classification, selectedVersion, actions }) => {
   const [invertedTable, setInvertedTable] = useState(true);
+  const { versionId } = useParams();
 
   const invertTable = () => {
     setInvertedTable(!invertedTable);
   };
 
   const renderChangesBody = () => {
-    const changes = selectedVersion.changes;
-
     if (selectedVersion.isFetching) {
       return (
         <tr>
-          <TranslateComponent
-            component="td"
-            colSpan="2"
-            content="LOADING.LOADING_CONTENT"
-          />
+          <td colSpan="2">
+            <TranslateComponent content="LOADING.LOADING_CONTENT" />
+          </td>
         </tr>
       );
     }
 
-    if (_.isEmpty(changes.codeChanges)) {
+    if (_.isEmpty(selectedVersion.changes?.codeChanges)) {
       return (
         <tr>
-          <TranslateComponent
-            component="td"
-            colSpan="2"
-            content="TABS.CHANGES.CHANGES_NOT_FOUND"
-          />
+          <td colSpan="2">
+            <TranslateComponent content="TABS.CHANGES.CHANGES_NOT_FOUND" />
+          </td>
         </tr>
       );
     }
 
     let groupedArray;
+    const { codeChanges } = selectedVersion.changes;
 
-    switch (invertedTable) {
-      case false:
-        changes.codeChanges.sort((a, b) => a.oldCode - b.oldCode);
+    if (!invertedTable) {
+      codeChanges.sort((a, b) => a.oldCode.localeCompare(b.oldCode));
 
-        groupedArray = commonUtils.groupBy(changes.codeChanges, (item) => [
-          item.oldCode,
-        ]);
+      groupedArray = commonUtils.groupBy(codeChanges, (item) => [item.oldCode]);
 
-        return groupedArray.map((item, key) => {
-          const targetList = item
-            .sort((a, b) => a.newCode - b.newCode)
-            .map((subItem, key) => (
-              <li key={key}>
-                <b>{subItem.newCode}</b> - {subItem.newName}
-              </li>
-            ));
+      return groupedArray.map((item, key) => (
+        <tr key={key}>
+          <td>
+            <b>{item[0].oldCode}</b> - {item[0].oldName}
+          </td>
+          <td>
+            <ul className="grouped-codelist">
+              {item
+                .sort((a, b) => a.newCode.localeCompare(b.newCode))
+                .map((subItem, subKey) => (
+                  <li key={subKey}>
+                    <b>{subItem.newCode}</b> - {subItem.newName}
+                  </li>
+                ))}
+            </ul>
+          </td>
+        </tr>
+      ));
+    } else {
+      codeChanges.sort((a, b) => a.newCode.localeCompare(b.newCode));
 
-          return (
-            <tr key={key}>
-              <td>
-                <b>{item[0].oldCode}</b> - {item[0].oldName}
-              </td>
-              <td>
-                <ul className="grouped-codelist">{targetList}</ul>
-              </td>
-            </tr>
-          );
-        });
+      groupedArray = commonUtils.groupBy(codeChanges, (item) => [item.newCode]);
 
-      case true:
-        changes.codeChanges.sort((a, b) => a.newCode - b.newCode);
-
-        groupedArray = commonUtils.groupBy(changes.codeChanges, (item) => [
-          item.newCode,
-        ]);
-
-        return groupedArray.map((item, key) => {
-          const targetList = item
-            .sort((a, b) => a.oldCode - b.oldCode)
-            .map((subItem, key) => (
-              <li key={key}>
-                <b>{subItem.oldCode}</b> - {subItem.oldName}
-              </li>
-            ));
-
-          return (
-            <tr key={key}>
-              <td>
-                <b>{item[0].newCode}</b> - {item[0].newName}
-              </td>
-              <td>
-                <ul className="grouped-codelist">{targetList}</ul>
-              </td>
-            </tr>
-          );
-        });
+      return groupedArray.map((item, key) => (
+        <tr key={key}>
+          <td>
+            <b>{item[0].newCode}</b> - {item[0].newName}
+          </td>
+          <td>
+            <ul className="grouped-codelist">
+              {item
+                .sort((a, b) => a.oldCode.localeCompare(b.oldCode))
+                .map((subItem, subKey) => (
+                  <li key={subKey}>
+                    <b>{subItem.oldCode}</b> - {subItem.oldName}
+                  </li>
+                ))}
+            </ul>
+          </td>
+        </tr>
+      ));
     }
-
-    return null;
   };
 
   useEffect(() => {
-    // Handle changes when props or state update
-  }, [selectedVersion, classification]);
+    if (versionId && actions) {
+      actions.loadChanges(classification.id, versionId);
+    }
+  }, [versionId, actions, classification.id]);
 
-  const versionsSorted = classification.versions.sort((a, b) =>
-    a.validFrom < b.validFrom ? 1 : -1
+  const versionsSorted = [...classification.versions].sort(
+    (a, b) => new Date(b.validFrom) - new Date(a.validFrom)
   );
+
   let selectedVersionIndex = versionsSorted.findIndex(
-    (obj) => obj.id === selectedVersion.version.id
+    (obj) => obj.id === selectedVersion.version?.id
   );
-  let selectedChanges = versionsSorted[selectedVersionIndex];
-  let previousVersion = versionsSorted[selectedVersionIndex + 1];
+  let selectedChanges = versionsSorted[selectedVersionIndex] || {};
+  let previousVersion = versionsSorted[selectedVersionIndex + 1] || {};
 
-  if (params.versionId) {
+  if (versionId) {
     _.forEach(versionsSorted, (v, i) => {
-      if (v.id === params.versionId) {
+      if (v.id === versionId) {
         selectedChanges = v;
-        previousVersion = versionsSorted[i + 1];
+        previousVersion = versionsSorted[i + 1] || {};
         return false;
       }
     });
@@ -136,10 +124,7 @@ const Changes = ({ classification, selectedVersion, params, actions }) => {
             href="javascript:history.back()"
           />
         </p>
-        <TranslateComponent
-          component="p"
-          content="TABS.CHANGES.CHANGES_NOT_FOUND"
-        />
+        <TranslateComponent content="TABS.CHANGES.CHANGES_NOT_FOUND" />
       </div>
     );
   }
@@ -147,11 +132,10 @@ const Changes = ({ classification, selectedVersion, params, actions }) => {
   const validFrom = moment(selectedChanges.validFrom).format("MMMM YYYY");
   const validTo = moment(selectedChanges.validTo).isValid()
     ? moment(selectedChanges.validTo).format("MMMM YYYY")
-    : "Gjeldende versjon";
-  const previousVersionValidFrom =
-    previousVersion && moment(previousVersion.validFrom).isValid()
-      ? moment(previousVersion.validFrom).format("MMMM YYYY")
-      : "-";
+    : translate("TABS.CHANGES.CURRENT_VERSION");
+  const previousVersionValidFrom = previousVersion.validFrom
+    ? moment(previousVersion.validFrom).format("MMMM YYYY")
+    : "-";
 
   return (
     <div>
@@ -183,7 +167,6 @@ Changes.propTypes = {
   classification: PropTypes.object.isRequired,
   selectedVersion: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  params: PropTypes.object.isRequired,
 };
 
 export default Changes;

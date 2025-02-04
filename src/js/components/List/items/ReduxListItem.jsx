@@ -219,15 +219,16 @@ const StandardListItem = ({
 StandardListItem.propTypes = {
   item: PropTypes.object.isRequired,
   idx: PropTypes.number.isRequired,
-  displayName: PropTypes.element.isRequired,
+  displayName: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   type: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
   modal: PropTypes.object.isRequired,
-  search: PropTypes.object.isRequired,
+  search: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
-  search: state.searchResult.search,
+  search: state.searchResult?.search || {},
 });
 
 export default connect(mapStateToProps)(StandardListItem);
