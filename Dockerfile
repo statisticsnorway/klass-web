@@ -1,33 +1,27 @@
 # Step 1: Build the React app
 FROM node:18 AS builder
-
 WORKDIR /app
 
-# Copy package.json and install dependencies
+# Install dependencies and build
 COPY package*.json ./
 RUN npm install
-
-# Copy the rest of the code
 COPY . .
-
-# Build the production version of your app
 RUN npm run build
 
-# Step 2: Serve the built files using a lightweight web server
+# Step 2: Serve the built files using Nginx
 FROM nginx:latest
+WORKDIR /usr/share/nginx/html
 
-RUN mkdir -p /tmp/nginx
-
+# Copy custom Nginx config (if needed)
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy the build output to Nginx's default public directory
-COPY --from=builder /app/build /usr/share/nginx/html
+RUN mkdir -p /tmp/nginx/client_body /tmp/nginx/proxy /tmp/nginx/fastcgi /tmp/nginx/uwsgi /tmp/nginx/scgi
 
-# Expose port 3000
-EXPOSE 3000
+# Copy the build output
+COPY --from=builder /app/build .
 
-# Change Nginx configuration to listen on port 3000
-RUN sed -i 's/80;/3000;/' /etc/nginx/conf.d/default.conf
+# Expose port 80 (default Nginx port)
+EXPOSE 80
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
