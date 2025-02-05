@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # Step 2: Serve the built files using a lightweight web server
-FROM nginx:alpine
+FROM nginx:latest
 
 # Copy the build output to Nginx's default public directory
 COPY --from=builder /app/build /usr/share/nginx/html
