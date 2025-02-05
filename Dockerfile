@@ -15,9 +15,11 @@ WORKDIR /usr/share/nginx/html
 # Copy custom Nginx config (if needed)
 COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN mkdir -p /tmp/nginx/client_body /tmp/nginx/proxy /tmp/nginx/fastcgi /tmp/nginx/uwsgi /tmp/nginx/scgi
+# Create necessary directories for Nginx temp files in /tmp and set proper permissions
+RUN mkdir -p /tmp/nginx/client_body /tmp/nginx/proxy /tmp/nginx/fastcgi /tmp/nginx/uwsgi /tmp/nginx/scgi \
+    && chown -R 1069:1069 /tmp/nginx
 
-# Copy the build output
+# Copy the build output from the builder stage
 COPY --from=builder /app/build .
 
 # Expose port 80 (default Nginx port)
