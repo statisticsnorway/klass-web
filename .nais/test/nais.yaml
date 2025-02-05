@@ -6,13 +6,10 @@ metadata:
   namespace: dapla-metadata
 
 spec:
-
   ingresses:
     - https://klass-web.intern.test.ssb.no
   image: "{{ image }}"  # Injected from the GitHub Action
 
-  port: 3000
-  
   replicas:
     max: 1
     min: 1
@@ -20,3 +17,17 @@ spec:
     requests:
       cpu: 50m
       memory: 32Mi
+      
+  spec:
+    containers:
+      - name: klass-web
+        image: "{{ image }}"
+        ports:
+          - containerPort: 3000
+        volumeMounts:
+          - name: nginx-cache
+            mountPath: /var/cache/nginx
+    volumes:
+      - name: nginx-cache
+        persistentVolumeClaim:
+          claimName: nginx-cache-pvc
