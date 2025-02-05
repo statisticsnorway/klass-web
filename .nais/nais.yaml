@@ -12,7 +12,7 @@ spec:
   image: "{{ image }}"  # Injected from the GitHub Action
 
   port: 3000
-  ttl: 3h
+  
   replicas:
     max: 1
     min: 1
