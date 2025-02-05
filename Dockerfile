@@ -1,19 +1,29 @@
-FROM node:18-alpine
- 
-# Set the working directory inside the container
+# Step 1: Build the React app
+FROM node:16 AS builder
+
 WORKDIR /app
- 
-# Copy package.json and package-lock.json
+
+# Copy package.json and install dependencies
 COPY package*.json ./
- 
-# Install dependencies
 RUN npm install
- 
-# Copy the rest of your application files
+
+# Copy the rest of the code
 COPY . .
- 
-# Expose the port your app runs on
+
+# Build the production version of your app
+RUN npm run build
+
+# Step 2: Serve the built files using a lightweight web server
+FROM nginx:alpine
+
+# Copy the build output to Nginx's default public directory
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Expose port 3000
 EXPOSE 3000
- 
-# Define the command to run your app
-CMD ["npm", "start"]
+
+# Change Nginx configuration to listen on port 3000
+RUN sed -i 's/80;/3000;/' /etc/nginx/conf.d/default.conf
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

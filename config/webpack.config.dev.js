@@ -15,7 +15,7 @@ module.exports = merge(common, {
     historyApiFallback: true,
     open: true,
     port: 3000,
-    allowedHosts: 'klass-web.intern.test.ssb.no'
+    allowedHosts: ['klass-web.intern.test.ssb.no', 'klass-web.intern.ssb.no']
     // proxy: {
     // 	'/api/*': {
     // 		// secure: false,
