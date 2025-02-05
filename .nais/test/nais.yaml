@@ -18,20 +18,3 @@ spec:
       cpu: 50m
       memory: 32Mi
       
-  template:
-    metadata:
-      labels:
-        app: klass-web
-    spec:
-      containers:
-        - name: klass-web
-          image: "{{ image }}"
-          ports:
-            - containerPort: 3000
-          volumeMounts:
-            - name: nginx-cache
-              mountPath: /var/cache/nginx
-    volumes:
-      - name: nginx-cache
-        persistentVolumeClaim:
-          claimName: nginx-cache-pvc
