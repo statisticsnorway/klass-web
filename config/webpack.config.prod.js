@@ -7,5 +7,4 @@ module.exports = merge(common, {
     publicPath: '/klass-ssb-no/'
   },
   devtool: 'source-map',
-  allowedHosts: 'all'
 });
