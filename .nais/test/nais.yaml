@@ -10,6 +10,8 @@ spec:
     - https://klass-web.intern.test.ssb.no
   image: "{{ image }}"  # Injected from the GitHub Action
 
+  port: 3000
+
   replicas:
     max: 1
     min: 1

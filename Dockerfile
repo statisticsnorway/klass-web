@@ -1,8 +1,6 @@
 # Step 1: Build the React app
 FROM node:18 AS builder
 WORKDIR /app
-
-# Install dependencies and build
 COPY package*.json ./
 RUN npm install
 COPY . .
@@ -12,21 +10,27 @@ RUN npm run build
 FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 
-# Copy custom Nginx config (if needed)
+# Copy custom Nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Create necessary directories for Nginx temp files in /tmp and set proper permissions
-RUN mkdir -p /tmp/nginx/client_body /tmp/nginx/proxy /tmp/nginx/fastcgi /tmp/nginx/uwsgi /tmp/nginx/scgi \
-    && chown -R 1069:1069 /tmp/nginx
+# Create necessary directories and set permissions
+RUN mkdir -p /tmp/nginx/client_body \
+    /tmp/nginx/proxy \
+    /tmp/nginx/fastcgi \
+    /tmp/nginx/uwsgi \
+    /tmp/nginx/scgi \
+    && chown -R 1069:1069 /tmp/nginx \
+    && chmod -R 755 /tmp/nginx \
+    && chown -R 1069:1069 /usr/share/nginx/html \
+    && chown -R 1069:1069 /etc/nginx \
+    && touch /tmp/nginx.pid \
+    && chown -R 1069:1069 /tmp/nginx.pid
 
-# Copy the build output from the builder stage
+# Copy the build output from builder stage
 COPY --from=builder /app/build .
 
-# Expose port 80 (default Nginx port)
-EXPOSE 80
-
-# Run Nginx as a non-root user (UID 1069)
+# Set user to 1069
 USER 1069
 
-# Start Nginx
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
