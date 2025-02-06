@@ -25,5 +25,8 @@ COPY --from=builder /app/build .
 # Expose port 80 (default Nginx port)
 EXPOSE 80
 
+# Run Nginx as a non-root user (UID 1069)
+USER 1069
+
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
