@@ -28,8 +28,8 @@ jobs:
         id: "auth"
         uses: "google-github-actions/auth@v2.1.7"
         with:
-          workload_identity_provider: "projects/906675412832/locations/global/workloadIdentityPools/ssb-identity-pool/providers/github-oidc-provider"
-          service_account: "gh-ssb@nais-management-b3a7.iam.gserviceaccount.com"
+          workload_identity_provider: "projects/848539402404/locations/global/workloadIdentityPools/gh-actions/providers/gh-actions"
+          service_account: "gh-actions-dapla-metadata@artifact-registry-5n.iam.gserviceaccount.com"
           token_format: "access_token"
 
       - name: Set up QEMU
