@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       image-tag: ${{ steps.metadata.outputs.tags }}
-      config-path: ${{ steps.metadata.outputs.nais_config_path }}
-      cluster: ${{ steps.metadata.outputs.cluster }}
+      config-path: ${{ steps.nais-deploy-vars.outputs.nais_config_path }}
+      cluster: ${{ steps.nais-deploy-vars.outputs.cluster }}
 
     steps:
       - name: Checkout
