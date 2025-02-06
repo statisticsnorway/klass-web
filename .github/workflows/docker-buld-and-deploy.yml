@@ -4,7 +4,7 @@ on:
   pull_request:
 
 env:
-  REGISTRY: europe-north1-docker.pkg.dev/nais-management-b3a7/dapla-metadata
+  REGISTRY: europe-north1-docker.pkg.dev/artifact-registry-5n/dapla-metadata-docker/klass-web
   IMAGE: klass-web
   TAG: ${{ github.head_ref }}-${{ github.sha }}
 
@@ -75,11 +75,9 @@ jobs:
         id: nais-deploy-vars
         run: |
           if [[ ${{ github.event_name }} == "release" ]]; then
-            echo "nais_tag=${{ steps.version-tag.outputs.version_tag }}" >> "$GITHUB_OUTPUT"
             echo "cluster=prod" >> "$GITHUB_OUTPUT"
             echo "nais_config_path=.nais/prod/nais.yaml" >> "$GITHUB_OUTPUT"
           else
-            echo "nais_tag=" >> "$GITHUB_OUTPUT"
             echo "cluster=test" >> "$GITHUB_OUTPUT"
             echo "nais_config_path=.nais/test/nais.yaml" >> "$GITHUB_OUTPUT"
           fi 
