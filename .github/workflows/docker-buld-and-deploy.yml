@@ -12,8 +12,8 @@ jobs:
   docker-build:
     name: Docker build
     permissions:
-      contents: "read"
-      id-token: "write"
+      contents: 'read'
+      id-token: 'write'
     runs-on: ubuntu-latest
     outputs:
       image-tag: ${{ steps.metadata.outputs.tags }}
@@ -31,6 +31,7 @@ jobs:
           workload_identity_provider: "projects/848539402404/locations/global/workloadIdentityPools/gh-actions/providers/gh-actions"
           service_account: "gh-actions-dapla-metadata@artifact-registry-5n.iam.gserviceaccount.com"
           token_format: "access_token"
+          debug: true
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -42,7 +43,7 @@ jobs:
       - name: Login to registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{env.REGISTRY}}
           username: "oauth2accesstoken"
           password: "${{ steps.auth.outputs.access_token }}"
 
