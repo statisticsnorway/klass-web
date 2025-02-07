@@ -1,13 +1,11 @@
 name: Build and deploy to nais
 
 on:
-  pull_request:
-    
-  # release:
-  #   types: [ published ]
-  # push:
-  #   branches:
-  #     - master
+  release:
+    types: [ published ]
+  push:
+    branches:
+      - master
 
 env:
   REGISTRY: europe-north1-docker.pkg.dev/artifact-registry-5n/dapla-metadata-docker/klass-web
