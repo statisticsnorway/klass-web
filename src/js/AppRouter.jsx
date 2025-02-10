@@ -1,7 +1,7 @@
 import "../styles/main.scss";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import configureStore from "./store/configureStore";
+import setupStore from "./store/setupStore.jsx";
 import {
   BrowserRouter as Router,
   Routes,
@@ -66,7 +66,7 @@ function gaTracking() {
 }
 
 // 5️⃣ Create Redux store & root element
-const store = configureStore();
+const store = setupStore();
 const rootElement = document.getElementById("app");
 
 // 6️⃣ Set the base name for routing (e.g., /klass)

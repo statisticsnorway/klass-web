@@ -1,10 +1,10 @@
-import * as types from "../constants/ActionTypes";
+import * as types from '../constants/ActionTypes';
 
 const initialState = {
   isFetching: false,
   search: {
-    query: "",
-    ssbSection: "",
+    query: '',
+    ssbSection: '',
     includeCodelists: false,
   },
   items: [],
