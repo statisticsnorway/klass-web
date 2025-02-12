@@ -2,12 +2,12 @@
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: klass-web-test
+  name: klass-web
   namespace: dapla-metadata
 
 spec:
   ingresses:
-    - https://klass-web-test.intern.test.ssb.no
+    - https://klass-web.intern.test.ssb.no
   image: "{{ image }}"  # Injected from the GitHub Action
 
   port: 3000
