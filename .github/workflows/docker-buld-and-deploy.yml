@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - master
+      - feat/remove-elliptic-vulnerability
 
 env:
   REGISTRY: europe-north1-docker.pkg.dev/artifact-registry-5n/dapla-metadata-docker/klass-web

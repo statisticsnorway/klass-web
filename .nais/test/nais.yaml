@@ -2,7 +2,7 @@
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: klass-web
+  name: klass-web-test
   namespace: dapla-metadata
 
 spec:
