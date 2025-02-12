@@ -56,13 +56,12 @@
     "mini-css-extract-plugin": "^2.7.6",
     "minimist": "^1.2.8",
     "mocha": "^11.1.0",
-    "node-polyfill-webpack-plugin": "^4.1.0",
     "nodemon": "^3.1.9",
     "postcss": "^8.5.0",
     "postcss-loader": "^8.1.1",
     "sass": "^1.79.0",
     "sass-loader": "^16.0.4",
-    "webpack": "^5.94.0",
+    "webpack": "^5.97.1",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.2.0"
@@ -84,6 +83,8 @@
     "lru-cache": "^11.0.2",
     "moment": "^2.29.4",
     "normalizr": "^3.6.2",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-aria-tabpanel": "^4.4.0",
@@ -99,6 +100,8 @@
     "redux-thunk": "^2.4.2",
     "rimraf": "^6.0.1",
     "simple-react-modal": "~0.5.1",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5",
     "webpack-merge": "^6.0.1"
   }
 }
