@@ -6,15 +6,14 @@ metadata:
   namespace: dapla-metadata
 
 spec:
+  image: "{{ image }}"  # Injected from the GitHub Action
 
   ingresses:
     - https://klass-web.intern.ssb.no
-  image: "{{ image }}"  # Injected from the GitHub Action
-
   port: 3000
-  
+
   replicas:
-    max: 2
+    max: 12
     min: 2
   resources:
     requests:
