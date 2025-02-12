@@ -25,7 +25,6 @@ module.exports = {
       "process": require.resolve("process/browser"),
       "path": require.resolve("path-browserify"),
       "stream": require.resolve("stream-browserify"),
-      // For what is this?
       "util": require.resolve("util/"),
     },
   },
