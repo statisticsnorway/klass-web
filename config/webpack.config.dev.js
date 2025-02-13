@@ -16,17 +16,5 @@ module.exports = merge(common, {
     open: true,
     port: 3000,
     allowedHosts: ['klass-web.intern.test.ssb.no', 'klass-web.intern.ssb.no'],
-    proxy: [
-      {
-      '/': {
-        target: 'http://localhost:3001', // Your backend API URL
-        changeOrigin: true,  // This allows the proxy to work across different origins
-        secure: false,       // Set to false if your backend doesn't use HTTPS
-        pathRewrite: {
-          '^/': '', // Optional: rewrite the URL before forwarding it to the backend
-        },
-      },
-    },
-  ]
   }
 });
