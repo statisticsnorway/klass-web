@@ -1,8 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+webpack = require('webpack')
 
 module.exports = {
   entry: {
@@ -20,6 +21,12 @@ module.exports = {
   resolve: {
     // We can now require('file') instead of require('file.jsx')
     extensions: ['.js', '.jsx', '.scss'],
+    fallback: {
+      "process": require.resolve("process/browser"),
+      "path": require.resolve("path-browserify"),
+      "stream": require.resolve("stream-browserify"),
+      "util": require.resolve("util/"),
+    },
   },
   module: {
     rules: [
@@ -54,16 +61,14 @@ module.exports = {
         { from: path.resolve(__dirname, '../src/static'), to: "static" },
       ],
     }),
+    new webpack.ProvidePlugin({ process: "process/browser", Buffer: ["buffer", "Buffer"], 
+
+    }),
 
     // This plugin moves all the CSS into a separate stylesheet
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
     }),
-
-    // Needed by counterpart
-    new NodePolyfillPlugin({
-        additionalAliases: ['process'],
-    }), 
 
     // https://github.com/webpack-contrib/webpack-bundle-analyzer/blob/master/README.md
     new BundleAnalyzerPlugin({ analyzerMode: 'disabled' }) // default is 'server'

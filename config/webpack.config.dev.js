@@ -15,15 +15,6 @@ module.exports = merge(common, {
     historyApiFallback: true,
     open: true,
     port: 3000,
-    allowedHosts: ['klass-web.intern.test.ssb.no', 'klass-web.intern.ssb.no']
-    // proxy: {
-    // 	'/api/*': {
-    // 		// secure: false,
-    // 		// target: 'http://localhost:3001',
-    //     	rewrite: function(req) {
-    //       		req.url = req.url.replace(/^\/api/, '');
-    //     	}
-    // 	}
-    // }
+    allowedHosts: ['klass-web.intern.test.ssb.no', 'klass-web.intern.ssb.no'],
   }
 });
