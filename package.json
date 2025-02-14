@@ -22,7 +22,7 @@
     "prestart": "rm -rf build",
     "start": "webpack-dev-server --config ./config/webpack.config.dev.js --hot --progress",
     "prebuild": "npm run clean:build && npm run build:html",
-    "build": "SET NODE_ENV=production& NODE_ENV=production& webpack --config ./config/webpack.config.prod.js --progress",
+    "build": "NODE_ENV=production && webpack --config ./config/webpack.config.prod.js --progress",
     "lint": "eslint --ext .js --ext .jsx src test config"
   },
   "devDependencies": {
@@ -42,7 +42,6 @@
     "bluebird": "^3.7.2",
     "body-parser": "^1.20.3",
     "cheerio": "1.0.0-rc.12",
-    "colors": "^1.4.0",
     "compression": "^1.7.5",
     "copy-webpack-plugin": "^11.0.0",
     "cors": "^2.8.5",
