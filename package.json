@@ -23,6 +23,7 @@
     "start": "webpack-dev-server --config ./config/webpack.config.dev.js --hot --progress",
     "prebuild": "npm run clean:build && npm run build:html",
     "build": "NODE_ENV=production && webpack --config ./config/webpack.config.prod.js --progress",
+    "docker": "docker build . --tag klass-web && docker run -p 3000:3000 klass-web:latest",
     "lint": "eslint --ext .js --ext .jsx src test config"
   },
   "devDependencies": {
