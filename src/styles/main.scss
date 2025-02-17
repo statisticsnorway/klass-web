@@ -1,9 +1,15 @@
 @use 'sass:color';
 @use '_variables' as *;
 @use '_reset' as *;
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap");
+
+$font-family: "Roboto", sans-serif;
 
 body {
     min-width: 980px;
+    font-family: "Open Sans", sans-serif !important;
 }
 
 .klass {
@@ -77,7 +83,7 @@ body {
             }
     	}
     	.language-selector {
-    		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
+    		font-family: $font-family;
         	font-size: 1.1em;
             margin-bottom: 3em;
 
@@ -88,7 +94,7 @@ body {
     			border: none;
     			background: inherit;
     			margin-left: 10px;
-    			font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
+    			font-family: $font-family;
     			text-align: right;
     			cursor: pointer;
 
@@ -218,5 +224,8 @@ body {
             }
         }
 
+    }
+    #header{
+        background-color: black;
     }
 }

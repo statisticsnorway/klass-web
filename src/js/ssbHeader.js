@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 
+import { Header } from '@statisticsnorway/ssb-component-library'
+
 class SSBHeader extends Component {
     setTextSize (ev, size) {
         ev.preventDefault()
