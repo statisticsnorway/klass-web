@@ -3,7 +3,10 @@ FROM node:20 AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
-COPY . .
+COPY .babelrc .
+COPY bin/ ./bin/
+COPY config/ ./config/
+COPY src/ ./src/
 RUN npm run build
 
 # Step 2: Serve the built files using Nginx
