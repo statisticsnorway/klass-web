@@ -1,0 +1,10 @@
+*
+!package.json
+!package-lock.json
+!.babelrc
+!bin
+!config
+!src
+!nginx.conf
+!mime.types
+!start.sh
