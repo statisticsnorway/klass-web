@@ -619,7 +619,6 @@ body.applikasjonstopp {
 }
 
 #header {
-  background: url("../images/top-banner.png") no-repeat scroll center -118px #ececec;
   border-bottom: 1px solid #dfdfdf;
   margin-bottom: 1em;
   min-height: 166px;
@@ -690,7 +689,6 @@ body.extra-large #logo {
   padding: 0.4em 0.2em 0.5em 2.25em;
   border: 0;
   box-shadow: 0 0 2px #888 inset;
-  background: url("../images/magnifying-glass-23-21.png") no-repeat scroll 0.5em center white;
   vertical-align: middle;
 }
 
@@ -1503,7 +1501,6 @@ ul.nav li a {
   font-size: 1.4em;
   padding: 0.55em 2.75em 0.55em 0.55em;
   border: 0;
-  background: url("../images/magnifying-glass-27-25.png") no-repeat scroll 98% center white;
   vertical-align: middle;
   box-shadow: 2px 2px 5px #aaa inset;
   border: 1px solid #ccc;
@@ -3813,7 +3810,6 @@ ol.calendar li.event span.title {
   font-size: 1.4em;
   padding: 0.55em 0.2em 0.55em 2.75em;
   border: 0;
-  background: url("../images/magnifying-glass-27-25.png") no-repeat scroll 0.5em center white;
   vertical-align: middle;
   width: 35.75em;
   box-shadow: 2px 2px 5px #aaa inset;
@@ -5377,7 +5373,6 @@ body.extra-large #main-menu .mega-menu-toggle {
 
 #footer {
   overflow: hidden;
-  background: url("../images/footer-bg.png") no-repeat scroll center top #545454;
   padding: 1.8em 0 2.2em 0;
   font-family:var(--font-family);
   text-transform: uppercase;
