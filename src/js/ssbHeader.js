@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 
-import { Header } from '@statisticsnorway/ssb-component-library'
-
 class SSBHeader extends Component {
     setTextSize (ev, size) {
         ev.preventDefault()
@@ -102,7 +100,7 @@ class SSBHeader extends Component {
                 <span className="searchBtn" onClick={(ev) => this.toggleSearch()} />
                 <div className="sitewrapper">
                     <a id="logo" href="https://www.ssb.no/" title="Gå til forsiden">
-                        <img src="./images/SSB_logo.png" alt="SSB logo (Gå til forsiden)" />
+                        <img src="./images/ssb-logo-black.svg" alt="SSB logo (Gå til forsiden)" />
                     </a>
                     <div id="global-tools">
                         <ul className="global-links nav">
