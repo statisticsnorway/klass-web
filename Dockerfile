@@ -10,15 +10,18 @@ RUN npm run build
 FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 
-# Copy custom Nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy the build output from builder stage
+COPY --from=builder /app/build .
 
 # Copy startup script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-# Copy the build output from builder stage
-COPY --from=builder /app/build .
+# Copy MIME types config
+COPY mime.types /etc/nginx/mime.types
+
+# Copy Nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Set user to 1069
 USER 1069
