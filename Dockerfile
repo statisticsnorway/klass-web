@@ -1,8 +1,12 @@
-# Step 1: Build the React app
+# Step 1: Build the app
 FROM node:20 AS builder
+
+# ARG NODE_ENV=production
+# ENV NODE_ENV $NODE_ENV
+
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps --verbose
 COPY .babelrc .
 COPY bin/ ./bin/
 COPY config/ ./config/
@@ -10,20 +14,15 @@ COPY src/ ./src/
 RUN npm run build
 
 # Step 2: Serve the built files using Nginx
-FROM nginx:latest
+FROM nginx:1.27.4-alpine
 WORKDIR /usr/share/nginx/html
 
 # Copy the build output from builder stage
 COPY --from=builder /app/build .
 
-# Copy startup script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
-
-# Copy MIME types config
 COPY mime.types /etc/nginx/mime.types
-
-# Copy Nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Set user to 1069
