@@ -2,8 +2,24 @@
 @use '_variables' as *;
 @use '_reset' as *;
 
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap");
+
+
 body {
-    min-width: 980px;
+    margin: 0 auto;
+    font-family: "Open Sans", sans-serif !important;
+    color: $text-black;
+    font-size: 50%;
+}
+
+a{
+    text-decoration: none;
+    font-weight: 400;
+}
+a:visited {
+    color:$link-text;
 }
 
 .klass {
@@ -61,131 +77,134 @@ body {
     }
 
     #page {
-    	::-webkit-input-placeholder {
-    		font-style: italic;
-    	}
+        ::-webkit-input-placeholder {
+            font-style: italic;
+        }
         label, td, th {
             font-size: $body-font-size;
             line-height: $body-line-height;
         }
-    	#navigation-path {
-    		line-height: $body-line-height;
-            font-size: $body-font-size;
+        #navigation-path {
+            line-height: $body-line-height;
+            font-size: 1.6em;
+            margin-top: 1rem;
 
             .breadcrumbs {
                 display: inline;
+                color: $text-black;
             }
-    	}
-    	.language-selector {
-    		font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
-        	font-size: 1.1em;
+        }
+        .language-selector {
+            font-family: $font-family;
+            font-size: 1.1em;
             margin-bottom: 3em;
 
-    		p {
-    			display: inline;
-    		}
-    		select {
-    			border: none;
-    			background: inherit;
-    			margin-left: 10px;
-    			font-family: "Oswald","Calibri","Arial","DejaVu Sans",sans-serif;
-    			text-align: right;
-    			cursor: pointer;
+            p {
+                display: inline;
+            }
+            select {
+                border: none;
+                background: inherit;
+                margin-left: 10px;
+                font-family: $font-family;
+                text-align: right;
+                cursor: pointer;
 
-    			&:focus {
-    				outline: none;
-    			}
-    		}
-    	}
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
 
-    	.back-link {
-    		color: #003399;
+        .back-link {
+            color: #003399;
 
-    		a {
-    			text-decoration: underline;
-    		}
-    	}
+            a {
+                text-decoration: underline;
+            }
+        
+        }
 
-    	.main {
-    		width: 67em;
-    		float: left;
-    		margin-right: 3em;
+        .main {
+            width: 67em;
+            float: left;
+            margin-right: 3em;
 
-    		.heading {
-    			.description.short {
-    				overflow: hidden;
-    				text-overflow: ellipsis;
-    				display: -webkit-box;
+            .heading {  
+                .description.short {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
     				line-height: 1.5em;     /* fallback */
     		   		max-height: 6em;      /* fallback */
-    				-webkit-line-clamp: 4;
-    				-webkit-box-orient: vertical;
-    			}
-    		}
-    	}
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                }
+            }   
+        }
 
-      .itemDate {
+    .itemDate {
         font-size: 1.6em;
         text-align: center;
         float:right;
         color: #7d7d7d;
-      }
-      .float-right-icon {
+    }
+    .float-right-icon {
         float:right;
         margin-top: -7px;
         position: static;
-      }
+    }
 
-    	h1 {
-    		font-size: 3.6em;
-    	}
+    h1 {
+    font-size: 3.6em;
+    }
 
-        input[type="text"], input[type="submit"], button {
+    input[type="text"], input[type="submit"], button {
             font-size: $body-font-size;
+    }
+
+    input[type="submit"], button {
+    background: linear-gradient(#fff, #D8D8D8);
+    height: 2em;
+    border-width: 1px;
+    cursor: pointer;
+    }
+
+    select {
+    background: linear-gradient(#fff, #D8D8D8);
+    }
+
+
+    .alternate tbody tr:hover, .alternate tbody tr.odd:hover {
+    background-color: color.scale($black, $lightness: 70%) !important;
+    }
+
+        .clickable {
+            cursor: pointer;
         }
 
-    	input[type="submit"], button {
-    		background: linear-gradient(#fff, #D8D8D8);
-    		height: 2em;
-    		border-width: 1px;
-    		cursor: pointer;
-    	}
-
-    	select {
-    		background: linear-gradient(#fff, #D8D8D8);
-    	}
-
-
-    	.alternate tbody tr:hover, .alternate tbody tr.odd:hover {
-    		background-color: color.scale($black, $lightness: 70%) !important;
-    	}
-
-    	.clickable {
-    		cursor: pointer;
-    	}
-
-    	p.clickable {
-    		text-decoration: underline;
-    		color: $link-color;
+        p.clickable {
+            text-decoration: underline;
+            color: $link-color;
             display: inline-block;
-    	}
+        }
 
-    	.flex-container {
-    		display: flex;
-    		flex-direction: row;
+        .flex-container {
+            display: flex;
+            flex-direction: row;
             flex-flow: row wrap;
-    		align-content: stretch;
-    		justify-content: space-around;
-    		flex: 1 0 0;
+            align-content: stretch;
+            justify-content: space-around;
+            flex: 1 0 0;
 
-    	}
+    }
 
-    	.browsehappy {
-    	    margin: 0.2em 0;
-    	    background: #ccc;
-    	    color: #000;
-    	    padding: 0.2em 0;
-    	}
+        .browsehappy {
+            margin: 0.2em 0;
+            background: #ccc;
+            color: #000;
+            padding: 0.2em 0;
+        }
     }
 }
 
@@ -200,9 +219,9 @@ body {
                 max-width: 100%;
                 min-width: 0;
             }
-        	.sitewrapper {
-        		padding: 0 10px;
-        	}
+            .sitewrapper {
+                padding: 0 10px;
+            }
             .main {
                 margin-right: 0;
                 float: none;

@@ -10,8 +10,15 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   vertical-align: baseline;
 }
 
+:root {
+  --font-size: 16px;
+  --font-family: 'Roboto', sans-serif;
+}
+
+
 body {
   line-height: 1;
+  color: #162327;
 }
 
 /* Tables still need 'cellspacing="0"' in the markup. */
@@ -41,55 +48,6 @@ a img {
   border: none;
 }
 
-@font-face {
-  font-family: 'Open Sans';
-  /*src: url("../fonts/opensans-regular-webfont.eot");
-  src: url("../fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-regular-webfont.woff") format("woff"), url("../fonts/opensans-regular-webfont.ttf") format("truetype"), url("../fonts/opensans-regular-webfont.svg#open_sansregular") format("svg");*/
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Open Sans';
-  /*src: url("../fonts/opensans-semibold-webfont.eot");
-  src: url("../fonts/opensans-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-semibold-webfont.woff") format("woff"), url("../fonts/opensans-semibold-webfont.ttf") format("truetype"), url("../fonts/opensans-semibold-webfont.svg#open_sansbold") format("svg");*/
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Open Sans';
-  /*src: url("../fonts/opensans-italic-webfont.eot");
-  src: url("../fonts/opensans-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-italic-webfont.woff") format("woff"), url("../fonts/opensans-italic-webfont.ttf") format("truetype"), url("../fonts/opensans-italic-webfont.svg#open_sansitalic") format("svg");*/
-  font-weight: normal;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Open Sans';
-  /*src: url("../fonts/opensans-semibolditalic-webfont.eot");
-  src: url("../fonts/opensans-semibolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-semibolditalic-webfont.woff") format("woff"), url("../fonts/opensans-semibolditalic-webfont.ttf") format("truetype"), url("../fonts/opensans-semibolditalic-webfont.svg#open_sansbold_italic") format("svg");*/
-  font-weight: bold;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Oswald';
-  /*src: url("../fonts/oswald-regular-webfont.eot");
-  src: url("../fonts/oswald-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald-regular-webfont.woff") format("woff"), url("../fonts/oswald-regular-webfont.ttf") format("truetype"), url("../fonts/oswald-regular-webfont.svg#oswaldregular") format("svg");*/
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Oswald';
-  /*src: url("../fonts/oswald-light-webfont.eot");
-  src: url("../fonts/oswald-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald-light-webfont.woff") format("woff"), url("../fonts/oswald-light-webfont.ttf") format("truetype"), url("../fonts/oswald-light-webfont.svg#oswaldlight") format("svg");*/
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Oswald';
-  /*src: url("../fonts/oswald-bold-webfont.eot");
-  src: url("../fonts/oswald-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald-bold-webfont.woff") format("woff"), url("../fonts/oswald-bold-webfont.ttf") format("truetype"), url("../fonts/oswald-bold-webfont.svg#oswaldbold") format("svg");*/
-  font-weight: 700;
-  font-style: normal;
-}
 html {
   font-size: 125%;
   overflow-y: scroll;
@@ -98,12 +56,12 @@ html {
 body {
   font-size: 50%;
   color: #333;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
 }
 
 h1,
 h2 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   line-height: 1.2;
 }
@@ -169,15 +127,6 @@ p {
   font-size: 1.3em;
 }
 
-a {
-  color: #003892;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #003399;
-}
-
 a:hover,
 a.definition:hover,
 ul.entries.title-links li a.definition:hover {
@@ -226,7 +175,6 @@ a.showasbutton {
   font-size: 1.3em;
   padding: 0.4em 0.7em;
   border: 1px solid #ccc;
-  /*background: url("../images/button-gradient-31px.png") repeat-x scroll left bottom white;*/
   cursor: pointer;
 }
 
@@ -541,7 +489,7 @@ body.applikasjonstopp {
   width: 99%;
   margin-left: 1px;
   font-size: 1.0em;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   margin-bottom: 1em;
 }
 .editor-formatering table td,
@@ -661,346 +609,6 @@ body.applikasjonstopp {
   font-size: 1.4em;
 }
 
-#header {
-  background: url("../images/top-banner.png") no-repeat scroll center -118px #ececec;
-  border-bottom: 1px solid #dfdfdf;
-  margin-bottom: 1em;
-  min-height: 166px;
-}
-#header.menu-closed {
-  background-color: white;
-  border-bottom: 0;
-}
-
-#logo {
-  display: block;
-  float: left;
-  margin: 20px 0 24px 0;
-}
-#logo img {
-  height: 58px;
-  image-rendering: optimizeQuality;
-}
-
-body.large #header {
-  background: url("../images/top-banner.png") no-repeat scroll center -73px #eee;
-}
-body.large #logo {
-  margin: 30px 0 36px 0;
-}
-
-body.extra-large #header {
-  background: url("../images/top-banner.png") no-repeat scroll center -14px #eee;
-}
-body.extra-large #logo {
-  margin: 40px 0 64px 0;
-}
-
-#search {
-  float: right;
-  clear: right;
-  margin-bottom: 10px;
-}
-#search input[type='submit']:hover,
-#search input[type='submit']:focus {
-  cursor: pointer;
-  color: #636363;
-  background-color: white;
-}
-
-#search label,
-#search2 label {
-  position: absolute;
-  left: -9999px;
-}
-#search input[type='submit'],
-#search2 input[type='submit'] {
-  background-color: #636363;
-  background-image: none;
-  color: white;
-  text-transform: uppercase;
-  border: 0;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
-  font-size: 1.5em;
-  padding: 0.1em 0.6em 0.2em 0.6em;
-  margin-left: 0.2em;
-  vertical-align: middle;
-}
-
-#sok {
-  font-size: 1.4em;
-  width: 15em;
-  padding: 0.4em 0.2em 0.5em 2.25em;
-  border: 0;
-  box-shadow: 0 0 2px #888 inset;
-  background: url("../images/magnifying-glass-23-21.png") no-repeat scroll 0.5em center white;
-  vertical-align: middle;
-}
-
-#sok-404 {
-  font-size: 1.3em;
-  height: 19px;
-  width: 23.5em;
-  border: 1px solid #808080;
-  border-right: none;
-  vertical-align: middle;
-}
-#sok-404 label {
-  position: absolute;
-  left: -9999px;
-}
-#sok-404 input[type='submit'] {
-  vertical-align: bottom;
-  height: 23px;
-  margin-top: 0.1em;
-  padding: 1px 6px;
-  font-size: 0.9em;
-  text-transform: uppercase;
-  border: 1px solid #808080;
-  background: transparent url("../images/button-shade.png") repeat-x left top;
-}
-#sok-404 input[type='submit']:hover, #sok-404 input[type='submit']:focus {
-  cursor: pointer;
-  border-color: #505050;
-  background-image: url("../images/button-shade-hover.png");
-}
-
-#global-tools {
-  margin: 1.4em 0;
-  float: right;
-}
-#global-tools form {
-  margin-right: 1em;
-}
-
-ul.nav {
-  list-style-type: none;
-}
-ul.nav li a {
-  text-decoration: none;
-}
-
-.global-links.nav {
-  text-transform: uppercase;
-  font-size: 1.4em;
-}
-.global-links.nav li {
-  display: inline;
-}
-.global-links.nav > li {
-  display: block;
-  float: left;
-  line-height: 1.4;
-  border-bottom: 1px solid #aaa;
-  margin-left: 1em;
-}
-.global-links.nav > li.selected {
-  border-bottom: 0;
-}
-.global-links.nav.below {
-  color: #000;
-  font-size: 1.0em;
-  float: none;
-  line-height: 2.2em;
-}
-.global-links.nav.below li a {
-  color: #000;
-}
-.global-links.nav.below li a.selected {
-  font-weight: bold;
-}
-.global-links.nav.below li img {
-  vertical-align: sub;
-  margin-right: 0.4em;
-}
-.global-links #skip-to-content a:focus, .global-links #skip-to-content a:active {
-  position: static;
-  left: 0;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  text-decoration: underline;
-}
-.global-links.content {
-  line-height: 1.9em;
-  margin-right: 0.2em;
-}
-.global-links.content a.selected {
-  font-weight: bold;
-}
-.global-links .shortcut {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
-}
-
-#letter-size li {
-  margin-left: 0;
-  line-height: 1;
-}
-#letter-size .size-l {
-  font-size: 1.2em;
-}
-#letter-size .size-xl {
-  font-size: 1.4em;
-}
-
-#topmenu {
-  background-color: #f1efe0;
-  height: 2.6em;
-  padding-top: 0.2em;
-  overflow: visible;
-}
-
-.innholdsside #topmenu {
-  margin-left: 0;
-  width: 100%;
-}
-
-#site-nav-first-item {
-  margin-right: 0em;
-}
-
-#site.nav {
-  float: left;
-  height: 2.6em;
-  border-bottom: 1px solid #808080;
-}
-#site.nav li {
-  float: left;
-  text-align: center;
-}
-#site.nav li a {
-  color: #333;
-  display: block;
-  font-size: 1.2em;
-  font-weight: bold;
-  white-space: nowrap;
-  padding: 0.6em 1em 0.4em 1em;
-  height: 1.15em;
-}
-#site.nav li.active {
-  background-color: #fff;
-  border-left: 1px solid #808080;
-  border-right: 1px solid #808080;
-  border-top: 1px solid #808080;
-  margin-bottom: -1px;
-}
-#site.nav li.active a {
-  padding-top: 0.5em;
-  height: 1.25em;
-}
-#site.nav li.active a:hover {
-  padding-top: 0.5em;
-}
-#site.nav li.back-link {
-  width: 19em;
-  text-align: left;
-  overflow: hidden;
-}
-#site.nav li.back-link:hover {
-  background-color: #fff;
-}
-#site.nav li.back-link span {
-  color: #8dbb2b;
-  font-size: 1.7em;
-  float: left;
-  padding: 0.3em 0 0.4em 0.3em;
-  height: 0.85em;
-}
-#site.nav li.back-link a {
-  width: 12em;
-  color: #333333;
-  padding: 0.6em 0.5em 0.45em 0.5em;
-  height: 1.15em;
-  float: left;
-}
-#site.nav a:hover {
-  background-color: #fff;
-}
-
-.innholdsside #site.nav {
-  width: 100%;
-}
-
-.leteside #site.nav li.back-link {
-  display: none;
-}
-
-#navigation-path {
-  margin-bottom: 3em;
-  overflow: hidden;
-}
-#navigation-path .nav {
-  overflow: hidden;
-}
-#navigation-path .nav li {
-  float: left;
-  margin-right: 0.5em;
-  font-size: 1.3em;
-  line-height: 1.3em;
-}
-#navigation-path .nav li a {
-  line-height: 1.3em;
-  text-decoration: underline;
-}
-#navigation-path .nav li a:hover {
-  color: #a53d7c;
-}
-#navigation-path .nav li a:after {
-  color: #000;
-}
-
-#breadcrumbs {
-  float: left;
-  width: 90em;
-}
-
-#print-page {
-  display: none;
-  float: right;
-}
-
-#letter-size * {
-  font-size: 0.9em;
-}
-#letter-size ul {
-  display: inline;
-}
-#letter-size li:after {
-  content: '';
-}
-
-#global-language > div {
-  display: inline;
-}
-
-#sprak-bytte {
-  text-transform: none;
-}
-#sprak-bytte.closed {
-  position: absolute;
-  left: -9999px;
-}
-#sprak-bytte.open {
-  left: -11.07em;
-}
-#sprak-bytte .dialog-content {
-  padding: 1.429em 2.143em;
-  width: 20.71em;
-}
-#sprak-bytte .dialog-heading {
-  font-size: 1.143em;
-}
-#sprak-bytte p {
-  font-size: 0.929em;
-}
-#sprak-bytte .more-link {
-  font-size: 1em;
-  text-decoration: underline;
-}
-#sprak-bytte .more-link:after {
-  content: '';
-}
-
 .forside h3 {
   line-height: 1.2;
   margin-bottom: 0.3em;
@@ -1037,7 +645,7 @@ ul.nav li a {
   top: -1.3em;
   line-height: 1.3;
   text-align: center;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   text-transform: uppercase;
   color: #666;
@@ -1081,7 +689,7 @@ ul.nav li a {
 }
 .forside .aktuelt .article h3,
 .forside .aktuelt .article h4 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.1em;
   font-weight: normal;
   margin-bottom: 0.5em;
@@ -1101,7 +709,7 @@ ul.nav li a {
   margin-bottom: 3em;
 }
 .forside .aktuelt .article .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family:var(--font-family);
   font-size: 1.5em;
   margin-bottom: 0.5em;
   color: #666;
@@ -1132,14 +740,14 @@ ul.nav li a {
   margin-bottom: 0.2em;
 }
 .forside .aktuelt .publiseringer .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.5em;
   line-height: 1.3;
   color: #666;
   margin-bottom: 0.3em;
 }
 .forside .aktuelt .publiseringer .tittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.1em;
   line-height: 1.2;
   margin-bottom: 0.5em;
@@ -1177,7 +785,7 @@ ul.nav li a {
   font-size: 1.4em;
   margin-top: 0.5em;
   margin-bottom: 2em;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   color: #444;
 }
 .forside-topp h1 .forside-overskrift {
@@ -1211,7 +819,7 @@ ul.nav li a {
   display: block;
 }
 .forside-topp .nokkeltall .tall {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.1em;
   color: #57b008;
   margin-bottom: 0;
@@ -1235,7 +843,7 @@ ul.nav li a {
   top: -1.3em;
   line-height: 1.3;
   text-align: center;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family:var(--font-family);
   font-weight: normal;
   text-transform: uppercase;
   color: #666;
@@ -1254,7 +862,7 @@ ul.nav li a {
   margin-left: 0;
 }
 .forside-bunn .snarveier h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6em;
   font-weight: normal;
   text-transform: uppercase;
@@ -1322,7 +930,7 @@ ul.nav li a {
 }
 .forside-bokser .boks h3,
 .omssb-profileringsboks-liste .boks h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   font-size: 1.7em;
   margin-bottom: 0.5em;
@@ -1514,7 +1122,7 @@ ul.nav li a {
   padding-bottom: 0.5em;
   background-color: white;
   margin: 0;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
@@ -1546,7 +1154,6 @@ ul.nav li a {
   font-size: 1.4em;
   padding: 0.55em 2.75em 0.55em 0.55em;
   border: 0;
-  background: url("../images/magnifying-glass-27-25.png") no-repeat scroll 98% center white;
   vertical-align: middle;
   box-shadow: 2px 2px 5px #aaa inset;
   border: 1px solid #ccc;
@@ -1605,7 +1212,7 @@ ul.nav li a {
 .initial-meta .meta {
   float: left;
   padding: 0.3em 0.7em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   text-transform: uppercase;
   color: white;
   font-size: 1.1em;
@@ -2074,10 +1681,6 @@ p.graf span {
   display: none;
 }
 
-.dialogboks p {
-  /*font-size:1.091em;*/
-}
-
 .artikkel {
   overflow: visible;
 }
@@ -2120,7 +1723,7 @@ p.graf span {
   margin: -1em 0 1em 0;
 }
 .artikkel #heading .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.2em;
   margin: 0.2em 0;
 }
@@ -2151,7 +1754,7 @@ p.graf span {
   padding: 2em 0;
 }
 .artikkel #artikkel-innholdsfortegnelse h2 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.3em;
   font-weight: bold;
   margin-bottom: 1em;
@@ -2217,7 +1820,7 @@ a.pdf-utgave {
   line-height: 1.2;
 }
 .publikasjon #heading .undertittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.2em;
   margin: -0.3em 0 0.7em 0;
 }
@@ -2258,7 +1861,7 @@ a.pdf-utgave {
   margin: 2em 3em 0 0;
 }
 .publikasjon .tab-content .nyhetsoverskrift {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: bold;
   line-height: 1.2;
   margin-top: 0.5em;
@@ -2478,7 +2081,7 @@ a.pdf-utgave {
 .publikasjonsoversikt #publikasjonsoversikt-filter-beskrivelse {
   display: none;
   font-size: 1.3em;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: bold;
 }
 .publikasjonsoversikt .pager {
@@ -3109,7 +2712,7 @@ table.statistics td a {
 }
 table.statistics thead,
 table.statistics tbody {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   color: #383838;
 }
 table.statistics thead th,
@@ -3845,7 +3448,7 @@ ol.calendar li.event span.title {
   margin-bottom: 2em;
 }
 .sokeresultat #search2 .submit {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   color: #333;
   padding: 0.25em 0.5em 0.35em 0.5em;
   width: 4.5em;
@@ -3856,7 +3459,6 @@ ol.calendar li.event span.title {
   font-size: 1.4em;
   padding: 0.55em 0.2em 0.55em 2.75em;
   border: 0;
-  background: url("../images/magnifying-glass-27-25.png") no-repeat scroll 0.5em center white;
   vertical-align: middle;
   width: 35.75em;
   box-shadow: 2px 2px 5px #aaa inset;
@@ -3880,7 +3482,7 @@ ol.calendar li.event span.title {
 }
 .sokeresultat .sokenavigasjon h2,
 .sokeresultat .sokenavigasjon h3 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
 }
 .sokeresultat .sokenavigasjon h2 {
   font-size: 1.3em;
@@ -3973,7 +3575,7 @@ ol.calendar li.event span.title {
   font-size: 1.4em;
 }
 .sokeresultat h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   font-size: 1.4em;
   line-height: 1.3em;
@@ -4022,7 +3624,7 @@ ol.calendar li.event span.title {
   border-top: 2px solid #c7c7c7;
 }
 .summaries > li > h2, .summaries > li > h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   font-size: 1.8em;
   line-height: 1.4em;
@@ -4041,7 +3643,7 @@ ol.calendar li.event span.title {
   top: 1em;
   right: 0;
   padding: 0.2em 0.7em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   text-transform: uppercase;
   color: white;
   font-size: 1.1em;
@@ -4701,7 +4303,7 @@ ol.expandcollapse li.subfolder {
   margin-right: 3em;
 }
 .tidsskrifts-utgave .main h2 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.8em;
   margin-bottom: 0.7em;
 }
@@ -4875,7 +4477,7 @@ ol.expandcollapse li.subfolder {
   list-style: none outside none;
 }
 .nettstedskart h2 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6em;
   border-bottom: 1px solid #ccc;
   padding: 0.6em 0.67em 0.4em 0.67em;
@@ -4929,7 +4531,7 @@ ul.friartikkel-listing .summary {
   margin-bottom: 0.8em;
 }
 .eksterne-lenker h2 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6em;
   border-bottom: 1px solid #ccc;
   padding: 0.6em 0.67em 0.4em 0.67em;
@@ -4955,54 +4557,6 @@ ul.friartikkel-listing .summary {
 .eksterne-lenker .stikktittel {
   width: 47em;
 }
-
-#main-menu {
-  clear: both;
-  border-top: 1px solid #aaa;
-  position: relative;
-}
-
-#main-menu-top {
-  overflow: hidden;
-}
-
-#main-menu li {
-  float: left;
-}
-
-#main-menu .top-level {
-  background: url("../images/main-menu-caret.png") no-repeat scroll left 1.4em transparent;
-}
-
-#main-menu .top-level.selected, #main-menu .top-level.hover {
-  background-image: url("../images/main-menu-caret-selected.png");
-}
-
-#main-menu .top-level > a, #main-menu .top-level.selected > span {
-  font-family: 'Oswald','Calibri','Arial','DejaVu Sans',sans-serif;
-  font-weight: normal;
-  color: #444;
-  display: block;
-  font-size: 2.2em;
-  padding: 0.5em 0 1.32em 1.2em;
-  text-transform: uppercase;
-}
-
-#main-menu .top-level > a:hover, #main-menu .top-level.selected > a, #main-menu .top-level.selected > span {
-  color: #a53d7c;
-  outline: 0;
-}
-
-#main-menu .top-level > a:focus {
-  outline: 0;
-  text-decoration: underline;
-}
-
-#main-menu .top-level {
-  position: absolute;
-  top: 0;
-}
-
 #main-menu .statistikk {
   position: static;
 }
@@ -5083,7 +4637,7 @@ body.extra-large #main-menu .mega-menu-toggle {
 
 #main-menu .en .top-level > a {
   padding-left: 1em;
-}
+}*/
 
 #main-menu .statistikk {
   position: static;
@@ -5123,7 +4677,7 @@ body.extra-large #main-menu .mega-menu-toggle {
 
 #main-menu .mega-menu a, #main-menu .mega-menu span {
   display: block;
-  font-family: 'Open Sans','Arial','DejaVu Sans',sans-serif;
+  font-family: var(--font-family);
   font-size: 1.4em;
   color: #333;
 }
@@ -5420,10 +4974,14 @@ body.extra-large #main-menu .mega-menu-toggle {
 
 #footer {
   overflow: hidden;
-  background: url("../images/footer-bg.png") no-repeat scroll center top #545454;
   padding: 1.8em 0 2.2em 0;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family:var(--font-family);
   text-transform: uppercase;
+  background: #274247;
+  box-sizing: border-box;
+  color: #fff;
+  padding: 36px 112px 58px;
+  width: 100%;
 }
 #footer ul {
   line-height: 1;
@@ -5470,7 +5028,7 @@ body.extra-large #main-menu .mega-menu-toggle {
   margin-bottom: 1em;
 }
 .startside-topp .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.8em;
   border-bottom: 1px solid #ccc;
   padding-bottom: 0.2em;
@@ -5511,7 +5069,7 @@ body.extra-large #main-menu .mega-menu-toggle {
   background-color: #f4f4f4;
 }
 .startside-topp .delemnemeny a .text {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6em;
   margin: 2em 1em;
 }
@@ -5733,7 +5291,7 @@ body.extra-large #main-menu .mega-menu-toggle {
   content: ' - ';
 }
 .startside .summary-listing.statistikk .tittel, .startside .summary-listing.nokkeltallside .tittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   float: left;
   font-size: 1.6em;
@@ -5745,13 +5303,13 @@ body.extra-large #main-menu .mega-menu-toggle {
   border-bottom: 3px solid #ccc;
 }
 .startside .summary-listing h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   width: 32em;
   margin-bottom: 0.3em;
 }
 .startside .summary-listing .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   width: 39em;
 }
 .startside .summary-listing .meta {
@@ -5759,7 +5317,7 @@ body.extra-large #main-menu .mega-menu-toggle {
   top: 1em;
   right: 0;
   padding: 0.2em 0.7em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   text-transform: uppercase;
   color: white;
   font-size: 1.1em;
@@ -5799,7 +5357,7 @@ body.extra-large #main-menu .mega-menu-toggle {
 .startside #startside-filter-beskrivelse {
   display: none;
   font-size: 1.3em;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: bold;
 }
 .startside .filter.active #startside-filter-beskrivelse {
@@ -5821,7 +5379,7 @@ body.extra-large #main-menu .mega-menu-toggle {
   float: left;
   clear: left;
   padding: 0.3em 0.7em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   text-transform: uppercase;
   color: white;
   font-size: 1.1em;
@@ -5848,7 +5406,7 @@ body.extra-large #main-menu .mega-menu-toggle {
 .statistikkside-metaloft .metadata.variant h2 {
   display: inline-block;
   margin-right: 2.5em;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: bold;
   font-size: 1em;
 }
@@ -6111,7 +5669,7 @@ img.endringsmelding {
 .om-statistikken .nyhetsoverskrift,
 .om-sesongjustering .nyhetsoverskrift,
 .arkiv .nyhetsoverskrift {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: bold;
   line-height: 1.1;
 }
@@ -6168,7 +5726,7 @@ img.endringsmelding {
 .vedleggsartikkel .toggle-text .tooltip {
   display: none;
   float: right;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 0.8em;
   padding-right: 1em;
   margin: 0.3em 0 0 1em;
@@ -6566,7 +6124,7 @@ h1 .variant {
 .statistikkbankboks .innhold h3 {
   padding-top: 1em;
   font-size: 1.7em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
 }
 .statistikkbankboks .innhold h3 a {
@@ -6617,7 +6175,7 @@ h1 .variant {
   margin-left: 0;
 }
 .omssb-profileringsbokser h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   font-size: 1.7em;
   line-height: 1.2;
@@ -6781,7 +6339,7 @@ ul.organisasjonskart .avdelingsnavn {
 #content *[class^="omssb-"] .stikktittel,
 #content *[class^="forskning-"] .stikktittel,
 #content *[class^="innrapportering-"] .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.2em;
   margin: 0.2em 0;
 }
@@ -6828,7 +6386,7 @@ ul.organisasjonskart .avdelingsnavn {
 }
 .omssb-artikkel-liste .display-name,
 .forskning-artikkel-liste .display-name {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   font-size: 1.8em;
   line-height: 1.4em;
@@ -7115,7 +6673,7 @@ ul.organisasjonskart .avdelingsnavn {
   border: 0;
 }
 .forskning-prosjekt .editor-formatering h2 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.4em;
   font-weight: bold;
 }
@@ -7162,14 +6720,14 @@ ul.organisasjonskart .avdelingsnavn {
 
 .forskning-forskningsfelt .stikktittel,
 .forskning-forskningsfelt-relevant-publisering .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.2em;
   margin-bottom: 0.5em;
   font-weight: normal;
 }
 .forskning-forskningsfelt h2,
 .forskning-forskningsfelt-relevant-publisering h2 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.5em;
   font-weight: bold;
 }
@@ -7253,7 +6811,7 @@ ul.organisasjonskart .avdelingsnavn {
   margin: 0 3em 3em 0;
 }
 .forskning-forskningsfelt-liste h2 {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6em;
   font-weight: bold;
   margin-bottom: 0.7em;
@@ -7320,7 +6878,7 @@ ul.organisasjonskart .avdelingsnavn {
   background-color: #ececec;
 }
 #api-inngangsside .api-bokser a .text {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6em;
   margin: 2em 1em;
 }
@@ -7676,13 +7234,13 @@ ul.organisasjonskart .avdelingsnavn {
 }
 
 .forskning-artikkel-overskrift .forskningsfelt {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 2.2em;
   margin: 0.2em 0;
 }
 
 .forskning-artikkel .forskningsfelt {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   width: 39em;
   margin-bottom: 0.3em;
   font-size: 1.3em;
@@ -8222,14 +7780,14 @@ li.forskning-publikasjon {
   margin: 0 0 1.5em;
 }
 .nyhetsarkiv .stikktittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.3em;
 }
 .nyhetsarkiv p {
   margin: 0 0 0.3em;
 }
 .nyhetsarkiv .display-name {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   font-size: 1.8em;
   line-height: 1.4em;
@@ -8246,7 +7804,7 @@ li.forskning-publikasjon {
   padding-top: 0.9em;
   padding-bottom: 0.3em;
   margin: 0;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
@@ -8264,7 +7822,7 @@ li.forskning-publikasjon {
 }
 .innrapportering-forside .undersokelsestyper-overskrift .tekst,
 .innrapportering-forside .aktuelle-undersokelser-overskrift .tekst {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 0.8em;
   text-transform: uppercase;
   padding: 0 1em;
@@ -8326,7 +7884,7 @@ li.forskning-publikasjon {
   margin-left: 0;
 }
 .innrapportering-forside .profileringsboks h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.7em;
   font-weight: normal;
   margin-bottom: 0.5em;
@@ -8346,7 +7904,7 @@ li.forskning-publikasjon {
 }
 
 #content .innrapportering-forside .undersokelsestype-tittellenke {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.0625em;
   font-weight: normal;
   margin-bottom: 0.3em;
@@ -8391,7 +7949,7 @@ li.forskning-publikasjon {
   margin-left: 0em;
 }
 .innrapportering-undersokelser-liste .profileringsboks h3 {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.7em;
   font-weight: normal;
   text-transform: uppercase;
@@ -8408,7 +7966,7 @@ li.forskning-publikasjon {
   color: #a53d7c;
 }
 .innrapportering-undersokelser-liste .listetittel {
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.7em;
 }
 .innrapportering-undersokelser-liste .alfabetisk-navigasjon {
@@ -8440,7 +7998,7 @@ li.forskning-publikasjon {
   text-transform: uppercase;
 }
 .innrapportering-undersokelser-liste .undersokelse-tittel {
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-size: 1.7em;
   font-weight: normal;
   margin-bottom: 0.3em;
@@ -8608,12 +8166,12 @@ li.forskning-publikasjon {
 }
 .skjemabygger legend {
   font-size: 2em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
 }
 .skjemabygger .separator {
   font-size: 1.6em;
   line-height: 1.3;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   margin-top: 1em;
 }
 .skjemabygger .item {
@@ -8649,7 +8207,7 @@ li.forskning-publikasjon {
   width: 88%;
   max-width: 41em;
   min-width: 19em;
-  font-family: "Open Sans", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
 }
 .skjemabygger select {
   padding: 0.3em 0;
@@ -8791,7 +8349,7 @@ li.forskning-publikasjon {
 }
 .profileringsbokser .profilertinnhold .profileringsboks .tekst h4 {
   font-size: 2.1em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   font-weight: normal;
   margin-bottom: 0.5em;
 }
@@ -8800,7 +8358,7 @@ li.forskning-publikasjon {
 }
 .profileringsbokser .profilertinnhold .profileringsboks .tekst p.stikktittel {
   font-size: 1.5em;
-  font-family: "Oswald", "Calibri", "Arial", "DejaVu Sans", sans-serif;
+  font-family: var(--font-family);
   color: #666;
 }
 .profileringsbokser .profilertinnhold.bred {

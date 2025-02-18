@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./header.scss";
 import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 
@@ -100,7 +101,7 @@ class SSBHeader extends Component {
                 <span className="searchBtn" onClick={(ev) => this.toggleSearch()} />
                 <div className="sitewrapper">
                     <a id="logo" href="https://www.ssb.no/" title="Gå til forsiden">
-                        <img src="./images/SSB_logo.png" alt="SSB logo (Gå til forsiden)" />
+                        <img src="./images/ssb-logo-black.svg" alt="SSB logo (Gå til forsiden)" />
                     </a>
                     <div id="global-tools">
                         <ul className="global-links nav">

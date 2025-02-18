@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
+import "./footer.scss"
 import Translate from 'react-translate-component'
 
-class SSBFooter extends Component {
-	render () {
-        return (
+export default function SSBFooter() {
+    return(
             <div id="footer" role="banner">
                 <div className="sitewrapper">
                     <ul className="global-links nav below">
@@ -19,8 +19,6 @@ class SSBFooter extends Component {
                     </ul>
                 </div>
             </div>
-        )
-	}
-}
+    )
 
-export default SSBFooter
+}
