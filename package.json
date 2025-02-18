@@ -42,7 +42,7 @@
     "babylon": "^6.18.0",
     "bluebird": "^3.7.2",
     "body-parser": "^1.20.3",
-    "cheerio": "1.0.0-rc.12",
+    "cheerio": "1.0.0",
     "compression": "^1.7.5",
     "copy-webpack-plugin": "^11.0.0",
     "cors": "^2.8.5",
