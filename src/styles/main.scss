@@ -14,6 +14,14 @@ body {
     font-size: 50%;
 }
 
+a{
+    text-decoration: none;
+    font-weight: 400;
+}
+a:visited {
+    color:$link-text;
+}
+
 .klass {
     .clear-fix {
         clear: both;
@@ -84,13 +92,6 @@ body {
             .breadcrumbs {
                 display: inline;
                 color: $text-black;
-            }
-            a{
-                text-decoration: none;
-                font-weight: 400;
-            }
-            a:visited {
-                color:$link-text;
             }
         }
         .language-selector {

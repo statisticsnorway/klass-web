@@ -127,15 +127,6 @@ p {
   font-size: 1.3em;
 }
 
-a {
-  color: #003892;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #003399;
-}
-
 a:hover,
 a.definition:hover,
 ul.entries.title-links li a.definition:hover {
