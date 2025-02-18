@@ -8,7 +8,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --legacy-peer-deps --verbose
 COPY .babelrc .
-COPY bin/ ./bin/
 COPY config/ ./config/
 COPY src/ ./src/
 RUN npm run build
