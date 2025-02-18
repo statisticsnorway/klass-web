@@ -7,8 +7,8 @@ import configureStore from "./store/configureStore";
 import {Router, useRouterHistory} from "react-router";
 import createBrowserHistory from "history/lib/createBrowserHistory";
 import counterpart from "counterpart";
-import SSBHeader from "./ssbHeader";
-import SSBFooter from "./ssbFooter";
+import SSBHeader from "./components/Frame/ssb-header";
+import SSBFooter from "./components/Frame/ssb-footer";
 
 import routes from "./routes";
 
