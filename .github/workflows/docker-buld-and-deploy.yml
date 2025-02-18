@@ -2,7 +2,7 @@ name: Build and deploy to nais
 
 on:
   release:
-    types: [ published ]
+    types: [published]
   push:
     branches:
       - master
@@ -16,8 +16,8 @@ jobs:
   docker-build:
     name: Docker build
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: "read"
+      id-token: "write"
     runs-on: ubuntu-latest
     outputs:
       image-tag: ${{ steps.metadata.outputs.tags }}
@@ -60,6 +60,7 @@ jobs:
             type=sha
 
       - name: Build and push
+        id: docker_build
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -84,8 +85,7 @@ jobs:
           else
             echo "cluster=test" >> "$GITHUB_OUTPUT"
             echo "nais_config_path=.nais/test/nais.yaml" >> "$GITHUB_OUTPUT"
-          fi 
-
+          fi
 
   deploy:
     name: Deploy to NAIS
