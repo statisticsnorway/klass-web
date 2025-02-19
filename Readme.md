@@ -1,6 +1,6 @@
-# Klass.ssb.no
+# Klass web
 
-Søk og utlisting av klassifikasjoner og kodeverk fra Rest API.
+Søk og utlisting av klassifikasjoner og kodeverk fra Klass API.
 
 ## Avhengigheter
 
