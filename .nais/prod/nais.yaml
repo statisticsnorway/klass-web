@@ -9,7 +9,7 @@ spec:
   image: "{{ image }}"  # Injected from the GitHub Action
 
   ingresses:
-    - https://klass-web.intern.ssb.no
+    - https://klass-web.ssb.no
   port: 3000
 
   replicas:
