@@ -1,9 +1,9 @@
 {
   "name": "klass-web",
-  "description": "Klassifikasjoner og kodelister",
-  "version": "1.0.0",
-  "author": "Vu Mai",
-  "license": "ISC",
+  "description": "Søk og utlisting av klassifikasjoner og kodeverk fra Klass API.",
+  "version": "1.14.0",
+  "author": "Team Metadata",
+  "license": "Apache-2.0",
   "keywords": [
     "react",
     "redux",
