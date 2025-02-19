@@ -11,8 +11,16 @@ metadata:
     - metadata
     - classification
     - codelist
+    - nais
+    - javascript
+    - react
   annotations:
     github.com/project-slug: statisticsnorway/klass-web
+  links:
+    - url: https://www.ssb.no/klass
+      title: Klass web prod
+    - url: https://www.test.ssb.no/klass
+      title: Klass web test
 spec:
   type: website
   owner: dapla-metadata-developers
@@ -20,3 +28,6 @@ spec:
   system: metadata
   consumesApis:
     - api:klass-api
+  dependsOn:
+    - system:nais
+    - component:ssbno-varnish
