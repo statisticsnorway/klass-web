@@ -4,7 +4,7 @@ run-name: Deploy alerts for klass-web to test and prod
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - ".nais/prod/alerts.yaml"
       - ".nais/test/alerts.yaml"
