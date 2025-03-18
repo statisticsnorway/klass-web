@@ -9,7 +9,6 @@ spec:
   groups:
     - name: dapla-metadata
       rules:
-
         - alert: Klass web is unavailable
           expr: kube_deployment_status_replicas_available{deployment="klass-web"} == 0
           for: 1m
