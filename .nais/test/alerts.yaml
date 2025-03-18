@@ -1,0 +1,23 @@
+apiVersion: "monitoring.coreos.com/v1"
+kind: PrometheusRule
+metadata:
+  name: alert-klass-web
+  namespace: dapla-metadata
+  labels:
+    team: dapla-metadata
+spec:
+  groups:
+    - name: dapla-metadata
+      rules:
+
+        - alert: Klass web is unavailable
+          expr: kube_deployment_status_replicas_available{deployment="klass-web"} == 0
+          for: 1m
+          annotations:
+            title: "Klass web is unavailable"
+            consequence: "Service is unavailable to users. "
+          labels:
+            service: klass-web
+            namespace: dapla-metadata
+            severity: critical
+            environment: test
