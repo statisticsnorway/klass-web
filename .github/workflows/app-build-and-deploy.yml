@@ -1,4 +1,4 @@
-name: Build and deploy to nais
+name: App build and deploy
 
 on:
   # Temporarily allow manual trigger for testing
