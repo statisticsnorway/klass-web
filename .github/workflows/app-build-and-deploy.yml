@@ -1,8 +1,6 @@
 name: App build and deploy
 
 on:
-  # Temporarily allow manual trigger for testing
-  workflow_dispatch:
   release:
     types: [published]
   push:
@@ -22,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       nais_config_path: ${{ steps.nais-deploy-vars.outputs.nais_config_path }}
-      nais_cluster: ${{ steps.nais-deploy-vars.outputs.cluster }}
+      nais_cluster: ${{ steps.nais-deploy-vars.outputs.nais_cluster }}
 
     steps:
       - name: Checkout
