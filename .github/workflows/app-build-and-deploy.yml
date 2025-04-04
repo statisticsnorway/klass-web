@@ -28,10 +28,9 @@ jobs:
 
       - name: Build and push
         uses: nais/docker-build-push@v0
-        id: docker-push
+        id: docker-build-push
         with:
           team: dapla-metadata
-          tag: ${{ env.DOCKER_IMAGE }}
 
       - name: Generate NAIS deploy variables
         id: nais-deploy-vars
@@ -44,18 +43,11 @@ jobs:
             echo "nais_config_path=.nais/test/nais.yaml" >> "$GITHUB_OUTPUT"
           fi
 
-  deploy:
-    name: Deploy to NAIS
-    runs-on: ubuntu-latest
-    needs: docker-build
-    permissions:
-      contents: "read"
-      id-token: "write"
-    steps:
-      - uses: actions/checkout@v4
       - uses: nais/deploy/actions/deploy@v2
         env:
-          CLUSTER: ${{ needs.docker-build.outputs.nais_cluster }}
-          RESOURCE: ${{ needs.docker-build.outputs.nais_config_path }}
-          VAR: image=${{ env.DOCKER_IMAGE }}
+          CLUSTER: ${{ steps.nais-deploy-vars.outputs.nais_cluster }}
+          RESOURCE: ${{ steps.nais-deploy-vars.outputs.nais_config_path }}
+          VAR: image=${{ steps.docker-build-push.outputs.image }}
           DEPLOY_SERVER: deploy.ssb.cloud.nais.io:443
+          WORKLOAD_IMAGE: ${{ steps.docker-build-push.outputs.image }}
+          TELEMETRY: ${{ steps.docker-build-push.outputs.telemetry }}
