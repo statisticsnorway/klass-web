@@ -13,7 +13,7 @@ COPY src/ ./src/
 RUN npm run build
 
 # Step 2: Serve the built files using Nginx
-FROM nginx:1.27.4-alpine
+FROM nginx:1.27.4-alpine-slim
 WORKDIR /usr/share/nginx/html
 
 # Copy the build output from builder stage
