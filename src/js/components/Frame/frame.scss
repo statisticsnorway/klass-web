@@ -1,0 +1,248 @@
+.topRow {
+    width: 100%;
+    margin: 10px auto;
+    min-height: 80px;
+    display: grid;
+    align-items: center;
+    justify-content: normal;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr auto auto;
+    grid-template-areas: "logo . search cookies";
+    padding-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 992px) {
+    .logo {
+      grid-area: logo;
+      height: 25px;
+      width: 124px;
+      margin: 10px;
+    }
+
+    .topRow {
+      //display: grid;
+      gap: 5px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "logo . cookies"
+        "logo . cookies"
+        "search search search";
+    }
+
+    .searchBoxIcon {
+      width: 16px;
+      height: 16px;
+      right: 20px;
+      top: 14px;
+      position: absolute;
+
+      svg {
+        color: #00824d;
+      }
+    }
+
+    .cookies {
+      grid-area: cookies;
+    }
+
+    .topSearch {
+      max-width: 100% !important;
+      justify-self: center;
+    }
+
+  }
+
+  .header-content a {
+    color: #00824D;
+    font-size: 16px;
+    font-family: Open Sans;
+    font-weight: 400;
+    text-decoration: underline;
+    line-height: 28px;
+    word-wrap: break-word;
+  }
+
+  .header-right {
+    /* display: grid; */
+    /* gap: 20px; */
+    /* grid-column: 2; */
+    align-items: center;
+
+    & a {
+      width: 100%;
+      height: 100%;
+      justify-content: flex-end;
+      align-items: center;
+      display: inline-flex;
+    }
+  }
+
+  .logo {
+    grid-area: logo;
+    height: 50px;
+    width: 248px;
+    /* grid-column: 1; */
+  }
+
+  .cookies {
+    /* grid-column: 2; */
+    word-break: keep-all;
+    grid-area: cookies;
+    justify-self: end;
+    min-width: 140px;
+  }
+
+  .topSearch {
+    grid-area: search;
+    max-width: 225px;
+    position: relative;
+    justify-self: end;
+    width: 100%;
+
+    &:hover {
+      input {
+        border: 1px solid #00824d;
+        outline: 1px solid #00824d;
+      }
+    }
+
+    >.searchBoxIcon {
+      width: 16px;
+      height: 16px;
+      left: unset;
+      right: 30px;
+      top: 12px;
+      position: absolute;
+
+      svg {
+        color: #00824d;
+      }
+    }
+
+    label {
+      color: #162327;
+      cursor: text;
+      font-size: 14px;
+      margin-bottom: 5px;
+      user-select: none;
+    }
+
+    input {
+      font-family: Roboto;
+      font-size: 16px;
+      background: white;
+      border: 1px solid #274247;
+      box-sizing: border-box;
+      color: #162327;
+      font-size: 16px;
+      height: 44px;
+      padding: 12px;
+      text-overflow: ellipsis;
+      width: 100%;
+
+      &:focus {
+        border: 1px solid #00824d;
+        outline: 1px solid #00824d;
+        outline-offset: 0;
+      }
+    }
+  }
+
+  .banner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0 10px 0;
+  }
+
+  .banner-box {
+    min-height: 100px;
+    left: 0px;
+    top: 0px;
+    background: white;
+    border: 2px #3396D2 solid;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+
+  .banner-left-icon {
+    min-height: 100px;
+    background: #3396D2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    position: relative;
+
+    .info-icon-container {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -27px 0 0 -16px;
+
+      >.info-icon-circle {
+        width: 32px;
+        height: 32px;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        border-radius: 9999px;
+        border: 2px white solid;
+      }
+
+      >.info-icon-line {
+        width: 1.60px;
+        height: 7.5px;
+        left: 15.20px;
+        top: 16px;
+        position: absolute;
+        border-radius: 3px;
+        border: 1.2px white solid;
+      }
+
+      >.info-icon-dot {
+        width: 1.60px;
+        height: 1.60px;
+        left: 15.21px;
+        top: 8.80px;
+        position: absolute;
+        border-radius: 3px;
+        border: 1.2px white solid;
+      }
+
+    }
+  }
+
+  .banner-first {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    font-size: 2em;
+    font-family: Roboto;
+    font-weight: 700;
+    word-break: break-word;
+    padding: 20px 0 0 20px;
+  }
+
+  .banner-second {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    padding: 10px 0 0 20px;
+    font-size: 16px;
+    font-family: Open Sans;
+    font-weight: 400;
+    word-break: break-word;
+
+    >a {
+      color: #00824D;
+    }
+
+  }
+
+  #footerContent {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
