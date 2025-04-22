@@ -8,10 +8,11 @@
 
 
 body {
-    margin: 0 auto;
+    //margin: 0 auto;
     font-family: "Open Sans", sans-serif !important;
     color: $text-black;
     font-size: 50%;
+    min-width: 980px;
 }
 
 a{

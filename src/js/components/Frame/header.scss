@@ -2,26 +2,32 @@
 @use '../../../styles/variables' as *;
 
 #header{
-    display: flex;
-    flex-wrap: wrap;
+    width: 80%;
+    //display: flex;
+    //flex-wrap: wrap;
     border-bottom: 1px solid $ssb-dark-5;
     margin-bottom: 1em;
-    min-height: 166px;
+    min-height: 80px;
     background: #fff;
     padding: 0;
+    padding-bottom: 1rem;
     margin: 0 auto;
-    width: 95em;
+    background-color: white;
+    //width: 95em;
 
-    .menu-closed {
+   /* .menu-closed {
         background-color: white;
-    }
+    }*/
+  
     #logo {
         display: block;
         float: left;
         margin: 20px 0 24px 0;
+        height: 50px;
         img {
-            height: 58px;
-            image-rendering: optimizeQuality;
+            width: 248px;
+            //height: 58px;
+            //image-rendering: optimizeQuality;
         }
     }
 
@@ -131,7 +137,7 @@
     background-color: #636363;
     background-image: none;
     color: white;
-    text-transform: uppercase;
+    //text-transform: uppercase;
     border: 0;
     font-family: var(--font-family);
     font-size: 1.5em;
@@ -167,7 +173,7 @@
     margin-top: 0.1em;
     padding: 1px 6px;
     font-size: 0.9em;
-    text-transform: uppercase;
+    //text-transform: uppercase;
     border: 1px solid #808080;
     //background: transparent url("../images/button-shade.png") repeat-x left top;
   }
@@ -193,7 +199,7 @@
   }
   
   .global-links.nav {
-    text-transform: uppercase;
+    //text-transform: uppercase;
     font-size: 1.4em;
   }
   .global-links.nav li {
@@ -418,3 +424,10 @@ body.large #logo {
 body.extra-large #logo {
     margin: 40px 0 64px 0;
 }
+
+/*
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+*/
