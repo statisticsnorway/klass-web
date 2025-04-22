@@ -4,7 +4,7 @@ import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 
 class SSBHeader extends Component {
-    setTextSize (ev, size) {
+    /*setTextSize (ev, size) {
         ev.preventDefault()
         document.body.className = size
     }
@@ -25,7 +25,7 @@ class SSBHeader extends Component {
                 </ul>
             </li>
         )
-    }
+    }*/
     toggleLanguage (e) {
         e.preventDefault();
         const lang = e.currentTarget.lang;
@@ -57,7 +57,7 @@ class SSBHeader extends Component {
         }
     }
 
-    renderMainMenu() {
+    /*renderMainMenu() {
         return (
             <div id="main-menu" role="navigation">
                 <ul id="main-menu-top" className={'nav '+counterpart.translate('LANGUAGE.CHOSEN_LANG_SHORT')} role="menu">
@@ -77,7 +77,7 @@ class SSBHeader extends Component {
             </div>
         )
     }
-
+*/
     toggleMenu (e) {
         if (document.body.className.indexOf('menu_open') > -1) {
             document.body.classList.remove('menu_open')
@@ -94,26 +94,56 @@ class SSBHeader extends Component {
         }
     }
 
+    /*
+    <header id="headerArchive" class="header-content">
+            <div class="topRow">
+                <a href="/" class="logo" title="Lenke til forsiden">
+                    <img src="/_public/skins/advanced/ssb.no/images/SVG/SSB_logo_black.svg" alt="SSB Logo"/>
+                </a>
+                <form class="topSearch" action="/sok" method="get">
+                    <input id="searchbox" type="text" name="sok" placeholder="" />
+                    <script>document.getElementById("searchbox").placeholder = window.location.pathname.split("/")[1] === 'en' ? "Search in all of ssb.no" : "Søk i hele ssb.no"</script>
+                    <div class="searchBoxIcon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                </form>
+                <div class="cookies">
+                    <a href="/diverse/cookies-og-analyseverktoy-for-webstatistikk">
+                        <script>
+                            window.location.pathname.split("/")[1] === 'en' ? document.write("We use cookies") : document.write("Vi bruker cookies")
+                        </script>
+                    </a>
+                </div>
+            </div>
+            <hr />
+        </header>
+    
+     */
 	render () {
         return (
             <div id="header" className="menu-closed">
-                <span className="menuBtn" onClick={(ev) => this.toggleMenu()} />
-                <span className="searchBtn" onClick={(ev) => this.toggleSearch()} />
-                <div className="sitewrapper">
+                {/*<span className="menuBtn" onClick={(ev) => this.toggleMenu()} />
+                <span className="searchBtn" onClick={(ev) => this.toggleSearch()} />*/}
+                {/*<div className="sitewrapper">*/}
+                <div className='topRow'>
                     <a id="logo" href="https://www.ssb.no/" title="Gå til forsiden">
-                        <img src="./images/ssb-logo-black.svg" alt="SSB logo (Gå til forsiden)" />
+                        <img src="./images/SSB_logo_black.svg" alt="SSB logo (Gå til forsiden)" />
                     </a>
                     <div id="global-tools">
                         <ul className="global-links nav">
-                            {this.renderLetterSize()}
+                            {/*this.renderLetterSize()*/}
+                            <li id="global-cookies" className="shortcut keywords">
+                                <Translate content="SSB_FRAME.HEADER.COOKIES" component="a" id="cookies" href="https://www.ssb.no/diverse/cookies-og-analyseverktoy-for-webstatistikk" />
+                            </li>
                             <li id="global-language" className="bubble-dialog-origin" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')}>
                                 <span className="screen-reader-only" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')}><Translate content="LANGUAGE.SWITCH_LANGUAGE" /></span>
                                 <a id="change-language" lang={counterpart.translate('LANGUAGE.TOGGLE_SHORT')} href={'#'+counterpart.translate('LANGUAGE.TOGGLE_SHORT')} onClick={(ev) => this.toggleLanguage(ev)}><Translate content="LANGUAGE.TOGGLE" /></a>
                             </li>
-                            <li id="global-cookies" className="shortcut keywords">
-                                <Translate content="SSB_FRAME.HEADER.COOKIES" component="a" id="cookies" href="https://www.ssb.no/diverse/cookies-og-analyseverktoy-for-webstatistikk" />
-                            </li>
-                            <li id="global-contact" className="shortcut last"><a href="https://www.ssb.no/omssb/kontakt-oss" accessKey="7"><Translate content="SSB_FRAME.HEADER.CONTACT_US" /></a></li>
+                            {/*<li id="global-contact" className="shortcut last"><a href="https://www.ssb.no/omssb/kontakt-oss" accessKey="7"><Translate content="SSB_FRAME.HEADER.CONTACT_US" /></a></li>*/}
                         </ul>
                     </div>
                     <form id="search" action="https://www.ssb.no/en/sok" method="get" role="search">
@@ -126,9 +156,9 @@ class SSBHeader extends Component {
                             <input type="submit" value={counterpart.translate('SEARCH.SEARCH')} className="submit" tabIndex="-1" />
                         </fieldset>
                     </form>
-                    {this.renderMainMenu()}
+                    </div>
+                    {/*this.renderMainMenu()*/}
                 </div>
-            </div>
         )
 	}
 }
