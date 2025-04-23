@@ -7,8 +7,8 @@ export default function Footer(){
             <div class="ssb-footer-wrapper">
                 <div id="footerContent" class="footer-bottom-row">
                     <div class="links-left">
-                        <a href="/" title="Lenke til forsiden" style={{gridColumn: "1"}}>
-                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo" style={{height: "50px"}}/>
+                        <a href="/" title="Lenke til forsiden">
+                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo"/>
                         </a>
                     </div>
                     <div class="social-links">
@@ -34,8 +34,8 @@ export default function Footer(){
                 </div>
                 <div class="footer-bottom-row showOnMobile">
                     <div class="showOnMobile links-left">
-                        <a href="/" title="Lenke til forsiden" style={{gridColumn: "1"}}>
-                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo" style={{height: "35px"}}/>
+                        <a href="/" title="Lenke til forsiden">
+                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo"/>
                         </a>
                     </div>
                     <div class="showOnMobile social-links">

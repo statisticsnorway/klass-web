@@ -247,7 +247,7 @@
     margin: 0 auto;
   }
 
-  .ssb-footer-wrapper {
+.ssb-footer-wrapper {
     background: #274247;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -255,6 +255,17 @@
     padding: 36px 112px 58px;
     width: 100%;
 }
+
+footer .footer-bottom-row {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
 
 footer .footer-bottom-row .social-links .ssb-link {
   padding: 8px;
