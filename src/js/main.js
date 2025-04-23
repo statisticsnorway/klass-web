@@ -8,7 +8,7 @@ import {Router, useRouterHistory} from "react-router";
 import createBrowserHistory from "history/lib/createBrowserHistory";
 import counterpart from "counterpart";
 import Header from "./components/Frame/header";
-import SSBFooter from "./components/Frame/ssb-footer";
+import Footer from "./components/Frame/footer";
 
 import routes from "./routes";
 
@@ -76,7 +76,7 @@ let ComponentEl;
                     <Router history={appHistory} routes={routes}/>
                 </div>
             </div>
-            <SSBFooter />
+            <Footer />
         </div>
 	);
 
