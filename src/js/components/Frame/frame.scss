@@ -63,9 +63,9 @@
   }
 
   .header-right {
-    /* display: grid; */
-    /* gap: 20px; */
-    /* grid-column: 2; */
+    display: grid; 
+    gap: 20px; 
+    grid-column: 2; 
     align-items: center;
 
     & a {
@@ -81,11 +81,11 @@
     grid-area: logo;
     height: 50px;
     width: 248px;
-    /* grid-column: 1; */
+    grid-column: 1;
   }
 
   .cookies {
-    /* grid-column: 2; */
+    grid-column: 2; 
     word-break: keep-all;
     grid-area: cookies;
     justify-self: end;

@@ -7,7 +7,7 @@ import configureStore from "./store/configureStore";
 import {Router, useRouterHistory} from "react-router";
 import createBrowserHistory from "history/lib/createBrowserHistory";
 import counterpart from "counterpart";
-import SSBHeader from "./components/Frame/ssb-header";
+import Header from "./components/Frame/header";
 import SSBFooter from "./components/Frame/ssb-footer";
 
 import routes from "./routes";
@@ -70,7 +70,7 @@ const rootElement = document.getElementById('app');
 let ComponentEl;
 	ComponentEl = (
         <div>
-            <SSBHeader />
+            <Header />
             <div id="page">
                 <div className="sitewrapper">
                     <Router history={appHistory} routes={routes}/>
