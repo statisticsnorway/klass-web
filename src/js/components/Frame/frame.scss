@@ -314,3 +314,17 @@ footer .footer-bottom-row .social-links>* {
   -webkit-transition: background-size .2s ease-in, color .1s;
   transition: background-size .2s ease-in, color .1s;
 }
+
+@media (min-width: 992px) {
+  footer .footer-bottom-row.showOnMobile {
+      display: none;
+  }
+}
+
+footer .footer-bottom-row .links-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex
+;
+  padding-top: 5px;
+}
