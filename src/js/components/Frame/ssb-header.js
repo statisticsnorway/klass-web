@@ -121,11 +121,12 @@ class SSBHeader extends Component {
             </div>
             <hr />
         </header>
+        
     
      */
 	render () {
         return (
-            <div id="header" className="menu-closed">
+            <header id="headerArchive" class="header-content">
                 {/*<span className="menuBtn" onClick={(ev) => this.toggleMenu()} />
                 <span className="searchBtn" onClick={(ev) => this.toggleSearch()} />*/}
                 {/*<div className="sitewrapper">*/}
@@ -158,7 +159,7 @@ class SSBHeader extends Component {
                     </form>
                     </div>
                     {/*this.renderMainMenu()*/}
-                </div>
+                </header>
         )
 	}
 }
