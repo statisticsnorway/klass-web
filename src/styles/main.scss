@@ -8,11 +8,16 @@
 
 
 body {
-    //margin: 0 auto;
+    margin: 0;
     font-family: "Open Sans", sans-serif !important;
     color: $text-black;
     font-size: 50%;
     min-width: 980px;
+}
+//Fra kode
+.sitewrapper {
+    margin: 0 auto;
+    width: 95em;
 }
 
 a{
@@ -157,7 +162,7 @@ a:visited {
     }
 
     h1 {
-    font-size: 3.6em;
+    font-size: 5em;
     }
 
     input[type="text"], input[type="submit"], button {
@@ -239,4 +244,45 @@ a:visited {
         }
 
     }
+}
+
+#page{
+
+    margin-bottom: 0;
+    overflow: hidden;
+} 
+.sitewrapper{
+    margin: 0 auto;
+}
+#page .sitewrapper{
+    width: 100%;
+    box-sizing: inherit;
+}
+#navigation-path{
+    width: 100%;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.screen-reader-only{
+    position: absolute;
+    left: -9999px;
+}
+.content {
+    overflow: hidden;
+    max-width: 95em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div{   
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
 }
