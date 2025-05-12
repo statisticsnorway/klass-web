@@ -168,9 +168,8 @@ class ClassItemPage extends Component {
                 </div>
             )
         }
-
         if (breadcrumbStep.length > 0) {
-            breadcrumbStep[breadcrumbStep.length - 1].textContent = classification.name
+            breadcrumbStep[breadcrumbStep.length - 1].textContent = classification.name || this.props.classification.name
             document.title = classification.name + counterpart.translate("PAGE.TITLE_POSTFIX");
         }
         return (

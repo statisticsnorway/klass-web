@@ -57,6 +57,7 @@ class Tabs extends Component {
         const path = "/klassifikasjoner" + classPath + versionPath + tabPath
 
         this.context.router.push(path)
+        console.log(this.props.classification.name)
     }
 
     render() {

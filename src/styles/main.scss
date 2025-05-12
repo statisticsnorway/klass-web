@@ -20,7 +20,7 @@ a{
     font-weight: 400;
 }
 a:visited {
-    color:$link-text;
+    color:#003892;
 }
 
 .klass {
@@ -85,16 +85,6 @@ a:visited {
             font-size: $body-font-size;
             line-height: $body-line-height;
         }
-        #navigation-path {
-            line-height: $body-line-height;
-            font-size: 1.6em;
-            margin-top: 1rem;
-
-            .breadcrumbs {
-                display: inline;
-                color: $text-black;
-            }
-        }
         .language-selector {
             font-family: $font-family;
             font-size: 1.1em;
@@ -118,7 +108,7 @@ a:visited {
         }
 
         .back-link {
-            color: #003399;
+            color: $link-color;
 
             a {
                 text-decoration: underline;
@@ -157,7 +147,7 @@ a:visited {
     }
 
     h1 {
-    font-size: 5em;
+    font-size: 4em;
     }
 
     input[type="text"], input[type="submit"], button {
@@ -282,3 +272,123 @@ div{
     font-family: inherit;
     vertical-align: baseline;
 }
+
+ul.nav {
+    list-style-type: none;
+}
+
+.nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+#navigation-path .nav li {
+    float: left;
+    margin-right: 0.5em;
+    font-size: 1.3em;
+    line-height: 1.3em;
+}
+
+#navigation-path #breadcrumbs li a {
+    text-decoration: underline;
+}
+
+#navigation-path .nav li a {
+    line-height: 1.3em;
+    text-decoration: underline;
+}
+
+#navigation-path {
+    width: 100%;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navigation-path {
+    margin-bottom: 3em;
+    overflow: hidden;
+}
+
+/* Optional: prevent visited styling for current breadcrumb */
+#breadcrumbs .step:last-child a{
+    color: $black;
+}
+
+#breadcrumbs{
+    width: 95em;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav{
+    margin-top: .5rem !important;
+    padding-bottom: 1.5rem !important;
+    gap: 0.3rem;
+}
+
+.ssb-breadcrumbs {
+    font-weight: 400;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-stretch: normal;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    font-family: Open Sans, sans-serif !important;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.row.path{
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 0;
+}
+
+.ssb-breadcrumbs::after{
+    padding: 2px;
+    color: $black;
+    content: "\00a0>\00a0";
+}
+
+.step.ssb-breadcrumbs::after{
+    content:none;
+}
+/*#navigation-path {
+    width: 100%;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+    overflow: hidden;
+}*/
+// text-decoration: underline;
+// line-height: 1.3em;
+// color: #003892;
+//     width: 88%;
+// font-size: 12px;
+// margin-top: 16px;
+
+/*
+#navigation-path {
+            line-height: $body-line-height;
+            font-size: 1.6em;
+            margin-top: 1rem;
+
+            .breadcrumbs {
+                display: inline;
+                color: $text-black;
+            }
+        }
+*/
