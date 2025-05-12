@@ -3,28 +3,28 @@ import "./frame.scss";
 
 export default function Footer(){
     return (
-        <footer id="footerArchive" class="footerXP">
-            <div class="ssb-footer-wrapper">
+        <footer id="footerArchive" className="footerXP">
+            <div className="ssb-footer-wrapper">
                 <div id="footerContent" class="footer-bottom-row">
-                    <div class="links-left">
+                    <div className="links-left">
                         <a href="/" title="Lenke til forsiden">
                             <img id="footer-logo" src="./images/SSB_logo_white.svg" alt="SSB Logo"/>
                         </a>
                     </div>
-                    <div class="social-links">
-                        <a href="/omssb/kontakt-oss" class="ssb-link negative">
+                    <div className="social-links">
+                        <a href="/omssb/kontakt-oss" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Contact us") : document.write("Kontakt oss")
                             </script>
                             Kontakt oss
                         </a>
-                        <a href="/diverse/tilgjengelighet" class="ssb-link negative">
+                        <a href="/diverse/tilgjengelighet" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Accessibility") : document.write("Tilgjengelighet")
                             </script>
                             Tilgjengelighet
                         </a>
-                        <a href="/diverse/lisens" class="ssb-link negative">
+                        <a href="/diverse/lisens" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("© Statistics Norway") : document.write("© Statistisk sentralbyrå")
                             </script>
@@ -32,26 +32,26 @@ export default function Footer(){
                         </a>
                     </div>
                 </div>
-                <div class="footer-bottom-row showOnMobile">
-                    <div class="showOnMobile links-left">
+                <div className="footer-bottom-row showOnMobile">
+                    <div className="showOnMobile links-left">
                         <a href="/" title="Lenke til forsiden">
-                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo" class="ssb-logo-mobile"/>
+                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo" className="ssb-logo-mobile"/>
                         </a>
                     </div>
-                    <div class="showOnMobile social-links">
-                        <a href="/omssb/kontakt-oss" class="ssb-link negative">
+                    <div className="showOnMobile social-links">
+                        <a href="/omssb/kontakt-oss" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Contact us") : document.write("Kontakt oss")
                             </script>
                             Kontakt oss
                         </a>
-                        <a href="/diverse/tilgjengelighet" class="ssb-link negative">
+                        <a href="/diverse/tilgjengelighet" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Accessibility") : document.write("Tilgjengelighet")
                             </script>
                             Tilgjengelighet
                         </a>
-                        <a href="/diverse/lisens" class="ssb-link negative">
+                        <a href="/diverse/lisens" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("© Statistics Norway") : document.write("© Statistisk sentralbyrå")
                             </script>
