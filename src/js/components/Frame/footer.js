@@ -8,7 +8,7 @@ export default function Footer(){
                 <div id="footerContent" class="footer-bottom-row">
                     <div class="links-left">
                         <a href="/" title="Lenke til forsiden">
-                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo"/>
+                            <img id="footer-logo" src="./images/SSB_logo_white.svg" alt="SSB Logo"/>
                         </a>
                     </div>
                     <div class="social-links">
@@ -35,7 +35,7 @@ export default function Footer(){
                 <div class="footer-bottom-row showOnMobile">
                     <div class="showOnMobile links-left">
                         <a href="/" title="Lenke til forsiden">
-                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo"/>
+                            <img src="./images/SSB_logo_white.svg" alt="SSB Logo" class="ssb-logo-mobile"/>
                         </a>
                     </div>
                     <div class="showOnMobile social-links">
@@ -43,21 +43,23 @@ export default function Footer(){
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Contact us") : document.write("Kontakt oss")
                             </script>
+                            Kontakt oss
                         </a>
                         <a href="/diverse/tilgjengelighet" class="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Accessibility") : document.write("Tilgjengelighet")
                             </script>
+                            Tilgjengelighet
                         </a>
                         <a href="/diverse/lisens" class="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("© Statistics Norway") : document.write("© Statistisk sentralbyrå")
                             </script>
+                            © Statistisk sentralbyrå
                         </a>
                     </div>
                 </div>
             </div>
         </footer>
-
     )
 }
