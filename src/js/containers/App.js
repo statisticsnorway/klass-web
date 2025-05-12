@@ -7,16 +7,7 @@ class App extends Component {
 	renderBreadcrumbs () {
 
         const classification = this.state
-
-        console.log(this.props)
         const { routes, params } = this.props
-        console.log(classification)
-        console.log('Breadcrumbs Debug Info:')
-        console.log('Routes:', this.props.routes)
-        console.log('Params:', this.props.params)
-
-        console.log(routes[0].path)
-        console.log(params)
         return (
             <div id="breadcrumbs">
                 <nav className="row path">
