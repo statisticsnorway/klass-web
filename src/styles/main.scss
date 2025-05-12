@@ -14,11 +14,6 @@ body {
     font-size: 50%;
     min-width: 980px;
 }
-//Fra kode
-.sitewrapper {
-    margin: 0 auto;
-    width: 95em;
-}
 
 a{
     text-decoration: none;
@@ -271,7 +266,8 @@ a:visited {
 }
 .content {
     overflow: hidden;
-    max-width: 95em;
+    width: 95em;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
