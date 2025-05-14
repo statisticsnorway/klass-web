@@ -243,12 +243,6 @@ a:visited {
     width: 100%;
     box-sizing: inherit;
 }
-#navigation-path{
-    width: 100%;
-    max-width: 950px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .screen-reader-only{
     position: absolute;
@@ -288,68 +282,6 @@ ul.nav {
     padding-left: 0;
 }
 
-#navigation-path .nav li {
-    float: left;
-    margin-right: 0.5em;
-    font-size: 1.3em;
-    line-height: 1.3em;
-}
-
-#navigation-path #breadcrumbs li a {
-    text-decoration: underline;
-}
-
-#navigation-path .nav li a {
-    line-height: 1.3em;
-    text-decoration: underline;
-}
-
-#navigation-path {
-    width: 100%;
-    max-width: 950px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#navigation-path {
-    margin-bottom: 3em;
-    overflow: hidden;
-}
-
-/* Optional: prevent visited styling for current breadcrumb */
-#breadcrumbs .step:last-child a{
-    color: $black;
-}
-
-#breadcrumbs{
-    width: 95em;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-nav{
-    margin-top: .5rem !important;
-    padding-bottom: 1.5rem !important;
-    gap: 0.3rem;
-}
-
-.ssb-breadcrumbs {
-    font-weight: 400;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    font-stretch: normal;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    font-family: Open Sans, sans-serif !important;
-    font-size: 16px;
-    line-height: 1.25;
-}
-
 .row.path{
     justify-content: flex-start;
     align-items: center;
@@ -366,35 +298,30 @@ nav{
     content:none;
 }
 
-@media (max-width: 980px) {
-    .content {
-        max-width: 100%;
-        margin-left: 1rem;
-        margin-right: 1rem;
-}
-}
 #navigation-path {
+    line-height: $body-line-height;
+    font-size: 1.6em;
+    margin-top: 1rem;
     width: 100%;
     max-width: 950px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3em;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+    span{
+        a{
+            text-decoration: underline;
+        }
+    }
 }
 
-#navigation-path {
-            line-height: $body-line-height;
-            font-size: 1.6em;
-            margin-top: 1rem;
-            
-            span{
-                a{
-                    text-decoration: underline;
-                }
-            }
-
-            .breadcrumbs {
-                display: inline;
-                color: $text-black;
-            }
-        }
+@media (max-width: 672px) {
+    .klass #page h1 {
+        font-size: 3em;
+    }
+}
