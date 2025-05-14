@@ -17,6 +17,7 @@
 
 .header-content {
   display: block;
+      margin: 0 0.5rem;
 }
 
 .row {
@@ -466,50 +467,36 @@ img.ssb-logo-mobile{
   width: 100%;
 }
 
-@media (min-width: 400px) {
+@media (max-width: 400px) {
   .container, .container-sm {
         max-width: 380px;
   }
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .container, .container-sm {
     max-width: 550px;
   }
 }
 
-@media (min-width: 651px)  {
-  .container, .container-sm {
-        max-width: 640px;
+@media (min-width: 768px) and (max-width: 992px) {
+    .header-wrapper .container{
+      max-width: 100%;
   }
 }
 
-@media (min-width: 700px)  {
-  .container, .container-sm {
-        max-width: 680px;
-  }
-}
 
-@media (min-width: 768px) {
-    .container, .container-md, .container-sm {
-        max-width: 750px;
-    }
-}
-
-@media (min-width: 860px) {
-    .container, .container-md, .container-sm {
-        max-width: 840px;
-    }
-}
-
-@media (min-width: 988px) {
+@media (min-width: 992px) {
     .container, .container-lg, .container-md, .container-sm {
-        max-width: 960px;
+        max-width: 972px;
     }
+    .header-wrapper .container{
+      max-width: 980px;
+  }
 }
 
-@media (min-width: 1260px) {
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 1180px;
-    }
+@media (min-width: 1200px) {
+  .header-wrapper .container{
+    max-width: 1180px;
+  }
 }
