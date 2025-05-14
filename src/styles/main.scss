@@ -365,30 +365,36 @@ nav{
 .step.ssb-breadcrumbs::after{
     content:none;
 }
-/*#navigation-path {
+
+@media (max-width: 980px) {
+    .content {
+        max-width: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
+}
+}
+#navigation-path {
     width: 100%;
     max-width: 950px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3em;
     overflow: hidden;
-}*/
-// text-decoration: underline;
-// line-height: 1.3em;
-// color: #003892;
-//     width: 88%;
-// font-size: 12px;
-// margin-top: 16px;
+}
 
-/*
 #navigation-path {
             line-height: $body-line-height;
             font-size: 1.6em;
             margin-top: 1rem;
+            
+            span{
+                a{
+                    text-decoration: underline;
+                }
+            }
 
             .breadcrumbs {
                 display: inline;
                 color: $text-black;
             }
         }
-*/
