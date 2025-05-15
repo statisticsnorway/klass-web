@@ -333,8 +333,6 @@ footer .footer-bottom-row .links-left {
   height: 50px;
 }
 .col{
-  padding-left: 10px;
-  padding-right: 10px;
   position: relative;
   width: 100%;
 }
@@ -374,10 +372,20 @@ img.ssb-logo-mobile{
       margin: 10px;
     }
 
-    .topRow {
-      gap: 5px;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-areas:
+    //.topRow {
+    //  gap: 5px;
+    //  grid-template-columns: repeat(3, 1fr);
+    //  grid-template-areas:
+    //    "logo . cookies"
+    //    "logo . cookies"
+    //    "search search search";
+    //}
+
+      .topRow {
+        display: grid;
+        gap: 5px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
         "logo . cookies"
         "logo . cookies"
         "search search search";
@@ -448,24 +456,25 @@ img.ssb-logo-mobile{
     }
 }
 
-@media (min-width: 768px) {
-    .header-wrapper .container{
-      max-width: 100%;
-  }
-}
+//@media (min-width: 768px) {
+//    .header-wrapper .container{
+//      max-width: 100%;
+//  }
+//}
+//
+//
+//@media (min-width: 992px) {
+//    .container, .container-lg, .container-md, .container-sm {
+//        max-width: 972px;
+//    }
+//    .header-wrapper .container{
+//      max-width: 980px;
+//  }
+//}
+//
+//@media (min-width: 1200px) {
+//  .header-wrapper .container{
+//    max-width: 1180px;
+//  }
+//}
 
-
-@media (min-width: 992px) {
-    .container, .container-lg, .container-md, .container-sm {
-        max-width: 972px;
-    }
-    .header-wrapper .container{
-      max-width: 980px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .header-wrapper .container{
-    max-width: 1180px;
-  }
-}
