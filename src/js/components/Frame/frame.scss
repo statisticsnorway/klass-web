@@ -455,7 +455,11 @@ img.ssb-logo-mobile{
         margin-bottom: 30px;
     }
 }
-
+@media (min-width: 992px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 960px;
+    }
+}
 //@media (min-width: 768px) {
 //    .header-wrapper .container{
 //      max-width: 100%;
