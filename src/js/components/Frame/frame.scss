@@ -465,15 +465,16 @@ img.ssb-logo-mobile{
     grid-column: 1;
 }
 
-@media (max-width: 768px) {
-    .container, .container-md, .container-sm {
-        margin: 0 0.5rem;
-    }
-}
-
 @media (min-width: 768px) {
     .container, .container-md, .container-sm {
         max-width: 760px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container, .container-md, .container-sm {
+        max-width: 760px;
+        width: 90%;
     }
 }
 
