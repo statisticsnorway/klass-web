@@ -205,6 +205,9 @@ a:visited {
     }
     .klass {
         #page {
+            margin-left: auto;
+            margin-right: auto;
+
             .sitewrapper, .main {
                 width: auto;
                 max-width: 100%;
@@ -232,7 +235,6 @@ a:visited {
 }
 
 #page{
-
     margin-bottom: 0;
     overflow: hidden;
 } 
@@ -250,8 +252,8 @@ a:visited {
 }
 .content {
     overflow: hidden;
-    width: 95em;
-    max-width: 100%;
+    max-width: 95em;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -320,8 +322,17 @@ ul.nav {
     }
 }
 
-@media (max-width: 672px) {
+@media screen and (max-width: 768px) {
     .klass #page h1 {
         font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .klass #page h1 {
+        font-size: 2em;
+    }
+    .klass{
+        width: 100%;
     }
 }
