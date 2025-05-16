@@ -3,21 +3,21 @@ import "./frame.scss";
 
 export default function Header(){
     return (
-        <div class="header-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <header id="headerArchive" class="header-content">
-                            <div class="topRow">
-                                <a href="/" class="logo" title="Lenke til forsiden">
+        <div className="header-wrapper">
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <header id="headerArchive" className="header-content">
+                            <div className="topRow">
+                                <a href="/" className="logo" title="Lenke til forsiden">
                                     <img src="./images/SSB_logo_black.svg" alt="SSB Logo"/>
                                 </a>
-                                <form class="topSearch" action="/sok" method="get">
+                                <form className="topSearch" action="/sok" method="get">
                                     <input id="searchbox" type="text" name="sok" placeholder="" />
                                     <script>
                                         document.getElementById("searchbox").placeholder = window.location.pathname.split("/")[1] === 'en' ? "Search in all of ssb.no" : "Søk i hele ssb.no"
                                     </script>
-                                    <div class="searchBoxIcon">
+                                    <div className="searchBoxIcon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <circle cx="11" cy="11" r="8"></circle>
@@ -25,7 +25,7 @@ export default function Header(){
                                         </svg>
                                     </div>
                                 </form>
-                                <div class="cookies">
+                                <div className="cookies">
                                     <a href="/diverse/cookies-og-analyseverktoy-for-webstatistikk">
                                         <script>
                                             window.location.pathname.split("/")[1] === 'en' ? document.write("We use cookies") : document.write("Vi bruker cookies")
