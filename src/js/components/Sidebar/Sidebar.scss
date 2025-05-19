@@ -24,7 +24,7 @@
     #subscription {
         input[type=text] {
             display: block;
-            width: 100%;
+            width: 96%;
         }
 
         .error {
@@ -49,5 +49,11 @@
         width: auto;
         max-width: 100%;
         min-width: 0;
+        
+        #subscription {
+            input[type=text] {
+                width: 95%;
+            }
+        }
     }
 }

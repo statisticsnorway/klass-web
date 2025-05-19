@@ -647,7 +647,7 @@ body.applikasjonstopp {
   text-align: center;
   font-family: var(--font-family);
   font-weight: normal;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: #666;
   padding-bottom: 16px;
   background: url("../images/arrow-twoface-down-31x16px.png") no-repeat scroll center bottom transparent;
@@ -726,7 +726,7 @@ body.applikasjonstopp {
   border-top: 5px solid #d0d0d0;
   font-size: 1.7em;
   font-weight: normal;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding: 0.8em 0.6em 0.2em 0.6em;
 }
 .forside .aktuelt .publiseringer ul {
@@ -845,7 +845,7 @@ body.applikasjonstopp {
   text-align: center;
   font-family:var(--font-family);
   font-weight: normal;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: #666;
   padding-bottom: 16px;
   background: url("../images/arrow-twoface-down-31x16px.png") no-repeat scroll center bottom transparent;
@@ -7401,7 +7401,7 @@ ul.organisasjonskart .avdelingsnavn {
   float: left;
   margin: 0 3em 0 0;
 }
-.forskning-publikasjon-liste .kategori {
+/*.forskning-publikasjon-liste .kategori {
   color: #666;
   font-size: 1.1em;
   text-transform: uppercase;
@@ -8242,7 +8242,7 @@ li.forskning-publikasjon {
 .nokkeltallsside .social-links {
   margin: 0 0 1.5em -10px;
 }
-
+*/
 .publikasjon .social-links,
 .tidsskrifts-utgave .social-links {
   float: right;

@@ -13,7 +13,7 @@ module.exports = {
       RESEARCH: 'Research',
       DATA_COLLECTION: 'Data collection',
       ABOUT_SSB: 'About statistics Norway',
-      COOKIES: 'Cookies and privacy',
+      COOKIES: 'We use cookies',
       CONTACT_US: 'Contact us',
       CHOOSE_LETTER_SIZE: 'Choose text size',
       LETTER_REGULAR: 'Regular',

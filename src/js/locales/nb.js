@@ -13,7 +13,7 @@ module.exports = {
       RESEARCH: 'Forskning',
       DATA_COLLECTION: 'Innrapportering',
       ABOUT_SSB: 'Om SSB',
-      COOKIES: 'Cookies og personvern',
+      COOKIES: 'Vi bruker cookies',
       CONTACT_US: 'Kontakt oss',
       CHOOSE_LETTER_SIZE: 'Velg tekststørrelse',
       LETTER_REGULAR: 'Vanlig',
