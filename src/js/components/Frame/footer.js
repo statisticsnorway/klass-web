@@ -1,7 +1,14 @@
 import React from 'react'
 import "./frame.scss";
 
+
 export default function Footer(){
+
+    const lang = window.location.pathname.split('/')[1];
+    const contactText = lang === 'en' ? "Contact us" : "Kontakt oss";
+    const accessibilityText = lang === 'en' ? "Accessibility" : "Tilgjengelighet";
+    const statisticsNorwayText = lang === 'en' ? "© Statistics Norway": "© Statistisk sentralbyrå";
+
     return (
         <footer id="footerArchive" className="footerXP">
             <div className="ssb-footer-wrapper">
@@ -13,19 +20,13 @@ export default function Footer(){
                     </div>
                     <div className="social-links">
                         <a href="/omssb/kontakt-oss" className="ssb-link negative">
-                            <script>
-                                window.location.pathname.split("/")[1] === 'en' ? document.write("Contact us") : document.write("Kontakt oss")
-                            </script>
+                            {contactText}
                         </a>
                         <a href="/diverse/tilgjengelighet" className="ssb-link negative">
-                            <script>
-                                window.location.pathname.split("/")[1] === 'en' ? document.write("Accessibility") : document.write("Tilgjengelighet")
-                            </script>
+                            {accessibilityText}
                         </a>
                         <a href="/diverse/lisens" className="ssb-link negative">
-                            <script>
-                                window.location.pathname.split("/")[1] === 'en' ? document.write("© Statistics Norway") : document.write("© Statistisk sentralbyrå")
-                            </script>
+                            {statisticsNorwayText}
                         </a>
                     </div>
                 </div>
@@ -37,19 +38,13 @@ export default function Footer(){
                     </div>
                     <div className="showOnMobile social-links">
                         <a href="/omssb/kontakt-oss" className="ssb-link negative">
-                            <script>
-                                window.location.pathname.split("/")[1] === 'en' ? document.write("Contact us") : document.write("Kontakt oss")
-                            </script>
+                            {contactText}
                         </a>
                         <a href="/diverse/tilgjengelighet" className="ssb-link negative">
-                            <script>
-                                window.location.pathname.split("/")[1] === 'en' ? document.write("Accessibility") : document.write("Tilgjengelighet")
-                            </script>
+                            {accessibilityText}
                         </a>
                         <a href="/diverse/lisens" className="ssb-link negative">
-                            <script>
-                                window.location.pathname.split("/")[1] === 'en' ? document.write("© Statistics Norway") : document.write("© Statistisk sentralbyrå")
-                            </script>
+                            {statisticsNorwayText}
                         </a>
                     </div>
                 </div>

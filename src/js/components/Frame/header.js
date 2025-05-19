@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import "./frame.scss";
 
 export default function Header(){
+    useEffect(() => {
+            const searchBox = document.getElementById('searchbox');
+            if (searchBox) {
+                searchBox.placeholder =
+                    window.location.pathname.split('/')[1] === 'en'
+                    ? 'Search in all of ssb.no'
+                    : 'Søk i hele ssb.no';
+            } else {
+                console.warn('Element with id "searchbox" not found.');
+            }
+    }, []);
+
+    const lang = window.location.pathname.split('/')[1];
+    const cookieText = lang === 'en' ? 'We use cookies' : 'Vi bruker cookies';
+
     return (
         <div className="header-wrapper">
             <div className="container">
@@ -14,9 +29,6 @@ export default function Header(){
                                 </a>
                                 <form className="topSearch" action="/sok" method="get">
                                     <input id="searchbox" type="text" name="sok" placeholder="" />
-                                    <script>
-                                        document.getElementById("searchbox").placeholder = window.location.pathname.split("/")[1] === 'en' ? "Search in all of ssb.no" : "Søk i hele ssb.no"
-                                    </script>
                                     <div className="searchBoxIcon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -27,9 +39,7 @@ export default function Header(){
                                 </form>
                                 <div className="cookies">
                                     <a href="/diverse/cookies-og-analyseverktoy-for-webstatistikk">
-                                        <script>
-                                            window.location.pathname.split("/")[1] === 'en' ? document.write("We use cookies") : document.write("Vi bruker cookies")
-                                        </script>
+                                        {cookieText}
                                     </a>
                                 </div>
                             </div>
