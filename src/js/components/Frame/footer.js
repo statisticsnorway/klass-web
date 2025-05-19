@@ -16,19 +16,16 @@ export default function Footer(){
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Contact us") : document.write("Kontakt oss")
                             </script>
-                            Kontakt oss
                         </a>
                         <a href="/diverse/tilgjengelighet" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Accessibility") : document.write("Tilgjengelighet")
                             </script>
-                            Tilgjengelighet
                         </a>
                         <a href="/diverse/lisens" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("© Statistics Norway") : document.write("© Statistisk sentralbyrå")
                             </script>
-                            © Statistisk sentralbyrå
                         </a>
                     </div>
                 </div>
@@ -43,19 +40,16 @@ export default function Footer(){
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Contact us") : document.write("Kontakt oss")
                             </script>
-                            Kontakt oss
                         </a>
                         <a href="/diverse/tilgjengelighet" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("Accessibility") : document.write("Tilgjengelighet")
                             </script>
-                            Tilgjengelighet
                         </a>
                         <a href="/diverse/lisens" className="ssb-link negative">
                             <script>
                                 window.location.pathname.split("/")[1] === 'en' ? document.write("© Statistics Norway") : document.write("© Statistisk sentralbyrå")
                             </script>
-                            © Statistisk sentralbyrå
                         </a>
                     </div>
                 </div>

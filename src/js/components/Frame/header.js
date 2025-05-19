@@ -30,7 +30,6 @@ export default function Header(){
                                         <script>
                                             window.location.pathname.split("/")[1] === 'en' ? document.write("We use cookies") : document.write("Vi bruker cookies")
                                         </script>
-                                        Vi bruker cookies
                                     </a>
                                 </div>
                             </div>
