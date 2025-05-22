@@ -369,9 +369,7 @@ img.ssb-logo-mobile{
 @media screen and (max-width: 992px) {
     .logo {
       grid-area: logo;
-      //height: 25px;
-      //width: 124px;
-      //margin: 10px;
+      margin: 10px;
     }
 
       .topRow {
@@ -460,19 +458,9 @@ img.ssb-logo-mobile{
     }
 }
 
-@media screen and (max-width: 600px) {
-    .logo {
-        img{
-            width: 80%;
-        }
-    }
-
-}
-
 @media (min-width: 768px) {
     .container, .container-md, .container-sm {
         max-width: 90%;
-        margin-top: 1rem;
     }
 }
 
@@ -481,8 +469,11 @@ img.ssb-logo-mobile{
         max-width: 90%;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 1rem;
     }
+    #logo{
+      height: auto;
+    }
+    
 }
 
 @media (min-width: 992px) {
