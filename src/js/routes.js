@@ -14,11 +14,14 @@ const classCode = (
 export default (
   <Route path="/" name={classCode} component={App}>
     <IndexRoute component={ClassFamiliesPage} />
-    <Route path="/klassifikasjoner" component={ClassItemPage} name="exclude">
-      <Route
-        path=":classId(/versjon/:versionId)(/:tab)(/:itemId)"
-        component={ClassItemPage}
-      />
+    <Route path="klassifikasjoner/:classId" component={ClassItemPage} name="Klassifikasjon">
+        <Route path=":tab" component={ClassItemPage} name="Tab" />
+        <Route path=":tab/:itemId" component={ClassItemPage} name="Item" />
+    </Route>
+
+    <Route path="klassifikasjoner/:classId/versjon/:versionId" component={ClassItemPage} name="Versjon">
+        <Route path=":tab" component={ClassItemPage} name="TabWithVersion" />
+        <Route path=":tab/:itemId" component={ClassItemPage} name="ItemWithVersion" />
     </Route>
     <Route path="sok" name="Søkeresultat" component={SearchPage} />
     <Route path="404" name="404: Fant ingen sider" component={NotFoundView} />
