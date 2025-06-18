@@ -350,10 +350,6 @@ hr {
     overflow: visible;
 }
 
-.footerXP {
-  margin-top: 40px;
-}
-
 img.ssb-logo-mobile{
   height: 35px;
 }
@@ -495,9 +491,6 @@ img.ssb-logo-mobile{
 }
 
 @media (max-width:500px){
-  #navigation-path{
-    font-size: 1.5em;
-  }
   footer .footer-bottom-row .social-links>*  {
       font-size: 0.7rem;
       padding: 0;
