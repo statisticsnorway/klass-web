@@ -24,6 +24,7 @@ a:visited {
 }
 
 .klass {
+
     .clear-fix {
         clear: both;
     }
@@ -78,6 +79,7 @@ a:visited {
     }
 
     #page {
+        min-height: 75vh;
         ::-webkit-input-placeholder {
             font-style: italic;
         }
@@ -119,7 +121,6 @@ a:visited {
         .main {
             width: 67em;
             float: left;
-            margin-right: 3em;
 
             .heading {  
                 .description.short {
@@ -144,7 +145,6 @@ a:visited {
     .float-right-icon {
         float:right;
         margin-top: -7px;
-        position: static;
     }
 
     h1 {
@@ -235,10 +235,6 @@ a:visited {
     }
 }
 
-#page{
-    margin-bottom: 0;
-    overflow: hidden;
-} 
 .sitewrapper{
     margin: 0 auto;
 }
@@ -251,13 +247,18 @@ a:visited {
     position: absolute;
     left: -9999px;
 }
-.content {
-    overflow: hidden;
-    max-width: 95em;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
+
+#page{
+    margin-bottom: 0;
+    margin: 0 1rem;
+    .content{
+        overflow: auto;
+        max-width: 110em;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+} 
 
 div{   
     margin: 0;
@@ -306,15 +307,16 @@ ul.nav {
     font-size: 1.6em;
     margin-top: 1rem;
     width: 100%;
-    max-width: 950px;
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3em;
     overflow: hidden;
     display: flex;
-    align-items: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 0.5rem;
+    align-items: center;
     
     span{
         a{
@@ -330,10 +332,35 @@ ul.nav {
 }
 
 @media screen and (max-width: 500px) {
+    #navigation-path{
+        font-size: 1.5em;
+    }
     .klass #page h1 {
         font-size: 2em;
     }
     .klass{
         width: 100%;
     }
+}
+
+/* Chrome, Edge, Safari scrollbar */
+::-webkit-scrollbar {
+  width: 8px;              /* thinner scrollbar */
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* no track background for minimal look */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4);
+  border-radius: 4px;
+  border: 2px solid transparent; /* gives some padding */
+  background-clip: content-box;  /* ensure border doesn't cover thumb */
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.7);
 }
