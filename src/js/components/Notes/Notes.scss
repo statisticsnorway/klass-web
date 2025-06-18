@@ -5,14 +5,14 @@
     position: absolute;
     line-height: variables.$body-line-height;
     margin-top: -6em;
-    right: -28em;
+    right: -35em;
 
     .modal-content {
         position: relative;
         border: 1px solid color.scale(variables.$black, $lightness: 20%);
-        width: 20em;
+        width: 25em;
         outline: none;
-        padding: 20px;
+        padding: 25px;
         z-index: 100;
         font-size: variables.$body-font-size;
         background-color: color.scale(variables.$black, $lightness: 20%);

@@ -442,7 +442,13 @@ img.ssb-logo-mobile{
         margin-bottom: 30px;
     }
 }
-@media (min-width: 992px) {
+@media (min-width: 1268px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 992px) {
     .container, .container-lg, .container-md, .container-sm {
         max-width: 960px;
     }
@@ -450,19 +456,19 @@ img.ssb-logo-mobile{
 
 @media (min-width: 992px) {
     .container, .container-lg, .container-md, .container-sm {
-        max-width: 960px;
+        width: 100%;
     }
 }
 
 @media (min-width: 768px) {
     .container, .container-md, .container-sm {
-        max-width: 90%;
+        max-width: 95%;
     }
 }
 
 @media (max-width: 768px) {
     .container, .container-md, .container-sm {
-        max-width: 90%;
+        max-width: 95%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -472,11 +478,6 @@ img.ssb-logo-mobile{
     
 }
 
-@media (min-width: 992px) {
-    .container, .container-lg, .container-md, .container-sm{
-        max-width: 960px;
-    }
-}
 
 @media (min-width: 1260px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {

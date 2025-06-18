@@ -235,13 +235,6 @@ a:visited {
     }
 }
 
-#page{
-    margin-bottom: 0;
-    margin: 0 1rem;
-    .content{
-        overflow: auto;
-    }
-} 
 .sitewrapper{
     margin: 0 auto;
 }
@@ -254,13 +247,18 @@ a:visited {
     position: absolute;
     left: -9999px;
 }
-.content {
-    overflow: auto;
-    max-width: 100em;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
+
+#page{
+    margin-bottom: 0;
+    margin: 0 1rem;
+    .content{
+        overflow: auto;
+        max-width: 110em;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+} 
 
 div{   
     margin: 0;
@@ -309,7 +307,7 @@ ul.nav {
     font-size: 1.6em;
     margin-top: 1rem;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3em;
