@@ -75,27 +75,7 @@
     }
 }
 
-
 @media screen and (max-width: 1260px) {
-    .modal-notes {
-        margin-left: 5em;
-        right: 5em;
-        left: auto;
-
-        .modal-content {
-            width: auto;
-
-            &:after {
-                right: -1.5em;
-                left: auto;
-                transform: rotate(90deg);
-
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 700px) {
     .modal-notes {
         margin-left: 5em;
         right: 5em;
