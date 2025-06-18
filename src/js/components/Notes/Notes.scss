@@ -5,7 +5,7 @@
     position: absolute;
     line-height: variables.$body-line-height;
     margin-top: -6em;
-    right: -32em;
+    right: -28em;
 
     .modal-content {
         position: relative;
@@ -72,6 +72,26 @@
     h5 {
         text-align: center;
         padding-bottom: 1em;
+    }
+}
+
+
+@media screen and (max-width: 1260px) {
+    .modal-notes {
+        margin-left: 5em;
+        right: 5em;
+        left: auto;
+
+        .modal-content {
+            width: auto;
+
+            &:after {
+                right: -1.5em;
+                left: auto;
+                transform: rotate(90deg);
+
+            }
+        }
     }
 }
 
