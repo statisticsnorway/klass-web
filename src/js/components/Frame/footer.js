@@ -12,7 +12,7 @@ export default function Footer(){
     return (
         <footer id="footerArchive" className="footerXP">
             <div className="ssb-footer-wrapper">
-                <div id="footerContent" class="footer-bottom-row">
+                <div id="footerContent" className="footer-bottom-row">
                     <div className="links-left">
                         <a href="/" title="Lenke til forsiden">
                             <img id="footer-logo" src="./images/SSB_logo_white.svg" alt="SSB Logo"/>

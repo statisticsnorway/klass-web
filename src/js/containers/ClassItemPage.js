@@ -143,23 +143,15 @@ class ClassItemPage extends Component {
     }
 
     render() {
-        const { classification, selectedVersion, isFetching, actions, params } = this.props
-
-        let breadcrumbStep = document.getElementsByClassName('step')
+        const { classification, selectedVersion, isFetching, actions, params } = this.props;
 
         if (_.isEmpty(classification)) {
-            if (breadcrumbStep.length > 0) {
-                breadcrumbStep[breadcrumbStep.length - 1].textContent = ""
-            }
             return (
                 <Translate component="p" content="CLASSIFICATIONS.NO_CLASS_FOUND" />
             )
         }
 
-        if (_.isEmpty(classification) || isFetching) {
-            if (breadcrumbStep.length > 0) {
-                breadcrumbStep[breadcrumbStep.length - 1].textContent = ""
-            }
+        if (isFetching) {
             return (
                 <div className="spinner">
                     <div className="bounce1"></div>
@@ -168,10 +160,9 @@ class ClassItemPage extends Component {
                 </div>
             )
         }
-        if (breadcrumbStep.length > 0) {
-            breadcrumbStep[breadcrumbStep.length - 1].textContent = classification.name || this.props.classification.name
-            document.title = classification.name + counterpart.translate("PAGE.TITLE_POSTFIX");
-        }
+
+        document.title = classification.name + counterpart.translate("PAGE.TITLE_POSTFIX");
+
         return (
             <div className="content klass-item">
                 <div className="main">
