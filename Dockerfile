@@ -1,8 +1,8 @@
 # Step 1: Build the app
 FROM node:20 AS builder
 
-# ARG NODE_ENV=production
-# ENV NODE_ENV $NODE_ENV
+# Expected values: test, prod
+ARG target_env=prod
 
 WORKDIR /app
 COPY package*.json ./
@@ -10,6 +10,8 @@ RUN npm ci --legacy-peer-deps --verbose
 COPY .babelrc .
 COPY config/ ./config/
 COPY src/ ./src/
+RUN if [ "$target_env" = "test" ]; then cp src/env/config/test/index.js src/js/config/index.js; else cp src/env/config/prod/index.js src/js/config/index.js ; fi
+RUN if [ "$target_env" = "prod" ]; then export NODE_ENV=production; else export NODE_ENV=test; fi
 RUN npm run build
 
 # Step 2: Serve the built files using Nginx
