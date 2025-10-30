@@ -28,7 +28,7 @@ npm run docker
 
 ## Miljøer
 
-Det finnes config for ulike miljøer i `src/env/config/<miljønavn>/index.js`. Disse filene burde kopieres til `src/js/config/index.js` for at verdiene skal gjelde. Det er implementert håndtering av dette i `Dockerfile` hvorhen man kan spesifisere `--build-arg "target_env=test"` på kommandolinje for å velge et miljø. Forventede verdier er `test` og `prod`.
+Det finnes config for ulike miljøer i `src/env/config/<miljønavn>/index.js`. Disse filene burde kopieres til `src/js/config/index.js` for at verdiene skal gjelde. Det er implementert håndtering av dette i `Dockerfile` der man kan spesifisere `--build-arg "target_env=test"` på kommandolinje for å velge et miljø. Forventede verdier er `test` og `prod`.
 
 ## Prosjektstruktur
 
