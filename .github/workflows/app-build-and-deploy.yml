@@ -21,27 +21,31 @@ jobs:
     outputs:
       nais_config_path: ${{ steps.nais-deploy-vars.outputs.nais_config_path }}
       nais_cluster: ${{ steps.nais-deploy-vars.outputs.nais_cluster }}
+    env:
+      EVENT: ${{ github.event_name }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build and push
-        uses: nais/docker-build-push@v0
-        id: docker-build-push
-        with:
-          team: dapla-metadata
-
       - name: Generate NAIS deploy variables
         id: nais-deploy-vars
         run: |
-          if [[ ${{ github.event_name }} == "release" ]]; then
+          if [[ ${{ env.EVENT }} == "release" ]]; then
             echo "nais_cluster=prod" >> "$GITHUB_OUTPUT"
             echo "nais_config_path=.nais/prod/nais.yaml" >> "$GITHUB_OUTPUT"
           else
             echo "nais_cluster=test" >> "$GITHUB_OUTPUT"
             echo "nais_config_path=.nais/test/nais.yaml" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Build and push
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: dapla-metadata
+          build_args: |
+            target_env=${{ steps.nais-deploy-vars.outputs.nais_cluster }}
 
       - uses: nais/deploy/actions/deploy@v2
         env:
