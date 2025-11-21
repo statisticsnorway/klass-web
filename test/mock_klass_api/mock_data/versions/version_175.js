@@ -1,3101 +1,3546 @@
 module.exports = {
-    "name": "Kommuneinndeling 2014",
-    "validFrom": "2014-01-01",
-    "validTo": "2015-12-01",
-    "introduction": "Kommuneinndelingen er en administrativ inndeling av Norge. Kommunen er betegnelsen både på en politisk og forvaltningsmessig nivå og betegnelsen på et regionalt nivå i statistikken.\n\nI medhold av kommuneloven §3 nr. 3 ble det den 7. mars 2014 vedtatt trespråklig kommunenavn Omasvuotna Storfjord Omasvuonon (samisk norsk kvensk) på 1939 Storfjord kommune og den 13. juni 2014 vedtatt tospråklig kommunenavn Raarvihke Røyrvik (samisk norsk) på 1739 Røyrvik kommune.",
-    "contactPerson": {
-        "name": "hhe",
-        "email": "hhe@ssb.no",
-        "phone": "62 88 55 48"
-    },
-    "owningSection": "320",
-    "legalBase": "Ikke relevant",
-    "publications": "http://www.ssb.no/emner/00/90/rapp_9913/ \nhttp://www.ssb.no/emner/00/00/20/nos_c513/\nhttp://www.ssb.no/vis/kommuner/dokumentasjon.html",
-    "derivedFrom": "Ikke relevant",
-    "published": ["Bokmål", "Nynorsk", "Engelsk"],
-    "correspondenceTables": [{
-        "name": "Kommuneinndeling 2014 - Delområde- og grunnkretsinndeling 2014",
-        "contactPerson": "hhe",
-        "owningSection": "320",
-        "source": "Kommuneinndeling 2014",
-        "target": "Delområde- og grunnkretsinndeling 2014",
-        "_links": {
-            "self": {
-                "href": "/correspondencetables/51"
-            }
-        }
-    }, {
-        "name": "Kommuneinndeling 2014 - Delområde- og grunnkretsinndeling 2014",
-        "contactPerson": "hhe",
-        "owningSection": "320",
-        "source": "Kommuneinndeling 2014",
-        "target": "Delområde- og grunnkretsinndeling 2014",
-        "_links": {
-            "self": {
-                "href": "/correspondencetables/54"
-            }
-        }
-    }, {
-        "name": "Kommuneinndeling 2014 - Delområde- og grunnkretsinndeling 2016",
-        "contactPerson": "hhe",
-        "owningSection": "320",
-        "source": "Kommuneinndeling 2014",
-        "target": "Delområde- og grunnkretsinndeling 2016",
-        "_links": {
-            "self": {
-                "href": "/correspondencetables/83"
-            }
-        }
-    }, {
-        "name": "Kommuneinndeling 2014 - Kommuneinndeling 01-2013",
-        "contactPerson": "hhe",
-        "owningSection": "320",
-        "source": "Kommuneinndeling 2014",
-        "target": "Kommuneinndeling 01-2013",
-        "_links": {
-            "self": {
-                "href": "/correspondencetables/95"
-            }
-        }
-    }, {
-        "name": "Kommuneinndeling 2014 - Bydelsinndeling 2004",
-        "contactPerson": "hhe",
-        "owningSection": "320",
-        "source": "Kommuneinndeling 2014",
-        "target": "Bydelsinndeling 2004",
-        "_links": {
-            "self": {
-                "href": "/correspondencetables/107"
-            }
-        }
-    }],
-    "classificationVariants": [{
-        "name": "Store og små kommuner",
-        "_links": {
-            "self": {
-                "href": "/variants/467"
-            }
-        }
-    }, {
-        "name": "Store og små kommuner II",
-        "_links": {
-            "self": {
-                "href": "/variants/468"
-            }
-        }
-    }],
-    "changelogs": [],
-    "levels": [{
-        "levelNumber": 1,
-        "levelName": "Kommune"
-    }],
-    "classificationItems": [{
-        "code": "0101",
-        "level": "1",
-        "name": "Halden",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0104",
-        "level": "1",
-        "name": "Moss",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0105",
-        "level": "1",
-        "name": "Sarpsborg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0106",
-        "level": "1",
-        "name": "Fredrikstad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0111",
-        "level": "1",
-        "name": "Hvaler",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0118",
-        "level": "1",
-        "name": "Aremark",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0119",
-        "level": "1",
-        "name": "Marker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0121",
-        "level": "1",
-        "name": "Rømskog",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0122",
-        "level": "1",
-        "name": "Trøgstad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0123",
-        "level": "1",
-        "name": "Spydeberg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0124",
-        "level": "1",
-        "name": "Askim",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0125",
-        "level": "1",
-        "name": "Eidsberg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0127",
-        "level": "1",
-        "name": "Skiptvet",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0128",
-        "level": "1",
-        "name": "Rakkestad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0135",
-        "level": "1",
-        "name": "Råde",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0136",
-        "level": "1",
-        "name": "Rygge",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0137",
-        "level": "1",
-        "name": "Våler",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0138",
-        "level": "1",
-        "name": "Hobøl",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0211",
-        "level": "1",
-        "name": "Vestby",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0213",
-        "level": "1",
-        "name": "Ski",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0214",
-        "level": "1",
-        "name": "Ås",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0215",
-        "level": "1",
-        "name": "Frogn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0216",
-        "level": "1",
-        "name": "Nesodden",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0217",
-        "level": "1",
-        "name": "Oppegård",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0219",
-        "level": "1",
-        "name": "Bærum",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0220",
-        "level": "1",
-        "name": "Asker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0221",
-        "level": "1",
-        "name": "Aurskog-Høland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0226",
-        "level": "1",
-        "name": "Sørum",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0227",
-        "level": "1",
-        "name": "Fet",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0228",
-        "level": "1",
-        "name": "Rælingen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0229",
-        "level": "1",
-        "name": "Enebakk",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0230",
-        "level": "1",
-        "name": "Lørenskog",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0231",
-        "level": "1",
-        "name": "Skedsmo",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0233",
-        "level": "1",
-        "name": "Nittedal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0234",
-        "level": "1",
-        "name": "Gjerdrum",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0235",
-        "level": "1",
-        "name": "Ullensaker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0236",
-        "level": "1",
-        "name": "Nes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0237",
-        "level": "1",
-        "name": "Eidsvoll",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0238",
-        "level": "1",
-        "name": "Nannestad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0239",
-        "level": "1",
-        "name": "Hurdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0301",
-        "level": "1",
-        "name": "Oslo",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0402",
-        "level": "1",
-        "name": "Kongsvinger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0403",
-        "level": "1",
-        "name": "Hamar",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0412",
-        "level": "1",
-        "name": "Ringsaker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0415",
-        "level": "1",
-        "name": "Løten",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0417",
-        "level": "1",
-        "name": "Stange",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0418",
-        "level": "1",
-        "name": "Nord-Odal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0419",
-        "level": "1",
-        "name": "Sør-Odal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0420",
-        "level": "1",
-        "name": "Eidskog",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0423",
-        "level": "1",
-        "name": "Grue",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0425",
-        "level": "1",
-        "name": "Åsnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0426",
-        "level": "1",
-        "name": "Våler",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0427",
-        "level": "1",
-        "name": "Elverum",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0428",
-        "level": "1",
-        "name": "Trysil",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0429",
-        "level": "1",
-        "name": "Åmot",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0430",
-        "level": "1",
-        "name": "Stor-Elvdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0432",
-        "level": "1",
-        "name": "Rendalen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0434",
-        "level": "1",
-        "name": "Engerdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0436",
-        "level": "1",
-        "name": "Tolga",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0437",
-        "level": "1",
-        "name": "Tynset",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0438",
-        "level": "1",
-        "name": "Alvdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0439",
-        "level": "1",
-        "name": "Folldal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0441",
-        "level": "1",
-        "name": "Os",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0501",
-        "level": "1",
-        "name": "Lillehammer",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0502",
-        "level": "1",
-        "name": "Gjøvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0511",
-        "level": "1",
-        "name": "Dovre",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0512",
-        "level": "1",
-        "name": "Lesja",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0513",
-        "level": "1",
-        "name": "Skjåk",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0514",
-        "level": "1",
-        "name": "Lom",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0515",
-        "level": "1",
-        "name": "Vågå",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0516",
-        "level": "1",
-        "name": "Nord-Fron",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0517",
-        "level": "1",
-        "name": "Sel",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0519",
-        "level": "1",
-        "name": "Sør-Fron",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0520",
-        "level": "1",
-        "name": "Ringebu",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0521",
-        "level": "1",
-        "name": "Øyer",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0522",
-        "level": "1",
-        "name": "Gausdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0528",
-        "level": "1",
-        "name": "Østre Toten",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0529",
-        "level": "1",
-        "name": "Vestre Toten",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0532",
-        "level": "1",
-        "name": "Jevnaker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0533",
-        "level": "1",
-        "name": "Lunner",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0534",
-        "level": "1",
-        "name": "Gran",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0536",
-        "level": "1",
-        "name": "Søndre Land",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0538",
-        "level": "1",
-        "name": "Nordre Land",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0540",
-        "level": "1",
-        "name": "Sør-Aurdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0541",
-        "level": "1",
-        "name": "Etnedal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0542",
-        "level": "1",
-        "name": "Nord-Aurdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0543",
-        "level": "1",
-        "name": "Vestre Slidre",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0544",
-        "level": "1",
-        "name": "Øystre Slidre",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0545",
-        "level": "1",
-        "name": "Vang",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0602",
-        "level": "1",
-        "name": "Drammen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0604",
-        "level": "1",
-        "name": "Kongsberg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0605",
-        "level": "1",
-        "name": "Ringerike",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0612",
-        "level": "1",
-        "name": "Hole",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0615",
-        "level": "1",
-        "name": "Flå",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0616",
-        "level": "1",
-        "name": "Nes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0617",
-        "level": "1",
-        "name": "Gol",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0618",
-        "level": "1",
-        "name": "Hemsedal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0619",
-        "level": "1",
-        "name": "Ål",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0620",
-        "level": "1",
-        "name": "Hol",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0621",
-        "level": "1",
-        "name": "Sigdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0622",
-        "level": "1",
-        "name": "Krødsherad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0623",
-        "level": "1",
-        "name": "Modum",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0624",
-        "level": "1",
-        "name": "Øvre Eiker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0625",
-        "level": "1",
-        "name": "Nedre Eiker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0626",
-        "level": "1",
-        "name": "Lier",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0627",
-        "level": "1",
-        "name": "Røyken",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0628",
-        "level": "1",
-        "name": "Hurum",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0631",
-        "level": "1",
-        "name": "Flesberg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0632",
-        "level": "1",
-        "name": "Rollag",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0633",
-        "level": "1",
-        "name": "Nore og Uvdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0701",
-        "level": "1",
-        "name": "Horten",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0702",
-        "level": "1",
-        "name": "Holmestrand",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0704",
-        "level": "1",
-        "name": "Tønsberg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0706",
-        "level": "1",
-        "name": "Sandefjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0709",
-        "level": "1",
-        "name": "Larvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0711",
-        "level": "1",
-        "name": "Svelvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0713",
-        "level": "1",
-        "name": "Sande",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0714",
-        "level": "1",
-        "name": "Hof",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0716",
-        "level": "1",
-        "name": "Re",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0719",
-        "level": "1",
-        "name": "Andebu",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0720",
-        "level": "1",
-        "name": "Stokke",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0722",
-        "level": "1",
-        "name": "Nøtterøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0723",
-        "level": "1",
-        "name": "Tjøme",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0728",
-        "level": "1",
-        "name": "Lardal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0805",
-        "level": "1",
-        "name": "Porsgrunn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0806",
-        "level": "1",
-        "name": "Skien",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0807",
-        "level": "1",
-        "name": "Notodden",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0811",
-        "level": "1",
-        "name": "Siljan",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0814",
-        "level": "1",
-        "name": "Bamble",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0815",
-        "level": "1",
-        "name": "Kragerø",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0817",
-        "level": "1",
-        "name": "Drangedal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0819",
-        "level": "1",
-        "name": "Nome",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0821",
-        "level": "1",
-        "name": "Bø",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0822",
-        "level": "1",
-        "name": "Sauherad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0826",
-        "level": "1",
-        "name": "Tinn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0827",
-        "level": "1",
-        "name": "Hjartdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0828",
-        "level": "1",
-        "name": "Seljord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0829",
-        "level": "1",
-        "name": "Kviteseid",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0830",
-        "level": "1",
-        "name": "Nissedal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0831",
-        "level": "1",
-        "name": "Fyresdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0833",
-        "level": "1",
-        "name": "Tokke",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0834",
-        "level": "1",
-        "name": "Vinje",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0901",
-        "level": "1",
-        "name": "Risør",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0904",
-        "level": "1",
-        "name": "Grimstad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0906",
-        "level": "1",
-        "name": "Arendal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0911",
-        "level": "1",
-        "name": "Gjerstad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0912",
-        "level": "1",
-        "name": "Vegårshei",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0914",
-        "level": "1",
-        "name": "Tvedestrand",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0919",
-        "level": "1",
-        "name": "Froland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0926",
-        "level": "1",
-        "name": "Lillesand",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0928",
-        "level": "1",
-        "name": "Birkenes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0929",
-        "level": "1",
-        "name": "Åmli",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0935",
-        "level": "1",
-        "name": "Iveland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0937",
-        "level": "1",
-        "name": "Evje og Hornnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0938",
-        "level": "1",
-        "name": "Bygland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0940",
-        "level": "1",
-        "name": "Valle",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "0941",
-        "level": "1",
-        "name": "Bykle",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1001",
-        "level": "1",
-        "name": "Kristiansand",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1002",
-        "level": "1",
-        "name": "Mandal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1003",
-        "level": "1",
-        "name": "Farsund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1004",
-        "level": "1",
-        "name": "Flekkefjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1014",
-        "level": "1",
-        "name": "Vennesla",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1017",
-        "level": "1",
-        "name": "Songdalen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1018",
-        "level": "1",
-        "name": "Søgne",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1021",
-        "level": "1",
-        "name": "Marnardal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1026",
-        "level": "1",
-        "name": "Åseral",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1027",
-        "level": "1",
-        "name": "Audnedal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1029",
-        "level": "1",
-        "name": "Lindesnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1032",
-        "level": "1",
-        "name": "Lyngdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1034",
-        "level": "1",
-        "name": "Hægebostad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1037",
-        "level": "1",
-        "name": "Kvinesdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1046",
-        "level": "1",
-        "name": "Sirdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1101",
-        "level": "1",
-        "name": "Eigersund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1102",
-        "level": "1",
-        "name": "Sandnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1103",
-        "level": "1",
-        "name": "Stavanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1106",
-        "level": "1",
-        "name": "Haugesund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1111",
-        "level": "1",
-        "name": "Sokndal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1112",
-        "level": "1",
-        "name": "Lund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1114",
-        "level": "1",
-        "name": "Bjerkreim",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1119",
-        "level": "1",
-        "name": "Hå",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1120",
-        "level": "1",
-        "name": "Klepp",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1121",
-        "level": "1",
-        "name": "Time",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1122",
-        "level": "1",
-        "name": "Gjesdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1124",
-        "level": "1",
-        "name": "Sola",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1127",
-        "level": "1",
-        "name": "Randaberg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1129",
-        "level": "1",
-        "name": "Forsand",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1130",
-        "level": "1",
-        "name": "Strand",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1133",
-        "level": "1",
-        "name": "Hjelmeland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1134",
-        "level": "1",
-        "name": "Suldal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1135",
-        "level": "1",
-        "name": "Sauda",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1141",
-        "level": "1",
-        "name": "Finnøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1142",
-        "level": "1",
-        "name": "Rennesøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1144",
-        "level": "1",
-        "name": "Kvitsøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1145",
-        "level": "1",
-        "name": "Bokn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1146",
-        "level": "1",
-        "name": "Tysvær",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1149",
-        "level": "1",
-        "name": "Karmøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1151",
-        "level": "1",
-        "name": "Utsira",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1160",
-        "level": "1",
-        "name": "Vindafjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1201",
-        "level": "1",
-        "name": "Bergen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1211",
-        "level": "1",
-        "name": "Etne",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1216",
-        "level": "1",
-        "name": "Sveio",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1219",
-        "level": "1",
-        "name": "Bømlo",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1221",
-        "level": "1",
-        "name": "Stord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1222",
-        "level": "1",
-        "name": "Fitjar",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1223",
-        "level": "1",
-        "name": "Tysnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1224",
-        "level": "1",
-        "name": "Kvinnherad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1227",
-        "level": "1",
-        "name": "Jondal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1228",
-        "level": "1",
-        "name": "Odda",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1231",
-        "level": "1",
-        "name": "Ullensvang",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1232",
-        "level": "1",
-        "name": "Eidfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1233",
-        "level": "1",
-        "name": "Ulvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1234",
-        "level": "1",
-        "name": "Granvin",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1235",
-        "level": "1",
-        "name": "Voss",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1238",
-        "level": "1",
-        "name": "Kvam",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1241",
-        "level": "1",
-        "name": "Fusa",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1242",
-        "level": "1",
-        "name": "Samnanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1243",
-        "level": "1",
-        "name": "Os",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1244",
-        "level": "1",
-        "name": "Austevoll",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1245",
-        "level": "1",
-        "name": "Sund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1246",
-        "level": "1",
-        "name": "Fjell",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1247",
-        "level": "1",
-        "name": "Askøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1251",
-        "level": "1",
-        "name": "Vaksdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1252",
-        "level": "1",
-        "name": "Modalen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1253",
-        "level": "1",
-        "name": "Osterøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1256",
-        "level": "1",
-        "name": "Meland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1259",
-        "level": "1",
-        "name": "Øygarden",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1260",
-        "level": "1",
-        "name": "Radøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1263",
-        "level": "1",
-        "name": "Lindås",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1264",
-        "level": "1",
-        "name": "Austrheim",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1265",
-        "level": "1",
-        "name": "Fedje",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1266",
-        "level": "1",
-        "name": "Masfjorden",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1401",
-        "level": "1",
-        "name": "Flora",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1411",
-        "level": "1",
-        "name": "Gulen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1412",
-        "level": "1",
-        "name": "Solund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1413",
-        "level": "1",
-        "name": "Hyllestad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1416",
-        "level": "1",
-        "name": "Høyanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1417",
-        "level": "1",
-        "name": "Vik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1418",
-        "level": "1",
-        "name": "Balestrand",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1419",
-        "level": "1",
-        "name": "Leikanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1420",
-        "level": "1",
-        "name": "Sogndal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1421",
-        "level": "1",
-        "name": "Aurland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1422",
-        "level": "1",
-        "name": "Lærdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1424",
-        "level": "1",
-        "name": "Årdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1426",
-        "level": "1",
-        "name": "Luster",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1428",
-        "level": "1",
-        "name": "Askvoll",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1429",
-        "level": "1",
-        "name": "Fjaler",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1430",
-        "level": "1",
-        "name": "Gaular",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1431",
-        "level": "1",
-        "name": "Jølster",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1432",
-        "level": "1",
-        "name": "Førde",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1433",
-        "level": "1",
-        "name": "Naustdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1438",
-        "level": "1",
-        "name": "Bremanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1439",
-        "level": "1",
-        "name": "Vågsøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1441",
-        "level": "1",
-        "name": "Selje",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1443",
-        "level": "1",
-        "name": "Eid",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1444",
-        "level": "1",
-        "name": "Hornindal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1445",
-        "level": "1",
-        "name": "Gloppen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1449",
-        "level": "1",
-        "name": "Stryn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1502",
-        "level": "1",
-        "name": "Molde",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1504",
-        "level": "1",
-        "name": "Ålesund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1505",
-        "level": "1",
-        "name": "Kristiansund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1511",
-        "level": "1",
-        "name": "Vanylven",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1514",
-        "level": "1",
-        "name": "Sande",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1515",
-        "level": "1",
-        "name": "Herøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1516",
-        "level": "1",
-        "name": "Ulstein",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1517",
-        "level": "1",
-        "name": "Hareid",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1519",
-        "level": "1",
-        "name": "Volda",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1520",
-        "level": "1",
-        "name": "Ørsta",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1523",
-        "level": "1",
-        "name": "Ørskog",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1524",
-        "level": "1",
-        "name": "Norddal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1525",
-        "level": "1",
-        "name": "Stranda",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1526",
-        "level": "1",
-        "name": "Stordal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1528",
-        "level": "1",
-        "name": "Sykkylven",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1529",
-        "level": "1",
-        "name": "Skodje",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1531",
-        "level": "1",
-        "name": "Sula",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1532",
-        "level": "1",
-        "name": "Giske",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1534",
-        "level": "1",
-        "name": "Haram",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1535",
-        "level": "1",
-        "name": "Vestnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1539",
-        "level": "1",
-        "name": "Rauma",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1543",
-        "level": "1",
-        "name": "Nesset",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1545",
-        "level": "1",
-        "name": "Midsund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1546",
-        "level": "1",
-        "name": "Sandøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1547",
-        "level": "1",
-        "name": "Aukra",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1548",
-        "level": "1",
-        "name": "Fræna",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1551",
-        "level": "1",
-        "name": "Eide",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1554",
-        "level": "1",
-        "name": "Averøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1557",
-        "level": "1",
-        "name": "Gjemnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1560",
-        "level": "1",
-        "name": "Tingvoll",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1563",
-        "level": "1",
-        "name": "Sunndal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1566",
-        "level": "1",
-        "name": "Surnadal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1567",
-        "level": "1",
-        "name": "Rindal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1571",
-        "level": "1",
-        "name": "Halsa",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1573",
-        "level": "1",
-        "name": "Smøla",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1576",
-        "level": "1",
-        "name": "Aure",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1601",
-        "level": "1",
-        "name": "Trondheim",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1612",
-        "level": "1",
-        "name": "Hemne",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1613",
-        "level": "1",
-        "name": "Snillfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1617",
-        "level": "1",
-        "name": "Hitra",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1620",
-        "level": "1",
-        "name": "Frøya",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1621",
-        "level": "1",
-        "name": "Ørland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1622",
-        "level": "1",
-        "name": "Agdenes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1624",
-        "level": "1",
-        "name": "Rissa",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1627",
-        "level": "1",
-        "name": "Bjugn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1630",
-        "level": "1",
-        "name": "Åfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1632",
-        "level": "1",
-        "name": "Roan",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1633",
-        "level": "1",
-        "name": "Osen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1634",
-        "level": "1",
-        "name": "Oppdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1635",
-        "level": "1",
-        "name": "Rennebu",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1636",
-        "level": "1",
-        "name": "Meldal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1638",
-        "level": "1",
-        "name": "Orkdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1640",
-        "level": "1",
-        "name": "Røros",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1644",
-        "level": "1",
-        "name": "Holtålen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1648",
-        "level": "1",
-        "name": "Midtre Gauldal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1653",
-        "level": "1",
-        "name": "Melhus",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1657",
-        "level": "1",
-        "name": "Skaun",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1662",
-        "level": "1",
-        "name": "Klæbu",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1663",
-        "level": "1",
-        "name": "Malvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1664",
-        "level": "1",
-        "name": "Selbu",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1665",
-        "level": "1",
-        "name": "Tydal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1702",
-        "level": "1",
-        "name": "Steinkjer",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1703",
-        "level": "1",
-        "name": "Namsos",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1711",
-        "level": "1",
-        "name": "Meråker",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1714",
-        "level": "1",
-        "name": "Stjørdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1717",
-        "level": "1",
-        "name": "Frosta",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1718",
-        "level": "1",
-        "name": "Leksvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1719",
-        "level": "1",
-        "name": "Levanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1721",
-        "level": "1",
-        "name": "Verdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1724",
-        "level": "1",
-        "name": "Verran",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1725",
-        "level": "1",
-        "name": "Namdalseid",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1736",
-        "level": "1",
-        "name": "Snåase - Snåsa",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1738",
-        "level": "1",
-        "name": "Lierne",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1739",
-        "level": "1",
-        "name": "Raarvihke - Røyrvik",
-        "shortName": "",
-        "notes": "13. juni 2014 ble det vedtatt at kommunenavnet skulle være tospråklig (samisk -norsk)",
-        "parentCode": ""
-    }, {
-        "code": "1740",
-        "level": "1",
-        "name": "Namsskogan",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1742",
-        "level": "1",
-        "name": "Grong",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1743",
-        "level": "1",
-        "name": "Høylandet",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1744",
-        "level": "1",
-        "name": "Overhalla",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1748",
-        "level": "1",
-        "name": "Fosnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1749",
-        "level": "1",
-        "name": "Flatanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1750",
-        "level": "1",
-        "name": "Vikna",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1751",
-        "level": "1",
-        "name": "Nærøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1755",
-        "level": "1",
-        "name": "Leka",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1756",
-        "level": "1",
-        "name": "Inderøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1804",
-        "level": "1",
-        "name": "Bodø",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1805",
-        "level": "1",
-        "name": "Narvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1811",
-        "level": "1",
-        "name": "Bindal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1812",
-        "level": "1",
-        "name": "Sømna",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1813",
-        "level": "1",
-        "name": "Brønnøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1815",
-        "level": "1",
-        "name": "Vega",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1816",
-        "level": "1",
-        "name": "Vevelstad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1818",
-        "level": "1",
-        "name": "Herøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1820",
-        "level": "1",
-        "name": "Alstahaug",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1822",
-        "level": "1",
-        "name": "Leirfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1824",
-        "level": "1",
-        "name": "Vefsn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1825",
-        "level": "1",
-        "name": "Grane",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1826",
-        "level": "1",
-        "name": "Hattfjelldal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1827",
-        "level": "1",
-        "name": "Dønna",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1828",
-        "level": "1",
-        "name": "Nesna",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1832",
-        "level": "1",
-        "name": "Hemnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1833",
-        "level": "1",
-        "name": "Rana",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1834",
-        "level": "1",
-        "name": "Lurøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1835",
-        "level": "1",
-        "name": "Træna",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1836",
-        "level": "1",
-        "name": "Rødøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1837",
-        "level": "1",
-        "name": "Meløy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1838",
-        "level": "1",
-        "name": "Gildeskål",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1839",
-        "level": "1",
-        "name": "Beiarn",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1840",
-        "level": "1",
-        "name": "Saltdal",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1841",
-        "level": "1",
-        "name": "Fauske",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1845",
-        "level": "1",
-        "name": "Sørfold",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1848",
-        "level": "1",
-        "name": "Steigen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1849",
-        "level": "1",
-        "name": "Hamarøy - Hábmer",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1850",
-        "level": "1",
-        "name": "Divtasvuodna - Tysfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1851",
-        "level": "1",
-        "name": "Lødingen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1852",
-        "level": "1",
-        "name": "Tjeldsund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1853",
-        "level": "1",
-        "name": "Evenes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1854",
-        "level": "1",
-        "name": "Ballangen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1856",
-        "level": "1",
-        "name": "Røst",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1857",
-        "level": "1",
-        "name": "Værøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1859",
-        "level": "1",
-        "name": "Flakstad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1860",
-        "level": "1",
-        "name": "Vestvågøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1865",
-        "level": "1",
-        "name": "Vågan",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1866",
-        "level": "1",
-        "name": "Hadsel",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1867",
-        "level": "1",
-        "name": "Bø",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1868",
-        "level": "1",
-        "name": "Øksnes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1870",
-        "level": "1",
-        "name": "Sortland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1871",
-        "level": "1",
-        "name": "Andøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1874",
-        "level": "1",
-        "name": "Moskenes",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1902",
-        "level": "1",
-        "name": "Tromsø",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1903",
-        "level": "1",
-        "name": "Harstad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1911",
-        "level": "1",
-        "name": "Kvæfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1913",
-        "level": "1",
-        "name": "Skånland",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1917",
-        "level": "1",
-        "name": "Ibestad",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1919",
-        "level": "1",
-        "name": "Gratangen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1920",
-        "level": "1",
-        "name": "Loabák - Lavangen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1922",
-        "level": "1",
-        "name": "Bardu",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1923",
-        "level": "1",
-        "name": "Salangen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1924",
-        "level": "1",
-        "name": "Målselv",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1925",
-        "level": "1",
-        "name": "Sørreisa",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1926",
-        "level": "1",
-        "name": "Dyrøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1927",
-        "level": "1",
-        "name": "Tranøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1928",
-        "level": "1",
-        "name": "Torsken",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1929",
-        "level": "1",
-        "name": "Berg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1931",
-        "level": "1",
-        "name": "Lenvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1933",
-        "level": "1",
-        "name": "Balsfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1936",
-        "level": "1",
-        "name": "Karlsøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1938",
-        "level": "1",
-        "name": "Lyngen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1939",
-        "level": "1",
-        "name": "Storfjord - Omasvuotna - Omasvuono",
-        "shortName": "",
-        "notes": "7. mars 2014 ble det vedtatt at kommunenavnet skulle være trespråklig (norsk - samisk - kvensk)",
-        "parentCode": ""
-    }, {
-        "code": "1940",
-        "level": "1",
-        "name": "Gáivuotna - Kåfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1941",
-        "level": "1",
-        "name": "Skjervøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1942",
-        "level": "1",
-        "name": "Nordreisa",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "1943",
-        "level": "1",
-        "name": "Kvænangen",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2002",
-        "level": "1",
-        "name": "Vardø",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2003",
-        "level": "1",
-        "name": "Vadsø",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2004",
-        "level": "1",
-        "name": "Hammerfest",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2011",
-        "level": "1",
-        "name": "Guovdageaidnu - Kautokeino",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2012",
-        "level": "1",
-        "name": "Alta",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2014",
-        "level": "1",
-        "name": "Loppa",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2015",
-        "level": "1",
-        "name": "Hasvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2017",
-        "level": "1",
-        "name": "Kvalsund",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2018",
-        "level": "1",
-        "name": "Måsøy",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2019",
-        "level": "1",
-        "name": "Nordkapp",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2020",
-        "level": "1",
-        "name": "Porsanger - Porsángu - Porsanki",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2021",
-        "level": "1",
-        "name": "Kárásjohka - Karasjok",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2022",
-        "level": "1",
-        "name": "Lebesby",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2023",
-        "level": "1",
-        "name": "Gamvik",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2024",
-        "level": "1",
-        "name": "Berlevåg",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2025",
-        "level": "1",
-        "name": "Deatnu Tana",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2027",
-        "level": "1",
-        "name": "Unjárga - Nesseby",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2028",
-        "level": "1",
-        "name": "Båtsfjord",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "2030",
-        "level": "1",
-        "name": "Sør-Varanger",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }, {
-        "code": "9999",
-        "level": "1",
-        "name": "Uoppgitt",
-        "shortName": "",
-        "notes": "",
-        "parentCode": ""
-    }],
-    "_links": {
-        "self": {
-            "href": "/versions/175"
-        }
-    }
-}
+	name: "Kommuneinndeling 2014",
+	validFrom: "2014-01-01",
+	validTo: "2015-12-01",
+	introduction:
+		"Kommuneinndelingen er en administrativ inndeling av Norge. Kommunen er betegnelsen både på en politisk og forvaltningsmessig nivå og betegnelsen på et regionalt nivå i statistikken.\n\nI medhold av kommuneloven §3 nr. 3 ble det den 7. mars 2014 vedtatt trespråklig kommunenavn Omasvuotna Storfjord Omasvuonon (samisk norsk kvensk) på 1939 Storfjord kommune og den 13. juni 2014 vedtatt tospråklig kommunenavn Raarvihke Røyrvik (samisk norsk) på 1739 Røyrvik kommune.",
+	contactPerson: {
+		name: "hhe",
+		email: "hhe@ssb.no",
+		phone: "62 88 55 48",
+	},
+	owningSection: "320",
+	legalBase: "Ikke relevant",
+	publications:
+		"http://www.ssb.no/emner/00/90/rapp_9913/ \nhttp://www.ssb.no/emner/00/00/20/nos_c513/\nhttp://www.ssb.no/vis/kommuner/dokumentasjon.html",
+	derivedFrom: "Ikke relevant",
+	published: ["Bokmål", "Nynorsk", "Engelsk"],
+	correspondenceTables: [
+		{
+			name: "Kommuneinndeling 2014 - Delområde- og grunnkretsinndeling 2014",
+			contactPerson: "hhe",
+			owningSection: "320",
+			source: "Kommuneinndeling 2014",
+			target: "Delområde- og grunnkretsinndeling 2014",
+			_links: {
+				self: {
+					href: "/correspondencetables/51",
+				},
+			},
+		},
+		{
+			name: "Kommuneinndeling 2014 - Delområde- og grunnkretsinndeling 2014",
+			contactPerson: "hhe",
+			owningSection: "320",
+			source: "Kommuneinndeling 2014",
+			target: "Delområde- og grunnkretsinndeling 2014",
+			_links: {
+				self: {
+					href: "/correspondencetables/54",
+				},
+			},
+		},
+		{
+			name: "Kommuneinndeling 2014 - Delområde- og grunnkretsinndeling 2016",
+			contactPerson: "hhe",
+			owningSection: "320",
+			source: "Kommuneinndeling 2014",
+			target: "Delområde- og grunnkretsinndeling 2016",
+			_links: {
+				self: {
+					href: "/correspondencetables/83",
+				},
+			},
+		},
+		{
+			name: "Kommuneinndeling 2014 - Kommuneinndeling 01-2013",
+			contactPerson: "hhe",
+			owningSection: "320",
+			source: "Kommuneinndeling 2014",
+			target: "Kommuneinndeling 01-2013",
+			_links: {
+				self: {
+					href: "/correspondencetables/95",
+				},
+			},
+		},
+		{
+			name: "Kommuneinndeling 2014 - Bydelsinndeling 2004",
+			contactPerson: "hhe",
+			owningSection: "320",
+			source: "Kommuneinndeling 2014",
+			target: "Bydelsinndeling 2004",
+			_links: {
+				self: {
+					href: "/correspondencetables/107",
+				},
+			},
+		},
+	],
+	classificationVariants: [
+		{
+			name: "Store og små kommuner",
+			_links: {
+				self: {
+					href: "/variants/467",
+				},
+			},
+		},
+		{
+			name: "Store og små kommuner II",
+			_links: {
+				self: {
+					href: "/variants/468",
+				},
+			},
+		},
+	],
+	changelogs: [],
+	levels: [
+		{
+			levelNumber: 1,
+			levelName: "Kommune",
+		},
+	],
+	classificationItems: [
+		{
+			code: "0101",
+			level: "1",
+			name: "Halden",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0104",
+			level: "1",
+			name: "Moss",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0105",
+			level: "1",
+			name: "Sarpsborg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0106",
+			level: "1",
+			name: "Fredrikstad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0111",
+			level: "1",
+			name: "Hvaler",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0118",
+			level: "1",
+			name: "Aremark",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0119",
+			level: "1",
+			name: "Marker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0121",
+			level: "1",
+			name: "Rømskog",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0122",
+			level: "1",
+			name: "Trøgstad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0123",
+			level: "1",
+			name: "Spydeberg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0124",
+			level: "1",
+			name: "Askim",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0125",
+			level: "1",
+			name: "Eidsberg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0127",
+			level: "1",
+			name: "Skiptvet",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0128",
+			level: "1",
+			name: "Rakkestad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0135",
+			level: "1",
+			name: "Råde",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0136",
+			level: "1",
+			name: "Rygge",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0137",
+			level: "1",
+			name: "Våler",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0138",
+			level: "1",
+			name: "Hobøl",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0211",
+			level: "1",
+			name: "Vestby",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0213",
+			level: "1",
+			name: "Ski",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0214",
+			level: "1",
+			name: "Ås",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0215",
+			level: "1",
+			name: "Frogn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0216",
+			level: "1",
+			name: "Nesodden",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0217",
+			level: "1",
+			name: "Oppegård",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0219",
+			level: "1",
+			name: "Bærum",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0220",
+			level: "1",
+			name: "Asker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0221",
+			level: "1",
+			name: "Aurskog-Høland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0226",
+			level: "1",
+			name: "Sørum",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0227",
+			level: "1",
+			name: "Fet",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0228",
+			level: "1",
+			name: "Rælingen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0229",
+			level: "1",
+			name: "Enebakk",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0230",
+			level: "1",
+			name: "Lørenskog",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0231",
+			level: "1",
+			name: "Skedsmo",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0233",
+			level: "1",
+			name: "Nittedal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0234",
+			level: "1",
+			name: "Gjerdrum",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0235",
+			level: "1",
+			name: "Ullensaker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0236",
+			level: "1",
+			name: "Nes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0237",
+			level: "1",
+			name: "Eidsvoll",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0238",
+			level: "1",
+			name: "Nannestad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0239",
+			level: "1",
+			name: "Hurdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0301",
+			level: "1",
+			name: "Oslo",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0402",
+			level: "1",
+			name: "Kongsvinger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0403",
+			level: "1",
+			name: "Hamar",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0412",
+			level: "1",
+			name: "Ringsaker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0415",
+			level: "1",
+			name: "Løten",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0417",
+			level: "1",
+			name: "Stange",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0418",
+			level: "1",
+			name: "Nord-Odal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0419",
+			level: "1",
+			name: "Sør-Odal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0420",
+			level: "1",
+			name: "Eidskog",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0423",
+			level: "1",
+			name: "Grue",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0425",
+			level: "1",
+			name: "Åsnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0426",
+			level: "1",
+			name: "Våler",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0427",
+			level: "1",
+			name: "Elverum",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0428",
+			level: "1",
+			name: "Trysil",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0429",
+			level: "1",
+			name: "Åmot",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0430",
+			level: "1",
+			name: "Stor-Elvdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0432",
+			level: "1",
+			name: "Rendalen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0434",
+			level: "1",
+			name: "Engerdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0436",
+			level: "1",
+			name: "Tolga",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0437",
+			level: "1",
+			name: "Tynset",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0438",
+			level: "1",
+			name: "Alvdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0439",
+			level: "1",
+			name: "Folldal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0441",
+			level: "1",
+			name: "Os",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0501",
+			level: "1",
+			name: "Lillehammer",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0502",
+			level: "1",
+			name: "Gjøvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0511",
+			level: "1",
+			name: "Dovre",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0512",
+			level: "1",
+			name: "Lesja",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0513",
+			level: "1",
+			name: "Skjåk",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0514",
+			level: "1",
+			name: "Lom",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0515",
+			level: "1",
+			name: "Vågå",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0516",
+			level: "1",
+			name: "Nord-Fron",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0517",
+			level: "1",
+			name: "Sel",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0519",
+			level: "1",
+			name: "Sør-Fron",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0520",
+			level: "1",
+			name: "Ringebu",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0521",
+			level: "1",
+			name: "Øyer",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0522",
+			level: "1",
+			name: "Gausdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0528",
+			level: "1",
+			name: "Østre Toten",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0529",
+			level: "1",
+			name: "Vestre Toten",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0532",
+			level: "1",
+			name: "Jevnaker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0533",
+			level: "1",
+			name: "Lunner",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0534",
+			level: "1",
+			name: "Gran",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0536",
+			level: "1",
+			name: "Søndre Land",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0538",
+			level: "1",
+			name: "Nordre Land",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0540",
+			level: "1",
+			name: "Sør-Aurdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0541",
+			level: "1",
+			name: "Etnedal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0542",
+			level: "1",
+			name: "Nord-Aurdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0543",
+			level: "1",
+			name: "Vestre Slidre",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0544",
+			level: "1",
+			name: "Øystre Slidre",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0545",
+			level: "1",
+			name: "Vang",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0602",
+			level: "1",
+			name: "Drammen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0604",
+			level: "1",
+			name: "Kongsberg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0605",
+			level: "1",
+			name: "Ringerike",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0612",
+			level: "1",
+			name: "Hole",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0615",
+			level: "1",
+			name: "Flå",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0616",
+			level: "1",
+			name: "Nes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0617",
+			level: "1",
+			name: "Gol",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0618",
+			level: "1",
+			name: "Hemsedal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0619",
+			level: "1",
+			name: "Ål",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0620",
+			level: "1",
+			name: "Hol",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0621",
+			level: "1",
+			name: "Sigdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0622",
+			level: "1",
+			name: "Krødsherad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0623",
+			level: "1",
+			name: "Modum",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0624",
+			level: "1",
+			name: "Øvre Eiker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0625",
+			level: "1",
+			name: "Nedre Eiker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0626",
+			level: "1",
+			name: "Lier",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0627",
+			level: "1",
+			name: "Røyken",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0628",
+			level: "1",
+			name: "Hurum",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0631",
+			level: "1",
+			name: "Flesberg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0632",
+			level: "1",
+			name: "Rollag",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0633",
+			level: "1",
+			name: "Nore og Uvdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0701",
+			level: "1",
+			name: "Horten",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0702",
+			level: "1",
+			name: "Holmestrand",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0704",
+			level: "1",
+			name: "Tønsberg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0706",
+			level: "1",
+			name: "Sandefjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0709",
+			level: "1",
+			name: "Larvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0711",
+			level: "1",
+			name: "Svelvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0713",
+			level: "1",
+			name: "Sande",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0714",
+			level: "1",
+			name: "Hof",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0716",
+			level: "1",
+			name: "Re",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0719",
+			level: "1",
+			name: "Andebu",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0720",
+			level: "1",
+			name: "Stokke",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0722",
+			level: "1",
+			name: "Nøtterøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0723",
+			level: "1",
+			name: "Tjøme",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0728",
+			level: "1",
+			name: "Lardal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0805",
+			level: "1",
+			name: "Porsgrunn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0806",
+			level: "1",
+			name: "Skien",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0807",
+			level: "1",
+			name: "Notodden",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0811",
+			level: "1",
+			name: "Siljan",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0814",
+			level: "1",
+			name: "Bamble",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0815",
+			level: "1",
+			name: "Kragerø",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0817",
+			level: "1",
+			name: "Drangedal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0819",
+			level: "1",
+			name: "Nome",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0821",
+			level: "1",
+			name: "Bø",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0822",
+			level: "1",
+			name: "Sauherad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0826",
+			level: "1",
+			name: "Tinn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0827",
+			level: "1",
+			name: "Hjartdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0828",
+			level: "1",
+			name: "Seljord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0829",
+			level: "1",
+			name: "Kviteseid",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0830",
+			level: "1",
+			name: "Nissedal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0831",
+			level: "1",
+			name: "Fyresdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0833",
+			level: "1",
+			name: "Tokke",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0834",
+			level: "1",
+			name: "Vinje",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0901",
+			level: "1",
+			name: "Risør",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0904",
+			level: "1",
+			name: "Grimstad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0906",
+			level: "1",
+			name: "Arendal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0911",
+			level: "1",
+			name: "Gjerstad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0912",
+			level: "1",
+			name: "Vegårshei",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0914",
+			level: "1",
+			name: "Tvedestrand",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0919",
+			level: "1",
+			name: "Froland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0926",
+			level: "1",
+			name: "Lillesand",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0928",
+			level: "1",
+			name: "Birkenes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0929",
+			level: "1",
+			name: "Åmli",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0935",
+			level: "1",
+			name: "Iveland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0937",
+			level: "1",
+			name: "Evje og Hornnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0938",
+			level: "1",
+			name: "Bygland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0940",
+			level: "1",
+			name: "Valle",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "0941",
+			level: "1",
+			name: "Bykle",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1001",
+			level: "1",
+			name: "Kristiansand",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1002",
+			level: "1",
+			name: "Mandal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1003",
+			level: "1",
+			name: "Farsund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1004",
+			level: "1",
+			name: "Flekkefjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1014",
+			level: "1",
+			name: "Vennesla",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1017",
+			level: "1",
+			name: "Songdalen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1018",
+			level: "1",
+			name: "Søgne",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1021",
+			level: "1",
+			name: "Marnardal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1026",
+			level: "1",
+			name: "Åseral",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1027",
+			level: "1",
+			name: "Audnedal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1029",
+			level: "1",
+			name: "Lindesnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1032",
+			level: "1",
+			name: "Lyngdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1034",
+			level: "1",
+			name: "Hægebostad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1037",
+			level: "1",
+			name: "Kvinesdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1046",
+			level: "1",
+			name: "Sirdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1101",
+			level: "1",
+			name: "Eigersund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1102",
+			level: "1",
+			name: "Sandnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1103",
+			level: "1",
+			name: "Stavanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1106",
+			level: "1",
+			name: "Haugesund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1111",
+			level: "1",
+			name: "Sokndal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1112",
+			level: "1",
+			name: "Lund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1114",
+			level: "1",
+			name: "Bjerkreim",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1119",
+			level: "1",
+			name: "Hå",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1120",
+			level: "1",
+			name: "Klepp",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1121",
+			level: "1",
+			name: "Time",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1122",
+			level: "1",
+			name: "Gjesdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1124",
+			level: "1",
+			name: "Sola",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1127",
+			level: "1",
+			name: "Randaberg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1129",
+			level: "1",
+			name: "Forsand",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1130",
+			level: "1",
+			name: "Strand",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1133",
+			level: "1",
+			name: "Hjelmeland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1134",
+			level: "1",
+			name: "Suldal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1135",
+			level: "1",
+			name: "Sauda",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1141",
+			level: "1",
+			name: "Finnøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1142",
+			level: "1",
+			name: "Rennesøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1144",
+			level: "1",
+			name: "Kvitsøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1145",
+			level: "1",
+			name: "Bokn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1146",
+			level: "1",
+			name: "Tysvær",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1149",
+			level: "1",
+			name: "Karmøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1151",
+			level: "1",
+			name: "Utsira",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1160",
+			level: "1",
+			name: "Vindafjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1201",
+			level: "1",
+			name: "Bergen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1211",
+			level: "1",
+			name: "Etne",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1216",
+			level: "1",
+			name: "Sveio",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1219",
+			level: "1",
+			name: "Bømlo",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1221",
+			level: "1",
+			name: "Stord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1222",
+			level: "1",
+			name: "Fitjar",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1223",
+			level: "1",
+			name: "Tysnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1224",
+			level: "1",
+			name: "Kvinnherad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1227",
+			level: "1",
+			name: "Jondal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1228",
+			level: "1",
+			name: "Odda",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1231",
+			level: "1",
+			name: "Ullensvang",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1232",
+			level: "1",
+			name: "Eidfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1233",
+			level: "1",
+			name: "Ulvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1234",
+			level: "1",
+			name: "Granvin",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1235",
+			level: "1",
+			name: "Voss",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1238",
+			level: "1",
+			name: "Kvam",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1241",
+			level: "1",
+			name: "Fusa",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1242",
+			level: "1",
+			name: "Samnanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1243",
+			level: "1",
+			name: "Os",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1244",
+			level: "1",
+			name: "Austevoll",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1245",
+			level: "1",
+			name: "Sund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1246",
+			level: "1",
+			name: "Fjell",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1247",
+			level: "1",
+			name: "Askøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1251",
+			level: "1",
+			name: "Vaksdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1252",
+			level: "1",
+			name: "Modalen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1253",
+			level: "1",
+			name: "Osterøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1256",
+			level: "1",
+			name: "Meland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1259",
+			level: "1",
+			name: "Øygarden",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1260",
+			level: "1",
+			name: "Radøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1263",
+			level: "1",
+			name: "Lindås",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1264",
+			level: "1",
+			name: "Austrheim",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1265",
+			level: "1",
+			name: "Fedje",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1266",
+			level: "1",
+			name: "Masfjorden",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1401",
+			level: "1",
+			name: "Flora",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1411",
+			level: "1",
+			name: "Gulen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1412",
+			level: "1",
+			name: "Solund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1413",
+			level: "1",
+			name: "Hyllestad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1416",
+			level: "1",
+			name: "Høyanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1417",
+			level: "1",
+			name: "Vik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1418",
+			level: "1",
+			name: "Balestrand",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1419",
+			level: "1",
+			name: "Leikanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1420",
+			level: "1",
+			name: "Sogndal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1421",
+			level: "1",
+			name: "Aurland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1422",
+			level: "1",
+			name: "Lærdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1424",
+			level: "1",
+			name: "Årdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1426",
+			level: "1",
+			name: "Luster",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1428",
+			level: "1",
+			name: "Askvoll",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1429",
+			level: "1",
+			name: "Fjaler",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1430",
+			level: "1",
+			name: "Gaular",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1431",
+			level: "1",
+			name: "Jølster",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1432",
+			level: "1",
+			name: "Førde",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1433",
+			level: "1",
+			name: "Naustdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1438",
+			level: "1",
+			name: "Bremanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1439",
+			level: "1",
+			name: "Vågsøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1441",
+			level: "1",
+			name: "Selje",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1443",
+			level: "1",
+			name: "Eid",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1444",
+			level: "1",
+			name: "Hornindal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1445",
+			level: "1",
+			name: "Gloppen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1449",
+			level: "1",
+			name: "Stryn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1502",
+			level: "1",
+			name: "Molde",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1504",
+			level: "1",
+			name: "Ålesund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1505",
+			level: "1",
+			name: "Kristiansund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1511",
+			level: "1",
+			name: "Vanylven",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1514",
+			level: "1",
+			name: "Sande",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1515",
+			level: "1",
+			name: "Herøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1516",
+			level: "1",
+			name: "Ulstein",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1517",
+			level: "1",
+			name: "Hareid",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1519",
+			level: "1",
+			name: "Volda",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1520",
+			level: "1",
+			name: "Ørsta",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1523",
+			level: "1",
+			name: "Ørskog",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1524",
+			level: "1",
+			name: "Norddal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1525",
+			level: "1",
+			name: "Stranda",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1526",
+			level: "1",
+			name: "Stordal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1528",
+			level: "1",
+			name: "Sykkylven",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1529",
+			level: "1",
+			name: "Skodje",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1531",
+			level: "1",
+			name: "Sula",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1532",
+			level: "1",
+			name: "Giske",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1534",
+			level: "1",
+			name: "Haram",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1535",
+			level: "1",
+			name: "Vestnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1539",
+			level: "1",
+			name: "Rauma",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1543",
+			level: "1",
+			name: "Nesset",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1545",
+			level: "1",
+			name: "Midsund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1546",
+			level: "1",
+			name: "Sandøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1547",
+			level: "1",
+			name: "Aukra",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1548",
+			level: "1",
+			name: "Fræna",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1551",
+			level: "1",
+			name: "Eide",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1554",
+			level: "1",
+			name: "Averøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1557",
+			level: "1",
+			name: "Gjemnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1560",
+			level: "1",
+			name: "Tingvoll",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1563",
+			level: "1",
+			name: "Sunndal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1566",
+			level: "1",
+			name: "Surnadal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1567",
+			level: "1",
+			name: "Rindal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1571",
+			level: "1",
+			name: "Halsa",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1573",
+			level: "1",
+			name: "Smøla",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1576",
+			level: "1",
+			name: "Aure",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1601",
+			level: "1",
+			name: "Trondheim",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1612",
+			level: "1",
+			name: "Hemne",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1613",
+			level: "1",
+			name: "Snillfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1617",
+			level: "1",
+			name: "Hitra",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1620",
+			level: "1",
+			name: "Frøya",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1621",
+			level: "1",
+			name: "Ørland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1622",
+			level: "1",
+			name: "Agdenes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1624",
+			level: "1",
+			name: "Rissa",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1627",
+			level: "1",
+			name: "Bjugn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1630",
+			level: "1",
+			name: "Åfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1632",
+			level: "1",
+			name: "Roan",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1633",
+			level: "1",
+			name: "Osen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1634",
+			level: "1",
+			name: "Oppdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1635",
+			level: "1",
+			name: "Rennebu",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1636",
+			level: "1",
+			name: "Meldal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1638",
+			level: "1",
+			name: "Orkdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1640",
+			level: "1",
+			name: "Røros",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1644",
+			level: "1",
+			name: "Holtålen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1648",
+			level: "1",
+			name: "Midtre Gauldal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1653",
+			level: "1",
+			name: "Melhus",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1657",
+			level: "1",
+			name: "Skaun",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1662",
+			level: "1",
+			name: "Klæbu",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1663",
+			level: "1",
+			name: "Malvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1664",
+			level: "1",
+			name: "Selbu",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1665",
+			level: "1",
+			name: "Tydal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1702",
+			level: "1",
+			name: "Steinkjer",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1703",
+			level: "1",
+			name: "Namsos",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1711",
+			level: "1",
+			name: "Meråker",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1714",
+			level: "1",
+			name: "Stjørdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1717",
+			level: "1",
+			name: "Frosta",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1718",
+			level: "1",
+			name: "Leksvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1719",
+			level: "1",
+			name: "Levanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1721",
+			level: "1",
+			name: "Verdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1724",
+			level: "1",
+			name: "Verran",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1725",
+			level: "1",
+			name: "Namdalseid",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1736",
+			level: "1",
+			name: "Snåase - Snåsa",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1738",
+			level: "1",
+			name: "Lierne",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1739",
+			level: "1",
+			name: "Raarvihke - Røyrvik",
+			shortName: "",
+			notes:
+				"13. juni 2014 ble det vedtatt at kommunenavnet skulle være tospråklig (samisk -norsk)",
+			parentCode: "",
+		},
+		{
+			code: "1740",
+			level: "1",
+			name: "Namsskogan",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1742",
+			level: "1",
+			name: "Grong",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1743",
+			level: "1",
+			name: "Høylandet",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1744",
+			level: "1",
+			name: "Overhalla",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1748",
+			level: "1",
+			name: "Fosnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1749",
+			level: "1",
+			name: "Flatanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1750",
+			level: "1",
+			name: "Vikna",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1751",
+			level: "1",
+			name: "Nærøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1755",
+			level: "1",
+			name: "Leka",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1756",
+			level: "1",
+			name: "Inderøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1804",
+			level: "1",
+			name: "Bodø",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1805",
+			level: "1",
+			name: "Narvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1811",
+			level: "1",
+			name: "Bindal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1812",
+			level: "1",
+			name: "Sømna",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1813",
+			level: "1",
+			name: "Brønnøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1815",
+			level: "1",
+			name: "Vega",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1816",
+			level: "1",
+			name: "Vevelstad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1818",
+			level: "1",
+			name: "Herøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1820",
+			level: "1",
+			name: "Alstahaug",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1822",
+			level: "1",
+			name: "Leirfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1824",
+			level: "1",
+			name: "Vefsn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1825",
+			level: "1",
+			name: "Grane",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1826",
+			level: "1",
+			name: "Hattfjelldal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1827",
+			level: "1",
+			name: "Dønna",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1828",
+			level: "1",
+			name: "Nesna",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1832",
+			level: "1",
+			name: "Hemnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1833",
+			level: "1",
+			name: "Rana",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1834",
+			level: "1",
+			name: "Lurøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1835",
+			level: "1",
+			name: "Træna",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1836",
+			level: "1",
+			name: "Rødøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1837",
+			level: "1",
+			name: "Meløy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1838",
+			level: "1",
+			name: "Gildeskål",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1839",
+			level: "1",
+			name: "Beiarn",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1840",
+			level: "1",
+			name: "Saltdal",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1841",
+			level: "1",
+			name: "Fauske",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1845",
+			level: "1",
+			name: "Sørfold",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1848",
+			level: "1",
+			name: "Steigen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1849",
+			level: "1",
+			name: "Hamarøy - Hábmer",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1850",
+			level: "1",
+			name: "Divtasvuodna - Tysfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1851",
+			level: "1",
+			name: "Lødingen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1852",
+			level: "1",
+			name: "Tjeldsund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1853",
+			level: "1",
+			name: "Evenes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1854",
+			level: "1",
+			name: "Ballangen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1856",
+			level: "1",
+			name: "Røst",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1857",
+			level: "1",
+			name: "Værøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1859",
+			level: "1",
+			name: "Flakstad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1860",
+			level: "1",
+			name: "Vestvågøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1865",
+			level: "1",
+			name: "Vågan",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1866",
+			level: "1",
+			name: "Hadsel",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1867",
+			level: "1",
+			name: "Bø",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1868",
+			level: "1",
+			name: "Øksnes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1870",
+			level: "1",
+			name: "Sortland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1871",
+			level: "1",
+			name: "Andøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1874",
+			level: "1",
+			name: "Moskenes",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1902",
+			level: "1",
+			name: "Tromsø",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1903",
+			level: "1",
+			name: "Harstad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1911",
+			level: "1",
+			name: "Kvæfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1913",
+			level: "1",
+			name: "Skånland",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1917",
+			level: "1",
+			name: "Ibestad",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1919",
+			level: "1",
+			name: "Gratangen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1920",
+			level: "1",
+			name: "Loabák - Lavangen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1922",
+			level: "1",
+			name: "Bardu",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1923",
+			level: "1",
+			name: "Salangen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1924",
+			level: "1",
+			name: "Målselv",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1925",
+			level: "1",
+			name: "Sørreisa",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1926",
+			level: "1",
+			name: "Dyrøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1927",
+			level: "1",
+			name: "Tranøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1928",
+			level: "1",
+			name: "Torsken",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1929",
+			level: "1",
+			name: "Berg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1931",
+			level: "1",
+			name: "Lenvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1933",
+			level: "1",
+			name: "Balsfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1936",
+			level: "1",
+			name: "Karlsøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1938",
+			level: "1",
+			name: "Lyngen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1939",
+			level: "1",
+			name: "Storfjord - Omasvuotna - Omasvuono",
+			shortName: "",
+			notes:
+				"7. mars 2014 ble det vedtatt at kommunenavnet skulle være trespråklig (norsk - samisk - kvensk)",
+			parentCode: "",
+		},
+		{
+			code: "1940",
+			level: "1",
+			name: "Gáivuotna - Kåfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1941",
+			level: "1",
+			name: "Skjervøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1942",
+			level: "1",
+			name: "Nordreisa",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "1943",
+			level: "1",
+			name: "Kvænangen",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2002",
+			level: "1",
+			name: "Vardø",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2003",
+			level: "1",
+			name: "Vadsø",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2004",
+			level: "1",
+			name: "Hammerfest",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2011",
+			level: "1",
+			name: "Guovdageaidnu - Kautokeino",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2012",
+			level: "1",
+			name: "Alta",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2014",
+			level: "1",
+			name: "Loppa",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2015",
+			level: "1",
+			name: "Hasvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2017",
+			level: "1",
+			name: "Kvalsund",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2018",
+			level: "1",
+			name: "Måsøy",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2019",
+			level: "1",
+			name: "Nordkapp",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2020",
+			level: "1",
+			name: "Porsanger - Porsángu - Porsanki",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2021",
+			level: "1",
+			name: "Kárásjohka - Karasjok",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2022",
+			level: "1",
+			name: "Lebesby",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2023",
+			level: "1",
+			name: "Gamvik",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2024",
+			level: "1",
+			name: "Berlevåg",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2025",
+			level: "1",
+			name: "Deatnu Tana",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2027",
+			level: "1",
+			name: "Unjárga - Nesseby",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2028",
+			level: "1",
+			name: "Båtsfjord",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "2030",
+			level: "1",
+			name: "Sør-Varanger",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+		{
+			code: "9999",
+			level: "1",
+			name: "Uoppgitt",
+			shortName: "",
+			notes: "",
+			parentCode: "",
+		},
+	],
+	_links: {
+		self: {
+			href: "/versions/175",
+		},
+	},
+};

@@ -1,35 +1,31 @@
-import * as types from '../constants/ActionTypes';
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
+import * as types from "../constants/ActionTypes";
 
 const initialState = {
 	isFetching: false,
-	ssbSections: []
-}
+	ssbSections: [],
+};
 
 function ssbSections(state = initialState, action) {
 	switch (action.type) {
-
 		case types.SSB_SECTION_REQUEST:
 			return Object.assign({}, state, {
-				isFetching: true
-			})
+				isFetching: true,
+			});
 		case types.SSB_SECTION_SUCCESS:
 			return merge({}, state, {
 				isFetching: false,
-				ssbSections: action.response._embedded.ssbSections
-			})
+				ssbSections: action.response._embedded.ssbSections,
+			});
 		case types.SSB_SECTION_FAILURE:
 			return Object.assign({}, state, {
 				isFetching: false,
-                ssbSections: []
-			})
-
-
+				ssbSections: [],
+			});
 
 		default:
 			return state;
 	}
-
 }
 
-export default ssbSections
+export default ssbSections;

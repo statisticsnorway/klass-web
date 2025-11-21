@@ -1,39 +1,38 @@
-import { combineReducers } from 'redux';
-import classFamilies from './classFamilies';
-import selectedClass from './selectedClass';
-import selectedVersion from './selectedVersion';
-import searchResult from './searchResult';
-import ssbSections from './ssbSections';
-import subscription from './subscription';
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
+import { combineReducers } from "redux";
+import classFamilies from "./classFamilies";
+import searchResult from "./searchResult";
+import selectedClass from "./selectedClass";
+import selectedVersion from "./selectedVersion";
+import ssbSections from "./ssbSections";
+import subscription from "./subscription";
 
 const initialState = {
 	modalIsOpen: false,
 	item: {},
-	contentType: "notes"
-}
+	contentType: "notes",
+};
 function modal(state = initialState, action) {
 	switch (action.type) {
-		case 'TOGGLE_MODAL':
+		case "TOGGLE_MODAL":
 			return merge({}, state, {
 				modalIsOpen: action.display,
 				item: action.item,
-                contentType: action.contentType
-			})
+				contentType: action.contentType,
+			});
 		default:
-			return state
-
+			return state;
 	}
 }
 
 const rootReducer = combineReducers({
 	modal,
 	classFamilies,
-    ssbSections,
+	ssbSections,
 	selectedClass,
 	selectedVersion,
 	searchResult,
-    subscription
-})
+	subscription,
+});
 
-export default rootReducer
+export default rootReducer;
