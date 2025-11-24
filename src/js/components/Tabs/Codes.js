@@ -5,7 +5,6 @@ import Translate from 'react-translate-component'
 import counterpart from 'counterpart'
 import _ from 'lodash'
 import List from '../List'
-import moment from 'moment'
 import config from '../../config'
 
 class Codes extends Component {
@@ -39,18 +38,44 @@ class Codes extends Component {
 		actions.searchCode("", "code")
     }
 
-	downloadCodes() {
-		const { version } = this.props
-		let language = version.language;
-		let languageArgument = language == null ?  "" : "?language=" + language;
-		const csvURL = config.API_BASE_URL + '/versions/' + version.id + '.csv' + languageArgument
+    async downloadCodes() {
+        const { version } = this.props
+        const language = version.language
+        const languageArgument = language == null ? "" : `?language=${encodeURIComponent(language)}`
+        const csvURL = `${config.API_BASE_URL}/versions/${version.id}${languageArgument}`
 
-		var tempLink = document.createElement('a')
-        document.body.appendChild(tempLink)
-		tempLink.href = csvURL
-		tempLink.setAttribute('download', 'code')
-		tempLink.click()
-	}
+        try {
+            const res = await fetch(csvURL, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'text/csv'
+                },
+            })
+
+            if (!res.ok) {
+                console.error('Failed to download CSV:', res.status, res.statusText)
+                return
+            }
+
+            const blob = await res.blob()
+            console.debug(`Fetched CSV data from ${csvURL}`)
+            const fileName = `klass-version-${version.id}-codes.csv`
+
+            console.debug(`Offering download with hidden anchor`)
+            const anchorElement = document.createElement('a')
+            document.body.appendChild(anchorElement)
+
+            const url = window.URL.createObjectURL(blob);
+
+            anchorElement.href = url;
+            anchorElement.download = fileName;
+            anchorElement.click();
+
+            window.URL.revokeObjectURL(url);
+        } catch (err) {
+            console.error('Error downloading CSV:', err)
+        }
+    }
 
     filterText () {
         const { version } = this.props
