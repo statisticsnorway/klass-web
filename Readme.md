@@ -9,7 +9,7 @@ Requires node 20
 Installere avhengigheter slik:
 
 ```shell
-npm install --legacy-peer-deps
+npm install
 ```
 
 ## Oppstart
