@@ -6,6 +6,7 @@ ARG target_env=prod
 
 WORKDIR /app
 COPY package*.json ./
+COPY .npmrc .
 RUN npm ci --verbose
 COPY .babelrc .
 COPY config/ ./config/
