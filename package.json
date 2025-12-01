@@ -22,7 +22,7 @@
     "start": "webpack-dev-server --config ./config/webpack.config.dev.js --hot --progress",
     "prebuild": "npm run clean:build",
     "build": "webpack --config ./config/webpack.config.prod.js --progress",
-    "docker": "docker build . --tag klass-web --build-arg target_env=test && docker run -p 3000:3000 klass-web:latest",
+    "docker": "docker build . --tag klass-web --build-arg target_env=test && echo 'Running klass-web at http://localhost:3000' && docker run -p 3000:3000 klass-web:latest",
     "lint": "eslint --ext .js --ext .jsx src test config"
   },
   "devDependencies": {
