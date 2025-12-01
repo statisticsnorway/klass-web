@@ -22,5 +22,6 @@ WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/build .
 COPY mime.types /etc/nginx/mime.types
 COPY nginx.conf /etc/nginx/nginx.conf
-
+# User set by default on Nais
+USER 1069:1069
 EXPOSE 3000
