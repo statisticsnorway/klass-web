@@ -30,42 +30,6 @@ npm run docker
 
 Det finnes config for ulike miljøer i `src/env/config/<miljønavn>/index.js`. Disse filene burde kopieres til `src/js/config/index.js` for at verdiene skal gjelde. Det er implementert håndtering av dette i `Dockerfile` der man kan spesifisere `--build-arg "target_env=test"` på kommandolinje for å velge et miljø. Forventede verdier er `test` og `prod`.
 
-## Prosjektstruktur
-
-```
-.
-+-- bin
-|   +-- buildHtml.js // script fil for å generere produksjonskode fra index.html
-+-- config    // Konfigurasjonsfiler for webpack
-|   +-- webpack.config.dev.js
-|   +-- webpack.config.prod.js
-+-- src
-|   +-- images
-|   +-- js
-|   |   +-- actions  // Inneholder web api metodekall. Sender/mottar data fra applikasjonen
-|   |   |   +-- index.js
-|   |   +-- components // Minimale stateless komponenter
-|   |   |   +-- List
-|   |   |   +-- Modal
-|   |   |   +-- Search
-|   |   |   +-- Tabs
-|   |   |   +-- Sidebar.js
-|   |   +-- config  // Konfigurasjoner for applikasjonen
-|   |   +-- constants // Definisjoner av type attributter som indikerer hvilken action som blir utført
-|   |   +-- containers // connected to the state
-|   |   +-- lib   // Biblioteksfiler
-|   |   +-- middleware // Mottar request og genererer response i f.eks. asynkrone API kall. Brukes også til å logge state
-|   |   +-- reducers // Håndterer state som kommer fra action response. Inneholder metoder som tar inn foregående state og action, og returnerer nye state. Bør være ren og ikke inneholde metoder som manipulerer data.
-|   |   +-- server  // Lokal Express server for å lage mock data
-|   |   +-- store  // Holder/bevarer applikasjonens state. Håndterer state aksessering
-|   |   +-- views  // statiske view
-|   |   +-- main.js  // Hoved applikasjonsfil
-|   |   +-- ssbFrame.js // Statiske HTML komponenter for å lage ssb.no rammen rundt applikasjonen
-|   |   +-- routes.js // Håndterer routing
-|   +-- styles   // Felles stil-filer (bl.a. fra ssb.no)
-|   +-- index.html
-```
-
 ## ssb.no ramme
 
 Det er implementert statiske HTML komponenter for å plassere klass.ssb.no applikasjonen innenfor <www.ssb.no> sin ramme (header- og footer seksjon). Komponentene er implementert i ssbFrame.js og blir brukt i main.js å genere header og footer. CSS stiler er lenket direkte til ssb.no og kan forårsake crossdomain problemer. Legg merke til at endringer som blir gjort på rammen til ssb.no må synkroniseres og implementeres i den statiske fila ssbFrame.js.
@@ -77,3 +41,11 @@ Klass.ssb.no har 2 separate språk implementasjoner. Den ene gjelder språk som 
 ## Bygg og deploy
 
 Klass-web serves med nginx på Nais.
+
+## Release
+
+1. Skap en branch med navn for release versjon f.eks `git checkout -b release/v1.14.10`
+1. Kjør kommando for å bumpe versjon f.eks `npm version patch`
+1. Åpne PR
+1. Etter merge bruk GitHub sin UI for å skape en release
+1. Det skal trigge automatisk bygg og deploy til prod
