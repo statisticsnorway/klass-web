@@ -55,8 +55,8 @@ module.exports = {
     INCLUDE_FUTURES: 'Inkluder versjoner frå framtida'
   },
   TABS: {
-    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen viser ikke gjeldende status for kodeverket',
-    VARIANT_NO_LONGER_VALID: 'OBS! Denne varianten viser ikke gjeldende status for kodeverket',
+    VERSION_NO_LONGER_VALID: 'OBS! Denne versjonen er ikkje dagens versjon av kodeverket.',
+    VARIANT_NO_LONGER_VALID: 'OBS! Denne varianten er ikkje dagens versjon av kodeverket.',
     VERSION_NOT_YET_VALID: 'OBS! Denne versjonen er ikkje gyldig ennå!',
     VARIANT_NOT_YET_VALID: 'OBS! Denne varianten er ikkje gyldig ennå!',
     VERSION_EXPIRED: 'Utgått versjon',
