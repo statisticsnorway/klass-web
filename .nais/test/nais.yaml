@@ -11,7 +11,10 @@ spec:
   ingresses:
     - https://klass-web.test.ssb.no
   port: 3000
-
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: nodejs
   replicas:
     min: 1
     max: 1
