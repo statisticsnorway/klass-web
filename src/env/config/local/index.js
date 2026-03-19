@@ -1,5 +1,5 @@
 const config = {
-  API_BASE_URL: "https://data.ssb.no/api/klass/v1",
+  API_BASE_URL: "https://klass.intern.test.ssb.no/api/klass/v1",
   API_LOCAL_BASE_URL: "http://localhost:3001",
   API_LOCAL_STORAGE: false,
   OM_KLASS_URL: "https://www.ssb.no/metadata/om-klass",
