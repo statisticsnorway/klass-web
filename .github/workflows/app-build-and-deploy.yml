@@ -1,11 +1,12 @@
 name: App build and deploy
 
 on:
-  release:
-    types: [published]
-  push:
-    branches:
-      - master
+  pull_request:
+  # release:
+  #   types: [published]
+  # push:
+  #   branches:
+  #     - master
 
 env:
   REGISTRY: europe-north1-docker.pkg.dev/${{ secrets.NAIS_MANAGEMENT_PROJECT_ID }}/dapla-metadata
@@ -39,6 +40,14 @@ jobs:
             echo "nais_config_path=.nais/test/nais.yaml" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Generate vulnerability report
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          scan-type: "fs"
+          format: "cyclonedx"
+          output: "dependency-results.sbom.json"
+          scan-ref: "."
+
       - name: Build and push
         uses: nais/docker-build-push@v0
         id: docker-build-push
@@ -46,6 +55,7 @@ jobs:
           team: dapla-metadata
           build_args: |
             target_env=${{ steps.nais-deploy-vars.outputs.nais_cluster }}
+          byosbom: "dependency-results.sbom.json"
 
       - uses: nais/deploy/actions/deploy@v2
         env:
