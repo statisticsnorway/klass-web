@@ -7,10 +7,6 @@ on:
     branches:
       - master
 
-env:
-  REGISTRY: europe-north1-docker.pkg.dev/${{ secrets.NAIS_MANAGEMENT_PROJECT_ID }}/dapla-metadata
-  DOCKER_IMAGE: europe-north1-docker.pkg.dev/${{ secrets.NAIS_MANAGEMENT_PROJECT_ID }}/dapla-metadata/klass-web:${{ github.sha }}
-
 jobs:
   docker-build:
     name: Docker build
@@ -60,7 +56,6 @@ jobs:
         env:
           CLUSTER: ${{ steps.nais-deploy-vars.outputs.nais_cluster }}
           RESOURCE: ${{ steps.nais-deploy-vars.outputs.nais_config_path }}
-          VAR: image=${{ steps.docker-build-push.outputs.image }}
           DEPLOY_SERVER: deploy.ssb.cloud.nais.io:443
           WORKLOAD_IMAGE: ${{ steps.docker-build-push.outputs.image }}
           TELEMETRY: ${{ steps.docker-build-push.outputs.telemetry }}
