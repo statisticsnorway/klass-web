@@ -6,8 +6,6 @@ metadata:
   namespace: dapla-metadata
 
 spec:
-  image: "{{ image }}"  # Injected from the GitHub Action
-
   ingresses:
     - https://klass-web.ssb.no
   port: 3000
