@@ -1,5 +1,5 @@
 # Step 1: Build the app
-FROM node:20 AS builder
+FROM node:26 AS builder
 
 # Expected values: test, prod
 ARG target_env=prod
