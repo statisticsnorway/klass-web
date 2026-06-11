@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Generate NAIS deploy variables
         id: nais-deploy-vars
@@ -36,7 +36,7 @@ jobs:
           fi
 
       - name: Generate vulnerability report
-        uses: aquasecurity/trivy-action@v0.35.0
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # v0.35.0
         with:
           scan-type: "fs"
           format: "cyclonedx"
@@ -44,7 +44,7 @@ jobs:
           scan-ref: "."
 
       - name: Build and push
-        uses: nais/docker-build-push@v0
+        uses: nais/docker-build-push@05dbb6091b30bd84279c6d64a45ef8782fd410a5 # v0
         id: docker-build-push
         with:
           team: dapla-metadata
@@ -52,7 +52,7 @@ jobs:
             target_env=${{ steps.nais-deploy-vars.outputs.nais_cluster }}
           byosbom: "dependency-results.sbom.json"
 
-      - uses: nais/deploy/actions/deploy@v2
+      - uses: nais/deploy/actions/deploy@157203210ef983b1d2fb32db50d177043ce95ebd # v2
         env:
           CLUSTER: ${{ steps.nais-deploy-vars.outputs.nais_cluster }}
           RESOURCE: ${{ steps.nais-deploy-vars.outputs.nais_config_path }}
