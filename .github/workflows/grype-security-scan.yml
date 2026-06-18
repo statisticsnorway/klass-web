@@ -1,0 +1,44 @@
+name: Grype security scan
+on:
+  push:
+    branches:
+      - chore/add-security-scanning
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+jobs:
+  grype-scan:
+    runs-on: ubuntu-latest
+    # Permissions key is required for CodeQL SARIF Upload, per the docs:
+    # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
+    permissions:
+      security-events: write
+      contents: "read"
+      id-token: "write"
+      packages: "read"
+      actions: "read"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+      - name: Build the Container image
+        run: docker build . --file Dockerfile --tag klass-web:latest
+      - name: Display scan result as table
+        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7.4.0
+        id: scan_table
+        with:
+          image: "klass-web:latest"
+          output-format: table
+          fail-build: false
+          severity-cutoff: high
+      - name: Create sarif file
+        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7.4.0
+        id: scan
+        with:
+          image: "klass-web:latest"
+          fail-build: false
+          severity-cutoff: high
+      - name: upload Anchore scan SARIF report
+        uses: github/codeql-action/upload-sarif@7211b7c8077ea37d8641b6271f6a365a22a5fbfa # v4.36.0
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
