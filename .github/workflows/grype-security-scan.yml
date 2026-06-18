@@ -2,7 +2,7 @@ name: Grype security scan
 on:
   push:
     branches:
-      - chore/add-security-scanning
+      - master
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight
 jobs:
