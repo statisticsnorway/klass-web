@@ -23,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Deploy to test
-        uses: nais/deploy/actions/deploy@157203210ef983b1d2fb32db50d177043ce95ebd # v2
+        uses: nais/deploy/actions/deploy@5fdd91aaf69bb0d6dd5e5118cdacb639f487b93b # v2
         env:
           CLUSTER: test
           RESOURCE: .nais/test/alerts.yaml
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Deploy to test
-        uses: nais/deploy/actions/deploy@157203210ef983b1d2fb32db50d177043ce95ebd # v2
+        uses: nais/deploy/actions/deploy@5fdd91aaf69bb0d6dd5e5118cdacb639f487b93b # v2
         env:
           CLUSTER: prod
           RESOURCE: .nais/prod/alerts.yaml
