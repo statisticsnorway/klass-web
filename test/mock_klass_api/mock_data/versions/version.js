@@ -6,7 +6,6 @@ module.exports = {
     "contactPerson": {
         "name": "Anne Gro Hustoft",
         "email": "anne.gro.hustoft@ssb.no",
-        "phone": "62 88 55 48"
     },
     "owningSection": "830",
     "legalBase": "Rådsforordning (EF) nr. 1893/2006",

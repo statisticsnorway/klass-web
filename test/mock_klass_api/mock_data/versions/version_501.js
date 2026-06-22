@@ -6,7 +6,6 @@ module.exports = {
   "contactPerson" : {
       "name": "Haugen, Kristin Foldal",
       "email": "kristin.foldal.haugen@ssb.no",
-      "phone": "62 88 55 48"
   },
   "owningSection" : "830",
   "legalBase" : "Rådsforordning (EF) nr. 1893/2006",

@@ -20,10 +20,6 @@ class Contact extends Component {
                         <span className="key"><Translate content="CONTACT.EMAIL" />: </span>
                         <a className="value" href={"mailto:" + contactInfo.email}>{contactInfo.email}</a>
                     </p>
-                    <p className="phone">
-                        <span className="key"><Translate content="CONTACT.PHONE" />: </span>
-                        <span className="value">{contactInfo.phone}</span>
-                    </p>
                 </div>
             </div>
         )
@@ -38,7 +34,6 @@ Contact.defaultProps = {
     contactInfo: {
         name: 'Anne Gro Hustoft',
         email: 'anne.gro.hustoft@ssb.no',
-        phone: '40 90 25 52'
     }
 }
 

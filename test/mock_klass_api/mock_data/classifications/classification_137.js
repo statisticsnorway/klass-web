@@ -10,7 +10,6 @@ module.exports = {
   "contactPerson" : {
       "name": "Haugen, Kristin Foldal",
       "email": "kristin.foldal.haugen@ssb.no",
-      "phone": "62 88 55 48"
   },
   "owningSection" : "830",
   "statisticalUnits" : [ "Foretak" ],
