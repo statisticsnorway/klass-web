@@ -36,9 +36,9 @@ Contact.propTypes = {
 
 Contact.defaultProps = {
     contactInfo: {
-        name: 'Anne Gro Hustoft',
-        email: 'anne.gro.hustoft@ssb.no',
-        phone: '40 90 25 52'
+        name: 'Informasjonstjenesten',
+        email: 'informasjon@ssb.no',
+        phone: '21 09 46 42'
     }
 }
 
