@@ -51,7 +51,6 @@ module.exports = {
   CONTACT: {
     HEADER: 'Contact',
     EMAIL: 'E-mail',
-    PHONE: 'Phone'
   },
   CLASSIFICATIONS: {
     CLASSIFICATION: 'Classification',

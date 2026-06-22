@@ -6,7 +6,6 @@ module.exports = {
     "contactPerson": {
         "name": "Administrator",
         "email": "admin@ssb.no",
-        "phone": "62 88 55 48"
     },
     "owningSection": "260",
     "legalBase": "Ikke relevant",
