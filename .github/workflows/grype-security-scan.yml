@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - chore/update-grype-security-scanning
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight
 jobs:
