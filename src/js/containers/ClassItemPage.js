@@ -71,9 +71,6 @@ function loadData(props, selectedLanguage) {
                 }
                 actions.loadChanges(params.classId, query, overrideLanguage)
             }
-
-            // } else {
-            // actions.loadVersion()
         }
     })
 }

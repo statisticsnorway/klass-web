@@ -6,7 +6,6 @@ module.exports = {
   "contactPerson" : {
     "name" : "Hartvedt, Henning",
     "email" : "Henning.Hartvedt@ssb.no",
-    "phone" : "62885265"
   },
   "owningSection" : "320",
   "legalBase" : "",
@@ -18,7 +17,6 @@ module.exports = {
     "contactPerson" : {
       "name" : "Hartvedt, Henning",
       "email" : "Henning.Hartvedt@ssb.no",
-      "phone" : "62885265"
     },
     "owningSection" : "320",
     "source" : "Kommuneinndeling 2014",
@@ -34,7 +32,6 @@ module.exports = {
     "contactPerson" : {
       "name" : "Hartvedt, Henning",
       "email" : "Henning.Hartvedt@ssb.no",
-      "phone" : "62885265"
     },
     "owningSection" : "320",
     "source" : "Kommuneinndeling 2014",
@@ -50,7 +47,6 @@ module.exports = {
     "contactPerson" : {
       "name" : "Hartvedt, Henning",
       "email" : "Henning.Hartvedt@ssb.no",
-      "phone" : "62885265"
     },
     "owningSection" : "320",
     "source" : "Kommuneinndeling 2014",
@@ -66,7 +62,6 @@ module.exports = {
     "contactPerson" : {
       "name" : "Hartvedt, Henning",
       "email" : "Henning.Hartvedt@ssb.no",
-      "phone" : "62885265"
     },
     "owningSection" : "320",
     "source" : "Kommuneinndeling 2014",
@@ -82,7 +77,6 @@ module.exports = {
     "contactPerson" : {
       "name" : "Hartvedt, Henning",
       "email" : "Henning.Hartvedt@ssb.no",
-      "phone" : "62885265"
     },
     "owningSection" : "320",
     "source" : "Kommuneinndeling 2014",

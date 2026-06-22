@@ -10,7 +10,6 @@ module.exports = {
     "contactPerson": {
         "name": "hhe",
         "email": "hhe@ssb.no",
-        "phone": "62 88 55 48"
     },
     "owningSection": "320",
     "statisticalUnits": ["Region"],
