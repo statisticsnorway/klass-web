@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - chore/add-security-scanning
+      - chore/update-grype-security-scanning
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight
 jobs:
@@ -44,7 +44,7 @@ jobs:
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
       - name: Generate SBOM (SPDX-JSON)
-        uses: anchore/sbom-action@v0
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
         with:
            image: "klass-web:latest"
            format: spdx-json
