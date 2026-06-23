@@ -52,7 +52,7 @@ jobs:
             target_env=${{ steps.nais-deploy-vars.outputs.nais_cluster }}
           byosbom: "dependency-results.sbom.json"
 
-      - uses: nais/deploy/actions/deploy@157203210ef983b1d2fb32db50d177043ce95ebd # v2
+      - uses: nais/deploy/actions/deploy@5fdd91aaf69bb0d6dd5e5118cdacb639f487b93b # v2
         env:
           CLUSTER: ${{ steps.nais-deploy-vars.outputs.nais_cluster }}
           RESOURCE: ${{ steps.nais-deploy-vars.outputs.nais_config_path }}
