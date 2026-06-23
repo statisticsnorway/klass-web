@@ -42,16 +42,26 @@ jobs:
       - name: Filter Docker SARIF (security-severity > 1.0, high/critical)
         run: |
           jq '
-            .runs |= map(
-              ( (.tool.driver.rules // []) | map({key: .id, value: .}) | from_entries ) as $rules
-              | .results |= map(
-                  select(
-                    (.level == "error")
-                    and (((($rules[.ruleId].properties["security-severity"] // "0") | try tonumber catch 0)) > 1.0)
-                  )
+            .runs = (
+              (.runs // [])
+              | map(
+                  .tool.driver.rules = (.tool.driver.rules // [])
+                  | ((.tool.driver.rules // []) | map({ key: (.id // ""), value: . }) | from_entries) as $rules
+                  | .results = (
+                      (.results // [])
+                      | map(
+                          select(
+                            ((.level // "") == "error")
+                            and ((((($rules[(.ruleId // "")].properties["security-severity"] // "0") | tostring) | try tonumber catch 0) > 1.0))
+                          )
+                        )
+                    )
+                  | (.results | map(.ruleId // empty) | unique) as $keep
+                  | .tool.driver.rules = (
+                      (.tool.driver.rules // [])
+                      | map(select((.id // "") as $id | ($keep | index($id))))
+                    )
                 )
-              | (.results | map(.ruleId) | unique) as $keep
-              | .tool.driver.rules |= map(select(.id as $id | $keep | index($id)))
             )
           ' "${{ steps.scan.outputs.sarif }}" > docker.filtered.sarif
 
@@ -77,19 +87,28 @@ jobs:
       - name: Filter SBOM SARIF (security-severity > 1.0, high/critical)
         run: |
           jq '
-            .runs |= map(
-              ( (.tool.driver.rules // []) | map({key: .id, value: .}) | from_entries ) as $rules
-              | .results |= map(
-                  select(
-                    (.level == "error")
-                    and (((($rules[.ruleId].properties["security-severity"] // "0") | try tonumber catch 0)) > 1.0)
-                  )
+            .runs = (
+              (.runs // [])
+              | map(
+                  .tool.driver.rules = (.tool.driver.rules // [])
+                  | ((.tool.driver.rules // []) | map({ key: (.id // ""), value: . }) | from_entries) as $rules
+                  | .results = (
+                      (.results // [])
+                      | map(
+                          select(
+                            ((.level // "") == "error")
+                            and ((((($rules[(.ruleId // "")].properties["security-severity"] // "0") | tostring) | try tonumber catch 0) > 1.0))
+                          )
+                        )
+                    )
+                  | (.results | map(.ruleId // empty) | unique) as $keep
+                  | .tool.driver.rules = (
+                      (.tool.driver.rules // [])
+                      | map(select((.id // "") as $id | ($keep | index($id))))
+                    )
                 )
-              | (.results | map(.ruleId) | unique) as $keep
-              | .tool.driver.rules |= map(select(.id as $id | $keep | index($id)))
             )
           ' "${{ steps.scan_sbom.outputs.sarif }}" > sbom.filtered.sarif
-
             
       - name: Upload SBOM scan SARIF report
         uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
