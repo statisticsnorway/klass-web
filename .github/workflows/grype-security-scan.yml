@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - fix/grype-scan-null-iteration
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight
 jobs:
