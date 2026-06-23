@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - chore/filter-grype-result
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight
 jobs:
@@ -38,10 +39,28 @@ jobs:
           image: "klass-web:latest"
           fail-build: false
           severity-cutoff: high
+    
+      - name: Filter Docker SARIF (security-severity > 1.0, high/critical)
+        run: |
+          jq '
+            .runs |= map(
+              ( (.tool.driver.rules // []) | map({key: .id, value: .}) | from_entries ) as $rules
+              | .results |= map(
+                  select(
+                    (.level == "error")
+                    and (((($rules[.ruleId].properties["security-severity"] // "0") | try tonumber catch 0)) > 1.0)
+                  )
+                )
+              | (.results | map(.ruleId) | unique) as $keep
+              | .tool.driver.rules |= map(select(.id as $id | $keep | index($id)))
+            )
+          ' "${{ steps.scan.outputs.sarif }}" > docker.filtered.sarif
+
       - name: Upload Docker SARIF report
-        uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
+        uses: github/codeql-action/upload-sarif@7211b7c8077ea37d8641b6271f6a365a22a5fbfa # v4.36.0
         with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}
+          sarif_file: docker.filtered.sarif
+
       - name: Generate SBOM (SPDX-JSON)
         uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
         with:
@@ -55,9 +74,26 @@ jobs:
             sbom: "sbom.spdx.json"
             fail-build: false
             severity-cutoff: high
+
+      - name: Filter SBOM SARIF (security-severity > 1.0, high/critical)
+        run: |
+          jq '
+            .runs |= map(
+              ( (.tool.driver.rules // []) | map({key: .id, value: .}) | from_entries ) as $rules
+              | .results |= map(
+                  select(
+                    (.level == "error")
+                    and (((($rules[.ruleId].properties["security-severity"] // "0") | try tonumber catch 0)) > 1.0)
+                  )
+                )
+              | (.results | map(.ruleId) | unique) as $keep
+              | .tool.driver.rules |= map(select(.id as $id | $keep | index($id)))
+            )
+          ' "${{ steps.scan_sbom.outputs.sarif }}" > sbom.filtered.sarif
+
             
       - name: Upload SBOM scan SARIF report
         uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
         with:
-            sarif_file: ${{ steps.scan_sbom.outputs.sarif }}
+            sarif_file: sbom.filtered.sarif
             category: grype-sbom
