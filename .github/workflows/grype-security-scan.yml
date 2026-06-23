@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - chore/filter-grype-result
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight
 jobs:
