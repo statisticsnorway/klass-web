@@ -16,7 +16,7 @@ RUN if [ "$target_env" = "prod" ]; then export NODE_ENV=production; else export 
 RUN npm run build
 
 # Step 2: Serve the built files using Nginx
-FROM cgr.dev/chainguard/nginx@sha256:c6e528328cc6031ba1256c765db7a64b4acd180e9fc343eac23d9807d1cb37bf
+FROM cgr.dev/chainguard/nginx@sha256:2015f7fa3b514c1bb8de63ed0ebe769295e6d15c5a401fcafbbe555760d42e57
 WORKDIR /usr/share/nginx/html
 
 COPY --from=builder /app/build .
