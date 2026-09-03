@@ -24,7 +24,7 @@ jobs:
       - name: Build the Container image
         run: docker build . --file Dockerfile --tag klass-web:latest
       - name: Display scan result as table
-        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7.4.0
+        uses: anchore/scan-action@8964e60c6fabdb85fdbbbfd9834d8f19c97a3086 # v7.4.1
         id: scan_table
         with:
           image: "klass-web:latest"
@@ -32,7 +32,7 @@ jobs:
           fail-build: false
           severity-cutoff: high
       - name: Create Docker SARIF file
-        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7.4.0
+        uses: anchore/scan-action@8964e60c6fabdb85fdbbbfd9834d8f19c97a3086 # v7.4.1
         id: scan
         with:
           image: "klass-web:latest"
@@ -77,7 +77,7 @@ jobs:
            format: spdx-json
            output-file: sbom.spdx.json
       - name: Create SBOM SARIF file
-        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7.4.0
+        uses: anchore/scan-action@8964e60c6fabdb85fdbbbfd9834d8f19c97a3086 # v7.4.1
         id: scan_sbom
         with:
             sbom: "sbom.spdx.json"
