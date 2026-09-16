@@ -1,3 +1,7 @@
+> **Warning**
+>
+> This repo is obsolete and functionality is implemented in [SSB Dataportal](https://github.com/statisticsnorway/ssb-dataportal)
+
 # Klass web
 
 Søk og utlisting av klassifikasjoner og kodeverk fra Klass API.
